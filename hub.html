@@ -10,7 +10,71 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="./style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* Lecteur DIGIY — secours visuel si style.css n'est pas encore posé */
+    .digiy-reader{
+      margin:14px 18px 0;
+      padding:14px;
+      border-radius:24px;
+      border:1px solid rgba(246,196,83,.38);
+      background:linear-gradient(135deg,rgba(246,196,83,.15),rgba(0,166,81,.11));
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    }
+    .digiy-reader strong{
+      display:block;
+      font-family:var(--fontA,"Outfit",system-ui,sans-serif);
+      font-size:20px;
+      font-weight:900;
+      color:#fff3cf;
+      line-height:1.1;
+    }
+    .digiy-reader span{
+      display:block;
+      margin-top:5px;
+      color:rgba(248,250,252,.82);
+      font-size:13px;
+      font-weight:800;
+      line-height:1.45;
+    }
+    .reader-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .reader-btn{
+      min-height:48px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.09);
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      font-family:var(--fontA,"Outfit",system-ui,sans-serif);
+    }
+    .reader-btn.main{
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;
+      border-color:rgba(246,196,83,.62);
+    }
+    .reader-status{
+      grid-column:1 / -1;
+      color:#fff3cf;
+      font-size:12px;
+      font-weight:900;
+      line-height:1.45;
+    }
+    @media(max-width:760px){
+      .digiy-reader{grid-template-columns:1fr;margin:12px 10px 0;}
+      .reader-actions{justify-content:stretch;}
+      .reader-btn{width:100%;}
+    }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -39,6 +103,19 @@
         <a class="" href="assistant.html">🧠 Assistant</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
+
+      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le pro s'inscrit, prépare une annonce, règle par Wave pour sept jours, quinze jours ou trente jours, puis partage sa fiche dans son réseau humain. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. Le terrain garde le client, le contact et l'argent.">
+        <div>
+          <strong>🎧 Écouter DIGIY</strong>
+          <span>Le module parle : fiche pro, annonce posée, Wave, preuve et partage au clic.</span>
+        </div>
+        <div class="reader-actions">
+          <button class="reader-btn main" type="button" data-audio-play>▶️ Écouter</button>
+          <button class="reader-btn" type="button" data-audio-pause>⏸️ Pause</button>
+          <button class="reader-btn" type="button" data-audio-stop>⏹️ Stop</button>
+        </div>
+        <div class="reader-status" data-audio-status>Prêt à écouter.</div>
+      </section>
       
 <section class="hero">
   <div class="kicker">Journal d’annonces pros</div>
