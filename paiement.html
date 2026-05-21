@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>RÉSEAU DIGIY — Règlement</title>
+  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="theme-color" content="#00853f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="hub.html" aria-label="Retour RÉSEAU DIGIY">
+          <div class="logo">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+          </div>
+        </a>
+        <div class="chips">
+          <span class="chip-mini green">🟢 Accès ouvert</span>
+          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini">📅 7j · 15j · 30j</span>
+        </div>
+      </header>
+      <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
+        <a class="" href="hub.html">🏠 Hub</a>
+        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="annonce.html">📢 Annonce</a>
+        <a class="gold" href="paiement.html">💳 Règlement</a>
+        <a class="" href="journal.html">📰 Journal</a>
+        <a class="" href="fiche.html">🔗 Fiche</a>
+        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="" href="session.html">🧰 Local</a>
+      </nav>
+      
+<section class="hero">
+  <div class="kicker">Étape 3 · Règlement durée</div>
+  <h2>Pas d’abonnement, <span>une durée payée.</span></h2>
+  <p class="lead">Le pro règle la visibilité choisie. DIGIY active l’annonce après preuve de paiement. Simple, lisible, terrain.</p>
+</section>
+<section class="panel">
+  <h3>Choisir <span>la durée</span></h3>
+  <div class="two">
+    <div class="field"><label for="paymentPlan">Durée</label><select id="paymentPlan"><option value="week">7 jours · 3 500 FCFA</option><option value="quinzaine">15 jours · 6 500 FCFA</option><option value="month">30 jours · 12 000 FCFA</option></select></div>
+    <div class="price-card"><span id="planBadge">Semaine terrain</span><b id="planPrice">3 500 FCFA</b><span id="planDays">7 jours visibles</span></div>
+  </div>
+  <form id="paymentForm" class="form">
+    <div class="two">
+      <div class="field"><label for="paymentMethod">Mode de règlement</label><select id="paymentMethod"><option>Wave</option><option>Orange Money</option><option>Cash</option><option>Autre</option></select></div>
+      <div class="field"><label for="paymentRef">Référence / note paiement</label><input id="paymentRef" placeholder="Ex : Wave reçu 14h20, capture envoyée"></div>
+    </div>
+    <div class="field"><label for="paymentCopyText">Message preuve à envoyer à DIGIY</label><textarea id="paymentCopyText"></textarea></div>
+    <div class="btnrow">
+      <button class="btn main" type="submit">✅ Noter le règlement</button>
+      <button class="btn" type="button" data-copy-text="" data-label="preuve" onclick="RESEAU.copyText(document.getElementById('paymentCopyText').value,'preuve paiement')">📋 Copier preuve</button>
+      <a id="payWhatsApp" class="btn green" target="_blank" rel="noopener">💬 Envoyer preuve WhatsApp</a>
+      <a class="btn blue" href="journal.html">📰 Voir journal</a>
+    </div>
+  </form>
+</section>
+<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initPaymentPage());</script>
+
+      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+    </div>
+  </div>
+  <script src="./assets/js/reseau-core.js"></script>
+  
+</body>
+</html>
