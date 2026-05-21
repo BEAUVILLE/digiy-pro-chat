@@ -363,6 +363,152 @@
       .routeLine a{width:100%;}
     }
 
+
+    /* ══ EXEMPLES VIVANTS — COM AU CLIC ══ */
+    .examplesGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .exampleCard{
+      min-height:210px;
+      padding:18px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.065));
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+      color:#fff;
+      text-decoration:none;
+      overflow:hidden;
+      position:relative;
+    }
+    .exampleCard::before{
+      content:"";
+      position:absolute;
+      inset:-80px -80px auto auto;
+      width:150px;
+      height:150px;
+      border-radius:999px;
+      background:rgba(246,196,83,.16);
+      pointer-events:none;
+    }
+    .exampleCard.green::before{background:rgba(0,166,81,.18);}
+    .exampleCard.gold{
+      border-color:rgba(246,196,83,.45);
+      background:linear-gradient(180deg,rgba(246,196,83,.20),rgba(255,255,255,.08));
+    }
+    .exampleCard.green{
+      border-color:rgba(0,166,81,.45);
+      background:linear-gradient(180deg,rgba(0,166,81,.20),rgba(255,255,255,.08));
+    }
+    .exampleTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+    .exampleIcon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:32px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      flex:0 0 auto;
+    }
+    .exampleBadge{
+      min-height:30px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.09);
+      color:#fff3cf;
+      font-size:11px;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .exampleCard h3{
+      margin:0;
+      font-size:clamp(23px,6vw,34px);
+      font-weight:1000;
+      line-height:.96;
+      letter-spacing:-.045em;
+      position:relative;
+      z-index:1;
+    }
+    .exampleCard p{
+      margin:0;
+      color:rgba(248,250,252,.86);
+      font-size:clamp(15px,3.9vw,18px);
+      font-weight:1000;
+      line-height:1.2;
+      position:relative;
+      z-index:1;
+    }
+    .exampleMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      position:relative;
+      z-index:1;
+    }
+    .exampleMeta span{
+      min-height:32px;
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+      color:rgba(248,250,252,.88);
+      font-size:12px;
+      font-weight:1000;
+      line-height:1;
+    }
+    .exampleAction{
+      min-height:46px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;
+      font-size:15px;
+      font-weight:1000;
+      position:relative;
+      z-index:1;
+    }
+    .examplesNote{
+      margin:0;
+      padding:16px 18px;
+      border-radius:22px;
+      border:1px solid rgba(246,196,83,.32);
+      background:rgba(246,196,83,.10);
+      color:rgba(248,250,252,.88);
+      font-size:clamp(16px,4vw,19px);
+      font-weight:1000;
+      line-height:1.25;
+    }
+    @media(min-width:920px){
+      .examplesGrid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    }
+    @media(max-width:560px){
+      .examplesGrid{grid-template-columns:1fr;}
+      .exampleCard{min-height:190px;padding:16px;}
+      .exampleIcon{width:54px;height:54px;font-size:30px;}
+      .exampleBadge{font-size:10.5px;}
+    }
+
   </style>
 </head>
 <body>
@@ -392,7 +538,7 @@
         <a class="" href="inscription.html">👤 Pro</a>
       </nav>
 
-      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le public vient voir les offres du terrain, les produits, les services, les retours chauffeurs, les locations et les disponibilités. Le pro peut aussi déposer une annonce, choisir sept jours, quinze jours ou trente jours, régler par Wave, puis partager son lien. RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. Le terrain garde le client, le contact et l'argent.">
+      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le public vient voir les offres du terrain, les produits, les services, les retours chauffeurs, les locations et les disponibilités. Le pro peut aussi déposer une annonce, choisir sept jours, quinze jours ou trente jours, régler par Wave, puis partager son lien. RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. Exemple simple : savon maison, retour chauffeur, location à Saly, arrivage boutique, artisan disponible ou activité locale. Le terrain garde le client, le contact et l'argent.">
         <div>
           <strong>🎧 Écouter DIGIY</strong>
           <span>La place publique parle : offres du terrain, partage au clic, dépôt pro simple.</span>
@@ -435,6 +581,92 @@
   <a class="tile gold" href="journal.html#services"><span class="icon">🛠️</span><strong>Services dispo</strong><p>Artisans, beauté, repas, aide terrain, activité locale disponible.</p></a>
   <a class="tile" href="fiche.html"><span class="icon">🔗</span><strong>Fiche du pro</strong><p>La maison claire du professionnel : offre, contact, lien, partage.</p></a>
 </section>
+
+
+<div class="sectionLabel">Exemples à faire circuler</div>
+<section class="examplesGrid" aria-label="Exemples RÉSEAU DIGIY">
+  <a class="exampleCard gold" href="journal.html#savons">
+    <div class="exampleTop">
+      <div class="exampleIcon">🧼</div>
+      <div class="exampleBadge">Produit local</div>
+    </div>
+    <h3>Savons maison</h3>
+    <p>Une sœur prépare ses savons, son beurre de karité ou ses produits beauté. Le lien propre circule dans la famille, les clientes et les groupes.</p>
+    <div class="exampleMeta">
+      <span>7 jours</span><span>WhatsApp</span><span>Partage</span>
+    </div>
+    <div class="exampleAction">Voir l’exemple</div>
+  </a>
+
+  <a class="exampleCard green" href="https://digiy-driver-part-bapt.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+    <div class="exampleTop">
+      <div class="exampleIcon">🚕</div>
+      <div class="exampleBadge">Chauffeur</div>
+    </div>
+    <h3>Retour AIBD</h3>
+    <p>Un chauffeur annonce un retour, une disponibilité ou une course possible. Le client clique, voit la fiche et contacte directement.</p>
+    <div class="exampleMeta">
+      <span>Retour</span><span>QR</span><span>Contact direct</span>
+    </div>
+    <div class="exampleAction">Voir DRIVER</div>
+  </a>
+
+  <a class="exampleCard" href="https://part-chez-baptiste.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+    <div class="exampleTop">
+      <div class="exampleIcon">🏠</div>
+      <div class="exampleBadge">Location</div>
+    </div>
+    <h3>Séjour à Saly</h3>
+    <p>Une chambre, un appartement ou une villa reçoit une offre datée. Le public voit les infos utiles et réserve sans détour.</p>
+    <div class="exampleMeta">
+      <span>Saly</span><span>Direct proprio</span><span>0% commission</span>
+    </div>
+    <div class="exampleAction">Voir LOC</div>
+  </a>
+
+  <a class="exampleCard green" href="journal.html#boutique">
+    <div class="exampleTop">
+      <div class="exampleIcon">🛍️</div>
+      <div class="exampleBadge">Boutique</div>
+    </div>
+    <h3>Arrivage boutique</h3>
+    <p>Textile, foutas, linge, beauté, accessoires : la boutique pose son arrivage de la semaine et les clientes partagent.</p>
+    <div class="exampleMeta">
+      <span>Arrivage</span><span>Fiche pro</span><span>Lien clair</span>
+    </div>
+    <div class="exampleAction">Voir l’exemple</div>
+  </a>
+
+  <a class="exampleCard gold" href="journal.html#services">
+    <div class="exampleTop">
+      <div class="exampleIcon">🛠️</div>
+      <div class="exampleBadge">Service</div>
+    </div>
+    <h3>Artisan disponible</h3>
+    <p>Plombier, menuisier, beauté, ménage, livraison ou aide terrain : le pro annonce sa disponibilité et garde la relation directe.</p>
+    <div class="exampleMeta">
+      <span>Disponible</span><span>Zone</span><span>WhatsApp</span>
+    </div>
+    <div class="exampleAction">Voir l’exemple</div>
+  </a>
+
+  <a class="exampleCard" href="journal.html#activites">
+    <div class="exampleTop">
+      <div class="exampleIcon">🌴</div>
+      <div class="exampleBadge">Activité</div>
+    </div>
+    <h3>Sortie ou activité</h3>
+    <p>Excursion, repas, visite, plage, événement : l’offre reste posée quelques jours au lieu de disparaître dans le bruit.</p>
+    <div class="exampleMeta">
+      <span>Événement</span><span>15 jours</span><span>À partager</span>
+    </div>
+    <div class="exampleAction">Voir l’exemple</div>
+  </a>
+</section>
+
+<p class="examplesNote">
+  Ces exemples montrent la force de RÉSEAU DIGIY : une même porte peut porter un produit, un chauffeur, une location, une boutique, un service ou une activité. Le lien circule, le contact reste direct.
+</p>
 
 <section class="panel">
   <h3>La promesse : <span>COM AU CLIC</span></h3>
