@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>RÉSEAU DIGIY — Fiche</title>
+  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="theme-color" content="#00853f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="hub.html" aria-label="Retour RÉSEAU DIGIY">
+          <div class="logo">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+          </div>
+        </a>
+        <div class="chips">
+          <span class="chip-mini green">🟢 Accès ouvert</span>
+          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini">📅 7j · 15j · 30j</span>
+        </div>
+      </header>
+      <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
+        <a class="" href="hub.html">🏠 Hub</a>
+        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="annonce.html">📢 Annonce</a>
+        <a class="" href="paiement.html">💳 Règlement</a>
+        <a class="" href="journal.html">📰 Journal</a>
+        <a class="gold" href="fiche.html">🔗 Fiche</a>
+        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="" href="session.html">🧰 Local</a>
+      </nav>
+      
+<section class="hero">
+  <div class="kicker">Fiche pro + projecteur semaine</div>
+  <h2>La fiche est la maison. <span>L’annonce est la lumière.</span></h2>
+  <p class="lead">Cette page représente la fiche partageable. En production, elle peut être connectée à la vraie fiche pro déjà présente dans DIGIY.</p>
+</section>
+<section class="panel fiche-hero">
+  <div>
+    <div class="kicker" id="ficheStatus">Annonce en préparation</div>
+    <h3 id="ficheTitle">Offre de la semaine</h3>
+    <p><strong id="ficheBusiness">Pro DIGIY</strong> · <span id="ficheMetier">Activité locale</span> · <span id="ficheZone">Sénégal</span></p>
+    <p id="ficheDetails">Annonce préparée par RÉSEAU DIGIY.</p>
+    <div class="price-card"><span>Prix / remise</span><b id="fichePrice">À confirmer</b><span id="ficheDates">Durée à confirmer</span></div>
+    <p class="small">Téléphone direct : <strong id="fichePhone">Téléphone à poser</strong></p>
+    <div class="btnrow">
+      <a id="ficheWa" class="btn main" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a id="ficheTel" class="btn green">📞 Appeler</a>
+      <a id="ficheSms" class="btn blue">✉️ SMS passerelle</a>
+      <a id="ficheMaps" class="btn" target="_blank" rel="noopener">📍 Itinéraire</a>
+    </div>
+  </div>
+  <img id="fichePhoto" class="photo" hidden alt="Visuel de l’annonce">
+</section>
+<section class="panel">
+  <h3>Partager <span>cette fiche</span></h3>
+  <p class="small">Lien actuel : <span data-offer-link></span></p>
+  <div class="btnrow">
+    <button class="btn main" type="button" data-copy="link" data-label="lien fiche">🔗 Copier lien</button>
+    <button class="btn green" type="button" data-copy="offer" data-label="message offre">📋 Copier message offre</button>
+    <button class="btn" type="button" data-copy="sms" data-label="sms passerelle">✉️ Copier SMS passerelle</button>
+  </div>
+</section>
+<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initFichePage());</script>
+
+      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+    </div>
+  </div>
+  <script src="./assets/js/reseau-core.js"></script>
+  
+</body>
+</html>
