@@ -74,6 +74,200 @@
       .reader-actions{justify-content:stretch;}
       .reader-btn{width:100%;}
     }
+
+
+    /* ══ RENFORT LECTURE — GRAND & GRAS, esprit pavés téléphone ══ */
+    body{
+      font-weight:900;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:geometricPrecision;
+    }
+
+    .top{
+      gap:14px;
+    }
+    .brand h1{
+      font-size:clamp(24px,6.5vw,42px) !important;
+      font-weight:1000 !important;
+      line-height:.95 !important;
+      letter-spacing:-.045em !important;
+    }
+    .brand p{
+      font-size:clamp(13px,3.6vw,17px) !important;
+      font-weight:1000 !important;
+      line-height:1.18 !important;
+      color:rgba(248,250,252,.84) !important;
+    }
+    .logo{
+      width:54px !important;
+      height:54px !important;
+      min-width:54px !important;
+      font-size:28px !important;
+      font-weight:1000 !important;
+    }
+
+    .chip-mini,
+    .nav a{
+      font-size:14px !important;
+      font-weight:1000 !important;
+      line-height:1.08 !important;
+      min-height:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .digiy-reader{
+      padding:18px !important;
+      gap:14px !important;
+    }
+    .digiy-reader strong{
+      font-size:clamp(24px,6vw,34px) !important;
+      font-weight:1000 !important;
+      line-height:1 !important;
+      letter-spacing:-.035em;
+    }
+    .digiy-reader span{
+      font-size:clamp(15px,4vw,18px) !important;
+      font-weight:1000 !important;
+      line-height:1.24 !important;
+      color:rgba(248,250,252,.90) !important;
+    }
+    .reader-btn{
+      min-height:54px !important;
+      padding:0 18px !important;
+      font-size:15px !important;
+      font-weight:1000 !important;
+    }
+    .reader-status{
+      font-size:14px !important;
+      font-weight:1000 !important;
+      color:#fff3cf !important;
+    }
+
+    .hero{
+      padding-top:24px !important;
+    }
+    .kicker{
+      font-size:14px !important;
+      font-weight:1000 !important;
+      letter-spacing:.14em !important;
+    }
+    .hero h2{
+      font-size:clamp(38px,10vw,68px) !important;
+      font-weight:1000 !important;
+      line-height:.92 !important;
+      letter-spacing:-.06em !important;
+      margin-bottom:14px !important;
+    }
+    .lead{
+      font-size:clamp(18px,4.6vw,24px) !important;
+      font-weight:1000 !important;
+      line-height:1.24 !important;
+      color:rgba(248,250,252,.90) !important;
+    }
+
+    .panel{
+      padding:20px !important;
+      border-radius:24px !important;
+    }
+    .panel h3{
+      font-size:clamp(25px,6.8vw,38px) !important;
+      font-weight:1000 !important;
+      line-height:.98 !important;
+      letter-spacing:-.04em !important;
+      margin-bottom:10px !important;
+    }
+    .panel p{
+      font-size:clamp(17px,4.3vw,21px) !important;
+      font-weight:1000 !important;
+      line-height:1.26 !important;
+      color:rgba(248,250,252,.88) !important;
+    }
+
+    .grid{
+      display:grid !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:14px !important;
+    }
+    .tile{
+      min-height:164px !important;
+      padding:18px !important;
+      border-radius:22px !important;
+      display:flex !important;
+      flex-direction:column !important;
+      justify-content:space-between !important;
+      gap:10px !important;
+    }
+    .tile .icon{
+      font-size:34px !important;
+      line-height:1 !important;
+    }
+    .tile strong{
+      font-size:clamp(21px,5.7vw,30px) !important;
+      font-weight:1000 !important;
+      line-height:.98 !important;
+      letter-spacing:-.035em !important;
+    }
+    .tile p{
+      font-size:clamp(14px,3.7vw,17px) !important;
+      font-weight:1000 !important;
+      line-height:1.18 !important;
+      color:rgba(248,250,252,.84) !important;
+      margin:0 !important;
+    }
+
+    .three{
+      gap:14px !important;
+    }
+    .price-card{
+      padding:18px !important;
+      border-radius:22px !important;
+    }
+    .price-card span{
+      font-size:15px !important;
+      font-weight:1000 !important;
+      line-height:1.12 !important;
+      color:rgba(248,250,252,.84) !important;
+    }
+    .price-card b{
+      font-size:clamp(42px,10vw,62px) !important;
+      font-weight:1000 !important;
+      line-height:.9 !important;
+      letter-spacing:-.06em !important;
+    }
+    .footer{
+      font-size:15px !important;
+      font-weight:1000 !important;
+      line-height:1.25 !important;
+      color:rgba(248,250,252,.76) !important;
+    }
+
+    @media(min-width:860px){
+      .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+      .tile{min-height:190px !important;}
+    }
+
+    @media(max-width:420px){
+      .shell{gap:12px !important;}
+      .chips{gap:7px !important;}
+      .chip-mini{font-size:12.5px !important;min-height:38px;padding:7px 9px !important;}
+      .nav{gap:8px !important;}
+      .nav a{font-size:13px !important;min-height:40px;padding:8px 10px !important;}
+      .digiy-reader{padding:16px !important;}
+      .grid{gap:10px !important;}
+      .tile{min-height:154px !important;padding:15px !important;border-radius:20px !important;}
+      .tile .icon{font-size:31px !important;}
+      .tile strong{font-size:20px !important;}
+      .tile p{font-size:13.5px !important;}
+      .panel{padding:17px !important;}
+    }
+
+    @media(max-width:340px){
+      .grid{grid-template-columns:1fr !important;}
+      .tile{min-height:132px !important;}
+    }
+
   </style>
 </head>
 <body>
@@ -104,7 +298,7 @@
         <a class="" href="session.html">🧰 Local</a>
       </nav>
 
-      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le pro s'inscrit, prépare une annonce, règle par Wave pour sept jours, quinze jours ou trente jours, puis partage sa fiche dans son réseau humain. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. Le terrain garde le client, le contact et l'argent.">
+      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le pro s'inscrit, prépare une annonce, règle par Wave pour sept jours, quinze jours ou trente jours, puis partage sa fiche dans son réseau humain. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible. Le terrain garde le client, le contact et l'argent.">
         <div>
           <strong>🎧 Écouter DIGIY</strong>
           <span>Le module parle : fiche pro, annonce posée, Wave, preuve et partage au clic.</span>
@@ -151,3 +345,4 @@
   <script src="./assets/js/digiy-audio-reader.js"></script>
 </body>
 </html>
+
