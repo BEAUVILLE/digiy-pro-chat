@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>RÉSEAU DIGIY — Annonce</title>
+  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="theme-color" content="#00853f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="hub.html" aria-label="Retour RÉSEAU DIGIY">
+          <div class="logo">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+          </div>
+        </a>
+        <div class="chips">
+          <span class="chip-mini green">🟢 Accès ouvert</span>
+          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini">📅 7j · 15j · 30j</span>
+        </div>
+      </header>
+      <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
+        <a class="" href="hub.html">🏠 Hub</a>
+        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="gold" href="annonce.html">📢 Annonce</a>
+        <a class="" href="paiement.html">💳 Règlement</a>
+        <a class="" href="journal.html">📰 Journal</a>
+        <a class="" href="fiche.html">🔗 Fiche</a>
+        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="" href="session.html">🧰 Local</a>
+      </nav>
+      
+<section class="hero">
+  <div class="kicker">Étape 2 · Annonce datée</div>
+  <h2>Une annonce claire, <span>visible plusieurs jours.</span></h2>
+  <p class="lead">Le pro clique, DIGIY prépare. Le texte reste modifiable pour l’heure, le lieu, le prix, l’événement, le ton.</p>
+</section>
+<section class="panel">
+  <h3>Préparer <span>l’annonce</span></h3>
+  <form id="offerForm" class="form">
+    <div class="two">
+      <div class="field"><label for="title">Titre de l’annonce</label><input id="title" placeholder="Ex : 2 nuits payées, la 3e offerte"></div>
+      <div class="field"><label for="type">Type</label><select id="type"></select></div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="metier">Métier</label><select id="metier"></select></div>
+      <div class="field"><label for="zone">Zone</label><select id="zone"></select></div>
+    </div>
+    <div class="field">
+      <label>Choix rapide terrain</label>
+      <div class="choice-row">
+        <button type="button" class="choice" data-chip-target="title" data-value="Retour AIBD vers Saly aujourd’hui">✈️ Retour AIBD</button>
+        <button type="button" class="choice" data-chip-target="title" data-value="2 nuits payées, la 3e offerte">🏡 Promo chambre</button>
+        <button type="button" class="choice" data-chip-target="title" data-value="Savons maison et beurre de karité disponibles">🧼 Produit maison</button>
+        <button type="button" class="choice" data-chip-target="title" data-value="Créneau disponible cette semaine">🛠️ Service dispo</button>
+      </div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="priceText">Prix / remise</label><input id="priceText" placeholder="Ex : 3e nuit gratuite, pack 5 000 FCFA, tarif à confirmer"></div>
+      <div class="field"><label for="plan">Durée visibilité</label><select id="plan"><option value="week">7 jours · 3 500 FCFA</option><option value="quinzaine">15 jours · 6 500 FCFA</option><option value="month">30 jours · 12 000 FCFA</option></select></div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="startDate">Début</label><input id="startDate" type="date"></div>
+      <div class="field"><label for="endDate">Fin</label><input id="endDate" type="date"></div>
+    </div>
+    <div class="field"><label for="details">Détails modifiables</label><textarea id="details" placeholder="Ex : Offre valable cette semaine. Contact direct. Places limitées. Livraison possible."></textarea></div>
+    <div class="field"><label for="photo">Photo / visuel URL facultatif</label><input id="photo" placeholder="https://... image produit, chambre, activité"></div>
+    <div class="field"><label for="cta">Action client</label><input id="cta" placeholder="Ex : Appeler, WhatsApp, réserver, commander"></div>
+    <div class="btnrow">
+      <button class="btn main" type="submit">✅ Préparer pour règlement</button>
+      <a class="btn green" href="paiement.html">💳 Aller au règlement</a>
+      <button class="btn" type="button" data-copy="offer" data-label="annonce">📋 Copier annonce</button>
+    </div>
+  </form>
+</section>
+<section class="panel">
+  <h3>Message prêt <span>à partager</span></h3>
+  <div class="field"><textarea id="messagePreview" data-fill-message="preview"></textarea></div>
+  <div class="btnrow">
+    <button class="btn main" type="button" data-copy="offer" data-label="message offre">📋 Copier le message</button>
+    <a class="btn green" data-wa-offer target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="btn" href="fiche.html">🔗 Voir la fiche</a>
+  </div>
+</section>
+<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initOfferPage());</script>
+
+      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+    </div>
+  </div>
+  <script src="./assets/js/reseau-core.js"></script>
+  
+</body>
+</html>
