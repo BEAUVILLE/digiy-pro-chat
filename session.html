@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>RÉSEAU DIGIY — Local</title>
+  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="theme-color" content="#00853f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="hub.html" aria-label="Retour RÉSEAU DIGIY">
+          <div class="logo">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+          </div>
+        </a>
+        <div class="chips">
+          <span class="chip-mini green">🟢 Accès ouvert</span>
+          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini">📅 7j · 15j · 30j</span>
+        </div>
+      </header>
+      <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
+        <a class="" href="hub.html">🏠 Hub</a>
+        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="annonce.html">📢 Annonce</a>
+        <a class="" href="paiement.html">💳 Règlement</a>
+        <a class="" href="journal.html">📰 Journal</a>
+        <a class="" href="fiche.html">🔗 Fiche</a>
+        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="gold" href="session.html">🧰 Local</a>
+      </nav>
+      
+<section class="hero">
+  <div class="kicker">Coffre local</div>
+  <h2>Local robuste d’abord. <span>Supabase ensuite.</span></h2>
+  <p class="lead">Cette version garde l’inscription, l’annonce et le règlement dans le téléphone pour tester vite. Ensuite on branchera la vraie table sans changer l’expérience.</p>
+</section>
+<section class="panel">
+  <h3>État local <span>RÉSEAU DIGIY</span></h3>
+  <div class="field"><textarea id="localState" style="min-height:300px"></textarea></div>
+  <div class="btnrow">
+    <button id="clearDraft" class="btn warn" type="button">🧹 Vider annonce/règlement</button>
+    <button id="clearAll" class="btn warn" type="button">🧨 Tout nettoyer local</button>
+    <a class="btn main" href="hub.html">🏠 Retour hub</a>
+  </div>
+</section>
+<section class="panel danger-zone">
+  <h3>Note atelier <span>sans jargon client</span></h3>
+  <p>Ce module est ouvert côté usage, mais l’activation publique réelle doit rester contrôlée par DIGIY après règlement. Le front prépare et garde la trace ; l’admin valide la mise en avant.</p>
+</section>
+<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initSessionPage());</script>
+
+      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+    </div>
+  </div>
+  <script src="./assets/js/reseau-core.js"></script>
+  
+</body>
+</html>
