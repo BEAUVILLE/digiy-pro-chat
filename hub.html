@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — Com au clic</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <title>RÉSEAU DIGIY — Com au clic public</title>
+  <meta name="description" content="RÉSEAU DIGIY — Com au clic : offres du terrain, annonces partageables, dépôt pro à la durée, contact direct." />
   <meta name="theme-color" content="#00853f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,6 +268,101 @@
       .tile{min-height:132px !important;}
     }
 
+
+    /* ══ RÉSEAU DIGIY — HUB PUBLIC COM AU CLIC ══ */
+    .publicBand{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      padding:18px !important;
+      border-radius:24px !important;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(135deg,rgba(0,166,81,.16),rgba(246,196,83,.10));
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+    }
+    .publicBand .miniTitle{
+      font-size:clamp(18px,4.6vw,24px) !important;
+      font-weight:1000 !important;
+      line-height:1.05 !important;
+      color:#fff3cf;
+      letter-spacing:-.02em;
+      margin:0;
+    }
+    .publicBand p{
+      margin:0;
+      font-size:clamp(15px,4vw,19px) !important;
+      font-weight:1000 !important;
+      line-height:1.22 !important;
+      color:rgba(248,250,252,.88);
+    }
+    .miniSteps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .miniStep{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:13px;
+      font-size:clamp(13px,3.5vw,16px) !important;
+      font-weight:1000 !important;
+      line-height:1.13 !important;
+      color:rgba(248,250,252,.90);
+    }
+    .miniStep b{
+      display:block;
+      color:#fff3cf;
+      font-size:clamp(16px,4.2vw,20px) !important;
+      line-height:1.05;
+      margin-bottom:5px;
+    }
+    .sectionLabel{
+      margin:4px 2px -4px;
+      color:#fff0a8;
+      font-size:clamp(13px,3.4vw,16px) !important;
+      font-weight:1000 !important;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .tile.publicMain{
+      border-color:rgba(246,196,83,.48) !important;
+      background:linear-gradient(180deg,rgba(246,196,83,.20),rgba(255,255,255,.08)) !important;
+    }
+    .tile.depositMain{
+      border-color:rgba(0,166,81,.48) !important;
+      background:linear-gradient(180deg,rgba(0,166,81,.20),rgba(255,255,255,.08)) !important;
+    }
+    .routeLine{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:14px;
+    }
+    .routeLine a{
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.08);
+      font-size:14px !important;
+      font-weight:1000 !important;
+      color:#fff;
+    }
+    .routeLine a.goldLink{
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;
+      border-color:rgba(246,196,83,.62);
+    }
+    @media(max-width:560px){
+      .miniSteps{grid-template-columns:1fr;}
+      .publicBand{padding:16px !important;}
+      .routeLine a{width:100%;}
+    }
+
   </style>
 </head>
 <body>
@@ -278,30 +373,29 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+            <p>COM AU CLIC · offres du terrain · lien partageable · contact direct</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Accès ouvert</span>
-          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini green">🌍 Public ouvert</span>
+          <span class="chip-mini">📤 Partage au clic</span>
           <span class="chip-mini">📅 7j · 15j · 30j</span>
         </div>
       </header>
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
-        <a class="gold" href="hub.html">🏠 Hub</a>
-        <a class="" href="inscription.html">👤 Inscription</a>
-        <a class="" href="annonce.html">📢 Annonce</a>
+        <a class="gold" href="hub.html">🏠 Accueil</a>
+        <a class="" href="journal.html">📰 Voir les offres</a>
+        <a class="" href="fiche.html">🔗 Fiches</a>
+        <a class="" href="annonce.html">📢 Déposer</a>
         <a class="" href="paiement.html">💳 Règlement</a>
-        <a class="" href="journal.html">📰 Journal</a>
-        <a class="" href="fiche.html">🔗 Fiche</a>
         <a class="" href="assistant.html">🧠 Assistant</a>
-        <a class="" href="session.html">🧰 Local</a>
+        <a class="" href="inscription.html">👤 Pro</a>
       </nav>
 
-      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le pro s'inscrit, prépare une annonce, règle par Wave pour sept jours, quinze jours ou trente jours, puis partage sa fiche dans son réseau humain. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible. Le terrain garde le client, le contact et l'argent.">
+      <section class="digiy-reader" aria-label="Lecteur audio DIGIY" data-audio-root data-audio-text="RÉSEAU DIGIY, Com au clic. Ici, le public vient voir les offres du terrain, les produits, les services, les retours chauffeurs, les locations et les disponibilités. Le pro peut aussi déposer une annonce, choisir sept jours, quinze jours ou trente jours, régler par Wave, puis partager son lien. RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible. La fiche est la maison du pro. L'annonce est le projecteur de la semaine. Le terrain garde le client, le contact et l'argent.">
         <div>
           <strong>🎧 Écouter DIGIY</strong>
-          <span>Le module parle : fiche pro, annonce posée, Wave, preuve et partage au clic.</span>
+          <span>La place publique parle : offres du terrain, partage au clic, dépôt pro simple.</span>
         </div>
         <div class="reader-actions">
           <button class="reader-btn main" type="button" data-audio-play>▶️ Écouter</button>
@@ -312,25 +406,54 @@
       </section>
       
 <section class="hero">
-  <div class="kicker">Journal d’annonces pros</div>
-  <h2>Instantané à publier, <span>posé dans la durée.</span></h2>
-  <p class="lead"><strong>RÉSEAU DIGIY — COM AU CLIC</strong> est le module ouvert : le pro s’inscrit, prépare son offre, règle pour 7 jours, 15 jours ou 30 jours, puis sa fiche reçoit un bloc visible et un lien prêt à partager.</p>
+  <div class="kicker">Place publique DIGIY</div>
+  <h2>Les offres du terrain, <span>prêtes à circuler.</span></h2>
+  <p class="lead"><strong>RÉSEAU DIGIY — COM AU CLIC</strong> est une porte publique : le client regarde, clique, partage et contacte directement. Le pro garde sa fiche, son nom, son lien et sa relation.</p>
+  <div class="routeLine" aria-label="Actions rapides RÉSEAU DIGIY">
+    <a class="goldLink" href="journal.html">📰 Voir les offres</a>
+    <a href="annonce.html">📢 Déposer une annonce</a>
+    <a href="fiche.html">🔗 Voir une fiche</a>
+  </div>
 </section>
-<section class="panel">
-  <h3>Promesse claire : <span>COM AU CLIC</span></h3>
-  <p><strong>Com au clic</strong>, c’est la promesse terrain : une offre posée, un lien cliquable, une fiche propre, puis WhatsApp, SMS, famille et réseau humain font circuler.</p>
+
+<section class="publicBand" aria-label="Comment ça marche">
+  <h3 class="miniTitle">Le bouche-à-oreille devient cliquable.</h3>
+  <p>Une offre propre, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients et réseau humain font circuler.</p>
+  <div class="miniSteps">
+    <div class="miniStep"><b>1 · Voir</b>Le public trouve l’offre posée cette semaine.</div>
+    <div class="miniStep"><b>2 · Cliquer</b>Il ouvre la fiche, appelle, écrit ou partage.</div>
+    <div class="miniStep"><b>3 · Contacter</b>Le lien revient directement vers le pro.</div>
+  </div>
 </section>
+
+<div class="sectionLabel">Côté public</div>
 <section class="grid">
-  <a class="tile green" href="inscription.html"><span class="icon">👤</span><strong>Je m’inscris</strong><p>Nom, métier, téléphone, zone. Pas d’abonnement : juste une fiche prête à recevoir l’annonce.</p></a>
-  <a class="tile gold" href="annonce.html"><span class="icon">📢</span><strong>Je pose mon annonce</strong><p>Promo, retour AIBD, produit maison, chambre, service, activité. DIGIY prépare, le pro modifie.</p></a>
-  <a class="tile" href="paiement.html"><span class="icon">💳</span><strong>Je règle la durée</strong><p>7 jours · 15 jours · 30 jours. Prix clair, preuve WhatsApp, activation par DIGIY.</p></a>
-  <a class="tile green" href="journal.html"><span class="icon">📰</span><strong>Journal des offres</strong><p>Les annonces posées : visibles, datées, partageables. Pas un post perdu en 30 secondes.</p></a>
-  <a class="tile gold" href="assistant.html"><span class="icon">🧠</span><strong>Assistant DIGIY</strong><p>Le pro parle ou écrit peu. DIGIY prépare un message modifiable, prêt à copier.</p></a>
-  <a class="tile" href="fiche.html"><span class="icon">🔗</span><strong>Ma fiche partageable</strong><p>La fiche reste la maison du pro. L’annonce de la semaine est le projecteur.</p></a>
+  <a class="tile publicMain gold" href="journal.html"><span class="icon">📰</span><strong>Voir les offres</strong><p>Promos, retours, produits, chambres, services et disponibilités visibles dans le journal.</p></a>
+  <a class="tile green" href="journal.html#produits"><span class="icon">🧼</span><strong>Produits locaux</strong><p>Savons, beauté, boutique, arrivages, textile, petites ventes du terrain.</p></a>
+  <a class="tile" href="journal.html#chauffeurs"><span class="icon">🚕</span><strong>Retours chauffeurs</strong><p>AIBD, Dakar, Saly, Mbour : opportunités à saisir et à partager.</p></a>
+  <a class="tile green" href="journal.html#locations"><span class="icon">🏠</span><strong>Locations</strong><p>Chambres, villas, séjours, offres posées avec contact direct.</p></a>
+  <a class="tile gold" href="journal.html#services"><span class="icon">🛠️</span><strong>Services dispo</strong><p>Artisans, beauté, repas, aide terrain, activité locale disponible.</p></a>
+  <a class="tile" href="fiche.html"><span class="icon">🔗</span><strong>Fiche du pro</strong><p>La maison claire du professionnel : offre, contact, lien, partage.</p></a>
 </section>
+
 <section class="panel">
-  <h3>La route business : <span>ouvert mais cadré</span></h3>
-  <p>Le module ne bloque pas le pro derrière un abonnement. RÉSEAU DIGIY vend une visibilité simple : <strong>une offre, une durée, un lien cliquable, une fiche, un partage.</strong></p>
+  <h3>La promesse : <span>COM AU CLIC</span></h3>
+  <p><strong>RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible.</strong> Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler.</p>
+</section>
+
+<div class="sectionLabel">Côté pro</div>
+<section class="grid">
+  <a class="tile depositMain green" href="annonce.html"><span class="icon">📢</span><strong>Je dépose</strong><p>Promo, retour AIBD, produit maison, chambre, service, activité. DIGIY prépare, le pro modifie.</p></a>
+  <a class="tile gold" href="inscription.html"><span class="icon">👤</span><strong>Je m’inscris</strong><p>Nom, métier, téléphone, zone. Pas d’abonnement : juste une fiche prête à recevoir l’annonce.</p></a>
+  <a class="tile" href="paiement.html"><span class="icon">💳</span><strong>Je règle</strong><p>7 jours · 15 jours · 30 jours. Prix clair, preuve WhatsApp, activation par DIGIY.</p></a>
+  <a class="tile green" href="assistant.html"><span class="icon">🧠</span><strong>Assistant</strong><p>Le pro parle ou écrit peu. DIGIY prépare un message modifiable, prêt à copier.</p></a>
+  <a class="tile gold" href="fiche.html"><span class="icon">🔗</span><strong>Ma fiche</strong><p>La fiche reste la maison du pro. L’annonce de la semaine est le projecteur.</p></a>
+  <a class="tile" href="session.html"><span class="icon">🧰</span><strong>Local</strong><p>Petit coffre terrain : données locales, contrôle, reprise propre si besoin.</p></a>
+</section>
+
+<section class="panel">
+  <h3>Visibilité simple : <span>ouvert mais cadré</span></h3>
+  <p>Pas de commission, pas de prison d’abonnement. Une annonce, une durée, un lien cliquable, une fiche, un partage.</p>
   <div class="three">
     <div class="price-card"><span>Entrée terrain</span><b>3 500</b><span>FCFA · 7 jours visibles</span></div>
     <div class="price-card"><span>Quinzaine</span><b>6 500</b><span>FCFA · 15 jours visibles</span></div>
@@ -338,11 +461,12 @@
   </div>
 </section>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+      <footer class="footer">DIGIYLYFE — Le HUB RÉSEAU DIGIY est public. Le dépôt est une porte dedans, pas toute la maison. Le terrain garde sa fiche, son client, son argent et sa relation.</footer>
     </div>
   </div>
   <script src="./assets/js/reseau-core.js"></script>
   <script src="./assets/js/digiy-audio-reader.js"></script>
 </body>
 </html>
+
 
