@@ -1,32 +1,24 @@
-# 💼 DIGIY PRO CHAT — Centre de Demandes Partenaires
+Doctrine : pas d’abonnement lourd. Le pro s’inscrit, prépare une annonce, règle une durée (7 jours / 15 jours / 30 jours), puis DIGIY active la visibilité.
 
-**DIGIY PRO CHAT** est un module professionnel permettant aux chauffeurs, artisans, restaurateurs et partenaires DIGIY de gérer leurs demandes clients dans une interface moderne, responsive et optimisée terrain.
+## Pages
+- index.html : porte courte vers le hub
+- hub.html : pavés mobile terrain
+- inscription.html : profil pro simple
+- annonce.html : annonce modifiable + message partageable
+- paiement.html : choix durée + preuve WhatsApp
+- journal.html : journal d’annonces + messages famille/groupe
+- fiche.html : fiche/offre partageable
+- assistant.html : textes prêts et modifiables
+- session.html : mémoire locale / nettoyage
 
----
+## Prix proposés
+- 7 jours : 3 500 FCFA
+- 15 jours : 6 500 FCFA
+- 30 jours : 12 000 FCFA
 
-## 🚀 Fonctionnalités
-- Liste des demandes triées par statut : **Nouveau**, **En Cours**, **Clôturé**
-- Fenêtre de chat interne (simulation) pour pré-réponses rapides
-- Boutons d’action directs :
-  - ✔ WhatsApp (communication client directe)
-  - ✔ Appel téléphonique
-- Interface claire et lisible (mode clair pro)
-- 100% HTML/CSS/JS — fonctionne directement via GitHub Pages
+## Technique
+Version localStorage robuste pour test terrain. Supabase peut être branché ensuite pour `reseau_profiles`, `reseau_announcements`, `reseau_payments`, `reseau_clicks`.
 
----
 
-## 🌍 Déploiement GitHub Pages
+Nom visible corrigé : **RÉSEAU DIGIY — COM AU CLIC**. Pas de nom parasite, pas de confusion de domaine.
 
-Le module est disponible en ligne via :
-
-👉 **https://beauville.github.io/digiy-pro-chat/**  
-*(Remplace par ton URL une fois la page activée)*
-
----
-
-## 🔧 Installation locale
-
-```bash
-git clone https://github.com/beauville/digiy-pro-chat
-cd digiy-pro-chat
-open index.html
