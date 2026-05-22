@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>RÉSEAU DIGIY — Journal</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="description" content="RÉSEAU DIGIY — Journal public des publications qualifiées actives : fiche existante, offre partageable, lien clair, activation et expiration contrôlées." />
   <meta name="theme-color" content="#00853f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +46,7 @@
 </section>
 <section class="panel">
   <h3>Offres validées <span>à faire circuler</span></h3>
+  <p>Le journal lit les activations actives : <strong>status active</strong>, date d’expiration non dépassée. Une publication expirée ne doit plus faire de bruit.</p>
   <div id="journalGrid" class="grid" style="padding:0;margin-top:14px"></div>
 </section>
 <section class="panel">
@@ -58,11 +59,161 @@
     <button class="btn" type="button" data-copy="link" data-label="lien fiche">🔗 Copier lien</button>
   </div>
 </section>
-<script>document.addEventListener('DOMContentLoaded',()=>{RESEAU.initJournalPage(); const f=document.getElementById('familyPreview'); if(f) f.value=RESEAU.buildFamilyMessage();});</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const grid = document.getElementById('journalGrid');
+  const family = document.getElementById('familyPreview');
+
+  const SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+
+  function esc(v){
+    return String(v ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;");
+  }
+
+  function money(v){
+    const n = Number(v || 0);
+    return n ? n.toLocaleString("fr-FR") + " FCFA" : "Montant validé";
+  }
+
+  function shortPhone(v){
+    const d = String(v || "").replace(/\D/g,"");
+    if(!d) return "Contact validé";
+    if(d.length <= 6) return d;
+    return d.slice(0, 5) + "…" + d.slice(-3);
+  }
+
+  function humanDate(value){
+    if(!value) return "";
+    try{
+      return new Date(value).toLocaleDateString("fr-SN", {
+        day:"2-digit",
+        month:"long",
+        year:"numeric"
+      });
+    }catch(_){
+      return String(value);
+    }
+  }
+
+  function planLabel(plan){
+    const p = String(plan || "").toLowerCase();
+    const map = {
+      reseau_7j: "7 jours · 15 000 FCFA",
+      reseau_15j: "15 jours · 25 000 FCFA",
+      reseau_30j: "30 jours · 45 000 FCFA",
+      reseau_first: "Mise en classe FIRST · 150 000 FCFA"
+    };
+    return map[p] || plan || "Publication active";
+  }
+
+  function badge(plan){
+    return String(plan || "").toLowerCase() === "reseau_first" ? "FIRST" : "ACTIVE";
+  }
+
+  function titleFromRow(row){
+    const note = String(row.note || "").trim();
+    if(note.includes("FIRST")) return "Mise en classe FIRST";
+    if(note.includes("RÉSEAU DIGIY")) return "Publication RÉSEAU DIGIY";
+    return "Offre qualifiée active";
+  }
+
+  function renderActive(rows){
+    if(!grid) return;
+
+    if(!rows.length){
+      grid.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <span class="tag">En attente</span>
+          <h3>Aucune publication active pour le moment</h3>
+          <p>ADMIN valide les règlements, Supabase active les durées, puis le journal affiche seulement les publications encore valides.</p>
+          <a class="btn main" href="inscription.html">👤 Demander une publication</a>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = rows.map((row) => {
+      const activeUntil = humanDate(row.expires_at);
+      const created = humanDate(row.starts_at || row.created_at);
+      const title = titleFromRow(row);
+      const details = row.note || "Publication qualifiée activée par DIGIY.";
+      const fiche = row.fiche_url || row.public_url || row.offer_url || "fiche.html?src=journal-active";
+
+      return `
+        <a class="card" href="${esc(fiche)}">
+          <span class="tag">${esc(badge(row.plan))}</span>
+          <h3>${esc(title)}</h3>
+          <p>${esc(details)}</p>
+          <p><strong>${esc(planLabel(row.plan))}</strong></p>
+          <p>Contact validé : ${esc(shortPhone(row.phone))}</p>
+          <p>Visible du ${esc(created)} au ${esc(activeUntil)}.</p>
+          <b>Voir la fiche →</b>
+        </a>
+      `;
+    }).join("");
+  }
+
+  async function loadActiveFromSupabase(){
+    if(!grid) return false;
+    if(!window.supabase) return false;
+
+    try{
+      grid.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <span class="tag">Chargement</span>
+          <h3>Lecture des publications actives…</h3>
+          <p>Le journal vérifie les activations validées par ADMIN.</p>
+        </div>
+      `;
+
+      const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth:{
+          persistSession:false,
+          autoRefreshToken:false,
+          detectSessionInUrl:false
+        }
+      });
+
+      const { data, error } = await sb
+        .from("digiy_reseau_activations_active")
+        .select("*")
+        .order("created_at", { ascending:false })
+        .limit(30);
+
+      if(error){
+        console.warn("RÉSEAU DIGIY journal Supabase fallback:", error);
+        return false;
+      }
+
+      renderActive(Array.isArray(data) ? data : []);
+      return true;
+    }catch(e){
+      console.warn("RÉSEAU DIGIY journal fallback:", e);
+      return false;
+    }
+  }
+
+  const loaded = await loadActiveFromSupabase();
+
+  if(!loaded && window.RESEAU){
+    RESEAU.initJournalPage();
+  }
+
+  if(family && window.RESEAU){
+    family.value = RESEAU.buildFamilyMessage();
+  }
+});
+</script>
 
       <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, avec publication qualifiée.</footer>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./assets/js/reseau-core.js"></script>
   
 </body>
