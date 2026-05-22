@@ -6,6 +6,7 @@
   <title>RÉSEAU DIGIY — Journal</title>
   <meta name="description" content="RÉSEAU DIGIY — Journal public des publications qualifiées actives : fiche existante, offre partageable, lien clair, activation et expiration contrôlées." />
   <meta name="theme-color" content="#00853f" />
+  <meta name="digiy-build" content="reseau-journal-publication-vivante-20260522" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
 </section>
 <section class="panel">
   <h3>Offres validées <span>à faire circuler</span></h3>
-  <p>Le journal lit les activations actives : <strong>status active</strong>, date d’expiration non dépassée. Une publication expirée ne doit plus faire de bruit.</p>
+  <p>Le journal lit les publications actives : <strong>status active</strong>, date d’expiration non dépassée, puis affiche le titre, le métier, la zone, la description et la fiche liée.</p>
   <div id="journalGrid" class="grid" style="padding:0;margin-top:14px"></div>
 </section>
 <section class="panel">
@@ -116,10 +117,29 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function titleFromRow(row){
+    const title = String(row.offer_title || "").trim();
+    if(title) return title;
+
     const note = String(row.note || "").trim();
     if(note.includes("FIRST")) return "Mise en classe FIRST";
     if(note.includes("RÉSEAU DIGIY")) return "Publication RÉSEAU DIGIY";
     return "Offre qualifiée active";
+  }
+
+  function descriptionFromRow(row){
+    return String(row.short_description || row.note || "Publication qualifiée activée par DIGIY.").trim();
+  }
+
+  function zoneFromRow(row){
+    return String(row.zone || "Sénégal · DIGIY").trim();
+  }
+
+  function metierFromRow(row){
+    return String(row.metier || "Publication qualifiée").trim();
+  }
+
+  function ctaFromRow(row){
+    return String(row.cta_label || "Voir la fiche").trim();
   }
 
   function renderActive(rows){
@@ -141,18 +161,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       const activeUntil = humanDate(row.expires_at);
       const created = humanDate(row.starts_at || row.created_at);
       const title = titleFromRow(row);
-      const details = row.note || "Publication qualifiée activée par DIGIY.";
+      const details = descriptionFromRow(row);
+      const zone = zoneFromRow(row);
+      const metier = metierFromRow(row);
+      const cta = ctaFromRow(row);
+      const badgeText = row.public_badge || badge(row.plan);
       const fiche = row.fiche_url || row.public_url || row.offer_url || "fiche.html?src=journal-active";
 
       return `
         <a class="card" href="${esc(fiche)}">
-          <span class="tag">${esc(badge(row.plan))}</span>
+          <span class="tag">${esc(badgeText)}</span>
           <h3>${esc(title)}</h3>
           <p>${esc(details)}</p>
+          <p><strong>${esc(metier)}</strong> · ${esc(zone)}</p>
           <p><strong>${esc(planLabel(row.plan))}</strong></p>
-          <p>Contact validé : ${esc(shortPhone(row.phone))}</p>
+          <p>Contact validé : ${esc(shortPhone(row.whatsapp_phone || row.phone))}</p>
           <p>Visible du ${esc(created)} au ${esc(activeUntil)}.</p>
-          <b>Voir la fiche →</b>
+          <b>${esc(cta)} →</b>
         </a>
       `;
     }).join("");
@@ -218,4 +243,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   
 </body>
 </html>
+
 
