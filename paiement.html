@@ -3,13 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — Règlement</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <title>RÉSEAU DIGIY — Règlement club privé</title>
+  <meta name="description" content="RÉSEAU DIGIY — Club privé : règlement des annonces qualifiées, visibilité noble, Mise en classe FIRST 150 000 FCFA." />
   <meta name="theme-color" content="#00853f" />
+  <meta name="digiy-build" content="reseau-digiy-paiement-club-prive-first-20260522" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    .notice-first{
+      padding:15px;
+      border-radius:20px;
+      border:1px solid rgba(246,196,83,.36);
+      background:linear-gradient(135deg,rgba(246,196,83,.14),rgba(0,166,81,.10));
+      color:rgba(248,250,252,.90);
+      font-size:clamp(15px,4vw,18px);
+      font-weight:1000;
+      line-height:1.28;
+    }
+    .notice-first strong{color:#fff3cf}
+    .price-card b{
+      font-size:clamp(32px,8vw,54px) !important;
+      line-height:.92 !important;
+      letter-spacing:-.06em !important;
+    }
+    .lead,.panel p,.field label,.btn,.chip-mini,.nav a{font-weight:1000!important}
+  </style>
+
 </head>
 <body>
   <div class="app">
@@ -19,13 +41,13 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+            <p>CLUB PRIVÉ · pros validés · implantation noble · règlement qualifié</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Accès ouvert</span>
-          <span class="chip-mini">💳 Pas d’abonnement</span>
-          <span class="chip-mini">📅 7j · 15j · 30j</span>
+          <span class="chip-mini green">✅ Pros validés</span>
+          <span class="chip-mini">🔒 Club privé</span>
+          <span class="chip-mini">🌟 FIRST 150 000</span>
         </div>
       </header>
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
@@ -40,15 +62,25 @@
       </nav>
       
 <section class="hero">
-  <div class="kicker">Étape 3 · Règlement durée</div>
-  <h2>Pas d’abonnement, <span>une durée payée.</span></h2>
-  <p class="lead">Le pro règle la visibilité choisie. DIGIY active l’annonce après preuve de paiement. Simple, lisible, terrain.</p>
+  <div class="kicker">Étape 3 · Règlement qualifié</div>
+  <h2>Pas d’open bar, <span>une visibilité noble.</span></h2>
+  <p class="lead">RÉSEAU DIGIY reste public à regarder, mais la publication appartient aux pros validés. Le règlement active une annonce propre, datée, partageable et digne de la maison DIGIY.</p>
 </section>
 <section class="panel">
-  <h3>Choisir <span>la durée</span></h3>
+  <h3>Choisir <span>la visibilité</span></h3>
   <div class="two">
-    <div class="field"><label for="paymentPlan">Durée</label><select id="paymentPlan"><option value="week">7 jours · 3 500 FCFA</option><option value="quinzaine">15 jours · 6 500 FCFA</option><option value="month">30 jours · 12 000 FCFA</option></select></div>
-    <div class="price-card"><span id="planBadge">Semaine terrain</span><b id="planPrice">3 500 FCFA</b><span id="planDays">7 jours visibles</span></div>
+    <div class="field"><label for="paymentPlan">Durée</label><select id="paymentPlan"><option value="week">7 jours · 15 000 FCFA</option><option value="quinzaine">15 jours · 25 000 FCFA</option><option value="month">30 jours · 45 000 FCFA</option><option value="first">Mise en classe FIRST · 150 000 FCFA · 1 mois</option></select></div>
+    <div class="price-card"><span id="planBadge">Pro validé</span><b id="planPrice">15 000 FCFA</b><span id="planDays">7 jours visibles</span></div>
+  </div>
+
+  <div class="field">
+    <label>Rappel RÉSEAU DIGIY</label>
+    <div class="notice-first">
+      <strong>Club privé visible au public.</strong><br>
+      Le public peut voir, cliquer, partager et contacter. La publication reste réservée aux pros DIGIY validés.
+      Pour un pro non encore validé, l’entrée se fait par la <strong>Mise en classe FIRST · 150 000 FCFA · 1 mois</strong> :
+      fiche propre, QR, lien partageable, messages prêts à circuler et mise en lumière.
+    </div>
   </div>
   <form id="paymentForm" class="form">
     <div class="two">
@@ -57,7 +89,7 @@
     </div>
     <div class="field"><label for="paymentCopyText">Message preuve à envoyer à DIGIY</label><textarea id="paymentCopyText"></textarea></div>
     <div class="btnrow">
-      <button class="btn main" type="submit">✅ Noter le règlement</button>
+      <button class="btn main" type="submit">✅ Noter le règlement qualifié</button>
       <button class="btn" type="button" data-copy-text="" data-label="preuve" onclick="RESEAU.copyText(document.getElementById('paymentCopyText').value,'preuve paiement')">📋 Copier preuve</button>
       <a id="payWhatsApp" class="btn green" target="_blank" rel="noopener">💬 Envoyer preuve WhatsApp</a>
       <a class="btn blue" href="journal.html">📰 Voir journal</a>
@@ -66,10 +98,51 @@
 </section>
 <script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initPaymentPage());</script>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+      <footer class="footer">DIGIYLYFE — Club privé visible au public : le terrain peut voir, cliquer, partager et contacter. La publication reste qualifiée pour protéger la fiche, le client, l’argent et la relation.</footer>
     </div>
   </div>
   <script src="./assets/js/reseau-core.js"></script>
   <script src="./assets/js/digiy-audio-reader.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const plans = {
+        week: { badge: 'Pro validé', price: '15 000 FCFA', days: '7 jours visibles' },
+        quinzaine: { badge: 'Pro validé', price: '25 000 FCFA', days: '15 jours visibles' },
+        month: { badge: 'Pro validé', price: '45 000 FCFA', days: '30 jours visibles' },
+        first: { badge: 'Classe FIRST', price: '150 000 FCFA', days: '1 mois · mise en lumière' }
+      };
+      const select = document.getElementById('paymentPlan');
+      const badge = document.getElementById('planBadge');
+      const price = document.getElementById('planPrice');
+      const days = document.getElementById('planDays');
+      const proof = document.getElementById('paymentCopyText');
+      const applyPlan = () => {
+        const p = plans[select?.value || 'week'] || plans.week;
+        if(badge) badge.textContent = p.badge;
+        if(price) price.textContent = p.price;
+        if(days) days.textContent = p.days;
+        if(proof && !proof.dataset.userTouched){
+          proof.value =
+            'RÉSEAU DIGIY — règlement qualifié\n' +
+            'Formule : ' + p.badge + ' · ' + p.price + ' · ' + p.days + '\n' +
+            'Publication : annonce qualifiée / club privé DIGIY\n' +
+            'Preuve : capture ou référence paiement à joindre.';
+        }
+      };
+      if(proof) proof.addEventListener('input',()=>proof.dataset.userTouched='1');
+      if(select){
+        select.innerHTML =
+          '<option value="week">7 jours · 15 000 FCFA</option>' +
+          '<option value="quinzaine">15 jours · 25 000 FCFA</option>' +
+          '<option value="month">30 jours · 45 000 FCFA</option>' +
+          '<option value="first">Mise en classe FIRST · 150 000 FCFA · 1 mois</option>';
+        select.addEventListener('change', applyPlan);
+      }
+      setTimeout(applyPlan, 60);
+      setTimeout(applyPlan, 300);
+    });
+  </script>
+
 </body>
 </html>
