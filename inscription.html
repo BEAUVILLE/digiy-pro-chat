@@ -3,13 +3,234 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — Inscription</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <title>RÉSEAU DIGIY — Club privé</title>
+  <meta name="description" content="RÉSEAU DIGIY — Club privé des pros validés : annonce réservée aux abonnés DIGIY, ou mise en classe FIRST pour entrer proprement." />
   <meta name="theme-color" content="#00853f" />
+  <meta name="digiy-build" content="reseau-digiy-inscription-club-prive-first-20260521" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* Renfort local — inscription CLUB PRIVÉ */
+    body{font-weight:900}
+    .top h1,.brand h1{font-weight:1000}
+    .brand p,.chip-mini,.nav a,.kicker,.lead,.footer{font-weight:1000}
+
+    .clubHero{
+      position:relative;
+      overflow:hidden;
+    }
+    .clubHero::after{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      right:-120px;
+      top:-100px;
+      border-radius:999px;
+      background:rgba(246,196,83,.16);
+      pointer-events:none;
+    }
+    .clubBadge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:38px;
+      padding:8px 13px;
+      border-radius:999px;
+      border:1px solid rgba(246,196,83,.36);
+      background:rgba(246,196,83,.12);
+      color:#fff3cf;
+      font-size:13px;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .choiceGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .choiceCard{
+      position:relative;
+      min-height:260px;
+      padding:20px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.065));
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+      overflow:hidden;
+    }
+    .choiceCard::before{
+      content:"";
+      position:absolute;
+      inset:-80px -90px auto auto;
+      width:170px;
+      height:170px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      pointer-events:none;
+    }
+    .choiceCard.gold{
+      border-color:rgba(246,196,83,.48);
+      background:linear-gradient(180deg,rgba(246,196,83,.20),rgba(255,255,255,.075));
+    }
+    .choiceCard.green{
+      border-color:rgba(0,166,81,.46);
+      background:linear-gradient(180deg,rgba(0,166,81,.22),rgba(255,255,255,.075));
+    }
+    .choiceTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+    .choiceIcon{
+      width:62px;
+      height:62px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      font-size:34px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      flex:0 0 auto;
+    }
+    .choiceTag{
+      min-height:30px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.09);
+      color:#fff3cf;
+      font-size:11px;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .choiceCard h3{
+      margin:0;
+      font-size:clamp(25px,6vw,38px);
+      font-weight:1000;
+      line-height:.95;
+      letter-spacing:-.045em;
+      position:relative;
+      z-index:1;
+    }
+    .choiceCard p{
+      margin:0;
+      color:rgba(248,250,252,.88);
+      font-size:clamp(16px,4vw,19px);
+      font-weight:1000;
+      line-height:1.22;
+      position:relative;
+      z-index:1;
+    }
+    .choiceMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      position:relative;
+      z-index:1;
+    }
+    .choiceMeta span{
+      min-height:32px;
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+      color:rgba(248,250,252,.90);
+      font-size:12px;
+      font-weight:1000;
+      line-height:1;
+    }
+    .choiceAction{
+      min-height:50px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;
+      font-size:16px;
+      font-weight:1000;
+      text-decoration:none;
+      position:relative;
+      z-index:1;
+    }
+
+    .firstPrice{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .firstPrice b{
+      font-size:clamp(34px,9vw,54px);
+      line-height:.9;
+      font-weight:1000;
+      letter-spacing:-.06em;
+      color:#fff3cf;
+    }
+    .firstPrice span{
+      font-size:15px;
+      font-weight:1000;
+      color:rgba(248,250,252,.86);
+      line-height:1.1;
+      padding-bottom:5px;
+    }
+
+    .doctrineBox{
+      padding:18px;
+      border-radius:24px;
+      border:1px solid rgba(246,196,83,.36);
+      background:linear-gradient(135deg,rgba(246,196,83,.14),rgba(0,166,81,.10));
+      color:rgba(248,250,252,.92);
+      font-size:clamp(17px,4.2vw,21px);
+      font-weight:1000;
+      line-height:1.24;
+      box-shadow:0 16px 40px rgba(0,0,0,.14);
+    }
+    .doctrineBox strong{color:#fff3cf}
+
+    .formIntro{
+      margin:0 0 14px;
+      color:rgba(248,250,252,.88);
+      font-size:clamp(16px,4vw,19px);
+      font-weight:1000;
+      line-height:1.25;
+    }
+    .noticeMini{
+      margin-top:12px;
+      padding:14px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.07);
+      color:rgba(248,250,252,.84);
+      font-size:14px;
+      font-weight:1000;
+      line-height:1.3;
+    }
+
+    @media(max-width:760px){
+      .choiceGrid{grid-template-columns:1fr}
+      .choiceCard{min-height:230px;padding:18px}
+      .choiceIcon{width:58px;height:58px;font-size:32px}
+    }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -19,15 +240,16 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+            <p>CLUB PRIVÉ · pros validés · fiche propre · annonce qualifiée</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Accès ouvert</span>
-          <span class="chip-mini">💳 Pas d’abonnement</span>
-          <span class="chip-mini">📅 7j · 15j · 30j</span>
+          <span class="chip-mini green">✅ Pros validés</span>
+          <span class="chip-mini">🔒 Publication cadrée</span>
+          <span class="chip-mini">🌟 Classe FIRST</span>
         </div>
       </header>
+
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
         <a class="" href="hub.html">🏠 Hub</a>
         <a class="gold" href="inscription.html">👤 Inscription</a>
@@ -38,41 +260,125 @@
         <a class="" href="assistant.html">🧠 Assistant</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
-      
-<section class="hero">
-  <div class="kicker">Étape 1 · Inscription simple</div>
-  <h2>Le pro pose <span>sa base.</span></h2>
-  <p class="lead">Pas de tunnel compliqué. On garde le minimum utile pour créer la fiche, le lien et le contact direct.</p>
-</section>
-<section class="panel">
-  <h3>Ma fiche pro <span>RÉSEAU</span></h3>
-  <form id="profileForm" class="form">
-    <div class="two">
-      <div class="field"><label for="name">Nom du responsable</label><input id="name" placeholder="Ex : Astou, Baptiste, Moussa" autocomplete="name"></div>
-      <div class="field"><label for="business">Nom activité / fiche</label><input id="business" placeholder="Ex : Savons Fatou Bio, Chez Astou, Driver Saly" autocomplete="organization"></div>
-    </div>
-    <div class="two">
-      <div class="field"><label for="metier">Métier / activité</label><select id="metier"></select></div>
-      <div class="field"><label for="phone">Téléphone direct</label><input id="phone" inputmode="tel" placeholder="Ex : +221 77 134 28 89"></div>
-    </div>
-    <div class="two">
-      <div class="field"><label for="zone">Zone</label><select id="zone"></select></div>
-      <div class="field"><label for="city">Ville / repère</label><input id="city" placeholder="Ex : Saly, Mbour, Ngaparou"></div>
-    </div>
-    <div class="field"><label for="note">Petite note activité</label><textarea id="note" placeholder="Ex : Produits maison, livraison possible, contact direct WhatsApp."></textarea></div>
-    <div class="btnrow">
-      <button class="btn main" type="submit">✅ Enregistrer la fiche</button>
-      <a class="btn green" href="annonce.html">📢 Poser l’annonce</a>
-      <a class="btn" href="fiche.html">🔗 Voir la fiche</a>
-    </div>
-  </form>
-</section>
-<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initProfilePage());</script>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+      <section class="hero clubHero">
+        <div class="clubBadge">🔒 Club privé · visible au public</div>
+        <div class="kicker">Étape 1 · Entrée qualifiée</div>
+        <h2>On ne dépose pas dans le bruit. <span>On entre propre.</span></h2>
+        <p class="lead"><strong>RÉSEAU DIGIY</strong> reste visible par tous, mais la publication est réservée aux pros DIGIY validés. Le public voit, clique, partage et contacte. Le dépôt reste cadré.</p>
+      </section>
+
+      <section class="choiceGrid" aria-label="Choix d'entrée RÉSEAU DIGIY">
+        <article class="choiceCard green">
+          <div class="choiceTop">
+            <div class="choiceIcon">✅</div>
+            <div class="choiceTag">Déjà DIGIY</div>
+          </div>
+          <h3>Je suis déjà pro DIGIY</h3>
+          <p>Ma fiche existe déjà. Je peux poser une annonce qualifiée comme projecteur temporaire sur mon activité.</p>
+          <div class="choiceMeta">
+            <span>15 000</span><span>25 000</span><span>45 000</span>
+          </div>
+          <a class="choiceAction" href="annonce.html">📢 Poser mon annonce</a>
+        </article>
+
+        <article class="choiceCard gold">
+          <div class="choiceTop">
+            <div class="choiceIcon">🌟</div>
+            <div class="choiceTag">Non abonné</div>
+          </div>
+          <h3>Mise en classe FIRST</h3>
+          <div class="firstPrice"><b>150 000</b><span>FCFA · 1 mois</span></div>
+          <p>Pour entrer dans le réseau : qualification, fiche ou vitrine propre, QR, lien partageable, messages prêts à circuler et visibilité mise en avant.</p>
+          <div class="choiceMeta">
+            <span>Fiche propre</span><span>QR</span><span>1 mois visible</span>
+          </div>
+          <a class="choiceAction" href="paiement.html">💳 Demander la classe FIRST</a>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h3>La règle du club : <span>qualité avant quantité</span></h3>
+        <div class="doctrineBox">
+          <strong>RÉSEAU DIGIY n’est pas un mur d’annonces ouvert ni un dépôt à bas ticket.</strong> C’est le réseau visible des pros validés. L’annonce attire, la fiche rassure, le contact transforme.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Ma fiche pro <span>RÉSEAU</span></h3>
+        <p class="formIntro">Remplis cette base si tu es déjà connu par DIGIY ou si tu demandes une mise en classe FIRST. DIGIY garde le minimum utile : nom, métier, zone, téléphone, fiche, contact direct.</p>
+
+        <form id="profileForm" class="form">
+          <div class="two">
+            <div class="field">
+              <label for="entryType">Mon entrée</label>
+              <select id="entryType">
+                <option value="digiy-pro">Je suis déjà pro DIGIY / validé</option>
+                <option value="first-class">Je demande la Mise en classe FIRST — 150 000 FCFA · 1 mois</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="name">Nom du responsable</label>
+              <input id="name" placeholder="Ex : Astou, Baptiste, Moussa" autocomplete="name">
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="business">Nom activité / fiche</label>
+              <input id="business" placeholder="Ex : Savons Fatou Bio, Chez Astou, Driver Saly" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="metier">Métier / activité</label>
+              <select id="metier"></select>
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="phone">Téléphone direct</label>
+              <input id="phone" inputmode="tel" placeholder="Ex : +221 77 134 28 89">
+            </div>
+            <div class="field">
+              <label for="zone">Zone</label>
+              <select id="zone"></select>
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="city">Ville / repère</label>
+              <input id="city" placeholder="Ex : Saly, Mbour, Ngaparou">
+            </div>
+            <div class="field">
+              <label for="statusNote">Statut</label>
+              <input id="statusNote" value="Publication qualifiée · validation DIGIY" readonly>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="note">Petite note activité</label>
+            <textarea id="note" placeholder="Ex : Produits maison, livraison possible, contact direct WhatsApp."></textarea>
+          </div>
+
+          <div class="btnrow">
+            <button class="btn main" type="submit">✅ Enregistrer la fiche</button>
+            <a class="btn green" href="annonce.html">📢 Poser l’annonce</a>
+            <a class="btn gold" href="paiement.html">🌟 Classe FIRST</a>
+            <a class="btn" href="fiche.html">🔗 Voir la fiche</a>
+          </div>
+
+          <div class="noticeMini">
+            Pour les pros déjà validés, l’annonce reste qualifiée : 7 jours à 15 000 FCFA, 15 jours à 25 000 FCFA, 30 jours à 45 000 FCFA. Pour les non-abonnés, l’entrée se fait par la Mise en classe FIRST : 150 000 FCFA pour 1 mois de visibilité avec fiche propre, QR, lien partageable et accompagnement DIGIY.
+          </div>
+        </form>
+      </section>
+
+      <footer class="footer">DIGIYLYFE — Club privé visible au public : le terrain peut voir, cliquer, partager et contacter. La publication reste qualifiée pour protéger la fiche, le client, l’argent et la relation.</footer>
     </div>
   </div>
+
   <script src="./assets/js/reseau-core.js"></script>
-  
+  <script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initProfilePage());</script>
 </body>
 </html>
