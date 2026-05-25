@@ -7,7 +7,7 @@
   <meta name="description" content="Oreille Réseau DIGIY : préparer une offre, une fiche, un message partageable ou une mise en lumière sans publier automatiquement."/>
   <meta name="theme-color" content="#00853f"/>
   <meta name="robots" content="noindex,nofollow"/>
-  <meta name="digiy-build" content="reseau-oreille-paves-20260525"/>
+  <meta name="digiy-build" content="reseau-oreille-grand-lecteur-20260525"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -17,11 +17,38 @@
     *{box-sizing:border-box}
     html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
     body{margin:0;min-height:100dvh;padding:0 12px calc(var(--navH) + env(safe-area-inset-bottom,0px) + 16px);font-family:Outfit,Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);font-weight:950;background:radial-gradient(760px 460px at 10% 0%,rgba(0,166,81,.30),transparent 62%),radial-gradient(520px 320px at 92% 10%,rgba(246,196,83,.18),transparent 58%),linear-gradient(180deg,#06351f,#06130d 72%)}
-    a{color:inherit;text-decoration:none}.page{width:min(var(--max),100%);margin:0 auto;display:grid;gap:14px}.top{position:sticky;top:0;z-index:20;margin:0 -12px 14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(6,19,13,.96);border-bottom:1px solid rgba(246,196,83,.24);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.top a{font-size:14px;color:rgba(248,250,252,.76);font-weight:1000}.topTitle{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:1000;text-align:center}.pill{border:1px solid rgba(0,166,81,.36);background:rgba(0,166,81,.16);color:#d8ffe8;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:1000;white-space:nowrap}
-    .hero{display:grid;gap:10px;border:1px solid rgba(246,196,83,.34);border-radius:24px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));box-shadow:0 18px 42px rgba(0,0,0,.22)}.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:1000}h1{margin:0;font-size:clamp(48px,15vw,112px);line-height:.82;letter-spacing:-.075em;color:#fff;font-weight:1000;text-transform:uppercase;text-shadow:0 12px 30px rgba(0,0,0,.24)}h1 span{display:block;color:var(--gold);font-size:clamp(58px,18vw,132px)}.sub{margin:0;color:var(--muted);font-size:clamp(20px,5vw,30px);line-height:1.16;font-weight:1000;max-width:860px;letter-spacing:-.025em}
-    .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.chip{min-height:82px;border-radius:18px;padding:12px 13px;background:rgba(255,255,255,.10);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:4px;box-shadow:0 12px 26px rgba(0,0,0,.16)}.chip b{font-size:20px;line-height:1.05;color:#fff;font-weight:1000}.chip span{font-size:14px;line-height:1.25;color:rgba(248,250,252,.78);font-weight:1000}.rule{border:1px dashed rgba(255,255,255,.22);border-radius:18px;padding:13px 14px;background:rgba(0,0,0,.20);color:rgba(248,250,252,.92);line-height:1.35;font-size:16px;font-weight:1000}.rule b{color:var(--gold)}.work{display:grid;gap:10px;border:1px solid rgba(246,196,83,.30);border-radius:24px;padding:12px;background:rgba(255,255,255,.08)}.work::before{content:"🎙️ OREILLE RÉSEAU";display:block;color:var(--gold);font-size:clamp(26px,7vw,48px);line-height:.96;letter-spacing:-.055em;font-weight:1000;text-transform:uppercase;margin:0 0 4px}
-    .bottomBar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,19,13,.97);border-top:1px solid rgba(246,196,83,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.bottomInner{width:min(760px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.bottomInner a{min-height:58px;border-radius:16px;display:grid;place-items:center;align-content:center;gap:2px;color:rgba(248,250,252,.62);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11px;text-align:center;font-weight:1000}.bottomInner a.active{color:#06130d;background:linear-gradient(135deg,#f6c453,#00a651)}.bi{font-size:22px;line-height:1}
-    @media(max-width:700px){.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.sub{font-size:21px}.chip{min-height:78px;padding:10px}.chip b{font-size:18px}.chip span{font-size:13px}}@media(max-width:360px){.chips{gap:7px}.chip b{font-size:16px}.chip span{font-size:12px}}
+    a{color:inherit;text-decoration:none}
+    .page{width:min(var(--max),100%);margin:0 auto;display:grid;gap:14px}
+    .top{position:sticky;top:0;z-index:20;margin:0 -12px 14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(6,19,13,.96);border-bottom:1px solid rgba(246,196,83,.24);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .top a{font-size:15px;color:rgba(248,250,252,.82);font-weight:1000}
+    .topTitle{font-size:clamp(18px,5.2vw,34px);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;color:var(--gold);font-weight:1000;text-align:center;text-shadow:0 10px 26px rgba(0,0,0,.30)}
+    .pill{border:1px solid rgba(0,166,81,.36);background:rgba(0,166,81,.16);color:#d8ffe8;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:1000;white-space:nowrap}
+    .hero{display:grid;gap:12px;border:1px solid rgba(246,196,83,.42);border-radius:28px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.06));box-shadow:0 18px 42px rgba(0,0,0,.22)}
+    .eyebrow{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:1000}
+    h1{margin:0;font-size:clamp(54px,16vw,126px);line-height:.78;letter-spacing:-.08em;color:#fff;font-weight:1000;text-transform:uppercase;text-shadow:0 14px 34px rgba(0,0,0,.32)}
+    h1 span{display:block;color:var(--gold);font-size:clamp(82px,24vw,182px);line-height:.78;font-weight:1000;letter-spacing:-.095em;text-shadow:0 16px 40px rgba(246,196,83,.18),0 12px 30px rgba(0,0,0,.35)}
+    .sub{margin:0;color:var(--muted);font-size:clamp(21px,5.4vw,32px);line-height:1.12;font-weight:1000;max-width:880px;letter-spacing:-.03em}
+    .infoReader{display:grid;gap:12px;border:1px solid rgba(246,196,83,.38);border-radius:26px;padding:16px;background:linear-gradient(135deg,rgba(246,196,83,.18),rgba(0,166,81,.14));box-shadow:0 18px 42px rgba(0,0,0,.20)}
+    .readerHead{display:grid;gap:6px}
+    .readerHead strong{font-size:clamp(30px,8vw,58px);line-height:.92;letter-spacing:-.06em;color:#fff3cf;font-weight:1000;text-transform:uppercase}
+    .readerHead span{font-size:clamp(16px,4.2vw,21px);line-height:1.22;color:rgba(248,250,252,.88);font-weight:1000}
+    .readerBtns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .readerBtns button{min-height:62px;border-radius:19px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.10);color:#fff;font:1000 16px Outfit,Manrope,system-ui,sans-serif;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.14)}
+    .readerBtns button.main{background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d;border-color:rgba(246,196,83,.55)}
+    .readerStatus{border-radius:16px;padding:11px 12px;background:rgba(6,19,13,.70);border:1px solid rgba(255,255,255,.12);color:#d8ffe8;font-size:14px;font-weight:1000;line-height:1.25}
+    .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .chip{min-height:86px;border-radius:20px;padding:13px 14px;background:rgba(255,255,255,.10);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:5px;box-shadow:0 12px 26px rgba(0,0,0,.16)}
+    .chip b{font-size:22px;line-height:1.03;color:#fff;font-weight:1000}.chip span{font-size:15px;line-height:1.22;color:rgba(248,250,252,.80);font-weight:1000}
+    .rule{border:1px dashed rgba(255,255,255,.24);border-radius:20px;padding:14px 15px;background:rgba(0,0,0,.22);color:rgba(248,250,252,.93);line-height:1.32;font-size:17px;font-weight:1000}.rule b{color:var(--gold)}
+    .work{display:grid;gap:10px;border:1px solid rgba(246,196,83,.34);border-radius:26px;padding:13px;background:rgba(255,255,255,.08)}
+    .work::before{content:"🎙️ OREILLE RÉSEAU";display:block;color:var(--gold);font-size:clamp(42px,11vw,82px);line-height:.88;letter-spacing:-.07em;font-weight:1000;text-transform:uppercase;margin:0 0 4px;text-shadow:0 14px 34px rgba(0,0,0,.28)}
+    .bottomBar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,19,13,.97);border-top:1px solid rgba(246,196,83,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .bottomInner{width:min(760px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+    .bottomInner a{min-height:58px;border-radius:16px;display:grid;place-items:center;align-content:center;gap:2px;color:rgba(248,250,252,.62);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11px;text-align:center;font-weight:1000}
+    .bottomInner a.active{color:#06130d;background:linear-gradient(135deg,#f6c453,#00a651);box-shadow:0 12px 26px rgba(246,196,83,.18)}
+    .bottomInner a.active span:last-child{font-size:14px;font-weight:1000;letter-spacing:-.02em}.bi{font-size:22px;line-height:1}
+    @media(max-width:700px){.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.sub{font-size:22px}.chip{min-height:80px;padding:11px}.chip b{font-size:19px}.chip span{font-size:13px}.readerBtns{grid-template-columns:1fr}.readerBtns button{min-height:58px}}
+    @media(max-width:360px){.chips{gap:7px}.chip b{font-size:16px}.chip span{font-size:12px}.topTitle{font-size:17px}h1 span{font-size:clamp(70px,22vw,112px)}}
   </style>
 </head>
 <body>
@@ -36,6 +63,19 @@
       <div class="eyebrow">📣 RÉSEAU DIGIY · COM AU CLIC</div>
       <h1><span>Oreille</span>Réseau.</h1>
       <p class="sub">Offre, fiche, lien, message partageable, mise en lumière. DIGIY prépare. Le pro valide. DIGIY active.</p>
+    </section>
+
+    <section class="infoReader" aria-label="Lecteur d'information Oreille Réseau" data-info-reader>
+      <div class="readerHead">
+        <strong>🎧 Écouter l’Oreille</strong>
+        <span>Un court guide vocal explique le site RÉSEAU DIGIY, l’Oreille, la fiche, le lien partageable et la règle : aucun brouillon ne part seul.</span>
+      </div>
+      <div class="readerBtns">
+        <button class="main" type="button" data-info-play>▶️ Écouter</button>
+        <button type="button" data-info-pause>⏸️ Pause</button>
+        <button type="button" data-info-stop>⏹ Stop</button>
+      </div>
+      <div class="readerStatus" data-info-status>Prêt à expliquer Oreille Réseau.</div>
     </section>
 
     <section class="chips" aria-label="Repères">
@@ -62,6 +102,57 @@
     </div>
   </nav>
 
+  <script>
+    (function(){
+      "use strict";
+      var TEXT = "Bienvenue dans Oreille Réseau DIGIY. RÉSEAU DIGIY transforme le bouche à oreille du terrain en lien propre, fiche claire et message partageable. Ici, le professionnel parle ou clique. DIGIY prépare une annonce, une offre, une mise en lumière, un message WhatsApp ou une fiche à faire circuler. Mais rien ne part tout seul. Aucun prix, aucune durée, aucune promesse client et aucune publication ne sont confirmés automatiquement. Le brouillon reste modifiable. Le pro relit. DIGIY valide. Ensuite seulement, l’annonce peut être activée dans le Réseau. Le public peut voir, comprendre, cliquer, partager et contacter directement. Le terrain garde son nom, son client, son argent et sa relation.";
+      function $(sel){ return document.querySelector(sel); }
+      function setStatus(msg){ var s = $("[data-info-status]"); if(s) s.textContent = msg; }
+      function voices(cb){
+        if(!("speechSynthesis" in window)){ cb([]); return; }
+        var list = speechSynthesis.getVoices() || [];
+        if(list.length){ cb(list); return; }
+        var tries = 0;
+        var timer = setInterval(function(){
+          tries += 1;
+          list = speechSynthesis.getVoices() || [];
+          if(list.length || tries > 14){ clearInterval(timer); cb(list); }
+        },120);
+      }
+      function speak(){
+        if(!("speechSynthesis" in window)){ setStatus("Lecture vocale non disponible sur ce navigateur."); return; }
+        speechSynthesis.cancel();
+        voices(function(list){
+          var u = new SpeechSynthesisUtterance(TEXT);
+          u.lang = "fr-FR";
+          u.rate = 0.86;
+          u.pitch = 1.02;
+          u.volume = 1;
+          var preferred = list.find(function(v){ return /fr/i.test(v.lang || "") && /Google|Thomas|Daniel|Amelie|Audrey|Pauline/i.test(v.name || ""); }) || list.find(function(v){ return /fr/i.test(v.lang || ""); }) || list[0];
+          if(preferred) u.voice = preferred;
+          u.onstart = function(){ setStatus("DIGIY explique Oreille Réseau…"); };
+          u.onend = function(){ setStatus("Explication terminée. Tu peux passer au brouillon."); };
+          u.onerror = function(){ setStatus("Lecture interrompue."); };
+          speechSynthesis.speak(u);
+        });
+      }
+      document.addEventListener("DOMContentLoaded",function(){
+        var play = $("[data-info-play]");
+        var pause = $("[data-info-pause]");
+        var stop = $("[data-info-stop]");
+        if(play) play.addEventListener("click",speak);
+        if(pause) pause.addEventListener("click",function(){
+          if(!("speechSynthesis" in window)) return;
+          if(speechSynthesis.paused){ speechSynthesis.resume(); setStatus("Lecture reprise."); }
+          else{ speechSynthesis.pause(); setStatus("Lecture en pause."); }
+        });
+        if(stop) stop.addEventListener("click",function(){
+          if("speechSynthesis" in window) speechSynthesis.cancel();
+          setStatus("Lecture arrêtée.");
+        });
+      });
+    })();
+  </script>
   <script src="./assets/js/oreille-metier-core.js?v=reseau-core-paves-tel-20260525" defer></script>
   <script src="./assets/js/oreille-reseau.js?v=reseau-oreille-paves-tel-20260525" defer></script>
 </body>
