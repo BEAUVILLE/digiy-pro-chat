@@ -7,7 +7,7 @@
   <meta name="description" content="Oreille Réseau DIGIY : préparer une offre, une fiche, un message partageable ou une mise en lumière sans publier automatiquement."/>
   <meta name="theme-color" content="#00853f"/>
   <meta name="robots" content="noindex,nofollow"/>
-  <meta name="digiy-build" content="reseau-oreille-grand-lecteur-20260525"/>
+  <meta name="digiy-build" content="reseau-oreille-suggestions-grandes-20260525"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -42,13 +42,53 @@
     .rule{border:1px dashed rgba(255,255,255,.24);border-radius:20px;padding:14px 15px;background:rgba(0,0,0,.22);color:rgba(248,250,252,.93);line-height:1.32;font-size:17px;font-weight:1000}.rule b{color:var(--gold)}
     .work{display:grid;gap:10px;border:1px solid rgba(246,196,83,.34);border-radius:26px;padding:13px;background:rgba(255,255,255,.08)}
     .work::before{content:"🎙️ OREILLE RÉSEAU";display:block;color:var(--gold);font-size:clamp(42px,11vw,82px);line-height:.88;letter-spacing:-.07em;font-weight:1000;text-transform:uppercase;margin:0 0 4px;text-shadow:0 14px 34px rgba(0,0,0,.28)}
+
+    /* RENFORT SPÉCIAL — phrases de suggestions métier grandes, grasses, lisibles téléphone */
+    html body .work .digiy-oreille-box .digiy-oreille-suggestions-title{
+      font-size:clamp(2.15rem,9vw,4.25rem)!important;
+      line-height:.88!important;
+      letter-spacing:-.075em!important;
+      font-weight:1000!important;
+      color:#fff3cf!important;
+      text-shadow:0 14px 34px rgba(0,0,0,.30)!important;
+    }
+    html body .work .digiy-oreille-box .digiy-oreille-suggestions-title small{
+      font-size:clamp(.95rem,3.6vw,1.25rem)!important;
+      letter-spacing:-.02em!important;
+      color:rgba(248,250,252,.86)!important;
+    }
+    html body .work .digiy-oreille-box .digiy-oreille-templates{
+      gap:12px!important;
+      max-height:none!important;
+      overflow:visible!important;
+    }
+    html body .work .digiy-oreille-box .digiy-oreille-template{
+      min-height:132px!important;
+      padding:18px 18px!important;
+      border-radius:26px!important;
+      border-width:3px!important;
+      font-family:Outfit,Manrope,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+      font-size:clamp(1.18rem,4.9vw,1.58rem)!important;
+      line-height:1.12!important;
+      font-weight:1000!important;
+      letter-spacing:-.04em!important;
+      color:#ffffff!important;
+      text-shadow:0 8px 22px rgba(0,0,0,.24)!important;
+      box-shadow:0 16px 34px rgba(0,0,0,.20)!important;
+      background:linear-gradient(160deg,rgba(246,196,83,.30),rgba(0,166,81,.20))!important;
+      align-items:flex-start!important;
+    }
+    html body .work .digiy-oreille-box .digiy-oreille-template:first-letter{
+      font-size:1.28em!important;
+    }
+
     .bottomBar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,19,13,.97);border-top:1px solid rgba(246,196,83,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
     .bottomInner{width:min(760px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
     .bottomInner a{min-height:58px;border-radius:16px;display:grid;place-items:center;align-content:center;gap:2px;color:rgba(248,250,252,.62);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11px;text-align:center;font-weight:1000}
     .bottomInner a.active{color:#06130d;background:linear-gradient(135deg,#f6c453,#00a651);box-shadow:0 12px 26px rgba(246,196,83,.18)}
     .bottomInner a.active span:last-child{font-size:14px;font-weight:1000;letter-spacing:-.02em}.bi{font-size:22px;line-height:1}
-    @media(max-width:700px){.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.sub{font-size:22px}.chip{min-height:80px;padding:11px}.chip b{font-size:19px}.chip span{font-size:13px}.readerBtns{grid-template-columns:1fr}.readerBtns button{min-height:58px}}
-    @media(max-width:360px){.chips{gap:7px}.chip b{font-size:16px}.chip span{font-size:12px}.topTitle{font-size:17px}h1 span{font-size:clamp(70px,22vw,112px)}}
+    @media(max-width:700px){.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.sub{font-size:22px}.chip{min-height:80px;padding:11px}.chip b{font-size:19px}.chip span{font-size:13px}.readerBtns{grid-template-columns:1fr}.readerBtns button{min-height:58px}html body .work .digiy-oreille-box .digiy-oreille-templates{grid-template-columns:1fr!important;max-height:none!important;overflow:visible!important}html body .work .digiy-oreille-box .digiy-oreille-template{min-height:116px!important;font-size:clamp(1.18rem,6vw,1.42rem)!important;padding:17px!important;border-radius:24px!important}}
+    @media(max-width:360px){.chips{gap:7px}.chip b{font-size:16px}.chip span{font-size:12px}.topTitle{font-size:17px}h1 span{font-size:clamp(70px,22vw,112px)}html body .work .digiy-oreille-box .digiy-oreille-template{font-size:1.06rem!important;min-height:104px!important;padding:15px!important}}
   </style>
 </head>
 <body>
