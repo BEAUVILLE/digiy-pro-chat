@@ -763,6 +763,13 @@
 
   var audioText = "RÉSEAU DIGIY installe la notoriété des professionnels qualifiés sur le territoire digital. Chaque jour, des professionnels qualifiés restent invisibles sur internet. RÉSEAU DIGIY change ça. Docteur. Dentiste. Avocat. Architecte. Entrepreneur. Boutique. Assurance. Restaurant. Immobilier. Chauffeur. Artisan. Commerce local. Une présence digitale simple, humaine, directe. RÉSEAU DIGIY, c'est aussi une vitrine publique et un club privé. Le public voit les offres, clique, partage et contacte directement. Mais publier reste qualifié : les annonces sont réservées aux pros DIGIY validés. On n'installe pas une petite annonce au hasard. On pose une présence noble sur la toile. Sans commission. Sans intermédiaire. Tu paies ton abonnement, tu gardes tout. Pour un pro déjà validé : sept jours, quinze jours ou trente jours de visibilité. Pour un pro non encore validé : la mise en classe FIRST. Cent cinquante mille francs CFA pour un mois. Fiche propre. Lien partageable. QR. Message prêt à circuler. Mise en lumière. La fiche rassure. L'annonce attire. Le contact transforme. Rejoins le réseau. Un téléphone suffit. Le terrain garde le client, le contact et l'argent. De Saly à Sarlat. DIGIYLYFE.";
 
+  function digiySpeakText(text){
+    return String(text || "")
+      .replace(/\bWave\b/g, "Wéïv")
+      .replace(/\bWhatsApp\b/g, "Ouatsap")
+      .replace(/\bDIGIYLYFE\b/g, "Di-ji-laïf");
+  }
+
   var fabPlay = document.getElementById('fabPlay');
   var fabStop = document.getElementById('fabStop');
   var fabTip  = document.getElementById('fabTip');
@@ -813,7 +820,7 @@
 
     /* Nouvelle lecture */
     speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(audioText);
+    var u = new SpeechSynthesisUtterance(digiySpeakText(audioText));
     u.lang   = 'fr-FR';
     u.rate   = 0.84;
     u.pitch  = 1.03;
@@ -890,6 +897,14 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
