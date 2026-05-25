@@ -10,7 +10,6 @@
 :root{
   --vert:#050E08;
   --vert-mid:#0F2318;
-  --vert-soft:#1B3D2E;
   --or:#C9922D;
   --or-vif:#F0B94A;
   --creme:#F8F4EE;
@@ -19,143 +18,144 @@
   --g:'Jost','Helvetica Neue',sans-serif;
 }
 html{scroll-behavior:smooth;background:var(--vert)}
-body{
-  background:var(--creme);color:var(--encre);
-  font-family:var(--s);
-  max-width:480px;margin:0 auto;
-  overflow-x:hidden;
-}
+body{background:var(--creme);color:var(--encre);font-family:var(--s);max-width:480px;margin:0 auto;overflow-x:hidden}
 
-/* ─ MASTHEAD ─ */
+/* ── MASTHEAD ── */
 .mast{
   position:sticky;top:0;z-index:200;
   background:rgba(4,9,6,0.97);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(201,146,45,0.28);
   padding:9px 20px;
   display:flex;align-items:center;justify-content:space-between;
 }
 .mast-titre{font-family:var(--s);font-size:15px;font-weight:700;letter-spacing:.22em;color:var(--or-vif)}
-.mast-sub{font-family:var(--g);font-size:7.5px;letter-spacing:.45em;color:rgba(240,185,74,0.42);text-transform:uppercase;margin-top:1px}
-.mast-date{font-family:var(--g);font-size:7px;letter-spacing:.15em;color:rgba(240,185,74,0.35);text-transform:uppercase;text-align:right;line-height:1.7}
+.mast-sub{font-family:var(--g);font-size:7px;letter-spacing:.45em;color:rgba(240,185,74,0.4);text-transform:uppercase;margin-top:1px}
+.mast-date{font-family:var(--g);font-size:7px;letter-spacing:.12em;color:rgba(240,185,74,0.32);text-transform:uppercase;text-align:right;line-height:1.7}
 
-/* ─ HERO ─ */
-.hero{position:relative;overflow:hidden;height:90vw;max-height:440px}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.76) saturate(1.06)}
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;height:78vw;max-height:380px}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.72)}
 .hero-ov{
   position:absolute;inset:0;
-  background:linear-gradient(155deg,rgba(4,9,6,0) 25%,rgba(4,9,6,0.93) 100%);
+  background:linear-gradient(150deg,rgba(4,9,6,0) 20%,rgba(4,9,6,0.92) 100%);
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding:26px 24px 32px;
+  padding:22px 22px 26px;
 }
-.hero-kicker{font-family:var(--g);font-size:8px;letter-spacing:.6em;color:var(--or);text-transform:uppercase;margin-bottom:12px}
-.hero-mot{font-family:var(--g);font-size:10px;font-weight:300;letter-spacing:.65em;color:rgba(240,185,74,0.55);text-transform:uppercase;margin-bottom:4px}
-.hero-titre{font-family:var(--s);font-size:60px;font-weight:700;color:var(--or-vif);letter-spacing:.1em;line-height:.88;margin-bottom:14px}
-.hero-claim{font-family:var(--s);font-size:16px;font-weight:300;font-style:italic;color:rgba(248,244,238,.7);letter-spacing:.06em;line-height:1.45}
-.hero-filet{width:44px;height:1.5px;background:var(--or);margin-top:18px;opacity:.6}
+.hero-kicker{font-family:var(--g);font-size:7.5px;letter-spacing:.6em;color:var(--or);text-transform:uppercase;margin-bottom:10px}
+.hero-mot{font-family:var(--g);font-size:10px;font-weight:300;letter-spacing:.6em;color:rgba(240,185,74,0.52);text-transform:uppercase;margin-bottom:2px}
+.hero-titre{font-family:var(--s);font-size:54px;font-weight:700;color:var(--or-vif);letter-spacing:.1em;line-height:.88;margin-bottom:12px}
+.hero-claim{font-family:var(--s);font-size:15px;font-weight:300;font-style:italic;color:rgba(248,244,238,.68);letter-spacing:.04em;line-height:1.4}
+.hero-filet{width:38px;height:1.5px;background:var(--or);margin-top:14px;opacity:.6}
 
-/* ─ INTRO ─ */
-.intro{background:var(--vert);padding:36px 26px 32px}
-.intro-p{font-family:var(--s);font-size:23px;font-weight:300;color:var(--creme);line-height:1.5;font-style:italic}
+/* ── INTRO ── */
+.intro{background:var(--vert);padding:28px 24px 24px}
+.intro-p{font-family:var(--s);font-size:21px;font-weight:300;color:var(--creme);line-height:1.5;font-style:italic}
 .intro-p strong{color:var(--or-vif);font-style:normal;font-weight:600}
-.intro-rule{width:100%;height:1px;background:rgba(201,146,45,0.16);margin-top:28px}
 
-/* ─ RUBRIQUE ─ */
-.rubrique{
-  display:flex;align-items:center;gap:12px;
-  padding:22px 24px 16px;
-  font-family:var(--g);font-size:8px;letter-spacing:.55em;
-  color:var(--or);text-transform:uppercase;
-}
-.rubrique::after{content:'';flex:1;height:1px;background:var(--or);opacity:.22}
-
-/* ─ PHOTO SECTION ─ */
-.photo-wrap{position:relative;overflow:hidden}
-.photo-wrap img{width:100%;display:block;object-fit:cover}
-.photo-cap{
+/* ── DIAPORAMA ── */
+.diapo-wrap{position:relative;overflow:hidden;background:var(--vert-mid)}
+.diapo-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+.diapo-slide{flex:0 0 100%;position:relative;height:64vw;max-height:310px}
+.diapo-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.78)}
+.slide-cap{
   position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(4,9,6,.94) 0%,rgba(4,9,6,.25) 65%,transparent 100%);
-  padding:44px 22px 18px;
+  background:linear-gradient(to top,rgba(4,9,6,.92) 0%,transparent 100%);
+  padding:36px 20px 14px;
 }
-.cap-titre{font-family:var(--s);font-size:20px;font-weight:600;color:var(--or-vif);letter-spacing:.04em;margin-bottom:4px}
-.cap-sub{font-family:var(--g);font-size:8.5px;letter-spacing:.28em;color:rgba(240,185,74,.48);text-transform:uppercase}
+.slide-cap-t{font-family:var(--s);font-size:18px;font-weight:600;color:var(--or-vif);margin-bottom:3px}
+.slide-cap-s{font-family:var(--g);font-size:8px;letter-spacing:.28em;color:rgba(240,185,74,.48);text-transform:uppercase}
 
-/* ─ CORPS ─ */
-.corps{padding:26px 24px}
-.corps.sombre{background:var(--vert-mid);color:var(--creme)}
-.corps.clair{background:var(--creme);color:var(--encre)}
+/* flèches */
+.diapo-prev,.diapo-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  z-index:10;background:rgba(4,9,6,0.55);
+  border:1px solid rgba(201,146,45,.35);
+  color:var(--or-vif);width:34px;height:34px;
+  border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;backdrop-filter:blur(4px);
+  padding:0;font-family:sans-serif;
+}
+.diapo-prev{left:10px}.diapo-next{right:10px}
 
-.pull{border-left:2.5px solid var(--or);padding:2px 0 2px 20px;margin:0 0 22px}
-.pull-txt{font-family:var(--s);font-size:27px;font-weight:300;font-style:italic;color:var(--or-vif);line-height:1.25}
+/* points */
+.diapo-dots{
+  display:flex;justify-content:center;gap:7px;
+  padding:10px 0 12px;background:var(--vert-mid);
+}
+.dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(201,146,45,.28);
+  cursor:pointer;transition:all .3s;border:none;padding:0;
+}
+.dot.on{background:var(--or-vif);width:20px;border-radius:3px}
 
-.corps-txt{font-family:var(--s);font-size:18px;font-weight:300;line-height:1.65;letter-spacing:.02em}
-.corps-txt strong{color:var(--or-vif);font-weight:600}
+/* ── PULL ── */
+.pull-block{background:var(--vert-mid);padding:22px 24px}
+.pull{border-left:2.5px solid var(--or);padding:2px 0 2px 18px}
+.pull-txt{font-family:var(--s);font-size:25px;font-weight:300;font-style:italic;color:var(--or-vif);line-height:1.25}
 
-/* ─ MÉTIERS ─ */
+/* ── MÉTIERS ── */
 .metiers-wrap{background:var(--vert)}
-.metiers-head{
-  padding:24px 24px 0;
-  font-family:var(--g);font-size:8px;letter-spacing:.5em;
-  color:var(--or);text-transform:uppercase;
-}
-.pro-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:rgba(201,146,45,.1);
-  margin:16px 0 0;
-}
-.pro-item{background:var(--vert);padding:14px 18px 12px}
-.pro-cat{font-family:var(--g);font-size:7px;letter-spacing:.4em;color:var(--or);text-transform:uppercase;margin-bottom:4px}
-.pro-nom{font-family:var(--s);font-size:17px;font-weight:400;color:var(--creme);letter-spacing:.04em}
+.metiers-head{padding:20px 22px 0;font-family:var(--g);font-size:7.5px;letter-spacing:.5em;color:var(--or);text-transform:uppercase}
+.pro-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,146,45,.1);margin:14px 0 0}
+.pro-item{background:var(--vert);padding:12px 16px 10px}
+.pro-cat{font-family:var(--g);font-size:6.5px;letter-spacing:.4em;color:var(--or);text-transform:uppercase;margin-bottom:3px}
+.pro-nom{font-family:var(--s);font-size:16px;font-weight:400;color:var(--creme);letter-spacing:.03em}
 
-/* ─ STATS ─ */
-.stats{
-  display:flex;background:var(--vert);
-  border-top:1px solid rgba(201,146,45,.18);
-  border-bottom:1px solid rgba(201,146,45,.18);
-}
-.stat{flex:1;text-align:center;padding:20px 8px}
+/* ── STATS ── */
+.stats{display:flex;background:var(--vert);border-top:1px solid rgba(201,146,45,.18);border-bottom:1px solid rgba(201,146,45,.18)}
+.stat{flex:1;text-align:center;padding:18px 8px}
 .stat+.stat{border-left:1px solid rgba(201,146,45,.18)}
-.stat-n{font-family:var(--s);font-size:38px;font-weight:700;color:var(--or-vif);line-height:1}
-.stat-l{font-family:var(--g);font-size:7.5px;letter-spacing:.35em;color:rgba(240,185,74,.42);text-transform:uppercase;margin-top:5px}
+.stat-n{font-family:var(--s);font-size:36px;font-weight:700;color:var(--or-vif);line-height:1}
+.stat-l{font-family:var(--g);font-size:7px;letter-spacing:.35em;color:rgba(240,185,74,.4);text-transform:uppercase;margin-top:4px}
 
-/* ─ ORNEMENT ─ */
-.orn{text-align:center;padding:24px 0;font-family:var(--s);font-size:20px;color:var(--or);opacity:.38;letter-spacing:.4em}
-
-/* ─ CTA ─ */
-.cta{background:var(--vert);padding:44px 24px;text-align:center}
-.cta-eye{font-family:var(--g);font-size:8px;letter-spacing:.55em;color:var(--or);text-transform:uppercase;margin-bottom:22px}
-.cta-h1{font-family:var(--s);font-size:36px;font-weight:300;font-style:italic;color:var(--creme);line-height:1.15;margin-bottom:6px}
-.cta-h2{font-family:var(--s);font-size:18px;font-weight:600;letter-spacing:.08em;color:var(--or-vif);margin-bottom:36px;display:block}
+/* ── CTA ── */
+.cta{background:var(--vert);padding:36px 24px 100px;text-align:center}
+.cta-eye{font-family:var(--g);font-size:7.5px;letter-spacing:.55em;color:var(--or);text-transform:uppercase;margin-bottom:18px}
+.cta-h1{font-family:var(--s);font-size:34px;font-weight:300;font-style:italic;color:var(--creme);line-height:1.15;margin-bottom:6px}
+.cta-h2{font-family:var(--s);font-size:17px;font-weight:600;letter-spacing:.08em;color:var(--or-vif);margin-bottom:30px;display:block}
 .btn-p{
-  display:inline-block;
-  background:var(--or);color:var(--vert);
-  font-family:var(--g);font-size:10.5px;font-weight:600;
+  display:inline-block;background:var(--or);color:var(--vert);
+  font-family:var(--g);font-size:10px;font-weight:600;
   letter-spacing:.35em;text-transform:uppercase;
-  padding:16px 38px;border-radius:2px;
-  text-decoration:none;margin-bottom:14px;border:none;cursor:pointer;
+  padding:15px 34px;border-radius:2px;
+  text-decoration:none;border:none;cursor:pointer;
 }
-.btn-v{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:transparent;
-  border:1px solid rgba(201,146,45,.48);
-  color:var(--or-vif);
-  font-family:var(--g);font-size:9.5px;font-weight:400;
-  letter-spacing:.3em;text-transform:uppercase;
-  padding:13px 28px;border-radius:2px;
-  cursor:pointer;margin:0 auto;transition:background .2s;
-}
-.btn-v:active{background:rgba(201,146,45,.1)}
-.btn-v svg{width:15px;height:15px;stroke:var(--or-vif);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-/* ─ FOOTER ─ */
-.footer{
-  background:#020504;
-  padding:26px 20px 32px;text-align:center;
-  border-top:1px solid rgba(201,146,45,.13);
+/* ── FOOTER ── */
+.footer{background:#020504;padding:22px 20px 28px;text-align:center;border-top:1px solid rgba(201,146,45,.12)}
+.footer-logo{font-family:var(--s);font-size:22px;font-weight:700;letter-spacing:.18em;color:var(--or-vif);margin-bottom:6px}
+.footer-tag{font-family:var(--g);font-size:7px;letter-spacing:.38em;color:rgba(240,185,74,.25);text-transform:uppercase}
+
+/* ── BOUTON FLOTTANT VOIX ── */
+.fab{
+  position:fixed;bottom:28px;right:20px;z-index:500;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--or);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(201,146,45,.45);
+  transition:transform .2s,background .2s;
 }
-.footer-logo{font-family:var(--s);font-size:24px;font-weight:700;letter-spacing:.18em;color:var(--or-vif);margin-bottom:8px}
-.footer-tag{font-family:var(--g);font-size:7.5px;letter-spacing:.38em;color:rgba(240,185,74,.28);text-transform:uppercase}
+.fab:active{transform:scale(.93)}
+.fab.playing{background:var(--vert-mid);border:1.5px solid var(--or)}
+.fab svg{width:22px;height:22px;stroke:var(--vert);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fab.playing svg{stroke:var(--or-vif)}
+
+/* bulle tooltip */
+.fab-tip{
+  position:fixed;bottom:34px;right:84px;z-index:499;
+  background:rgba(4,9,6,0.88);
+  border:1px solid rgba(201,146,45,.35);
+  color:var(--or-vif);
+  font-family:var(--g);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  padding:7px 12px;border-radius:2px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;white-space:nowrap;
+}
+.fab:hover + .fab-tip,.fab-tip.show{opacity:1}
 </style>
 </head>
 <body>
@@ -166,14 +166,12 @@ body{
     <div class="mast-titre">DIGIYLYFE</div>
     <div class="mast-sub">Territoire Digital</div>
   </div>
-  <div class="mast-date">
-    Édition Mai 2026<br>Saly · Sarlat
-  </div>
+  <div class="mast-date">Mai 2026<br>Saly · Sarlat</div>
 </header>
 
 <!-- HERO -->
-<section class="hero" aria-label="RÉSEAU DIGIY — Les professionnels du terrain">
-  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/ChatGPT-Image-25-mai-2026-01_25_44-1.png" alt="Les professionnels du RÉSEAU DIGIY" loading="eager">
+<section class="hero">
+  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/ChatGPT-Image-25-mai-2026-01_25_44-1.png" alt="Les professionnels RÉSEAU DIGIY" loading="eager">
   <div class="hero-ov">
     <div class="hero-kicker">Reportage · Terrain Digital</div>
     <div class="hero-mot">Réseau</div>
@@ -186,42 +184,60 @@ body{
 <!-- INTRO -->
 <section class="intro">
   <p class="intro-p">
-    Chaque jour, des professionnels qualifiés restent <strong>invisibles sur internet.</strong><br>
+    Chaque jour, des professionnels qualifiés restent <strong>invisibles sur internet.</strong>
     RÉSEAU DIGIY change ça.
   </p>
-  <div class="intro-rule"></div>
 </section>
 
-<!-- SANTÉ & EXPERTISE -->
-<div class="rubrique">Santé &amp; Expertise</div>
-<div class="photo-wrap" style="height:64vw;max-height:310px">
-  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU2.jpg" alt="Médecins, chirurgiens, pharmaciennes, avocats — Dakar" style="height:100%" loading="lazy">
-  <div class="photo-cap">
-    <div class="cap-titre">Docteur · Dentiste · Avocat</div>
-    <div class="cap-sub">La confiance, visible en ligne</div>
+<!-- DIAPORAMA -->
+<div class="diapo-wrap" role="region" aria-label="Galerie des professionnels">
+  <div class="diapo-track" id="track">
+
+    <div class="diapo-slide">
+      <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU2.jpg" alt="Santé & Expertise" loading="lazy">
+      <div class="slide-cap">
+        <div class="slide-cap-t">Docteur · Dentiste · Avocat</div>
+        <div class="slide-cap-s">Santé &amp; Expertise</div>
+      </div>
+    </div>
+
+    <div class="diapo-slide">
+      <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg" alt="Terrain & Commerce" loading="lazy">
+      <div class="slide-cap">
+        <div class="slide-cap-t">Restaurant · Artisan · Boutique</div>
+        <div class="slide-cap-s">Terrain &amp; Commerce</div>
+      </div>
+    </div>
+
+    <div class="diapo-slide">
+      <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-4.jpg" alt="Bâtir & Investir" loading="lazy">
+      <div class="slide-cap">
+        <div class="slide-cap-t">Immobilier · Construction</div>
+        <div class="slide-cap-s">Bâtir · Louer · Investir</div>
+      </div>
+    </div>
+
   </div>
+
+  <button class="diapo-prev" id="prev" aria-label="Précédent">&#8249;</button>
+  <button class="diapo-next" id="next" aria-label="Suivant">&#8250;</button>
 </div>
-<div class="corps sombre">
+
+<!-- DOTS -->
+<div class="diapo-dots" id="dots">
+  <button class="dot on" aria-label="Slide 1"></button>
+  <button class="dot"    aria-label="Slide 2"></button>
+  <button class="dot"    aria-label="Slide 3"></button>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="pull-block">
   <div class="pull">
-    <div class="pull-txt">"Une présence digitale simple, humaine, directe."</div>
-  </div>
-  <p class="corps-txt">
-    Sans commission. Sans intermédiaire.<br>
-    <strong>Tu paies ton abonnement,<br>tu gardes tout.</strong>
-  </p>
-</div>
-
-<!-- TERRAIN & COMMERCE -->
-<div class="rubrique">Terrain &amp; Commerce</div>
-<div class="photo-wrap" style="height:72vw;max-height:350px">
-  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg" alt="Chef, couturière wax, vendeur de marché — Sénégal" style="height:100%" loading="lazy">
-  <div class="photo-cap">
-    <div class="cap-titre">Restaurant · Artisan · Boutique</div>
-    <div class="cap-sub">Le marché prend le digital</div>
+    <div class="pull-txt">"Simple, humaine, directe.<br>Sans commission. Tu gardes tout."</div>
   </div>
 </div>
 
-<!-- GRILLE 12 MÉTIERS -->
+<!-- 12 MÉTIERS -->
 <div class="metiers-wrap">
   <div class="metiers-head">12 Métiers · 1 Réseau</div>
   <div class="pro-grid">
@@ -245,33 +261,12 @@ body{
   </div>
 </div>
 
-<!-- BÂTIR · LOUER · INVESTIR -->
-<div class="rubrique">Bâtir · Louer · Investir</div>
-<div class="photo-wrap" style="height:62vw;max-height:300px">
-  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-4.jpg" alt="Architecte, agent immobilier — coucher de soleil Dakar" style="height:100%" loading="lazy">
-  <div class="photo-cap">
-    <div class="cap-titre">Immobilier · Construction</div>
-    <div class="cap-sub">Visibilité sur le territoire</div>
-  </div>
-</div>
-
-<div class="orn">— · —</div>
-
 <!-- CTA -->
 <section class="cta">
   <div class="cta-eye">Rejoindre le Réseau</div>
   <div class="cta-h1">Rejoins le réseau.</div>
   <span class="cta-h2">Un téléphone suffit.</span>
-  <div style="margin-bottom:16px">
-    <a class="btn-p" href="https://digiylyfe.com" target="_blank" rel="noopener">Découvrir DIGIYLYFE</a>
-  </div>
-  <button class="btn-v" id="vbtn" onclick="voice()">
-    <svg id="vico" viewBox="0 0 24 24" aria-hidden="true">
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-    </svg>
-    <span id="vtxt">Écouter DIGIY</span>
-  </button>
+  <a class="btn-p" href="https://digiylyfe.com" target="_blank" rel="noopener">Découvrir DIGIYLYFE</a>
 </section>
 
 <!-- FOOTER -->
@@ -280,17 +275,67 @@ body{
   <div class="footer-tag">De Saly à Sarlat &nbsp;·&nbsp; Territoire Digital &nbsp;·&nbsp; 2026</div>
 </footer>
 
+<!-- BOUTON FLOTTANT VOIX -->
+<button class="fab" id="fab" onclick="voice()" aria-label="Écouter DIGIY">
+  <svg id="fico" viewBox="0 0 24 24">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+  </svg>
+</button>
+<div class="fab-tip" id="tip">Écouter DIGIY</div>
+
 <script>
+/* ── DIAPORAMA ── */
+const track=document.getElementById('track');
+const dots=[...document.getElementById('dots').children];
+const N=3;
+let cur=0,timer,startX=0,dragging=false;
+
+function goTo(n){
+  cur=(n+N)%N;
+  track.style.transform=`translateX(-${cur*100}%)`;
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+}
+document.getElementById('prev').onclick=()=>{goTo(cur-1);resetTimer()};
+document.getElementById('next').onclick=()=>{goTo(cur+1);resetTimer()};
+dots.forEach((d,i)=>d.onclick=()=>{goTo(i);resetTimer()});
+
+function resetTimer(){clearInterval(timer);timer=setInterval(()=>goTo(cur+1),4500)}
+resetTimer();
+
+/* swipe */
+track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true},{passive:true});
+track.addEventListener('touchend',e=>{
+  if(!dragging)return;dragging=false;
+  const dx=e.changedTouches[0].clientX-startX;
+  if(Math.abs(dx)>40){goTo(cur+(dx<0?1:-1));resetTimer()}
+},{passive:true});
+
+/* ── VOIX FLOTTANTE ── */
+const fab=document.getElementById('fab');
+const tip=document.getElementById('tip');
+const fico=document.getElementById('fico');
+const ON='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+const OFF='<line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/>';
+
+fab.addEventListener('mouseenter',()=>tip.classList.add('show'));
+fab.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+
 function voice(){
-  const l=document.getElementById('vtxt'),i=document.getElementById('vico');
-  const ON='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-  const OFF='<line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/>';
-  if(!window.speechSynthesis){l.textContent='Non disponible';return;}
-  if(window.speechSynthesis.speaking){window.speechSynthesis.cancel();i.innerHTML=ON;l.textContent='Écouter DIGIY';return;}
+  if(!window.speechSynthesis){tip.textContent='Non disponible';tip.classList.add('show');return;}
+  if(window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    fab.classList.remove('playing');fico.innerHTML=ON;
+    tip.textContent='Écouter DIGIY';return;
+  }
   const u=new SpeechSynthesisUtterance("RÉSEAU DIGIY installe la notoriété des professionnels qualifiés sur le territoire digital. Chaque jour, des professionnels qualifiés restent invisibles sur internet. RÉSEAU DIGIY change ça. Docteur. Dentiste. Avocat. Architecte. Entrepreneur. Boutique. Assurance. Restaurant. Immobilier. Chauffeur. Artisan. Commerce local. Une présence digitale simple, humaine, directe. Sans commission. Sans intermédiaire. Tu paies ton abonnement, tu gardes tout. Rejoins le réseau. Un téléphone suffit. De Saly à Sarlat. DIGIYLYFE.");
   u.lang='fr-FR';u.rate=.82;u.pitch=1.05;
-  i.innerHTML=OFF;l.textContent='En cours…';
-  u.onend=u.onerror=()=>{i.innerHTML=ON;l.textContent='Écouter DIGIY';};
+  fab.classList.add('playing');fico.innerHTML=OFF;
+  tip.textContent='En cours…';tip.classList.add('show');
+  u.onend=u.onerror=()=>{
+    fab.classList.remove('playing');fico.innerHTML=ON;
+    tip.textContent='Écouter DIGIY';tip.classList.remove('show');
+  };
   window.speechSynthesis.speak(u);
 }
 </script>
