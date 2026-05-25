@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>RÉSEAU DIGIY — DIGIYLYFE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --vert:#050E08;
+  --vert-mid:#0F2318;
+  --vert-soft:#1B3D2E;
+  --or:#C9922D;
+  --or-vif:#F0B94A;
+  --creme:#F8F4EE;
+  --encre:#12100A;
+  --s:'Cormorant Garamond',Georgia,serif;
+  --g:'Jost','Helvetica Neue',sans-serif;
+}
+html{scroll-behavior:smooth;background:var(--vert)}
+body{
+  background:var(--creme);color:var(--encre);
+  font-family:var(--s);
+  max-width:480px;margin:0 auto;
+  overflow-x:hidden;
+}
+
+/* ─ MASTHEAD ─ */
+.mast{
+  position:sticky;top:0;z-index:200;
+  background:rgba(4,9,6,0.97);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,146,45,0.28);
+  padding:9px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mast-titre{font-family:var(--s);font-size:15px;font-weight:700;letter-spacing:.22em;color:var(--or-vif)}
+.mast-sub{font-family:var(--g);font-size:7.5px;letter-spacing:.45em;color:rgba(240,185,74,0.42);text-transform:uppercase;margin-top:1px}
+.mast-date{font-family:var(--g);font-size:7px;letter-spacing:.15em;color:rgba(240,185,74,0.35);text-transform:uppercase;text-align:right;line-height:1.7}
+
+/* ─ HERO ─ */
+.hero{position:relative;overflow:hidden;height:90vw;max-height:440px}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.76) saturate(1.06)}
+.hero-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(155deg,rgba(4,9,6,0) 25%,rgba(4,9,6,0.93) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:26px 24px 32px;
+}
+.hero-kicker{font-family:var(--g);font-size:8px;letter-spacing:.6em;color:var(--or);text-transform:uppercase;margin-bottom:12px}
+.hero-mot{font-family:var(--g);font-size:10px;font-weight:300;letter-spacing:.65em;color:rgba(240,185,74,0.55);text-transform:uppercase;margin-bottom:4px}
+.hero-titre{font-family:var(--s);font-size:60px;font-weight:700;color:var(--or-vif);letter-spacing:.1em;line-height:.88;margin-bottom:14px}
+.hero-claim{font-family:var(--s);font-size:16px;font-weight:300;font-style:italic;color:rgba(248,244,238,.7);letter-spacing:.06em;line-height:1.45}
+.hero-filet{width:44px;height:1.5px;background:var(--or);margin-top:18px;opacity:.6}
+
+/* ─ INTRO ─ */
+.intro{background:var(--vert);padding:36px 26px 32px}
+.intro-p{font-family:var(--s);font-size:23px;font-weight:300;color:var(--creme);line-height:1.5;font-style:italic}
+.intro-p strong{color:var(--or-vif);font-style:normal;font-weight:600}
+.intro-rule{width:100%;height:1px;background:rgba(201,146,45,0.16);margin-top:28px}
+
+/* ─ RUBRIQUE ─ */
+.rubrique{
+  display:flex;align-items:center;gap:12px;
+  padding:22px 24px 16px;
+  font-family:var(--g);font-size:8px;letter-spacing:.55em;
+  color:var(--or);text-transform:uppercase;
+}
+.rubrique::after{content:'';flex:1;height:1px;background:var(--or);opacity:.22}
+
+/* ─ PHOTO SECTION ─ */
+.photo-wrap{position:relative;overflow:hidden}
+.photo-wrap img{width:100%;display:block;object-fit:cover}
+.photo-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(4,9,6,.94) 0%,rgba(4,9,6,.25) 65%,transparent 100%);
+  padding:44px 22px 18px;
+}
+.cap-titre{font-family:var(--s);font-size:20px;font-weight:600;color:var(--or-vif);letter-spacing:.04em;margin-bottom:4px}
+.cap-sub{font-family:var(--g);font-size:8.5px;letter-spacing:.28em;color:rgba(240,185,74,.48);text-transform:uppercase}
+
+/* ─ CORPS ─ */
+.corps{padding:26px 24px}
+.corps.sombre{background:var(--vert-mid);color:var(--creme)}
+.corps.clair{background:var(--creme);color:var(--encre)}
+
+.pull{border-left:2.5px solid var(--or);padding:2px 0 2px 20px;margin:0 0 22px}
+.pull-txt{font-family:var(--s);font-size:27px;font-weight:300;font-style:italic;color:var(--or-vif);line-height:1.25}
+
+.corps-txt{font-family:var(--s);font-size:18px;font-weight:300;line-height:1.65;letter-spacing:.02em}
+.corps-txt strong{color:var(--or-vif);font-weight:600}
+
+/* ─ MÉTIERS ─ */
+.metiers-wrap{background:var(--vert)}
+.metiers-head{
+  padding:24px 24px 0;
+  font-family:var(--g);font-size:8px;letter-spacing:.5em;
+  color:var(--or);text-transform:uppercase;
+}
+.pro-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(201,146,45,.1);
+  margin:16px 0 0;
+}
+.pro-item{background:var(--vert);padding:14px 18px 12px}
+.pro-cat{font-family:var(--g);font-size:7px;letter-spacing:.4em;color:var(--or);text-transform:uppercase;margin-bottom:4px}
+.pro-nom{font-family:var(--s);font-size:17px;font-weight:400;color:var(--creme);letter-spacing:.04em}
+
+/* ─ STATS ─ */
+.stats{
+  display:flex;background:var(--vert);
+  border-top:1px solid rgba(201,146,45,.18);
+  border-bottom:1px solid rgba(201,146,45,.18);
+}
+.stat{flex:1;text-align:center;padding:20px 8px}
+.stat+.stat{border-left:1px solid rgba(201,146,45,.18)}
+.stat-n{font-family:var(--s);font-size:38px;font-weight:700;color:var(--or-vif);line-height:1}
+.stat-l{font-family:var(--g);font-size:7.5px;letter-spacing:.35em;color:rgba(240,185,74,.42);text-transform:uppercase;margin-top:5px}
+
+/* ─ ORNEMENT ─ */
+.orn{text-align:center;padding:24px 0;font-family:var(--s);font-size:20px;color:var(--or);opacity:.38;letter-spacing:.4em}
+
+/* ─ CTA ─ */
+.cta{background:var(--vert);padding:44px 24px;text-align:center}
+.cta-eye{font-family:var(--g);font-size:8px;letter-spacing:.55em;color:var(--or);text-transform:uppercase;margin-bottom:22px}
+.cta-h1{font-family:var(--s);font-size:36px;font-weight:300;font-style:italic;color:var(--creme);line-height:1.15;margin-bottom:6px}
+.cta-h2{font-family:var(--s);font-size:18px;font-weight:600;letter-spacing:.08em;color:var(--or-vif);margin-bottom:36px;display:block}
+.btn-p{
+  display:inline-block;
+  background:var(--or);color:var(--vert);
+  font-family:var(--g);font-size:10.5px;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;
+  padding:16px 38px;border-radius:2px;
+  text-decoration:none;margin-bottom:14px;border:none;cursor:pointer;
+}
+.btn-v{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:transparent;
+  border:1px solid rgba(201,146,45,.48);
+  color:var(--or-vif);
+  font-family:var(--g);font-size:9.5px;font-weight:400;
+  letter-spacing:.3em;text-transform:uppercase;
+  padding:13px 28px;border-radius:2px;
+  cursor:pointer;margin:0 auto;transition:background .2s;
+}
+.btn-v:active{background:rgba(201,146,45,.1)}
+.btn-v svg{width:15px;height:15px;stroke:var(--or-vif);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ─ FOOTER ─ */
+.footer{
+  background:#020504;
+  padding:26px 20px 32px;text-align:center;
+  border-top:1px solid rgba(201,146,45,.13);
+}
+.footer-logo{font-family:var(--s);font-size:24px;font-weight:700;letter-spacing:.18em;color:var(--or-vif);margin-bottom:8px}
+.footer-tag{font-family:var(--g);font-size:7.5px;letter-spacing:.38em;color:rgba(240,185,74,.28);text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="mast">
+  <div>
+    <div class="mast-titre">DIGIYLYFE</div>
+    <div class="mast-sub">Territoire Digital</div>
+  </div>
+  <div class="mast-date">
+    Édition Mai 2026<br>Saly · Sarlat
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="RÉSEAU DIGIY — Les professionnels du terrain">
+  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/ChatGPT-Image-25-mai-2026-01_25_44-1.png" alt="Les professionnels du RÉSEAU DIGIY" loading="eager">
+  <div class="hero-ov">
+    <div class="hero-kicker">Reportage · Terrain Digital</div>
+    <div class="hero-mot">Réseau</div>
+    <div class="hero-titre">DIGIY</div>
+    <div class="hero-claim">installe la notoriété<br>des professionnels qualifiés</div>
+    <div class="hero-filet"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <p class="intro-p">
+    Chaque jour, des professionnels qualifiés restent <strong>invisibles sur internet.</strong><br>
+    RÉSEAU DIGIY change ça.
+  </p>
+  <div class="intro-rule"></div>
+</section>
+
+<!-- SANTÉ & EXPERTISE -->
+<div class="rubrique">Santé &amp; Expertise</div>
+<div class="photo-wrap" style="height:64vw;max-height:310px">
+  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU2.jpg" alt="Médecins, chirurgiens, pharmaciennes, avocats — Dakar" style="height:100%" loading="lazy">
+  <div class="photo-cap">
+    <div class="cap-titre">Docteur · Dentiste · Avocat</div>
+    <div class="cap-sub">La confiance, visible en ligne</div>
+  </div>
+</div>
+<div class="corps sombre">
+  <div class="pull">
+    <div class="pull-txt">"Une présence digitale simple, humaine, directe."</div>
+  </div>
+  <p class="corps-txt">
+    Sans commission. Sans intermédiaire.<br>
+    <strong>Tu paies ton abonnement,<br>tu gardes tout.</strong>
+  </p>
+</div>
+
+<!-- TERRAIN & COMMERCE -->
+<div class="rubrique">Terrain &amp; Commerce</div>
+<div class="photo-wrap" style="height:72vw;max-height:350px">
+  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg" alt="Chef, couturière wax, vendeur de marché — Sénégal" style="height:100%" loading="lazy">
+  <div class="photo-cap">
+    <div class="cap-titre">Restaurant · Artisan · Boutique</div>
+    <div class="cap-sub">Le marché prend le digital</div>
+  </div>
+</div>
+
+<!-- GRILLE 12 MÉTIERS -->
+<div class="metiers-wrap">
+  <div class="metiers-head">12 Métiers · 1 Réseau</div>
+  <div class="pro-grid">
+    <div class="pro-item"><div class="pro-cat">Santé</div><div class="pro-nom">Docteur</div></div>
+    <div class="pro-item"><div class="pro-cat">Santé</div><div class="pro-nom">Dentiste</div></div>
+    <div class="pro-item"><div class="pro-cat">Droit</div><div class="pro-nom">Avocat</div></div>
+    <div class="pro-item"><div class="pro-cat">Construction</div><div class="pro-nom">Architecte</div></div>
+    <div class="pro-item"><div class="pro-cat">Business</div><div class="pro-nom">Entrepreneur</div></div>
+    <div class="pro-item"><div class="pro-cat">Retail</div><div class="pro-nom">Boutique</div></div>
+    <div class="pro-item"><div class="pro-cat">Finance</div><div class="pro-nom">Assurance</div></div>
+    <div class="pro-item"><div class="pro-cat">Gastronomie</div><div class="pro-nom">Restaurant</div></div>
+    <div class="pro-item"><div class="pro-cat">Habitat</div><div class="pro-nom">Immobilier</div></div>
+    <div class="pro-item"><div class="pro-cat">Mobilité</div><div class="pro-nom">Chauffeur</div></div>
+    <div class="pro-item"><div class="pro-cat">Savoir-faire</div><div class="pro-nom">Artisan</div></div>
+    <div class="pro-item"><div class="pro-cat">Local</div><div class="pro-nom">Commerce</div></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">12</div><div class="stat-l">Métiers</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Territoires</div></div>
+    <div class="stat"><div class="stat-n">0%</div><div class="stat-l">Commission</div></div>
+  </div>
+</div>
+
+<!-- BÂTIR · LOUER · INVESTIR -->
+<div class="rubrique">Bâtir · Louer · Investir</div>
+<div class="photo-wrap" style="height:62vw;max-height:300px">
+  <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-4.jpg" alt="Architecte, agent immobilier — coucher de soleil Dakar" style="height:100%" loading="lazy">
+  <div class="photo-cap">
+    <div class="cap-titre">Immobilier · Construction</div>
+    <div class="cap-sub">Visibilité sur le territoire</div>
+  </div>
+</div>
+
+<div class="orn">— · —</div>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-eye">Rejoindre le Réseau</div>
+  <div class="cta-h1">Rejoins le réseau.</div>
+  <span class="cta-h2">Un téléphone suffit.</span>
+  <div style="margin-bottom:16px">
+    <a class="btn-p" href="https://digiylyfe.com" target="_blank" rel="noopener">Découvrir DIGIYLYFE</a>
+  </div>
+  <button class="btn-v" id="vbtn" onclick="voice()">
+    <svg id="vico" viewBox="0 0 24 24" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+    <span id="vtxt">Écouter DIGIY</span>
+  </button>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">DIGIYLYFE</div>
+  <div class="footer-tag">De Saly à Sarlat &nbsp;·&nbsp; Territoire Digital &nbsp;·&nbsp; 2026</div>
+</footer>
+
+<script>
+function voice(){
+  const l=document.getElementById('vtxt'),i=document.getElementById('vico');
+  const ON='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+  const OFF='<line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/>';
+  if(!window.speechSynthesis){l.textContent='Non disponible';return;}
+  if(window.speechSynthesis.speaking){window.speechSynthesis.cancel();i.innerHTML=ON;l.textContent='Écouter DIGIY';return;}
+  const u=new SpeechSynthesisUtterance("RÉSEAU DIGIY installe la notoriété des professionnels qualifiés sur le territoire digital. Chaque jour, des professionnels qualifiés restent invisibles sur internet. RÉSEAU DIGIY change ça. Docteur. Dentiste. Avocat. Architecte. Entrepreneur. Boutique. Assurance. Restaurant. Immobilier. Chauffeur. Artisan. Commerce local. Une présence digitale simple, humaine, directe. Sans commission. Sans intermédiaire. Tu paies ton abonnement, tu gardes tout. Rejoins le réseau. Un téléphone suffit. De Saly à Sarlat. DIGIYLYFE.");
+  u.lang='fr-FR';u.rate=.82;u.pitch=1.05;
+  i.innerHTML=OFF;l.textContent='En cours…';
+  u.onend=u.onerror=()=>{i.innerHTML=ON;l.textContent='Écouter DIGIY';};
+  window.speechSynthesis.speak(u);
+}
+</script>
+</body>
+</html>
