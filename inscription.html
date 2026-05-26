@@ -6,7 +6,7 @@
   <title>RÉSEAU DIGIY — Club privé</title>
   <meta name="description" content="RÉSEAU DIGIY — Club privé des pros validés : annonce réservée aux abonnés DIGIY, ou mise en classe FIRST pour entrer proprement." />
   <meta name="theme-color" content="#00853f" />
-  <meta name="digiy-build" content="reseau-digiy-inscription-club-prive-first-20260521" />
+  <meta name="digiy-build" content="reseau-digiy-inscription-validation-digiy-20260526" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -352,9 +352,14 @@
             </div>
             <div class="field">
               <label for="statusNote">Statut</label>
-              <input id="statusNote" value="Publication qualifiée · validation DIGIY" readonly>
+              <input id="statusNote" value="En attente validation DIGIY · invisible au public" readonly>
             </div>
           </div>
+
+          <!-- Validation DIGIY : par défaut, aucune fiche déposée ici n'est publique. -->
+          <input type="hidden" id="validationStatus" value="pending_validation">
+          <input type="hidden" id="isValidated" value="false">
+          <input type="hidden" id="isPublished" value="false">
 
           <div class="field">
             <label for="note">Petite note activité</label>
@@ -362,14 +367,19 @@
           </div>
 
           <div class="btnrow">
-            <button class="btn main" type="submit">✅ Enregistrer la fiche</button>
+            <button class="btn main" type="submit">📩 Envoyer la fiche pour validation DIGIY</button>
             <a class="btn green" href="annonce.html">📢 Poser l’annonce</a>
             <a class="btn gold" href="paiement.html">🌟 Classe FIRST</a>
-            <a class="btn" href="fiche.html">🔗 Voir la fiche</a>
+            <a class="btn" href="fiche.html?status=pending">🔒 Voir le brouillon fiche</a>
           </div>
 
           <div class="noticeMini">
             Pour les pros déjà validés, l’annonce reste qualifiée : 7 jours à 15 000 FCFA, 15 jours à 25 000 FCFA, 30 jours à 45 000 FCFA. Pour les non-abonnés, l’entrée se fait par la Mise en classe FIRST : 150 000 FCFA pour 1 mois de visibilité avec fiche propre, QR, lien partageable et accompagnement DIGIY.
+          </div>
+
+          <div class="noticeMini" style="border-color:rgba(246,196,83,.40);background:rgba(246,196,83,.12)">
+            <strong>Feu vert DIGIY obligatoire.</strong><br>
+            Après dépôt, la fiche reste en brouillon : <strong>elle n’apparaît pas au public</strong>. DIGIY vérifie le pro, le paiement, le téléphone, la qualité de l’offre et seulement ensuite la fiche passe en publication validée.
           </div>
         </form>
       </section>
@@ -379,6 +389,25 @@
   </div>
 
   <script src="./assets/js/reseau-core.js"></script>
-  <script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initProfilePage());</script>
+  <script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const form = document.getElementById('profileForm');
+  if(form){
+    form.addEventListener('submit',()=>{
+      try{
+        const state = {
+          status:'pending_validation',
+          is_validated:false,
+          is_published:false,
+          source:'inscription.html',
+          saved_at:new Date().toISOString()
+        };
+        localStorage.setItem('digiy_reseau_validation_state', JSON.stringify(state));
+      }catch(_){}
+    }, true);
+  }
+  RESEAU.initProfilePage();
+});
+</script>
 </body>
 </html>
