@@ -10,6 +10,7 @@
     profile: 'DIGIY_RESEAU_PROFILE_V1',
     offer: 'DIGIY_RESEAU_OFFER_V1',
     payment: 'DIGIY_RESEAU_PAYMENT_V1',
+    adminRequests: 'DIGIY_RESEAU_ADMIN_REQUESTS_V1',
     lastMessage: 'DIGIY_RESEAU_LAST_MESSAGE_V1'
   };
 
@@ -189,7 +190,14 @@
       phone: '',
       zone: 'Saly',
       city: 'Saly',
-      note: ''
+      note: '',
+      status: 'draft',
+      approval_status: 'pending_admin',
+      is_validated: false,
+      is_published: false,
+      submittedAt: null,
+      validatedAt: null,
+      validatedBy: ''
     };
   }
 
@@ -206,7 +214,13 @@
       endDate: isoDatePlus(7),
       cta: 'Appeler ou WhatsApp direct',
       photo: '',
-      status: 'brouillon_qualifie'
+      status: 'brouillon_qualifie',
+      approval_status: 'pending_admin',
+      is_validated: false,
+      is_published: false,
+      submittedAt: null,
+      validatedAt: null,
+      validatedBy: ''
     };
   }
 
@@ -225,8 +239,164 @@
       method: 'Wave',
       reference: '',
       createdAt: null,
+      approval_status: 'pending_admin',
+      is_validated: false,
+      validatedAt: null,
+      validatedBy: '',
       doctrine: 'club_prive_public_visible'
     });
+  }
+
+  function getAdminRequests(){
+    return read(STORE.adminRequests, []);
+  }
+
+  function saveAdminRequests(items){
+    return write(STORE.adminRequests, Array.isArray(items) ? items.slice(0, 80) : []);
+  }
+
+  function hasAdminApproval(profile, offer, payment){
+    const p = profile || getProfile();
+    const o = offer || getOffer();
+    const pay = payment || getPayment();
+
+    return (
+      (p.is_validated === true || o.is_validated === true) &&
+      (p.is_published === true || o.is_published === true) &&
+      (
+        String(o.status || '').toLowerCase() === 'active' ||
+        String(o.status || '').toLowerCase() === 'publie_valide' ||
+        String(pay.status || '').toLowerCase() === 'valide_admin'
+      )
+    );
+  }
+
+  function adminStageLabel(stage){
+    const map = {
+      inscription: 'Nouvelle fiche à contrôler',
+      annonce: 'Annonce à contrôler',
+      paiement: 'Preuve de règlement à vérifier',
+      validation: 'Demande de validation complète',
+      preview: 'Prévisualisation ADMIN'
+    };
+    return map[stage] || 'Demande RÉSEAU à contrôler';
+  }
+
+  function buildAdminValidationMessage(stage){
+    const p = getProfile();
+    const o = getOffer();
+    const pay = getPayment();
+    const plan = currentPlan(pay.plan || o.plan || 'week');
+
+    const lines = [
+      '🔐 RÉSEAU DIGIY — VALIDATION ADMIN',
+      adminStageLabel(stage),
+      '',
+      'STATUT : EN ATTENTE — ne pas publier avant validation DIGIY',
+      '',
+      'PRO / FICHE',
+      'Responsable : ' + (p.name || 'à compléter'),
+      'Activité : ' + (p.business || 'à compléter'),
+      'Métier : ' + (p.métier || o.métier || 'à compléter'),
+      'Téléphone : ' + (p.phone || 'à compléter'),
+      'Zone : ' + (p.zone || o.zone || 'à compléter'),
+      'Ville / repère : ' + (p.city || 'à compléter'),
+      '',
+      'ANNONCE',
+      'Titre : ' + (o.title || 'à compléter'),
+      'Type : ' + (o.type || 'à compléter'),
+      'Détails : ' + (o.details || 'à compléter'),
+      'Prix / remise : ' + (o.priceText || 'à confirmer'),
+      'Photo : ' + (o.photo || 'aucune'),
+      'CTA : ' + (o.cta || 'Appeler ou WhatsApp direct'),
+      'Début : ' + (o.startDate || 'à confirmer'),
+      'Fin : ' + (o.endDate || 'à confirmer'),
+      '',
+      'RÈGLEMENT',
+      'Formule : ' + plan.publicLabel,
+      'Mode : ' + (pay.method || 'Wave'),
+      'Référence : ' + (pay.reference || 'preuve à joindre'),
+      'Statut paiement : ' + (pay.status || 'non_regle'),
+      '',
+      'ACTION ADMIN',
+      '1. Vérifier identité + téléphone + offre.',
+      '2. Vérifier preuve de paiement.',
+      '3. Valider dans ADMIN / Supabase.',
+      '4. Publier seulement si is_validated=true et is_published=true.',
+      '',
+      'Lien fiche local à contrôler : ' + offerLink('admin-validation'),
+      'Horodatage : ' + new Date().toLocaleString('fr-SN')
+    ];
+
+    return lines.join('\n');
+  }
+
+  function queueAdminRequest(stage){
+    const req = {
+      id: 'reseau-' + Date.now(),
+      stage: stage || 'validation',
+      label: adminStageLabel(stage),
+      status: 'pending_admin',
+      createdAt: new Date().toISOString(),
+      profile: getProfile(),
+      offer: getOffer(),
+      payment: getPayment(),
+      message: buildAdminValidationMessage(stage || 'validation')
+    };
+
+    const items = getAdminRequests();
+    items.unshift(req);
+    saveAdminRequests(items);
+
+    write(STORE.lastMessage, {
+      text: req.message,
+      copiedAt: null,
+      label: 'validation admin'
+    });
+
+    return req;
+  }
+
+  function renderAdminBox(stage){
+    const form = stage === 'paiement'
+      ? $('#paymentForm')
+      : stage === 'annonce'
+        ? $('#offerForm')
+        : $('#profileForm');
+
+    if(!form) return;
+
+    let box = $('#reseauAdminBox');
+    if(!box){
+      box = document.createElement('div');
+      box.id = 'reseauAdminBox';
+      box.className = 'field';
+      box.style.marginTop = '14px';
+      box.innerHTML = `
+        <label>Validation DIGIY avant apparition</label>
+        <textarea id="adminValidationText" rows="9" readonly></textarea>
+        <div class="btnrow" style="margin-top:10px">
+          <button class="btn main" type="button" id="adminCopyBtn">📋 Copier demande ADMIN</button>
+          <a class="btn green" id="adminWhatsAppBtn" target="_blank" rel="noopener">💬 Envoyer à ADMIN WhatsApp</a>
+        </div>
+        <div class="noticeMini" style="margin-top:10px">
+          Cette fiche reste invisible au public tant que DIGIY n’a pas validé : identité, téléphone, offre, paiement et qualité.
+        </div>
+      `;
+      form.appendChild(box);
+    }
+
+    const msg = buildAdminValidationMessage(stage || 'validation');
+    const area = $('#adminValidationText');
+    const wa = $('#adminWhatsAppBtn');
+    const copy = $('#adminCopyBtn');
+
+    if(area) area.value = msg;
+    if(wa) wa.href = waHref(msg, ADMIN_WA);
+    if(copy && !copy.dataset.boundAdmin){
+      copy.dataset.boundAdmin = '1';
+      copy.addEventListener('click', () => copyText($('#adminValidationText')?.value || msg, 'demande ADMIN'));
+    }
   }
 
   function saveProfile(data){
@@ -407,7 +577,9 @@
     });
 
     $all('[data-offer-status]').forEach(el => {
-      el.textContent = pay.status === 'regle' ? 'Réglé / prêt activation' : 'En attente règlement qualifié';
+      el.textContent = hasAdminApproval(p, o, pay)
+        ? 'Validé ADMIN · visible public'
+        : 'En attente validation DIGIY';
     });
 
     $all('[data-offer-link]').forEach(el => {
@@ -438,14 +610,25 @@
           phone: safe($('#phone')?.value),
           zone: safe($('#zone')?.value),
           city: safe($('#city')?.value),
-          note: safe($('#note')?.value)
+          note: safe($('#note')?.value),
+          status: 'attente_validation_digiy',
+          approval_status: 'pending_admin',
+          is_validated: false,
+          is_published: false,
+          submittedAt: new Date().toISOString(),
+          validatedAt: null,
+          validatedBy: ''
         };
 
         saveProfile(data);
+        queueAdminRequest('inscription');
+        renderAdminBox('inscription');
         refreshHeader();
-        notice('Fiche locale enregistrée. Publication réservée aux pros validés ou classe FIRST.', 'ok');
+        notice('Fiche reçue. Elle reste invisible au public jusqu’à validation DIGIY.', 'ok');
       });
     }
+
+    renderAdminBox('inscription');
   }
 
   function initOfferPage(){
@@ -487,7 +670,12 @@
 
     function updatePreview(){
       const data = readOfferForm();
-      saveOffer(Object.assign(data, { status: 'brouillon_qualifie' }));
+      saveOffer(Object.assign(data, {
+        status: 'brouillon_qualifie',
+        approval_status: 'pending_admin',
+        is_validated: false,
+        is_published: false
+      }));
       renderMessageBox();
       refreshHeader();
     }
@@ -513,17 +701,33 @@
         e.preventDefault();
 
         const data = readOfferForm();
-        saveOffer(Object.assign(data, { status: 'pret_reglement_qualifie' }));
-        savePayment({ plan: data.plan, status: 'non_regle' });
+        saveOffer(Object.assign(data, {
+          status: 'attente_validation_digiy',
+          approval_status: 'pending_admin',
+          is_validated: false,
+          is_published: false,
+          submittedAt: new Date().toISOString(),
+          validatedAt: null,
+          validatedBy: ''
+        }));
+        savePayment({
+          plan: data.plan,
+          status: 'non_regle',
+          approval_status: 'pending_admin',
+          is_validated: false
+        });
 
+        queueAdminRequest('annonce');
+        renderAdminBox('annonce');
         refreshHeader();
         renderMessageBox();
 
-        notice('Annonce qualifiée préparée. Étape suivante : règlement ou validation DIGIY.', 'ok');
+        notice('Annonce préparée. Elle ne sera publiée qu’après validation ADMIN DIGIY.', 'ok');
       });
     }
 
     renderMessageBox();
+    renderAdminBox('annonce');
   }
 
   function renderMessageBox(){
@@ -586,22 +790,32 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
           plan: safe(planEl?.value) || 'week',
           method: safe($('#paymentMethod')?.value) || 'Wave',
           reference: safe($('#paymentRef')?.value),
-          status: 'regle',
+          status: 'preuve_envoyee_attente_admin',
           createdAt: new Date().toISOString(),
+          approval_status: 'pending_admin',
+          is_validated: false,
           qualification: 'reseau_digiy_club_prive'
         });
 
         const o2 = getOffer();
-        saveOffer(Object.assign(o2, { status: 'attente_activation_qualifiee' }));
+        saveOffer(Object.assign(o2, {
+          status: 'attente_validation_digiy',
+          approval_status: 'pending_admin',
+          is_validated: false,
+          is_published: false
+        }));
 
+        queueAdminRequest('paiement');
+        renderAdminBox('paiement');
         refreshHeader();
         renderPlan();
 
-        notice('Règlement qualifié noté localement. Envoie la preuve à DIGIY pour activation.', 'ok');
+        notice('Preuve notée. Elle remonte à ADMIN et attend validation DIGIY avant apparition.', 'ok');
       });
     }
 
     renderPlan();
+    renderAdminBox('paiement');
   }
 
   function initAssistantPage(){
@@ -640,6 +854,43 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
     const p = getProfile();
     const o = getOffer();
     const pay = getPayment();
+    const approved = hasAdminApproval(p, o, pay);
+
+    if(!approved){
+      if($('#ficheStatus')) $('#ficheStatus').textContent = 'Fiche en attente de validation DIGIY';
+      if($('#ficheTitle')) $('#ficheTitle').textContent = 'Fiche reçue · contrôle avant apparition';
+      if($('#ficheBusiness')) $('#ficheBusiness').textContent = 'RÉSEAU DIGIY';
+      if($('#ficheMetier')) $('#ficheMetier').textContent = 'Publication qualifiée';
+      if($('#ficheZone')) $('#ficheZone').textContent = 'Validation en cours';
+      if($('#fichePhone')) $('#fichePhone').textContent = 'Masqué avant validation';
+      if($('#ficheDetails')){
+        $('#ficheDetails').textContent =
+          'Cette fiche a été reçue par DIGIY, mais elle n’est pas encore visible publiquement. ADMIN doit vérifier le pro, le téléphone, l’offre, le règlement et la qualité avant apparition.';
+      }
+      if($('#fichePrice')) $('#fichePrice').textContent = 'En attente';
+      if($('#ficheDates')) $('#ficheDates').textContent = 'Publication bloquée avant validation';
+
+      const img = $('#fichePhoto');
+      if(img) img.hidden = true;
+
+      const row = $('.fiche-hero .btnrow');
+      if(row) row.style.display = 'none';
+
+      const sharePanel = $('[data-offer-link]')?.closest('.panel');
+      if(sharePanel) sharePanel.style.display = 'none';
+
+      const hero = $('.fiche-hero');
+      if(hero && !$('#fichePendingNotice')){
+        const pending = document.createElement('div');
+        pending.id = 'fichePendingNotice';
+        pending.className = 'noticeMini';
+        pending.style.marginTop = '14px';
+        pending.innerHTML =
+          '<strong>🔒 Non publiée.</strong><br>Le public ne voit pas les coordonnées avant validation DIGIY. La fiche apparaîtra seulement après validation ADMIN.';
+        hero.appendChild(pending);
+      }
+      return;
+    }
 
     if($('#ficheBusiness')) $('#ficheBusiness').textContent = safe(p.business || p.name) || 'Pro DIGIY';
     if($('#ficheMetier')) $('#ficheMetier').textContent = safe(o.métier || p.métier) || 'Activité locale';
@@ -648,16 +899,14 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
     if($('#ficheTitle')) $('#ficheTitle').textContent = safe(o.title) || 'Offre de la semaine';
 
     if($('#ficheDetails')){
-      $('#ficheDetails').textContent = safe(o.details) || 'Annonce préparée par RÉSEAU DIGIY. Le pro peut modifier les détails, prix, horaires et durée.';
+      $('#ficheDetails').textContent = safe(o.details) || 'Annonce validée par RÉSEAU DIGIY. Contact direct, fiche propre, publication qualifiée.';
     }
 
     if($('#fichePrice')) $('#fichePrice').textContent = safe(o.priceText) || 'Prix / remise à confirmer';
     if($('#ficheDates')) $('#ficheDates').textContent = o.endDate ? 'Valable jusqu’au ' + humanDate(o.endDate) : 'Durée à confirmer';
 
     if($('#ficheStatus')){
-      $('#ficheStatus').textContent = pay.status === 'regle'
-        ? 'Annonce qualifiée prête activation DIGIY'
-        : 'Annonce qualifiée en préparation';
+      $('#ficheStatus').textContent = 'Fiche validée DIGIY · visible public';
     }
 
     const img = $('#fichePhoto');
@@ -685,77 +934,31 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
 
     const p = getProfile();
     const o = getOffer();
+    const pay = getPayment();
     const cards = [];
 
-    if(safe(o.title) || safe(p.business)){
+    if(hasAdminApproval(p, o, pay)){
       cards.push({
-        title: safe(o.title) || 'Annonce locale',
+        title: safe(o.title) || 'Annonce locale validée',
         biz: safe(p.business || p.name) || 'Pro DIGIY',
         zone: safe(o.zone || p.zone) || 'Saly',
-        details: safe(o.details) || 'Offre préparée localement.',
-        href: 'fiche.html?src=journal-local',
-        badge: 'Votre annonce'
+        details: safe(o.details) || 'Offre validée par ADMIN DIGIY.',
+        href: 'fiche.html?src=journal-valide',
+        badge: 'VALIDÉ DIGIY'
       });
     }
 
-    cards.push(
-      {
-        title: 'Astou Boutique',
-        biz: 'Commerce DIGIY',
-        zone: 'Saly / Mbour',
-        details: 'Vitrine commerce propre : produits, WhatsApp, lien direct.',
-        href: 'https://astou-boutique.digiylyfe.com/',
-        badge: 'COMMERCE'
-      },
-      {
-        title: 'Fiche Astou',
-        biz: 'MON COMMERCE',
-        zone: 'Saly',
-        details: 'Fiche avec QR, contact, liens utiles et présence propre.',
-        href: 'https://mon-commerce.digiylyfe.com/fiche-astou.html',
-        badge: 'FICHE'
-      },
-      {
-        title: 'Chez Baptiste',
-        biz: 'LOC DIGIY',
-        zone: 'Saly',
-        details: 'Fiche location finalisée : le client comprend et contacte directement.',
-        href: 'https://part-chez-baptiste.digiylyfe.com/',
-        badge: 'LOC'
-      },
-      {
-        title: 'Driver Baptiste',
-        biz: 'DRIVER DIGIY',
-        zone: 'Petite Côte',
-        details: 'Fiche chauffeur avec QR, WhatsApp direct et contact propre.',
-        href: 'https://digiy-driver-part-bapt.digiylyfe.com/',
-        badge: 'DRIVER'
-      },
-      {
-        title: 'Fiche RESA',
-        biz: 'RESA DIGIY',
-        zone: 'Accueil / réservation',
-        details: 'Le client voit le lieu, puis peut envoyer une demande propre.',
-        href: 'https://resa-table-resto.digiylyfe.com/fiche.html?slug=resa-221771342889',
-        badge: 'RESA'
-      },
-      {
-        title: 'Sortie pêche Petite Côte',
-        biz: 'EXPLORE DIGIY',
-        zone: 'Petite Côte',
-        details: 'Une activité locale devient une fiche claire et partageable.',
-        href: 'https://explore.digiylyfe.com/fiche.html?slug=sortie-peche-petite-cote',
-        badge: 'EXPLORE'
-      },
-      {
-        title: 'Savons maison & beurre de karité',
-        biz: 'Produit local',
-        zone: 'Saly / Mbour',
-        details: 'Exemple d’offre produit à faire circuler dans le réseau humain.',
-        href: 'fiche.html?src=demo-produit',
-        badge: 'Produit local'
-      }
-    );
+    if(!cards.length){
+      grid.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <span class="tag">En attente</span>
+          <h3>Aucune publication validée pour le moment</h3>
+          <p>Les fiches et annonces déposées restent invisibles ici tant que ADMIN DIGIY n’a pas validé le pro, l’offre et le règlement.</p>
+          <a class="btn main" href="inscription.html">👤 Demander une publication</a>
+        </div>
+      `;
+      return;
+    }
 
     grid.innerHTML = cards.map(c => {
       return `<a class="offer-card" href="${c.href}">
@@ -778,7 +981,8 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
       box.value = JSON.stringify({
         profile: p,
         offer: o,
-        payment: pay
+        payment: pay,
+        adminRequests: getAdminRequests()
       }, null, 2);
     }
 
@@ -831,9 +1035,14 @@ Rappel : publication qualifiée, preuve à vérifier avant activation.`;
     getProfile,
     getOffer,
     getPayment,
+    getAdminRequests,
     saveProfile,
     saveOffer,
     savePayment,
+    hasAdminApproval,
+    buildAdminValidationMessage,
+    queueAdminRequest,
+    renderAdminBox,
     buildOfferMessage,
     buildFamilyMessage,
     buildGroupMessage,
