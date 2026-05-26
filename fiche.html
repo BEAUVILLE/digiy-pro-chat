@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>RÉSEAU DIGIY — Fiche</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="description" content="RÉSEAU DIGIY — Fiche publique validée par DIGIY : visible seulement après contrôle, règlement et feu vert de publication." />
   <meta name="theme-color" content="#00853f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +19,13 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+            <p>CLUB PRIVÉ · fiche validée · apparition après feu vert DIGIY</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Accès ouvert</span>
-          <span class="chip-mini">💳 Pas d’abonnement</span>
-          <span class="chip-mini">📅 7j · 15j · 30j</span>
+          <span class="chip-mini green">✅ Validation DIGIY</span>
+          <span class="chip-mini">🔒 Pas d’apparition automatique</span>
+          <span class="chip-mini">📅 Visible après feu vert</span>
         </div>
       </header>
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
@@ -40,11 +40,21 @@
       </nav>
       
 <section class="hero">
-  <div class="kicker">Fiche pro + projecteur semaine</div>
-  <h2>La fiche est la maison. <span>L’annonce est la lumière.</span></h2>
-  <p class="lead">Cette page représente la fiche partageable. En production, elle peut être connectée à la vraie fiche pro déjà présente dans DIGIY.</p>
+  <div class="kicker">Fiche pro validée</div>
+  <h2>La fiche est la maison. <span>DIGIY donne le feu vert.</span></h2>
+  <p class="lead">Cette page publique ne doit montrer une fiche que si le professionnel, le règlement et l’annonce ont été validés par DIGIY. Avant validation, la fiche reste en attente.</p>
 </section>
-<section class="panel fiche-hero">
+<section class="panel" id="validationGate" style="display:none;border-color:rgba(246,196,83,.42);background:rgba(246,196,83,.10)">
+  <h3>🔒 Fiche en attente <span>de validation DIGIY</span></h3>
+  <p class="small">Cette fiche existe peut-être en brouillon, mais elle n’est pas encore publique. DIGIY doit vérifier le pro, le paiement, le téléphone, la qualité de l’offre et la durée de visibilité avant apparition.</p>
+  <div class="btnrow">
+    <a class="btn main" href="inscription.html">👤 Retour inscription</a>
+    <a class="btn green" href="paiement.html">💳 Règlement Wave</a>
+    <a class="btn" href="journal.html">📰 Voir les offres validées</a>
+  </div>
+</section>
+
+<section class="panel fiche-hero" id="publicFichePanel">
   <div>
     <div class="kicker" id="ficheStatus">Annonce en préparation</div>
     <h3 id="ficheTitle">Offre de la semaine</h3>
@@ -70,7 +80,68 @@
     <button class="btn" type="button" data-copy="sms" data-label="sms passerelle">✉️ Copier SMS passerelle</button>
   </div>
 </section>
-<script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initFichePage());</script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  RESEAU.initFichePage();
+
+  function isApprovedFiche(){
+    const q = new URLSearchParams(location.search);
+    const status = String(q.get('status') || q.get('validation') || '').toLowerCase();
+    const src = String(q.get('src') || '').toLowerCase();
+
+    // Le journal lit déjà une vue active/validée : on autorise ses liens.
+    if(src === 'journal-active') return true;
+
+    // En prod, l'idéal est une URL générée par ADMIN après validation.
+    if(q.get('validated') === '1' || status === 'approved' || status === 'active' || status === 'validated') return true;
+
+    try{
+      const raw = localStorage.getItem('digiy_reseau_validation_state') || localStorage.getItem('digiy_reseau_admin_approved');
+      if(raw){
+        const st = JSON.parse(raw);
+        if(st && (st.is_validated === true || st.is_published === true || st.status === 'approved' || st.status === 'active')) return true;
+      }
+    }catch(_){}
+
+    return false;
+  }
+
+  function lockFiche(){
+    const gate = document.getElementById('validationGate');
+    const panel = document.getElementById('publicFichePanel');
+    if(gate) gate.style.display = 'block';
+
+    const setText = (id, text) => { const el = document.getElementById(id); if(el) el.textContent = text; };
+    setText('ficheStatus','🔒 En attente validation DIGIY');
+    setText('ficheTitle','Fiche non publique pour le moment');
+    setText('ficheBusiness','Publication en contrôle');
+    setText('ficheMetier','Validation requise');
+    setText('ficheZone','RÉSEAU DIGIY');
+    setText('ficheDetails','La fiche est préparée, mais elle n’apparaît pas encore au public. Elle sera visible seulement après contrôle DIGIY et règlement validé.');
+    setText('fichePrice','En attente');
+    setText('ficheDates','Publication bloquée avant feu vert');
+    setText('fichePhone','Masqué avant validation');
+
+    ['ficheWa','ficheTel','ficheSms','ficheMaps'].forEach(id=>{
+      const a = document.getElementById(id);
+      if(a){
+        a.removeAttribute('href');
+        a.setAttribute('aria-disabled','true');
+        a.style.opacity = '.55';
+        a.style.pointerEvents = 'none';
+      }
+    });
+
+    const photo = document.getElementById('fichePhoto');
+    if(photo) photo.hidden = true;
+
+    if(panel) panel.setAttribute('data-validation','pending');
+  }
+
+  setTimeout(()=>{ if(!isApprovedFiche()) lockFiche(); }, 80);
+  setTimeout(()=>{ if(!isApprovedFiche()) lockFiche(); }, 420);
+});
+</script>
 
       <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
     </div>
@@ -79,3 +150,4 @@
   
 </body>
 </html>
+
