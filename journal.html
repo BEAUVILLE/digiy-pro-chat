@@ -43,11 +43,11 @@
 <section class="hero">
   <div class="kicker">Journal posé</div>
   <h2>Les annonces qualifiées ne tombent pas dans le bruit : <span>elles restent visibles.</span></h2>
-  <p class="lead">Un journal public pour montrer les offres validées : chambre, retour AIBD, produit maison, service, activité, boutique. Le public voit, partage et contacte ; la publication reste qualifiée.</p>
+  <p class="lead">Un journal public pour montrer seulement les offres validées par DIGIY : chambre, retour AIBD, produit maison, service, activité, boutique. Le public voit, partage et contacte ; les brouillons restent invisibles.</p>
 </section>
 <section class="panel">
   <h3>Offres validées <span>à faire circuler</span></h3>
-  <p>Le journal lit les publications actives : <strong>status active</strong>, date d’expiration non dépassée, puis affiche le titre, le métier, la zone, la description et la fiche liée.</p>
+  <p>Le journal lit uniquement les publications validées : <strong>status active</strong>, validation DIGIY, date d’expiration non dépassée, puis affiche le titre, le métier, la zone, la description et la fiche liée.</p>
   <div id="journalGrid" class="grid" style="padding:0;margin-top:14px"></div>
 </section>
 <section class="panel">
@@ -142,6 +142,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     return String(row.cta_label || "Voir la fiche").trim();
   }
 
+  function isRowValidated(row){
+    const status = String(row.status || row.publication_status || row.activation_status || row.state || "").toLowerCase();
+    const bad = ["pending","pending_validation","draft","brouillon","unapproved","rejected","inactive","expired"];
+    if(bad.includes(status)) return false;
+    if(row.is_validated === false || row.validated === false) return false;
+    if(row.is_published === false || row.published === false) return false;
+    return true;
+  }
+
   function renderActive(rows){
     if(!grid) return;
 
@@ -150,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="card" style="grid-column:1/-1">
           <span class="tag">En attente</span>
           <h3>Aucune publication active pour le moment</h3>
-          <p>ADMIN valide les règlements, Supabase active les durées, puis le journal affiche seulement les publications encore valides.</p>
+          <p>DIGIY valide les règlements, contrôle les fiches, active les durées, puis le journal affiche seulement les publications encore valides.</p>
           <a class="btn main" href="inscription.html">👤 Demander une publication</a>
         </div>
       `;
@@ -215,7 +224,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return false;
       }
 
-      renderActive(Array.isArray(data) ? data : []);
+      renderActive((Array.isArray(data) ? data : []).filter(isRowValidated));
       return true;
     }catch(e){
       console.warn("RÉSEAU DIGIY journal fallback:", e);
@@ -225,8 +234,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const loaded = await loadActiveFromSupabase();
 
-  if(!loaded && window.RESEAU){
-    RESEAU.initJournalPage();
+  if(!loaded){
+    renderActive([]);
   }
 
   if(family && window.RESEAU){
@@ -243,5 +252,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   
 </body>
 </html>
+
+
+
 
 
