@@ -1,2 +1,59 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RÉSEAU vers PAY</title><meta name="robots" content="noindex,nofollow"><style>body{margin:0;min-height:100vh;font-family:system-ui;background:#06130d;color:white;padding:18px;display:grid;place-items:center;font-weight:900}.card{width:min(680px,100%);border:1px solid rgba(255,255,255,.2);border-radius:28px;background:rgba(255,255,255,.09);padding:20px}.k{color:#fff3cf;font-size:12px;font-weight:1000;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(42px,12vw,70px);line-height:.9;margin:10px 0;font-weight:1000}p{line-height:1.4;color:rgba(255,255,255,.85)}textarea,input{width:100%;border-radius:18px;border:1px solid rgba(246,196,83,.38);background:#06130d;color:white;padding:13px;font:900 16px system-ui;margin-top:10px}label{display:block;margin-top:10px;color:#fff3cf;font-weight:1000}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn,a.btn{min-height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:rgba(255,255,255,.1);color:white;text-decoration:none;font-weight:1000;margin-top:10px}.go{background:#f6c453;color:#06130d}.gold{background:#c9922d;color:#111}@media(max-width:560px){.grid{grid-template-columns:1fr}}</style></head><body><main class="card"><div class="k">RÉSEAU DIGIY → PAY</div><h1>Visibilité réelle.</h1><p>RÉSEAU garde fiche, annonce, durée et visibilité. PAY garde seulement le règlement réellement reçu.</p><label>Montant reçu</label><input id="amount" inputmode="numeric" value="15000"><label>Mode</label><input id="mode" value="Wave"><label>Offre / visibilité</label><input id="offer" value="Annonce RÉSEAU 7 jours"><label>Phrase PAY</label><textarea id="phrase">visibilité RÉSEAU 15000 Wave</textarea><div class="grid"><button class="btn gold" id="copy" type="button">Copier phrase PAY</button><a class="btn go" href="https://pro-pay.digiylyfe.com/action.html">Ouvrir PAY</a></div><a class="btn" href="./action.html">Retour DIGIY GO RÉSEAU</a><p>Validation humaine obligatoire dans PAY. Rien n'est publié ni confirme automatiquement.</p></main><script>(function(){function $(id){return document.getElementById(id)}function clean(n){return String(n||'').replace(/[^0-9]/g,'')||'0'}function load(){try{var d=JSON.parse(localStorage.getItem('DIGIY_RESEAU_GO_LATEST')||'null');if(!d)return;if(d.amount)$('amount').value=d.amount;if(d.mode)$('mode').value=d.mode;if(d.offer)$('offer').value=d.offer}catch(e){}}function refresh(){var a=clean($('amount').value),m=$('mode').value||'Cash',o=$('offer').value||'Annonce RÉSEAU';$('phrase').value='visibilité RÉSEAU '+a+' '+m+' - '+o}['amount','mode','offer'].forEach(function(id){$(id).addEventListener('input',refresh)});$('copy').onclick=function(){refresh();if(navigator.clipboard)navigator.clipboard.writeText($('phrase').value)};load();refresh();})();</script></body></html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RÉSEAU DIGIY vers PAY</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#00853f">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(720px 380px at 8% -10%,rgba(246,196,83,.28),transparent 62%),linear-gradient(180deg,#00853f,#062612 60%,#03130c);color:white;padding:12px;font-weight:900}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{width:min(860px,100%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.top b{color:#fff3cf}.top a{font-size:12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 10px;background:rgba(255,255,255,.08)}.card{border:1px solid rgba(246,196,83,.36);border-radius:26px;background:rgba(255,255,255,.09);padding:16px;box-shadow:0 18px 44px rgba(0,0,0,.24)}.k{color:#fff3cf;font-size:12px;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(40px,11vw,76px);line-height:.88;margin:8px 0 10px;font-weight:1000;letter-spacing:-.06em}.lead{line-height:1.4;color:rgba(255,255,255,.86);margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}label{display:block;margin-top:10px;color:#fff3cf;font-weight:1000;font-size:12px;text-transform:uppercase;letter-spacing:.08em}textarea,input,select{width:100%;border-radius:16px;border:1px solid rgba(246,196,83,.35);background:#062612;color:white;padding:12px;font-weight:900;margin-top:5px}textarea{min-height:96px;resize:vertical}.btn{min-height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;text-align:center;padding:9px;background:rgba(255,255,255,.1);color:white;font-weight:1000;margin-top:10px;cursor:pointer}.go{background:linear-gradient(135deg,#00a651,#f6c453);color:#06130e}.gold{background:#f6c453;color:#111}.status{margin-top:10px;padding:10px;border-radius:16px;background:rgba(0,0,0,.18);border:1px dashed rgba(246,196,83,.25);color:#dfffe9;line-height:1.35;font-size:13px}.notice{margin-top:10px;padding:10px;border-radius:16px;background:rgba(246,196,83,.12);border:1px solid rgba(246,196,83,.25);color:#fff3cf;line-height:1.35;font-size:13px}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top"><b>🌟 RÉSEAU DIGIY → PAY</b><a href="./paiement.html">← Règlement</a></div>
+  <section class="card">
+    <div class="k">Club privé · validation ADMIN · argent réel</div>
+    <h1>Fiche gardée.<br>PAY encaisse.</h1>
+    <p class="lead">RÉSEAU DIGIY garde la fiche, l’annonce, le QR, le lien partageable et la validation ADMIN. PAY reçoit seulement le règlement réel : FIRST, visibilité, dépense ou reste à recevoir.</p>
+    <div class="grid">
+      <div><label>Type</label><select id="type"><option value="income">Règlement visibilité</option><option value="income_first">Mise en classe FIRST</option><option value="expense">Dépense RÉSEAU</option><option value="receivable">À recevoir</option></select></div>
+      <div><label>Montant</label><input id="amount" inputmode="numeric" value="150000"></div>
+    </div>
+    <div class="grid">
+      <div><label>Canal</label><select id="mode"><option>Wave</option><option>Cash</option><option>Orange Money</option><option>Carte</option></select></div>
+      <div><label>Client / pro</label><input id="who" value="Client RÉSEAU DIGIY"></div>
+    </div>
+    <label>Formule</label><input id="offer" value="Mise en classe FIRST · RÉSEAU DIGIY">
+    <label>Note PAY</label><textarea id="phrase">Mise en classe FIRST RÉSEAU DIGIY 150000 Wave — fiche propre, QR, lien partageable, messages prêts et mise en lumière.</textarea>
+    <div class="grid"><button class="btn gold" id="copy" type="button">📋 Copier brouillon</button><button class="btn go" id="send" type="button">💳 Valider vers PAY</button></div>
+    <div class="notice">La validation ADMIN reste obligatoire. PAY inscrit seulement l’argent ; RÉSEAU décide de l’apparition publique après contrôle.</div>
+    <div class="status" id="status">Prêt. Rien n’est publié automatiquement.</div>
+  </section>
+</main>
+<script>
+(function(){
+'use strict';
+const PAY_URL='https://pro-pay.digiylyfe.com/module-bridge.html';
+const $=id=>document.getElementById(id);
+const STORE={profile:'DIGIY_RESEAU_PROFILE_V1',offer:'DIGIY_RESEAU_OFFER_V1',payment:'DIGIY_RESEAU_PAYMENT_V1'};
+const PLANS={week:{amount:15000,label:'7 jours · visibilité RÉSEAU DIGIY'},quinzaine:{amount:25000,label:'15 jours · visibilité RÉSEAU DIGIY'},month:{amount:45000,label:'30 jours · visibilité RÉSEAU DIGIY'},first:{amount:150000,label:'Mise en classe FIRST · RÉSEAU DIGIY'}};
+function read(k,f){try{return JSON.parse(localStorage.getItem(k)||'null')||f}catch(e){return f}}
+function clean(n){return String(n||'').replace(/[^0-9]/g,'')||'0'}
+function set(m){$('status').textContent=m}
+function load(){const p=read(STORE.profile,{}),o=read(STORE.offer,{}),pay=read(STORE.payment,{});const planCode=pay.plan||o.plan||'first';const plan=PLANS[planCode]||PLANS.first;$('amount').value=pay.amount||plan.amount;$('mode').value=pay.method||'Wave';$('who').value=p.business||p.name||'Client RÉSEAU DIGIY';$('offer').value=(plan.label||'Règlement RÉSEAU DIGIY')+(o.title?' — '+o.title:'');$('type').value=planCode==='first'?'income_first':'income';refresh()}
+function typeReal(){const t=$('type').value;if(t==='expense')return'expense';if(t==='receivable')return'receivable';return'income'}
+function typeLabel(){const t=$('type').value;if(t==='expense')return'Dépense';if(t==='receivable')return'À recevoir';if(t==='income_first')return'FIRST';return'Recette'}
+function category(){const t=$('type').value;if(t==='expense')return'Dépense RÉSEAU DIGIY';if(t==='receivable')return'À recevoir RÉSEAU DIGIY';if(t==='income_first')return'RÉSEAU DIGIY — Mise en classe FIRST';return'RÉSEAU DIGIY — Visibilité qualifiée'}
+function refresh(){const a=clean($('amount').value),m=$('mode').value||'Wave',off=$('offer').value||'Règlement RÉSEAU DIGIY';const head=$('type').value==='expense'?'dépense RÉSEAU DIGIY':$('type').value==='receivable'?'à recevoir RÉSEAU DIGIY':$('type').value==='income_first'?'Mise en classe FIRST RÉSEAU DIGIY':'règlement visibilité RÉSEAU DIGIY';$('phrase').value=head+' '+a+' '+m+' — '+off;return{a,m,off}}
+function payload(){const r=refresh();return{source:'RESEAU_DIGIY',module:'RESEAU_DIGIY',target:'PAY',type:typeReal(),typeLabel:typeLabel(),amount:Number(r.a)||0,currency:'XOF',channel:r.m,who:$('who').value||'Client RÉSEAU DIGIY',category:category(),note:$('phrase').value,proofRef:'RESEAU-PAY-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),status:'draft',requiresHumanValidation:true,createdAt:new Date().toISOString(),safety:{reseauKeepsFiche:true,adminValidationRequired:true,payKeepsFinalMoney:true,noAutoPayment:true,noAutoPublish:true,humanValidationRequired:true}}}
+function urlFromPayload(p){const q=new URLSearchParams();q.set('from','RESEAU_DIGIY');q.set('type',p.type);q.set('amount',String(Math.round(p.amount||0)));q.set('channel',p.channel);q.set('who',p.who);q.set('category',p.category);q.set('note',p.note);q.set('proofRef',p.proofRef);return PAY_URL+'?'+q.toString()}
+['type','amount','mode','who','offer'].forEach(id=>$(id).addEventListener('input',refresh));
+$('copy').onclick=async()=>{refresh();try{await navigator.clipboard.writeText($('phrase').value);set('Brouillon copié.')}catch(e){prompt('Copie le brouillon :',$('phrase').value)}};
+$('send').onclick=()=>{const p=payload();if(!p.amount){set('Montant manquant.');return}try{localStorage.setItem('DIGIY_RESEAU_PAY_BRIDGE',JSON.stringify(p));localStorage.setItem('DIGIY_PAY_PENDING_MOVEMENT',JSON.stringify(p));localStorage.setItem('DIGIY_RESEAU_LATEST_ACTION',JSON.stringify(p))}catch(e){}set('Ouverture PAY…');location.href=urlFromPayload(p)};
+load();
+})();
+</script>
+</body>
+</html>
