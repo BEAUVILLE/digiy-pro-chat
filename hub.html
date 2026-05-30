@@ -1,30 +1,920 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DIGIY GO RÉSEAU</title><meta name="robots" content="noindex,nofollow">
-  <!-- DIGIY GUARD SOFT — RÉSEAU PRO -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>RÉSEAU DIGIY — HUB public</title>
+  <meta name="description" content="RÉSEAU DIGIY — HUB public : offres qualifiées, fiches, dépôt pro cadré, contact direct." />
+  <meta name="theme-color" content="#06130d" />
+  <meta name="robots" content="index,follow" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    :root{
+      --green:#06130d;
+      --green2:#0b2418;
+      --green3:#123622;
+      --gold:#f6c453;
+      --gold2:#c9922d;
+      --cream:#fff3cf;
+      --white:#f8fafc;
+      --muted:rgba(248,250,252,.78);
+      --stroke:rgba(255,255,255,.14);
+      --strokeGold:rgba(246,196,83,.35);
+      --fontA:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    }
+    html{background:var(--green);scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 14% -8%,rgba(246,196,83,.22),transparent 36%),
+        radial-gradient(circle at 92% 12%,rgba(0,166,81,.22),transparent 34%),
+        linear-gradient(180deg,#06130d 0%,#030705 100%);
+      color:var(--white);
+      font-family:var(--fontA);
+      font-weight:850;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+
+    .app{width:100%;max-width:980px;margin:0 auto;padding:12px}
+    .shell{display:grid;gap:14px}
+
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px;
+      border:1px solid var(--strokeGold);
+      border-radius:24px;
+      background:linear-gradient(135deg,rgba(246,196,83,.16),rgba(0,166,81,.10));
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{
+      width:54px;height:54px;min-width:54px;
+      border-radius:18px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      font-size:28px;font-weight:1000;
+      box-shadow:0 12px 30px rgba(0,0,0,.22);
+    }
+    .brand h1{
+      font-size:clamp(25px,7vw,48px);
+      line-height:.92;
+      letter-spacing:-.06em;
+      font-weight:1000;
+      color:#fff;
+    }
+    .brand p{
+      margin-top:5px;
+      font-size:clamp(13px,3.5vw,17px);
+      line-height:1.18;
+      color:var(--muted);
+      font-weight:950;
+    }
+    .chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+    .chip-mini{
+      min-height:38px;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.08);
+      color:var(--cream);
+      font-size:12px;
+      font-weight:1000;
+      white-space:nowrap;
+    }
+    .chip-mini.green{background:rgba(0,166,81,.18);border-color:rgba(0,166,81,.35)}
+
+    .nav{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:9px;
+    }
+    .nav a,.routeLine a,.btn{
+      min-height:46px;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:14px;
+      font-weight:1000;
+      line-height:1.08;
+    }
+    .nav a.gold,.routeLine a.goldLink,.btn.gold{
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      border-color:rgba(246,196,83,.62);
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
+    }
+
+    .reader{
+      padding:16px;
+      border-radius:24px;
+      border:1px solid var(--strokeGold);
+      background:linear-gradient(135deg,rgba(246,196,83,.14),rgba(0,166,81,.11));
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+    }
+    .reader strong{
+      display:block;
+      color:var(--cream);
+      font-size:clamp(24px,6vw,34px);
+      line-height:1;
+      font-weight:1000;
+      letter-spacing:-.04em;
+    }
+    .reader span{
+      display:block;margin-top:7px;
+      color:var(--muted);
+      font-size:clamp(15px,4vw,18px);
+      line-height:1.25;
+      font-weight:950;
+    }
+    .reader-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .reader button{
+      min-height:50px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.09);
+      color:#fff;
+      padding:0 14px;
+      cursor:pointer;
+      font-weight:1000;
+    }
+    .reader button.main{background:linear-gradient(135deg,var(--gold),#00a651);color:#06130d;border-color:rgba(246,196,83,.62)}
+    .reader-status{grid-column:1/-1;color:var(--cream);font-size:13px;font-weight:1000}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      border:1px solid var(--strokeGold);
+      padding:22px;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.64)),
+        url("https://digiylyfe.net/wp-content/uploads/2026/05/ChatGPT-Image-25-mai-2026-01_35_26.png") center top/cover no-repeat;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 20px 55px rgba(0,0,0,.28);
+    }
+    .kicker{
+      color:var(--cream);
+      font-size:13px;
+      font-weight:1000;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .hero h2{
+      max-width:760px;
+      font-size:clamp(42px,10vw,76px);
+      line-height:.88;
+      letter-spacing:-.07em;
+      font-weight:1000;
+      color:#fff;
+      text-shadow:0 6px 22px rgba(0,0,0,.35);
+    }
+    .hero h2 span{color:var(--gold)}
+    .lead{
+      margin-top:13px;
+      max-width:760px;
+      color:rgba(248,250,252,.92);
+      font-size:clamp(18px,4.4vw,24px);
+      line-height:1.25;
+      font-weight:950;
+      text-shadow:0 4px 16px rgba(0,0,0,.38);
+    }
+    .routeLine{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+
+    .publicBand,.panel,.examplesNote{
+      padding:18px;
+      border-radius:24px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(135deg,rgba(0,166,81,.16),rgba(246,196,83,.10));
+      box-shadow:0 16px 40px rgba(0,0,0,.16);
+    }
+    .publicBand h3,.panel h3{
+      font-size:clamp(25px,6vw,40px);
+      line-height:.98;
+      letter-spacing:-.045em;
+      font-weight:1000;
+      color:#fff;
+      margin-bottom:10px;
+    }
+    .publicBand h3 span,.panel h3 span{color:var(--gold)}
+    .publicBand p,.panel p,.examplesNote{
+      font-size:clamp(16px,4vw,20px);
+      line-height:1.28;
+      color:var(--muted);
+      font-weight:950;
+    }
+    .miniSteps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    .miniStep{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.16;
+      font-weight:950;
+    }
+    .miniStep b{
+      display:block;
+      color:var(--cream);
+      font-size:18px;
+      margin-bottom:5px;
+      line-height:1;
+    }
+
+    .sectionLabel{
+      color:#fff0a8;
+      font-size:14px;
+      font-weight:1000;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin:4px 4px -4px;
+    }
+
+    .grid,.examplesGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+    .tile,.exampleCard{
+      position:relative;
+      overflow:hidden;
+      min-height:168px;
+      padding:17px;
+      border-radius:23px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.065));
+      box-shadow:0 16px 40px rgba(0,0,0,.16);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .tile.gold,.exampleCard.gold{border-color:rgba(246,196,83,.46);background:linear-gradient(180deg,rgba(246,196,83,.20),rgba(255,255,255,.08))}
+    .tile.green,.exampleCard.green{border-color:rgba(0,166,81,.46);background:linear-gradient(180deg,rgba(0,166,81,.20),rgba(255,255,255,.08))}
+    .icon,.exampleIcon{font-size:34px;line-height:1}
+    .tile strong,.exampleCard h3{
+      font-size:clamp(22px,5.7vw,32px);
+      line-height:.96;
+      letter-spacing:-.045em;
+      font-weight:1000;
+      color:#fff;
+    }
+    .tile p,.exampleCard p{
+      color:var(--muted);
+      font-size:clamp(14px,3.7vw,17px);
+      line-height:1.2;
+      font-weight:950;
+    }
+    .exampleTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .exampleIcon{
+      width:54px;height:54px;border-radius:18px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.10);
+      border:1px solid var(--stroke);
+    }
+    .exampleBadge{
+      min-height:30px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.09);
+      border:1px solid var(--stroke);
+      color:var(--cream);
+      font-size:11px;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .exampleMeta{display:flex;flex-wrap:wrap;gap:7px}
+    .exampleMeta span{
+      min-height:30px;
+      display:inline-flex;align-items:center;
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--stroke);
+      font-size:12px;
+      line-height:1;
+      color:rgba(248,250,252,.86);
+      font-weight:1000;
+    }
+    .exampleAction{
+      min-height:44px;
+      display:flex;align-items:center;justify-content:center;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      font-size:14px;
+      font-weight:1000;
+    }
+    .three{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin:16px 0;
+    }
+    .price-card{
+      padding:16px;
+      border-radius:20px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.08);
+    }
+    .price-card span{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.16;
+      font-weight:1000;
+    }
+    .price-card b{
+      display:block;
+      color:var(--gold);
+      font-size:clamp(34px,8vw,56px);
+      line-height:.9;
+      letter-spacing:-.065em;
+      font-weight:1000;
+      margin:7px 0;
+    }
+    .footer{
+      padding:18px;
+      border-radius:24px 24px 0 0;
+      background:#020504;
+      border:1px solid rgba(246,196,83,.16);
+      color:rgba(248,250,252,.76);
+      font-size:14px;
+      line-height:1.3;
+      font-weight:950;
+      text-align:center;
+    }
+
+    @media(min-width:920px){
+      .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .examplesGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      .tile{min-height:190px}
+    }
+    @media(max-width:720px){
+      .top{display:grid}
+      .chips{justify-content:flex-start}
+      .nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .reader{grid-template-columns:1fr}
+      .reader-actions{justify-content:stretch}
+      .reader button{flex:1}
+      .hero{min-height:520px;padding:18px}
+      .miniSteps,.three{grid-template-columns:1fr}
+      .grid,.examplesGrid{grid-template-columns:1fr}
+    }
+    @media(max-width:390px){
+      .app{padding:9px}
+      .brand h1{font-size:28px}
+      .brand p{font-size:13px}
+      .nav a{font-size:13px}
+      .hero h2{font-size:38px}
+      .tile,.exampleCard{min-height:150px;padding:15px}
+    }
+
+    /* ── DIAPORAMA NATIF ── */
+    .diapo-shell{
+      border-radius:24px;overflow:hidden;
+      border:1px solid var(--strokeGold);
+      background:linear-gradient(135deg,rgba(246,196,83,.10),rgba(0,166,81,.06));
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+    }
+    .diapo-head{
+      display:flex;flex-direction:column;gap:3px;
+      padding:16px 18px 12px;
+    }
+    .diapo-kicker{
+      font-size:9px;letter-spacing:.5em;text-transform:uppercase;
+      color:var(--gold2);font-weight:1000;
+    }
+    .diapo-titre{
+      font-size:clamp(22px,6vw,34px);font-weight:1000;
+      letter-spacing:-.04em;line-height:1;color:#fff;
+    }
+    .diapo-sub{
+      font-size:12px;font-weight:850;
+      color:rgba(248,250,252,.6);
+    }
+    .diapo-wrap{
+      position:relative;overflow:hidden;
+      height:clamp(200px,62vw,380px);
+    }
+    .diapo-track{
+      display:flex;height:100%;
+      transition:transform .5s cubic-bezier(.4,0,.2,1);
+      will-change:transform;
+    }
+    .diapo-slide{
+      flex:0 0 100%;position:relative;height:100%;
+    }
+    .diapo-slide img{
+      width:100%;height:100%;object-fit:contain;object-position:center;
+      display:block;background:#060e09;filter:brightness(.9);
+    }
+    .diapo-cap{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(to top,rgba(6,19,13,.92) 0%,transparent 100%);
+      padding:32px 16px 12px;
+    }
+    .diapo-cap strong{
+      display:block;font-size:16px;font-weight:1000;
+      color:var(--gold);margin-bottom:2px;
+    }
+    .diapo-cap span{
+      font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+      color:rgba(246,196,83,.55);font-weight:900;
+    }
+    .diapo-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(6,19,13,.6);
+      border:1px solid rgba(246,196,83,.35);
+      color:var(--gold);
+      width:32px;height:32px;border-radius:50%;
+      font-size:18px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      padding:0;line-height:1;
+    }
+    .diapo-prev{left:8px}
+    .diapo-next{right:8px}
+    .diapo-dots{
+      display:flex;justify-content:center;gap:6px;
+      padding:8px 0 10px;background:rgba(6,19,13,.4);
+    }
+    .ddot{
+      width:6px;height:6px;border-radius:50%;
+      background:rgba(246,196,83,.25);
+      border:none;cursor:pointer;padding:0;
+      transition:all .3s;
+    }
+    .ddot.on{width:20px;border-radius:3px;background:var(--gold);}
+    .diapo-stats{
+      display:flex;align-items:center;gap:0;
+      border-top:1px solid rgba(246,196,83,.15);
+    }
+    .diapo-stat{
+      flex:1;text-align:center;padding:12px 6px;
+      border-right:1px solid rgba(246,196,83,.15);
+    }
+    .diapo-stat b{
+      display:block;font-size:22px;font-weight:1000;
+      color:var(--gold);line-height:1;
+    }
+    .diapo-stat span{
+      font-size:8px;letter-spacing:.3em;text-transform:uppercase;
+      color:rgba(248,250,252,.4);font-weight:900;
+      margin-top:2px;display:block;
+    }
+    .diapo-cta{
+      flex-shrink:0;padding:0 16px;
+      font-size:11px;font-weight:1000;letter-spacing:.12em;
+      color:var(--gold);text-decoration:none;
+      white-space:nowrap;
+    }
+    .diapo-cta:hover{color:#fff}
+
+    /* ── FAB LECTEUR FLOTTANT ── */
+    .fab-reader{
+      position:fixed;
+      bottom:24px;right:20px;
+      z-index:999;
+      display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    }
+    .fab-tip{
+      background:rgba(6,19,13,.92);
+      border:1px solid rgba(246,196,83,.4);
+      border-radius:14px;
+      padding:8px 14px;
+      font-size:11px;font-weight:900;letter-spacing:.08em;
+      color:var(--cream);
+      max-width:220px;text-align:right;line-height:1.4;
+      opacity:0;pointer-events:none;
+      transform:translateY(6px);
+      transition:opacity .25s,transform .25s;
+      white-space:nowrap;
+    }
+    .fab-tip.show{opacity:1;transform:translateY(0)}
+    .fab-btns{display:flex;gap:8px;align-items:center}
+    .fab-btn{
+      width:52px;height:52px;border-radius:50%;
+      border:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;
+      box-shadow:0 6px 24px rgba(0,0,0,.35);
+      transition:transform .18s,box-shadow .18s;
+      flex-shrink:0;
+    }
+    .fab-btn:active{transform:scale(.92)}
+    .fab-play{
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      width:56px;height:56px;font-size:24px;
+    }
+    .fab-play.playing{
+      background:linear-gradient(135deg,#00a651,#006b3a);
+      color:#fff;
+    }
+    .fab-stop{
+      background:rgba(6,19,13,.85);
+      border:1px solid rgba(246,196,83,.35) !important;
+      color:var(--gold);
+      width:40px;height:40px;font-size:16px;
+      opacity:0;pointer-events:none;
+      transition:opacity .2s;
+    }
+    .fab-stop.show{opacity:1;pointer-events:auto}
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="hub.html" aria-label="Retour RÉSEAU DIGIY">
+          <div class="logo">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>Public visible · dépôt qualifié · lien partageable · contact direct</p>
+          </div>
+        </a>
+        <div class="chips">
+          <span class="chip-mini green">🌍 Public visible</span>
+          <span class="chip-mini">🔒 Dépôt qualifié</span>
+          <span class="chip-mini">🌟 FIRST 150 000</span>
+        </div>
+      </header>
+
+      <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
+        <a class="gold" href="hub.html">🏠 Accueil</a>
+        <a href="journal.html">📰 Offres</a>
+        <a href="fiche.html">🔗 Fiches</a>
+        <a href="annonce.html">📢 Déposer</a>
+        <a href="paiement.html">💳 Règlement</a>
+        <a href="assistant.html">🧠 Assistant</a>
+        <a href="inscription.html">👤 Pro</a>
+        <a href="session.html">🧰 Local</a>
+
+      </nav>
+
+      <!-- ═══ DIAPORAMA NATIF — RÉSEAU DIGIY ═══ -->
+      <div class="diapo-shell">
+
+        <!-- Header vitrine -->
+        <div class="diapo-head">
+          <span class="diapo-kicker">Vitrine · Terrain Digital</span>
+          <span class="diapo-titre">RÉSEAU DIGIY</span>
+          <span class="diapo-sub">12 métiers · 2 territoires · 0% commission</span>
+        </div>
+
+        <!-- Carousel -->
+        <div class="diapo-wrap" aria-label="Diaporama des professionnels">
+          <div class="diapo-track" id="dtrack">
+
+            <div class="diapo-slide">
+              <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU2.jpg"
+                   alt="Santé & Expertise" loading="lazy">
+              <div class="diapo-cap">
+                <strong>Docteur · Dentiste · Avocat</strong>
+                <span>Santé &amp; Expertise</span>
+              </div>
+            </div>
+
+            <div class="diapo-slide">
+              <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg"
+                   alt="Terrain & Commerce" loading="lazy">
+              <div class="diapo-cap">
+                <strong>Restaurant · Artisan · Boutique</strong>
+                <span>Terrain &amp; Commerce</span>
+              </div>
+            </div>
+
+            <div class="diapo-slide">
+              <img src="https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-4.jpg"
+                   alt="Bâtir & Investir" loading="lazy">
+              <div class="diapo-cap">
+                <strong>Immobilier · Construction</strong>
+                <span>Bâtir · Louer · Investir</span>
+              </div>
+            </div>
+
+          </div><!-- /dtrack -->
+
+          <button class="diapo-btn diapo-prev" id="dprev" aria-label="Précédent">&#8249;</button>
+          <button class="diapo-btn diapo-next" id="dnext" aria-label="Suivant">&#8250;</button>
+        </div><!-- /diapo-wrap -->
+
+        <!-- Points nav -->
+        <div class="diapo-dots" id="ddots" role="tablist">
+          <button class="ddot on" aria-label="Slide 1"></button>
+          <button class="ddot"    aria-label="Slide 2"></button>
+          <button class="ddot"    aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Stats inline -->
+        <div class="diapo-stats">
+          <div class="diapo-stat"><b>12</b><span>Métiers</span></div>
+          <div class="diapo-stat"><b>2</b><span>Territoires</span></div>
+          <div class="diapo-stat"><b>0%</b><span>Commission</span></div>
+          <a class="diapo-cta" href="affiche.html">Voir la vitrine →</a>
+        </div>
+
+      </div><!-- /diapo-shell -->
+
+
+      <section class="publicBand" aria-label="Comment ça marche">
+        <h3>Le bouche-à-oreille devient <span>cliquable.</span></h3>
+        <p>Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients et réseau humain font circuler.</p>
+        <div class="miniSteps">
+          <div class="miniStep"><b>1 · Voir</b>Le public trouve l’offre posée cette semaine.</div>
+          <div class="miniStep"><b>2 · Cliquer</b>Il ouvre la fiche, appelle, écrit ou partage.</div>
+          <div class="miniStep"><b>3 · Contacter</b>Le lien revient directement vers le pro.</div>
+        </div>
+      </section>
+
+      <div class="sectionLabel">Côté public</div>
+      <section class="grid">
+        <a class="tile gold" href="journal.html"><span class="icon">📰</span><strong>Voir les offres</strong><p>Promos, retours, produits, chambres, services et disponibilités visibles dans le journal.</p></a>
+        <a class="tile green" href="journal.html#produits"><span class="icon">🧼</span><strong>Produits locaux</strong><p>Savons, beauté, boutique, arrivages, textile, petites ventes du terrain.</p></a>
+        <a class="tile" href="journal.html#chauffeurs"><span class="icon">🚕</span><strong>Retours chauffeurs</strong><p>AIBD, Dakar, Saly, Mbour : opportunités à saisir et à partager.</p></a>
+        <a class="tile green" href="journal.html#locations"><span class="icon">🏠</span><strong>Locations</strong><p>Chambres, villas, séjours, offres posées avec contact direct.</p></a>
+        <a class="tile gold" href="journal.html#services"><span class="icon">🛠️</span><strong>Services dispo</strong><p>Artisans, beauté, repas, aide terrain, activité locale disponible.</p></a>
+        <a class="tile" href="fiche.html"><span class="icon">🔗</span><strong>Fiche du pro</strong><p>La maison claire du professionnel : offre, contact, lien, partage.</p></a>
+      </section>
+
+      <div class="sectionLabel">Preuves de finition DIGIY</div>
+      <section class="examplesGrid" aria-label="Exemples finalisés RÉSEAU DIGIY">
+        <a class="exampleCard gold" href="https://astou-boutique.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">🛍️</div><div class="exampleBadge">Commerce</div></div>
+          <h3>Astou Boutique</h3>
+          <p>Une boutique visible, propre, directe : produits, univers, WhatsApp, confiance.</p>
+          <div class="exampleMeta"><span>Vitrine</span><span>WhatsApp</span><span>Client direct</span></div>
+          <div class="exampleAction">Voir la vitrine</div>
+        </a>
+
+        <a class="exampleCard green" href="https://mon-commerce.digiylyfe.com/fiche-astou.html" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">🔗</div><div class="exampleBadge">Fiche pro</div></div>
+          <h3>Fiche Astou</h3>
+          <p>QR, contact, liens utiles, boutique, présence claire. Le pro garde son nom.</p>
+          <div class="exampleMeta"><span>QR</span><span>Fiche</span><span>Lien propre</span></div>
+          <div class="exampleAction">Voir la fiche</div>
+        </a>
+
+        <a class="exampleCard" href="https://part-chez-baptiste.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">🏠</div><div class="exampleBadge">Location</div></div>
+          <h3>Chez Baptiste</h3>
+          <p>Logement, infos utiles, contact direct, réservation simple.</p>
+          <div class="exampleMeta"><span>Saly</span><span>Direct proprio</span><span>0% commission</span></div>
+          <div class="exampleAction">Voir LOC</div>
+        </a>
+
+        <a class="exampleCard green" href="https://digiy-driver-part-bapt.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">🚕</div><div class="exampleBadge">Chauffeur</div></div>
+          <h3>Driver Baptiste</h3>
+          <p>Image, contact, QR, WhatsApp direct. Le client voit, clique et parle au chauffeur.</p>
+          <div class="exampleMeta"><span>QR</span><span>WhatsApp</span><span>Contact direct</span></div>
+          <div class="exampleAction">Voir DRIVER</div>
+        </a>
+
+        <a class="exampleCard gold" href="https://resa-table-resto.digiylyfe.com/fiche.html?slug=resa-221771342889" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">📅</div><div class="exampleBadge">Réservation</div></div>
+          <h3>Fiche RESA</h3>
+          <p>Le client voit le lieu, comprend l’accueil, puis envoie une demande propre.</p>
+          <div class="exampleMeta"><span>Fiche</span><span>Demande</span><span>Confirmation pro</span></div>
+          <div class="exampleAction">Voir RESA</div>
+        </a>
+
+        <a class="exampleCard" href="https://explore.digiylyfe.com/fiche.html?slug=sortie-peche-petite-cote" target="_blank" rel="noopener noreferrer">
+          <div class="exampleTop"><div class="exampleIcon">⛵</div><div class="exampleBadge">EXPLORE</div></div>
+          <h3>Sortie pêche</h3>
+          <p>Une activité locale devient une fiche claire : sortie, Petite Côte, contact.</p>
+          <div class="exampleMeta"><span>Activité</span><span>Petite Côte</span><span>À partager</span></div>
+          <div class="exampleAction">Voir EXPLORE</div>
+        </a>
+      </section>
+
+      <p class="examplesNote">
+        RÉSEAU DIGIY ne laisse pas deviner : une annonce peut mener vers une vraie fiche finie, une vitrine claire, une demande client ou un contact direct.
+      </p>
+
+      <section class="panel">
+        <h3>La promesse : <span>COM AU CLIC</span></h3>
+        <p><strong>RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible.</strong> Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler.</p>
+      </section>
+
+      <div class="sectionLabel">Côté pro</div>
+      <section class="grid">
+        <a class="tile green" href="action.html"><span class="icon">🎙️</span><strong>DIGIY GO</strong><p>Dis l'annonce. DIGIY prépare le brouillon métier, vocabulaire terrain.</p></a>
+        <a class="tile" href="pay-transition.html"><span class="icon">💳</span><strong>Visibilité → PAY</strong><p>Règlement réel vers PAY. RÉSEAU garde la fiche, PAY encaisse.</p></a>
+        <a class="tile green" href="annonce.html"><span class="icon">📢</span><strong>Je dépose</strong><p>Promo, retour AIBD, produit maison, chambre, service, activité. DIGIY prépare, le pro modifie.</p></a>
+        <a class="tile gold" href="inscription.html"><span class="icon">👤</span><strong>Je m’inscris</strong><p>Nom, métier, téléphone, zone. Déjà validé ou classe FIRST : la publication reste cadrée.</p></a>
+        <a class="tile" href="paiement.html"><span class="icon">💳</span><strong>Je règle</strong><p>7 jours · 15 jours · 30 jours. Prix clair, preuve WhatsApp, activation par DIGIY.</p></a>
+        <a class="tile green" href="assistant.html"><span class="icon">🧠</span><strong>Assistant</strong><p>Le pro parle ou écrit peu. DIGIY prépare un message modifiable, prêt à copier.</p></a>
+        <a class="tile gold" href="fiche.html"><span class="icon">🔗</span><strong>Ma fiche</strong><p>La fiche reste la maison du pro. L’annonce de la semaine est le projecteur.</p></a>
+        <a class="tile" href="session.html"><span class="icon">🧰</span><strong>Local</strong><p>Petit coffre terrain : données locales, contrôle, reprise propre si besoin.</p></a>
+      </section>
+
+      <section class="panel">
+        <h3>Visibilité noble : <span>club privé</span></h3>
+        <p>Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage.</p>
+        <div class="three">
+          <div class="price-card"><span>Pro validé</span><b>15 000</b><span>FCFA · 7 jours visibles</span></div>
+          <div class="price-card"><span>Pro validé</span><b>25 000</b><span>FCFA · 15 jours visibles</span></div>
+          <div class="price-card"><span>Pro validé</span><b>45 000</b><span>FCFA · 30 jours visibles</span></div>
+        </div>
+        <p><strong>Mise en classe FIRST · 150 000 FCFA · 1 mois</strong> pour les pros non encore validés : fiche propre, QR, lien partageable, messages prêts et mise en lumière.</p>
+      </section>
+
+      <footer class="footer">
+        DIGIYLYFE — HUB public. Publication qualifiée : pas de bruit, seulement des pros validés. Le terrain garde sa fiche, son client, son argent et sa relation.
+      </footer>
+    </div>
+  </div>
+
+  <!-- ── FAB LECTEUR FLOTTANT ── -->
+  <div class="fab-reader" id="fabReader">
+    <div class="fab-tip" id="fabTip">🎧 DIGIY parle</div>
+    <div class="fab-btns">
+      <button class="fab-btn fab-stop" id="fabStop" aria-label="Arrêter">⏹</button>
+      <button class="fab-btn fab-play" id="fabPlay" aria-label="Écouter DIGIY">🔊</button>
+    </div>
+  </div>
+
   <script>
+(function(){
+  'use strict';
+
+  var audioText = "RÉSEAU DIGIY installe la notoriété des professionnels qualifiés sur le territoire digital. Chaque jour, des professionnels qualifiés restent invisibles sur internet. RÉSEAU DIGIY change ça. Docteur. Dentiste. Avocat. Architecte. Entrepreneur. Boutique. Assurance. Restaurant. Immobilier. Chauffeur. Artisan. Commerce local. Une présence digitale simple, humaine, directe. RÉSEAU DIGIY, c'est aussi une vitrine publique et un club privé. Le public voit les offres, clique, partage et contacte directement. Mais publier reste qualifié : les annonces sont réservées aux pros DIGIY validés. On n'installe pas une petite annonce au hasard. On pose une présence noble sur la toile. Sans commission. Sans intermédiaire. Tu paies ton abonnement, tu gardes tout. Pour un pro déjà validé : sept jours, quinze jours ou trente jours de visibilité. Pour un pro non encore validé : la mise en classe FIRST. Cent cinquante mille francs CFA pour un mois. Fiche propre. Lien partageable. QR. Message prêt à circuler. Mise en lumière. La fiche rassure. L'annonce attire. Le contact transforme. Rejoins le réseau. Un téléphone suffit. Le terrain garde le client, le contact et l'argent. De Saly à Sarlat. DIGIYLYFE.";
+
+  function digiySpeakText(text){
+    return String(text || "")
+      .replace(/\bWave\b/g, "Wéïv")
+      .replace(/\bWhatsApp\b/g, "Ouatsap")
+      .replace(/\bDIGIYLYFE\b/g, "Di-ji-laïf");
+  }
+
+  var fabPlay = document.getElementById('fabPlay');
+  var fabStop = document.getElementById('fabStop');
+  var fabTip  = document.getElementById('fabTip');
+
+  function pickVoice(){
+    if(!window.speechSynthesis) return null;
+    var voices = speechSynthesis.getVoices();
+    return voices.find(function(v){ return /^fr/i.test(v.lang) && /FR/i.test(v.lang); })
+        || voices.find(function(v){ return /^fr/i.test(v.lang); })
+        || null;
+  }
+
+  function setFab(playing){
+    if(!fabPlay) return;
+    fabPlay.classList.toggle('playing', playing);
+    fabPlay.textContent = playing ? '⏸' : '🔊';
+    fabPlay.setAttribute('aria-label', playing ? 'Pause' : 'Écouter DIGIY');
+    if(fabStop) fabStop.classList.toggle('show', playing);
+    if(fabTip){
+      fabTip.textContent = playing ? '🎧 DIGIY parle…' : '🎧 Écouter DIGIY';
+      fabTip.classList.toggle('show', playing);
+      if(!playing) setTimeout(function(){ fabTip.classList.remove('show'); }, 1800);
+    }
+  }
+
+  function stopAudio(){
+    if(!window.speechSynthesis) return;
+    speechSynthesis.cancel();
+    setFab(false);
+  }
+
+  function playAudio(){
+    if(!window.speechSynthesis) return;
+
+    /* Si en pause → reprendre */
+    if(speechSynthesis.paused){
+      speechSynthesis.resume();
+      setFab(true);
+      return;
+    }
+
+    /* Si en cours → pause */
+    if(speechSynthesis.speaking){
+      speechSynthesis.pause();
+      setFab(false);
+      return;
+    }
+
+    /* Nouvelle lecture */
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(digiySpeakText(audioText));
+    u.lang   = 'fr-FR';
+    u.rate   = 0.84;
+    u.pitch  = 1.03;
+    u.volume = 1;
+    var voice = pickVoice();
+    if(voice) u.voice = voice;
+    u.onstart = function(){ setFab(true); };
+    u.onend   = function(){ setFab(false); };
+    u.onerror = function(){ setFab(false); };
+    setTimeout(function(){ speechSynthesis.speak(u); }, 80);
+  }
+
+  if(fabPlay) fabPlay.addEventListener('click', playAudio);
+  if(fabStop) fabStop.addEventListener('click', stopAudio);
+
+  /* Tooltip hover desktop */
+  if(fabPlay){
+    fabPlay.addEventListener('mouseenter', function(){
+      if(fabTip) fabTip.classList.add('show');
+    });
+    fabPlay.addEventListener('mouseleave', function(){
+      if(fabTip && !speechSynthesis.speaking) fabTip.classList.remove('show');
+    });
+  }
+
+  if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = pickVoice;
+  window.addEventListener('pagehide', stopAudio);
+})();
+</script>
+
+  <script>
+    /* ── DIAPORAMA NATIF RÉSEAU DIGIY ── */
     (function(){
-      var KEYS = [
-        "DIGIY_RESEAU_PRO_SESSION","DIGIY_PRO_SESSION","DIGIY_PRO_PHONE",
-        "DIGIY_PHONE","digiy_phone","digiy_pro_phone",
-        "DIGIY_RESEAU_PROFILE_V1","DIGIY_RESEAU_OFFER_V1","DIGIY_RESEAU_PAYMENT_V1"
-      ];
-      var HUB = "./hub.html";
-      function hasSession(){
-        try{
-          return KEYS.some(function(k){
-            return !!(localStorage.getItem(k)||sessionStorage.getItem(k));
-          });
-        }catch(e){ return false; }
+      var track  = document.getElementById('dtrack');
+      var dotsEl = document.getElementById('ddots');
+      var prevBtn= document.getElementById('dprev');
+      var nextBtn= document.getElementById('dnext');
+      if(!track) return;
+
+      var N      = track.children.length;
+      var cur    = 0;
+      var timer  = null;
+      var dots   = dotsEl ? Array.from(dotsEl.children) : [];
+      var startX = 0;
+
+      function goTo(n){
+        cur = (n + N) % N;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach(function(d,i){ d.classList.toggle('on', i === cur); });
       }
-      if(!hasSession()){
-        document.documentElement.style.visibility = "hidden";
-        window.location.replace(HUB + "?gate=pro");
-      } else {
-        document.documentElement.style.visibility = "";
+
+      function resetTimer(){
+        clearInterval(timer);
+        timer = setInterval(function(){ goTo(cur + 1); }, 4500);
       }
+
+      if(prevBtn) prevBtn.addEventListener('click', function(){ goTo(cur - 1); resetTimer(); });
+      if(nextBtn) nextBtn.addEventListener('click', function(){ goTo(cur + 1); resetTimer(); });
+      dots.forEach(function(d, i){
+        d.addEventListener('click', function(){ goTo(i); resetTimer(); });
+      });
+
+      /* Swipe mobile */
+      track.addEventListener('touchstart', function(e){
+        startX = e.touches[0].clientX;
+      }, {passive:true});
+      track.addEventListener('touchend', function(e){
+        var dx = e.changedTouches[0].clientX - startX;
+        if(Math.abs(dx) > 38){ goTo(cur + (dx < 0 ? 1 : -1)); resetTimer(); }
+      }, {passive:true});
+
+      resetTimer();
     })();
   </script>
-  <!-- /DIGIY GUARD SOFT --><script src="./assets/js/digiy-go-reseau-vocab.js?v=20260528"></script><style>body{margin:0;min-height:100vh;font-family:system-ui;background:linear-gradient(180deg,#06130d,#030705);color:#f8fafc;padding:70px 12px 90px;font-weight:900}.top{position:fixed;top:0;left:0;right:0;height:56px;background:#06130d;border-bottom:1px solid rgba(246,196,83,.28);display:flex;align-items:center;justify-content:space-between;padding:0 12px}.top a{color:#fff;text-decoration:none}.wrap{width:min(860px,100%);margin:auto;display:grid;gap:12px}.card{border-radius:26px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);padding:16px}.k{color:#fff3cf;font-size:12px;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(44px,14vw,78px);line-height:.88;margin:8px 0}.lead{font-size:17px;line-height:1.38;color:rgba(248,250,252,.82)}textarea{width:100%;min-height:140px;border-radius:20px;border:1px solid rgba(246,196,83,.38);background:#06130d;color:#fff;padding:14px;font:900 17px system-ui;margin-top:10px}.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}.btn{min-height:58px;border-radius:18px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.1);color:#fff;font-weight:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;text-decoration:none}.go{background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d}.gold{background:#f6c453;color:#111}.dark{background:#06130d}.msg{white-space:pre-wrap;background:#06130d;border:1px solid rgba(246,196,83,.26);border-radius:20px;padding:13px;font-weight:900;line-height:1.42;margin-top:10px}.bar{position:fixed;bottom:0;left:0;right:0;height:70px;background:#06130d;border-top:1px solid rgba(246,196,83,.22);display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:7px}.bar a{display:grid;place-items:center;text-align:center;border-radius:14px;background:rgba(255,255,255,.07);font-size:11px;color:rgba(248,250,252,.75);text-decoration:none}.bar .on{background:#f6c453;color:#06130d}.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:#06130d;border:1px solid #f6c453;border-radius:18px;padding:12px;display:none}</style></head><body><header class="top"><a href="./hub.html">← HUB</a><b>DIGIY GO RÉSEAU</b><span>RÉSEAU</span></header><main class="wrap"><section class="card"><div class="k">📣 COM AU CLIC · vocabulaire métier</div><h1>Dis l’annonce.</h1><p class="lead" id="doctrine">Chargement du vocabulaire RÉSEAU…</p><textarea id="txt">Annonce boutique Astou promotion linge maison visible 7 jours zone Saly prix visibilité 15000 Wave.</textarea><div class="actions"><button class="btn go" id="listen">🎙️ Écouter</button><button class="btn" id="prep">⚡ Préparer</button><button class="btn gold" id="copy">📋 Copier</button><a class="btn dark" href="./pay-transition.html">💳 Visibilité vers PAY</a></div><p id="status">Prêt. Rien n’est publié automatiquement.</p></section><section class="card"><h2>📋 Brouillon métier</h2><div class="msg" id="msg">Aucun brouillon.</div></section></main><nav class="bar"><a href="./hub.html">HUB</a><a class="on" href="./action.html">GO</a><a href="./annonce.html">Annonce</a><a href="./fiche.html">Fiche</a><a href="./session.html">Local</a></nav><div class="toast" id="toast"></div><script>(function(){function $(id){return document.getElementById(id)}function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none'},2200)}function V(){return (window.DIGIY_GO_VOCABS&&window.DIGIY_GO_VOCABS.RESEAU_DIGIY)||window.DIGIY_GO_RESEAU_VOCAB||{}}function match(raw,groups){raw=String(raw||'').toLowerCase();var out=[];Object.keys(groups||{}).forEach(function(k){(groups[k]||[]).forEach(function(w){if(raw.indexOf(String(w).toLowerCase())>-1&&out.indexOf(k)<0)out.push(k)})});return out}function boot(){var v=V();$('doctrine').textContent=v.doctrine||'RÉSEAU prépare fiche, annonce et durée. PAY garde seulement le règlement réel.';if(v.examples&&v.examples[0])$('txt').value=v.examples[0]}function prepare(){var v=V(),raw=$('txt').value.trim(),intents=match(raw,v.intents),fields=match(raw,v.fields);var msg=[(v.label||'RÉSEAU')+' — brouillon préparé','Texte : '+raw,'Intentions : '+(intents.join(', ')||'à vérifier'),'Champs métier : '+(fields.join(', ')||'à compléter'),'','Doctrine : '+(v.doctrine||''),'Validation humaine obligatoire. Rien n’est publié ni encaissé automatiquement.'].join('\n');$('msg').textContent=msg;try{localStorage.setItem('DIGIY_RESEAU_GO_LATEST',JSON.stringify({raw:raw,intents:intents,fields:fields,preparedAt:new Date().toISOString()}))}catch(e){}$('status').textContent='Brouillon RÉSEAU préparé avec vocabulaire métier.';toast('Brouillon RÉSEAU prêt')}$('prep').onclick=prepare;$('copy').onclick=function(){prepare();navigator.clipboard&&navigator.clipboard.writeText($('msg').textContent)};$('listen').onclick=function(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Micro non disponible');return}var r=new SR();r.lang='fr-FR';r.onresult=function(e){$('txt').value=e.results[0][0].transcript;prepare()};r.start();toast('Micro ouvert')};boot();})();</script></body></html>
+  <script src="./assets/js/reseau-go-ui.js?v=reseau-go-pay-20260528" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
