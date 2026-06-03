@@ -6,7 +6,7 @@
   <title>RÉSEAU DIGIY — Règlement club privé</title>
   <meta name="description" content="RÉSEAU DIGIY — Club privé : règlement des annonces qualifiées, visibilité noble, Mise en classe FIRST 150 000 FCFA." />
   <meta name="theme-color" content="#00853f" />
-  <meta name="digiy-build" content="reseau-digiy-paiement-club-prive-first-20260522" />
+  <meta name="digiy-build" content="reseau-digiy-paiement-action-prefill-20260603" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -83,7 +83,7 @@
         <a class="gold" href="paiement.html">💳 Règlement</a>
         <a class="" href="journal.html">📰 Journal</a>
         <a class="" href="fiche.html">🔗 Fiche</a>
-        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="" href="action.html">🎙️ ACTION</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
       
@@ -165,11 +165,44 @@
           '<option value="first">Mise en classe FIRST · 150 000 FCFA · 1 mois</option>';
         select.addEventListener('change', applyPlan);
       }
+
+      const applyActionPrefill = () => {
+        try{
+          const pay = JSON.parse(localStorage.getItem('DIGIY_RESEAU_PAYMENT_V1') || 'null');
+          const offer = JSON.parse(localStorage.getItem('DIGIY_RESEAU_OFFER_V1') || 'null');
+          if(!pay) return;
+
+          if(select && pay.plan){
+            select.value = pay.plan;
+            applyPlan();
+          }
+
+          const method = document.getElementById('paymentMethod');
+          const ref = document.getElementById('paymentRef');
+
+          if(method && pay.method) method.value = pay.method;
+          if(ref && !ref.value) ref.value = pay.ref || 'Préparé depuis ACTION RÉSEAU';
+
+          if(proof && !proof.dataset.userTouched){
+            proof.value =
+              'RÉSEAU DIGIY — règlement qualifié\n' +
+              'Origine : ACTION RÉSEAU\n' +
+              'Offre : ' + ((offer && (offer.title || offer.offer)) || (pay.note || 'Annonce RÉSEAU')) + '\n' +
+              'Montant : ' + (pay.amount || '') + ' FCFA\n' +
+              'Mode : ' + (pay.method || 'Wave') + '\n' +
+              'Preuve : capture ou référence paiement à joindre.\n' +
+              'Validation DIGIY obligatoire avant mise en lumière.';
+          }
+        }catch(e){}
+      };
+
       setTimeout(applyPlan, 60);
-      setTimeout(applyPlan, 300);
+      setTimeout(applyActionPrefill, 120);
+      setTimeout(applyActionPrefill, 360);
     });
   </script>
 
 </body>
 </html>
+
 
