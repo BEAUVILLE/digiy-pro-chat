@@ -4,14 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>RÉSEAU DIGIY — Journal</title>
-  <meta name="description" content="RÉSEAU DIGIY — Journal public des publications qualifiées actives : fiche existante, offre partageable, lien clair, activation et expiration contrôlées." />
+  <meta name="description" content="RÉSEAU DIGIY — Revue vivante des exemples DIGIY et journal public des publications qualifiées actives." />
   <meta name="theme-color" content="#00853f" />
-  <meta name="digiy-build" content="reseau-journal-publication-vivante-20260522" />
+  <meta name="digiy-build" content="reseau-journal-revue-exemples-vivants-20260603" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <style>
+    .reviewHero{
+      padding:18px;border-radius:28px;border:1px solid rgba(246,196,83,.35);
+      background:radial-gradient(circle at 12% -10%,rgba(246,196,83,.22),transparent 38%),
+      radial-gradient(circle at 92% 10%,rgba(0,166,81,.20),transparent 34%),
+      linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
+    }
+    .reviewHero .kicker{color:#fff3cf;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:1000;margin-bottom:8px}
+    .reviewHero h2{font-size:clamp(42px,10vw,76px);line-height:.88;letter-spacing:-.07em;margin:0}
+    .reviewHero h2 span{color:#f6c453}
+    .reviewHero p{margin-top:13px;color:rgba(248,250,252,.86);font-size:clamp(17px,4.4vw,22px);line-height:1.26;font-weight:950}
+    .reviewGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+    .reviewCard{
+      position:relative;overflow:hidden;min-height:230px;border-radius:24px;border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));
+      box-shadow:0 16px 42px rgba(0,0,0,.22);color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;
+    }
+    .reviewCard:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.78));z-index:1}
+    .reviewCard .pic{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(1.04) contrast(1.02);opacity:.92}
+    .reviewBody{position:relative;z-index:2;padding:16px;display:grid;gap:8px}
+    .reviewTag{width:max-content;max-width:100%;border-radius:999px;border:1px solid rgba(246,196,83,.40);background:rgba(6,19,13,.72);color:#fff3cf;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:1000}
+    .reviewCard h3{margin:0;font-size:clamp(24px,5.8vw,34px);line-height:.95;letter-spacing:-.045em;font-weight:1000;color:#fff}
+    .reviewCard p{margin:0;color:rgba(248,250,252,.86);font-size:15px;line-height:1.25;font-weight:950}
+    .reviewMeta{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+    .reviewMeta span{border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.10);padding:6px 9px;color:rgba(248,250,252,.90);font-size:11px;font-weight:1000}
+    .reviewAction{margin-top:6px;width:max-content;max-width:100%;border-radius:999px;background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d;padding:10px 13px;font-size:13px;font-weight:1000}
+    .explainBox{margin-top:12px;border-radius:20px;border:1px solid rgba(246,196,83,.32);background:rgba(246,196,83,.10);padding:14px;color:rgba(248,250,252,.86);font-weight:950;line-height:1.35}
+    @media(min-width:920px){.reviewGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.reviewCard.big{grid-column:span 2;min-height:300px}}
+    @media(max-width:720px){.reviewGrid{grid-template-columns:1fr}.reviewCard{min-height:250px}}
+  </style>
 </head>
+
 <body>
   <div class="app">
     <div class="shell">
@@ -29,230 +61,277 @@
           <span class="chip-mini">🌟 FIRST 150 000</span>
         </div>
       </header>
+
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
         <a class="" href="hub.html">🏠 Hub</a>
-        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="inscription.html?cat=reseau">👤 Inscription</a>
         <a class="" href="annonce.html">📢 Annonce</a>
-        <a class="" href="paiement.html">💳 Règlement</a>
+        <a class="" href="paiement.html?cat=R7">💳 Règlement</a>
         <a class="gold" href="journal.html">📰 Journal</a>
         <a class="" href="fiche.html">🔗 Fiche</a>
-        <a class="" href="assistant.html">🧠 Assistant</a>
+        <a class="" href="inscription.html?cat=reseau">🎙️ ACTION</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
-      
-<section class="hero">
-  <div class="kicker">Journal posé</div>
-  <h2>Les annonces qualifiées ne tombent pas dans le bruit : <span>elles restent visibles.</span></h2>
-  <p class="lead">Un journal public pour montrer seulement les offres validées par DIGIY : chambre, retour AIBD, produit maison, service, activité, boutique. Le public voit, partage et contacte ; les brouillons restent invisibles.</p>
-</section>
-<section class="panel">
-  <h3>Offres validées <span>à faire circuler</span></h3>
-  <p>Le journal lit uniquement les publications validées : <strong>status active</strong>, validation DIGIY, date d’expiration non dépassée, puis affiche le titre, le métier, la zone, la description et la fiche liée.</p>
-  <div id="journalGrid" class="grid" style="padding:0;margin-top:14px"></div>
-</section>
-<section class="panel">
-  <h3>Faire circuler <span>par le réseau humain</span></h3>
-  <p>Famille, clients fidèles, groupes WhatsApp, diaspora, voisins : le lien devient propre, cliquable et crédible parce que la fiche est cadrée par DIGIY.</p>
-  <div class="field"><label>Message famille prêt</label><textarea id="familyPreview"></textarea></div>
-  <div class="btnrow">
-    <button class="btn main" type="button" data-copy="family" data-label="message famille">📋 Copier message famille</button>
-    <button class="btn green" type="button" data-copy="group" data-label="message groupe">📋 Copier message groupe</button>
-    <button class="btn" type="button" data-copy="link" data-label="lien fiche">🔗 Copier lien</button>
-  </div>
-</section>
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-  const grid = document.getElementById('journalGrid');
-  const family = document.getElementById('familyPreview');
 
-  const SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
-  const SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+      <section class="reviewHero">
+        <div class="kicker">Revue vivante · exemples DIGIY</div>
+        <h2>Voir donne envie. <span>Cliquer donne confiance.</span></h2>
+        <p>Ici, RÉSEAU montre ce qu’un pro peut obtenir : fiche, annonce, QR, lien partageable, contact direct et présence propre. Les exemples inspirent ; les vraies annonces validées apparaissent ensuite.</p>
+      </section>
 
-  function esc(v){
-    return String(v ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;");
-  }
+      <section class="panel">
+        <h3>Exemples de mise en lumière <span>DIGIY</span></h3>
+        <p>Ces cartes montrent la marchandise : rendez-vous, boutique, chauffeur, logement, activité locale et fiche pro. Le visiteur comprend avant de payer.</p>
 
-  function money(v){
-    const n = Number(v || 0);
-    return n ? n.toLocaleString("fr-FR") + " FCFA" : "Montant validé";
-  }
+        <div class="reviewGrid" aria-label="Exemples DIGIY RÉSEAU">
+          <a class="reviewCard big" href="https://resa-table-resto.digiylyfe.com/fiche.html?slug=resa-221771342889" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/metier-pro-1.png')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">📅 Rendez-vous · RESA</div>
+              <h3>DIGIYLYFE — Aide digitale</h3>
+              <p>Une fiche rendez-vous claire : service internet, QR réservation, demande simple et contact propre.</p>
+              <div class="reviewMeta"><span>Saly</span><span>QR</span><span>Réservation</span><span>Aide digitale</span></div>
+              <div class="reviewAction">Voir la fiche RESA →</div>
+            </div>
+          </a>
 
-  function shortPhone(v){
-    const d = String(v || "").replace(/\D/g,"");
-    if(!d) return "Contact validé";
-    if(d.length <= 6) return d;
-    return d.slice(0, 5) + "…" + d.slice(-3);
-  }
+          <a class="reviewCard" href="https://astou-boutique.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">🛍️ Commerce</div>
+              <h3>Astou Boutique</h3>
+              <p>Une boutique visible, propre et partageable : univers, produits, WhatsApp, client direct.</p>
+              <div class="reviewMeta"><span>Vitrine</span><span>WhatsApp</span><span>Local</span></div>
+              <div class="reviewAction">Voir la vitrine →</div>
+            </div>
+          </a>
 
-  function humanDate(value){
-    if(!value) return "";
-    try{
-      return new Date(value).toLocaleDateString("fr-SN", {
-        day:"2-digit",
-        month:"long",
-        year:"numeric"
-      });
-    }catch(_){
-      return String(value);
-    }
-  }
+          <a class="reviewCard" href="https://mon-commerce.digiylyfe.com/fiche-astou.html" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU2.jpg')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">🔗 Fiche pro</div>
+              <h3>Fiche Astou</h3>
+              <p>La fiche rassure : QR, contact, lien propre, identité et présence claire.</p>
+              <div class="reviewMeta"><span>Fiche</span><span>QR</span><span>Contact</span></div>
+              <div class="reviewAction">Ouvrir la fiche →</div>
+            </div>
+          </a>
 
-  function planLabel(plan){
-    const p = String(plan || "").toLowerCase();
-    const map = {
-      reseau_7j: "7 jours · 15 000 FCFA",
-      reseau_15j: "15 jours · 25 000 FCFA",
-      reseau_30j: "30 jours · 45 000 FCFA",
-      reseau_first: "Mise en classe FIRST · 150 000 FCFA"
-    };
-    return map[p] || plan || "Publication active";
-  }
+          <a class="reviewCard" href="https://digiy-driver-part-bapt.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-4.jpg')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">🚕 Chauffeur</div>
+              <h3>Driver Baptiste</h3>
+              <p>Un chauffeur devient visible : fiche, WhatsApp, QR, contact direct, confiance immédiate.</p>
+              <div class="reviewMeta"><span>Driver</span><span>WhatsApp</span><span>QR</span></div>
+              <div class="reviewAction">Voir DRIVER →</div>
+            </div>
+          </a>
 
-  function badge(plan){
-    return String(plan || "").toLowerCase() === "reseau_first" ? "FIRST" : "ACTIVE";
-  }
+          <a class="reviewCard" href="https://part-chez-baptiste.digiylyfe.com/" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/ChatGPT-Image-25-mai-2026-01_35_26.png')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">🏠 Location</div>
+              <h3>Chez Baptiste</h3>
+              <p>Un logement avec lien clair, contact direct propriétaire, réservation simple et 0% commission.</p>
+              <div class="reviewMeta"><span>LOC</span><span>Saly</span><span>Direct</span></div>
+              <div class="reviewAction">Voir LOC →</div>
+            </div>
+          </a>
 
-  function titleFromRow(row){
-    const title = String(row.offer_title || "").trim();
-    if(title) return title;
-
-    const note = String(row.note || "").trim();
-    if(note.includes("FIRST")) return "Mise en classe FIRST";
-    if(note.includes("RÉSEAU DIGIY")) return "Publication RÉSEAU DIGIY";
-    return "Offre qualifiée active";
-  }
-
-  function descriptionFromRow(row){
-    return String(row.short_description || row.note || "Publication qualifiée activée par DIGIY.").trim();
-  }
-
-  function zoneFromRow(row){
-    return String(row.zone || "Sénégal · DIGIY").trim();
-  }
-
-  function metierFromRow(row){
-    return String(row.metier || "Publication qualifiée").trim();
-  }
-
-  function ctaFromRow(row){
-    return String(row.cta_label || "Voir la fiche").trim();
-  }
-
-  function isRowValidated(row){
-    const status = String(row.status || row.publication_status || row.activation_status || row.state || "").toLowerCase();
-    const bad = ["pending","pending_validation","draft","brouillon","unapproved","rejected","inactive","expired"];
-    if(bad.includes(status)) return false;
-    if(row.is_validated === false || row.validated === false) return false;
-    if(row.is_published === false || row.published === false) return false;
-    return true;
-  }
-
-  function renderActive(rows){
-    if(!grid) return;
-
-    if(!rows.length){
-      grid.innerHTML = `
-        <div class="card" style="grid-column:1/-1">
-          <span class="tag">En attente</span>
-          <h3>Aucune publication active pour le moment</h3>
-          <p>DIGIY valide les règlements, contrôle les fiches, active les durées, puis le journal affiche seulement les publications encore valides.</p>
-          <a class="btn main" href="inscription.html">👤 Demander une publication</a>
+          <a class="reviewCard" href="https://explore.digiylyfe.com/fiche.html?slug=sortie-peche-petite-cote" target="_blank" rel="noopener noreferrer">
+            <div class="pic" style="background-image:url('https://digiylyfe.net/wp-content/uploads/2026/05/RESEAU-3.jpg')"></div>
+            <div class="reviewBody">
+              <div class="reviewTag">⛵ EXPLORE</div>
+              <h3>Sortie pêche Petite Côte</h3>
+              <p>Une activité locale devient une fiche cliquable : expérience, lieu, contact et partage.</p>
+              <div class="reviewMeta"><span>Petite Côte</span><span>Activité</span><span>Partage</span></div>
+              <div class="reviewAction">Voir EXPLORE →</div>
+            </div>
+          </a>
         </div>
-      `;
-      return;
-    }
 
-    grid.innerHTML = rows.map((row) => {
-      const activeUntil = humanDate(row.expires_at);
-      const created = humanDate(row.starts_at || row.created_at);
-      const title = titleFromRow(row);
-      const details = descriptionFromRow(row);
-      const zone = zoneFromRow(row);
-      const metier = metierFromRow(row);
-      const cta = ctaFromRow(row);
-      const badgeText = row.public_badge || badge(row.plan);
-      const fiche = row.fiche_url || row.public_url || row.offer_url || "fiche.html?src=journal-active";
-
-      return `
-        <a class="card" href="${esc(fiche)}">
-          <span class="tag">${esc(badgeText)}</span>
-          <h3>${esc(title)}</h3>
-          <p>${esc(details)}</p>
-          <p><strong>${esc(metier)}</strong> · ${esc(zone)}</p>
-          <p><strong>${esc(planLabel(row.plan))}</strong></p>
-          <p>Contact validé : ${esc(shortPhone(row.whatsapp_phone || row.phone))}</p>
-          <p>Visible du ${esc(created)} au ${esc(activeUntil)}.</p>
-          <b>${esc(cta)} →</b>
-        </a>
-      `;
-    }).join("");
-  }
-
-  async function loadActiveFromSupabase(){
-    if(!grid) return false;
-    if(!window.supabase) return false;
-
-    try{
-      grid.innerHTML = `
-        <div class="card" style="grid-column:1/-1">
-          <span class="tag">Chargement</span>
-          <h3>Lecture des publications actives…</h3>
-          <p>Le journal vérifie les activations validées par ADMIN.</p>
+        <div class="explainBox">
+          Ces exemples ne remplacent pas les annonces validées : ils montrent le niveau de finition DIGIY. Ensuite, les publications réellement activées par ADMIN apparaissent dans le journal public ci-dessous.
         </div>
-      `;
+      </section>
 
-      const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-        auth:{
-          persistSession:false,
-          autoRefreshToken:false,
-          detectSessionInUrl:false
-        }
-      });
+      <section class="panel">
+        <h3>Offres validées <span>à faire circuler</span></h3>
+        <p>Le journal lit uniquement les publications validées : statut actif, validation DIGIY, date d’expiration non dépassée, puis affiche le titre, le métier, la zone, la description et la fiche liée.</p>
+        <div id="journalGrid" class="grid" style="padding:0;margin-top:14px"></div>
+      </section>
 
-      const { data, error } = await sb
-        .from("digiy_reseau_activations_active")
-        .select("*")
-        .order("created_at", { ascending:false })
-        .limit(30);
-
-      if(error){
-        console.warn("RÉSEAU DIGIY journal Supabase fallback:", error);
-        return false;
-      }
-
-      renderActive((Array.isArray(data) ? data : []).filter(isRowValidated));
-      return true;
-    }catch(e){
-      console.warn("RÉSEAU DIGIY journal fallback:", e);
-      return false;
-    }
-  }
-
-  const loaded = await loadActiveFromSupabase();
-
-  if(!loaded){
-    renderActive([]);
-  }
-
-  if(family && window.RESEAU){
-    family.value = RESEAU.buildFamilyMessage();
-  }
-});
-</script>
+      <section class="panel">
+        <h3>Faire circuler <span>par le réseau humain</span></h3>
+        <p>Famille, clients fidèles, groupes WhatsApp, diaspora, voisins : le lien devient propre, cliquable et crédible parce que la fiche est cadrée par DIGIY.</p>
+        <div class="field"><label>Message famille prêt</label><textarea id="familyPreview"></textarea></div>
+        <div class="btnrow">
+          <button class="btn main" type="button" data-copy="family" data-label="message famille">📋 Copier message famille</button>
+          <button class="btn green" type="button" data-copy="group" data-label="message groupe">📋 Copier message groupe</button>
+          <button class="btn" type="button" data-copy="link" data-label="lien fiche">🔗 Copier lien</button>
+        </div>
+      </section>
 
       <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, avec publication qualifiée.</footer>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./assets/js/reseau-core.js"></script>
-  
+
+  <script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const grid = document.getElementById('journalGrid');
+    const family = document.getElementById('familyPreview');
+
+    const SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+
+    function esc(v){
+      return String(v ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
+
+    function shortPhone(v){
+      const d = String(v || "").replace(/\D/g,"");
+      if(!d) return "Contact validé";
+      if(d.length <= 6) return d;
+      return d.slice(0, 5) + "…" + d.slice(-3);
+    }
+
+    function humanDate(value){
+      if(!value) return "";
+      try{
+        return new Date(value).toLocaleDateString("fr-SN", {day:"2-digit",month:"long",year:"numeric"});
+      }catch(_){ return String(value); }
+    }
+
+    function planLabel(plan){
+      const p = String(plan || "").toLowerCase();
+      const map = {
+        reseau_7j: "7 jours · 15 000 FCFA",
+        reseau_15j: "15 jours · 25 000 FCFA",
+        reseau_30j: "30 jours · 45 000 FCFA",
+        reseau_first: "Mise en classe FIRST · 150 000 FCFA"
+      };
+      return map[p] || plan || "Publication active";
+    }
+
+    function badge(plan){
+      return String(plan || "").toLowerCase() === "reseau_first" ? "FIRST" : "ACTIVE";
+    }
+
+    function titleFromRow(row){
+      const title = String(row.offer_title || "").trim();
+      if(title) return title;
+      const note = String(row.note || "").trim();
+      if(note.includes("FIRST")) return "Mise en classe FIRST";
+      if(note.includes("RÉSEAU DIGIY")) return "Publication RÉSEAU DIGIY";
+      return "Offre qualifiée active";
+    }
+
+    function descriptionFromRow(row){
+      return String(row.short_description || row.note || "Publication qualifiée activée par DIGIY.").trim();
+    }
+
+    function zoneFromRow(row){ return String(row.zone || "Sénégal · DIGIY").trim(); }
+    function metierFromRow(row){ return String(row.metier || "Publication qualifiée").trim(); }
+    function ctaFromRow(row){ return String(row.cta_label || "Voir la fiche").trim(); }
+
+    function isRowValidated(row){
+      const status = String(row.status || row.publication_status || row.activation_status || row.state || "").toLowerCase();
+      const bad = ["pending","pending_validation","draft","brouillon","unapproved","rejected","inactive","expired"];
+      if(bad.includes(status)) return false;
+      if(row.is_validated === false || row.validated === false) return false;
+      if(row.is_published === false || row.published === false) return false;
+      return true;
+    }
+
+    function renderActive(rows){
+      if(!grid) return;
+      if(!rows.length){
+        grid.innerHTML = `
+          <div class="card" style="grid-column:1/-1">
+            <span class="tag">En attente</span>
+            <h3>Les vraies publications arrivent ici après validation</h3>
+            <p>DIGIY valide les règlements, contrôle les fiches, active les durées, puis le journal affiche seulement les publications encore valides.</p>
+            <a class="btn main" href="inscription.html?cat=reseau">👤 Demander une publication</a>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = rows.map((row) => {
+        const activeUntil = humanDate(row.expires_at);
+        const created = humanDate(row.starts_at || row.created_at);
+        const title = titleFromRow(row);
+        const details = descriptionFromRow(row);
+        const zone = zoneFromRow(row);
+        const metier = metierFromRow(row);
+        const cta = ctaFromRow(row);
+        const badgeText = row.public_badge || badge(row.plan);
+        const fiche = row.fiche_url || row.public_url || row.offer_url || "fiche.html?src=journal-active";
+
+        return `
+          <a class="card" href="${esc(fiche)}">
+            <span class="tag">${esc(badgeText)}</span>
+            <h3>${esc(title)}</h3>
+            <p>${esc(details)}</p>
+            <p><strong>${esc(metier)}</strong> · ${esc(zone)}</p>
+            <p><strong>${esc(planLabel(row.plan))}</strong></p>
+            <p>Contact validé : ${esc(shortPhone(row.whatsapp_phone || row.phone))}</p>
+            <p>Visible du ${esc(created)} au ${esc(activeUntil)}.</p>
+            <b>${esc(cta)} →</b>
+          </a>
+        `;
+      }).join("");
+    }
+
+    async function loadActiveFromSupabase(){
+      if(!grid) return false;
+      if(!window.supabase) return false;
+      try{
+        grid.innerHTML = `
+          <div class="card" style="grid-column:1/-1">
+            <span class="tag">Chargement</span>
+            <h3>Lecture des publications actives…</h3>
+            <p>Le journal vérifie les activations validées par ADMIN.</p>
+          </div>
+        `;
+
+        const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}
+        });
+
+        const { data, error } = await sb
+          .from("digiy_reseau_activations_active")
+          .select("*")
+          .order("created_at", { ascending:false })
+          .limit(30);
+
+        if(error){
+          console.warn("RÉSEAU DIGIY journal Supabase fallback:", error);
+          return false;
+        }
+
+        renderActive((Array.isArray(data) ? data : []).filter(isRowValidated));
+        return true;
+      }catch(e){
+        console.warn("RÉSEAU DIGIY journal fallback:", e);
+        return false;
+      }
+    }
+
+    const loaded = await loadActiveFromSupabase();
+    if(!loaded) renderActive([]);
+
+    if(family && window.RESEAU){
+      family.value = RESEAU.buildFamilyMessage();
+    }
+  });
+  </script>
 </body>
 </html>
-
 
 
 
