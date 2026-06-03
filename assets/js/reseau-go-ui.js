@@ -1,9 +1,11 @@
-/* RÉSEAU DIGIY — GO/PAY UI léger
-   Injecte les deux portes pro sans toucher au diaporama premium.
-   Doctrine : RÉSEAU garde fiche, annonce, durée, visibilité. PAY garde seulement l'argent réel.
+/* RÉSEAU DIGIY — GO/ACTION vers inscription
+   Aucun lien vers /abos/. ACTION et GO ouvrent l’entrée qualifiée.
 */
 (function(){
   "use strict";
+
+  const ENTRY_URL = "inscription.html?cat=reseau";
+  const PAY_URL = "paiement.html?cat=R7";
 
   function ready(fn){
     if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
@@ -15,92 +17,87 @@
     return path.endsWith("/hub.html") || path.endsWith("/hub") || path.endsWith("/") || path === "";
   }
 
+  function txt(el){
+    return String(el && el.textContent || "");
+  }
+
+  function cleanLinks(){
+    document.querySelectorAll("a").forEach(function(a){
+      var text = txt(a);
+      var href = String(a.getAttribute("href") || "");
+      var full = String(a.href || "");
+
+      // Ancien serpent : aucun lien ABOS dans RÉSEAU.
+      if(/beauville\.github\.io\/abos|\/abos\//i.test(full)){
+        a.setAttribute("href", ENTRY_URL);
+      }
+
+      // Sur le HUB, GO / ACTION ouvrent l’inscription qualifiée.
+      if(
+        /GO RÉSEAU|GO RESEAU|ACTION RÉSEAU|ACTION RESEAU|🎙️ ACTION/i.test(text) ||
+        href === "action.html" ||
+        href === "./action.html"
+      ){
+        if(isHub()){
+          a.setAttribute("href", ENTRY_URL);
+        }
+
+        a.innerHTML = a.innerHTML
+          .replace(/DIGIY GO RÉSEAU|DIGIY GO RESEAU|GO RÉSEAU|GO RESEAU/g, "ACTION RÉSEAU");
+      }
+
+      // La visibilité PAY reste dans RÉSEAU, pas dans ABOS.
+      if(/Visibilité PAY/i.test(text) && (href === "pay-transition.html" || href === "./pay-transition.html")){
+        a.setAttribute("href", PAY_URL);
+      }
+    });
+  }
+
+  function hasHref(container, href){
+    return !!container.querySelector('a[href="' + href + '"], a[href="./' + href + '"]');
+  }
+
   function injectNav(){
     var nav = document.querySelector(".nav");
     if(!nav) return;
 
-    if(!document.getElementById("navDigiyGoReseau")){
-      var go = document.createElement("a");
-      go.id = "navDigiyGoReseau";
-      go.className = "gold";
-      go.href = "action.html";
-      go.textContent = "🎙️ GO RÉSEAU";
-      var dep = nav.querySelector('a[href="annonce.html"]');
-      if(dep) nav.insertBefore(go, dep);
-      else nav.appendChild(go);
-    }
+    // Retire l’ancien GO injecté si présent.
+    var oldGo = document.getElementById("navDigiyGoReseau");
+    if(oldGo) oldGo.remove();
 
-    if(!document.getElementById("navReseauPayTransition")){
-      var pay = document.createElement("a");
-      pay.id = "navReseauPayTransition";
-      pay.href = "pay-transition.html";
-      pay.textContent = "💳 Visibilité PAY";
-      var reg = nav.querySelector('a[href="paiement.html"]');
-      if(reg) nav.insertBefore(pay, reg);
-      else nav.appendChild(pay);
-    }
-  }
+    // Ajoute une entrée propre si elle n’existe pas déjà.
+    if(!document.getElementById("navReseauInscription") && !hasHref(nav, "inscription.html?cat=reseau")){
+      var entry = document.createElement("a");
+      entry.id = "navReseauInscription";
+      entry.className = "gold";
+      entry.href = ENTRY_URL;
+      entry.textContent = "👤 Entrée RÉSEAU";
 
-  function makeTile(id, href, cls, icon, title, text){
-    var a = document.createElement("a");
-    a.id = id;
-    a.className = "tile " + cls;
-    a.href = href;
-    a.innerHTML = '<span class="icon">' + icon + '</span><strong>' + title + '</strong><p>' + text + '</p>';
-    return a;
-  }
-
-  function injectProTiles(){
-    var labels = Array.prototype.slice.call(document.querySelectorAll(".sectionLabel"));
-    var proLabel = labels.find(function(el){
-      return /côté pro|cote pro/i.test(String(el.textContent || ""));
-    });
-    if(!proLabel) return;
-
-    var grid = proLabel.nextElementSibling;
-    if(!grid || !grid.classList || !grid.classList.contains("grid")) return;
-
-    if(!document.getElementById("tileDigiyGoReseau")){
-      var go = makeTile(
-        "tileDigiyGoReseau",
-        "action.html",
-        "gold",
-        "🎙️",
-        "DIGIY GO RÉSEAU",
-        "Le pro parle. RÉSEAU prépare annonce, fiche, durée et message de partage."
-      );
-      grid.insertBefore(go, grid.firstElementChild);
-    }
-
-    if(!document.getElementById("tileReseauPayTransition")){
-      var pay = makeTile(
-        "tileReseauPayTransition",
-        "pay-transition.html",
-        "green",
-        "💳",
-        "Visibilité vers PAY",
-        "Argent réel seulement : 7 jours, 15 jours, 30 jours ou mise en classe FIRST."
-      );
-      var reglement = grid.querySelector('a[href="paiement.html"]');
-      if(reglement) grid.insertBefore(pay, reglement);
-      else grid.appendChild(pay);
+      var dep = nav.querySelector('a[href="annonce.html"], a[href="./annonce.html"]');
+      if(dep) nav.insertBefore(entry, dep);
+      else nav.appendChild(entry);
     }
   }
 
   function boot(){
     if(!isHub()) return;
+
+    cleanLinks();
     injectNav();
-    injectProTiles();
   }
 
   ready(function(){
     window.DIGIY_RESEAU_GO_UI = {
-      version:"reseau-go-ui-20260528",
-      boot:boot,
-      injectNav:injectNav,
-      injectProTiles:injectProTiles
+      version: "reseau-go-action-to-inscription-20260603",
+      boot: boot,
+      cleanLinks: cleanLinks,
+      injectNav: injectNav
     };
+
+    window.DIGIY_RESEAU_ACTION_UI = window.DIGIY_RESEAU_GO_UI;
+
     boot();
     setTimeout(boot, 500);
+    setTimeout(boot, 1200);
   });
 })();
