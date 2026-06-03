@@ -7,7 +7,7 @@
      public.digiy_has_module_access_from_abos(phone, module)
    - Ne remplace pas guard.js.
    - Se branche DANS les guards existants, sans casser le PIN local.
-   - Fonctionne pour DRIVER, LOC, EXPLORE_BOOST, RESA, MARKET, POS, BUILD...
+   - Ne remet pas le téléphone dans l’URL visible.
    ============================================================ */
 
 (function () {
@@ -19,16 +19,42 @@
   const STORAGE_PREFIX = "DIGIY_ABOS_ACCESS";
   const DEFAULT_TTL_MS = 10 * 60 * 1000;
 
+  const MODULE_ALIASES = {
+    EXPLORE: "EXPLORE_BOOST",
+    RESEAU: "RESEAU_DIGIY",
+    "RÉSEAU": "RESEAU_DIGIY",
+    RESEAU_DIGIY: "RESEAU_DIGIY",
+    DRIVER: "DRIVER",
+    LOC: "LOC",
+    RESA: "RESA",
+    MARKET: "MARKET",
+    POS: "POS",
+    BUILD: "BUILD",
+    JOBS: "JOBS",
+    RESTO: "RESTO",
+    PAY: "PAY"
+  };
+
   function now() {
     return Date.now();
   }
 
   function cleanPhone(value) {
-    return String(value || "").replace(/\D/g, "");
+    const raw = String(value || "").replace(/\D/g, "");
+    if (raw.length === 9) return "221" + raw;
+    return raw;
   }
 
   function upperModule(value) {
-    return String(value || "").trim().toUpperCase();
+    const raw = String(value || "")
+      .trim()
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "_")
+      .replace(/-/g, "_");
+
+    return MODULE_ALIASES[raw] || raw;
   }
 
   function readQuery(name) {
@@ -37,6 +63,28 @@
     } catch (_) {
       return null;
     }
+  }
+
+  function cleanVisibleUrl() {
+    try {
+      const url = new URL(window.location.href);
+
+      [
+        "phone",
+        "tel",
+        "p",
+        "owner_phone",
+        "slug_phone",
+        "session_token",
+        "token",
+        "pin",
+        "code"
+      ].forEach(function (key) {
+        url.searchParams.delete(key);
+      });
+
+      history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+    } catch (_) {}
   }
 
   function readStorage(keys) {
@@ -49,11 +97,46 @@
     return "";
   }
 
+  function readSessionPhoneFromJson(keys) {
+    for (const key of keys) {
+      try {
+        const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
+        if (!raw) continue;
+
+        const obj = JSON.parse(raw);
+        const phone = cleanPhone(
+          obj.phone ||
+          obj.tel ||
+          obj.owner_phone ||
+          obj.user_phone ||
+          ""
+        );
+
+        if (phone) return phone;
+      } catch (_) {}
+    }
+
+    return "";
+  }
+
   function guessPhone() {
     return cleanPhone(
       readQuery("phone") ||
         readQuery("tel") ||
         readQuery("p") ||
+        readSessionPhoneFromJson([
+          "DIGIY_SESSION",
+          "DIGIY_ACCESS",
+          "DIGIY_LOC_SESSION",
+          "DIGIY_DRIVER_SESSION",
+          "DIGIY_RESA_SESSION",
+          "DIGIY_MARKET_SESSION",
+          "DIGIY_POS_SESSION",
+          "DIGIY_BUILD_SESSION",
+          "DIGIY_EXPLORE_SESSION",
+          "DIGIY_JOBS_SESSION",
+          "DIGIY_RESTO_SESSION"
+        ]) ||
         readStorage([
           "DIGIY_PHONE",
           "DIGIY_LAST_PHONE",
@@ -64,7 +147,9 @@
           "DIGIY_MARKET_PHONE",
           "DIGIY_POS_PHONE",
           "DIGIY_BUILD_PHONE",
-          "DIGIY_EXPLORE_PHONE"
+          "DIGIY_EXPLORE_PHONE",
+          "DIGIY_JOBS_PHONE",
+          "DIGIY_RESTO_PHONE"
         ])
     );
   }
@@ -102,11 +187,13 @@
 
   function savePhone(phone, module) {
     const p = cleanPhone(phone);
+    const m = upperModule(module);
+
     if (!p) return;
 
     try {
       localStorage.setItem("DIGIY_LAST_PHONE", p);
-      localStorage.setItem(`DIGIY_${upperModule(module)}_PHONE`, p);
+      localStorage.setItem(`DIGIY_${m}_PHONE`, p);
     } catch (_) {}
   }
 
@@ -124,19 +211,54 @@
     });
   }
 
+  function normalizeRpcRow(data) {
+    if (typeof data === "boolean") {
+      return { has_access: data };
+    }
+
+    if (Array.isArray(data)) {
+      return data[0] || {};
+    }
+
+    return data || {};
+  }
+
   async function checkAccess(options) {
     const opts = options || {};
+
     const module = upperModule(
-      opts.module || readQuery("module") || window.DIGIY_MODULE
+      opts.module ||
+        readQuery("module") ||
+        window.DIGIY_ABOS_MODULE ||
+        window.DIGIY_MODULE
     );
+
     const phone = cleanPhone(opts.phone || guessPhone());
     const ttlMs = Number(opts.ttlMs || DEFAULT_TTL_MS);
+
+    cleanVisibleUrl();
 
     if (!module) {
       return {
         ok: false,
         has_access: false,
         error: "MODULE_REQUIRED"
+      };
+    }
+
+    /*
+      PAY est transverse.
+      Si une page déclare explicitement :
+      window.DIGIY_TRANSVERSE_MODULE = true
+      on ne bloque pas avec ABOS.
+    */
+    if (module === "PAY" && window.DIGIY_TRANSVERSE_MODULE === true) {
+      return {
+        ok: true,
+        has_access: true,
+        module,
+        phone: phone || null,
+        transverse: true
       };
     }
 
@@ -157,11 +279,30 @@
     }
 
     const url =
-      opts.supabaseUrl || window.DIGIY_SUPABASE_URL || DEFAULT_SUPABASE_URL;
-    const key =
-      opts.supabaseKey || window.DIGIY_SUPABASE_KEY || DEFAULT_SUPABASE_KEY;
+      opts.supabaseUrl ||
+      window.DIGIY_SUPABASE_URL ||
+      DEFAULT_SUPABASE_URL;
 
-    const sb = ensureSupabase(url, key);
+    const key =
+      opts.supabaseKey ||
+      window.DIGIY_SUPABASE_KEY ||
+      window.DIGIY_SUPABASE_ANON_KEY ||
+      window.DIGIY_SUPABASE_ANON ||
+      DEFAULT_SUPABASE_KEY;
+
+    let sb;
+
+    try {
+      sb = ensureSupabase(url, key);
+    } catch (e) {
+      return {
+        ok: false,
+        has_access: false,
+        error: e.message || "SUPABASE_CLIENT_ERROR",
+        module,
+        phone
+      };
+    }
 
     const { data, error } = await sb.rpc("digiy_has_module_access_from_abos", {
       p_phone: phone,
@@ -173,23 +314,31 @@
         ok: false,
         has_access: false,
         error: error.message || "SUPABASE_RPC_ERROR",
+        code: error.code || null,
+        details: error.details || null,
         module,
         phone
       };
     }
 
-    const row = Array.isArray(data) ? data[0] : data;
-    const hasAccess = !!(row && row.has_access === true);
+    const row = normalizeRpcRow(data);
+
+    const hasAccess = !!(
+      row.has_access === true ||
+      row.access === true ||
+      row.ok === true ||
+      row === true
+    );
 
     const payload = {
       ok: true,
       has_access: hasAccess,
       phone,
       module,
-      plan: row ? row.plan : null,
-      fiche_title: row ? row.fiche_title : null,
-      expires_at: row ? row.expires_at : null,
-      module_rights: row ? row.module_rights : []
+      plan: row.plan || null,
+      fiche_title: row.fiche_title || row.title || null,
+      expires_at: row.expires_at || row.expire_at || null,
+      module_rights: Array.isArray(row.module_rights) ? row.module_rights : []
     };
 
     setCached(phone, module, payload);
@@ -199,18 +348,31 @@
 
   function buildDeniedUrl(options) {
     const opts = options || {};
+
     const module = upperModule(
-      opts.module || readQuery("module") || window.DIGIY_MODULE || ""
+      opts.module ||
+        readQuery("module") ||
+        window.DIGIY_ABOS_MODULE ||
+        window.DIGIY_MODULE ||
+        ""
     );
-    const phone = cleanPhone(opts.phone || guessPhone());
+
     const base = opts.payUrl || opts.deniedUrl || "./pin.html";
 
     try {
       const url = new URL(base, window.location.href);
 
-      if (phone) url.searchParams.set("phone", phone);
-      if (module) url.searchParams.set("module", module);
+      /*
+        Important :
+        on ne remet PAS le téléphone dans l’URL visible par défaut.
+        Si une ancienne page en a vraiment besoin, elle doit passer exposePhone:true.
+      */
+      if (opts.exposePhone === true) {
+        const phone = cleanPhone(opts.phone || guessPhone());
+        if (phone) url.searchParams.set("phone", phone);
+      }
 
+      if (module) url.searchParams.set("module", module);
       url.searchParams.set("reason", opts.reason || "abos_required");
 
       return url.toString();
@@ -244,7 +406,11 @@
   }
 
   function renderAccessBadge(target, result) {
-    const el = typeof target === "string" ? document.querySelector(target) : target;
+    const el =
+      typeof target === "string"
+        ? document.querySelector(target)
+        : target;
+
     if (!el || !result) return;
 
     if (result.has_access) {
@@ -262,11 +428,14 @@
   }
 
   window.DIGIY_ABOS_ACCESS = {
+    version: "abos-access-safe-no-phone-20260603",
     checkAccess,
     protect,
     renderAccessBadge,
     guessPhone,
     cleanPhone,
-    upperModule
+    upperModule,
+    cleanVisibleUrl,
+    buildDeniedUrl
   };
 })();
