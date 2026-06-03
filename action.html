@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>DIGIY GO RÉSEAU</title>
-
+  <title>ACTION RÉSEAU DIGIY</title>
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="theme-color" content="#06130d">
+  <meta name="digiy-build" content="reseau-action-memory-pay-20260603-v2">
 
   <script>
-    window.DIGIY_MODULE       = "RESEAU";
-    window.DIGIY_ABOS_MODULE  = "RESEAU";
+    window.DIGIY_MODULE       = "RESEAU_DIGIY";
+    window.DIGIY_ABOS_MODULE  = "RESEAU_DIGIY";
     window.DIGIY_MODULE_LABEL = "Réseau DIGIY";
     window.DIGIY_LOGIN_URL    = "./pin.html";
 
@@ -20,215 +21,135 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./guard.js?v=reseau-guard-20260531"></script>
+  <script src="./guard.js?v=reseau-action-20260603"></script>
   <script src="./assets/js/digiy-go-reseau-vocab.js?v=20260528"></script>
 
   <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
     body{
       margin:0;
       min-height:100vh;
-      font-family:system-ui;
-      background:linear-gradient(180deg,#06130d,#030705);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 14% -8%,rgba(246,196,83,.20),transparent 36%),
+        linear-gradient(180deg,#06130d,#030705);
       color:#f8fafc;
       padding:70px 12px 90px;
       font-weight:900;
     }
-
+    a{color:inherit;text-decoration:none}
+    button,textarea{font:inherit}
     .top{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      height:56px;
-      background:#06130d;
-      border-bottom:1px solid rgba(246,196,83,.28);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 12px;
+      position:fixed;top:0;left:0;right:0;height:56px;z-index:20;
+      background:#06130d;border-bottom:1px solid rgba(246,196,83,.28);
+      display:flex;align-items:center;justify-content:space-between;padding:0 12px;
     }
-
-    .top a{
-      color:#fff;
-      text-decoration:none;
-    }
-
-    .wrap{
-      width:min(860px,100%);
-      margin:auto;
-      display:grid;
-      gap:12px;
-    }
-
+    .top a{color:#fff;text-decoration:none}
+    .wrap{width:min(900px,100%);margin:auto;display:grid;gap:12px}
     .card{
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.08);
-      padding:16px;
+      border-radius:26px;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.08);padding:16px;box-shadow:0 18px 46px rgba(0,0,0,.22)
     }
-
-    .k{
-      color:#fff3cf;
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
-    h1{
-      font-size:clamp(44px,14vw,78px);
-      line-height:.88;
-      margin:8px 0;
-    }
-
-    .lead{
-      font-size:17px;
-      line-height:1.38;
-      color:rgba(248,250,252,.82);
-    }
-
+    .k{color:#fff3cf;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+    h1{font-size:clamp(42px,13vw,78px);line-height:.88;margin:8px 0;letter-spacing:-.06em}
+    .lead{font-size:17px;line-height:1.38;color:rgba(248,250,252,.82)}
     textarea{
-      width:100%;
-      min-height:140px;
-      border-radius:20px;
-      border:1px solid rgba(246,196,83,.38);
-      background:#06130d;
-      color:#fff;
-      padding:14px;
-      font:900 17px system-ui;
-      margin-top:10px;
+      width:100%;min-height:142px;border-radius:20px;border:1px solid rgba(246,196,83,.38);
+      background:#06130d;color:#fff;padding:14px;font:900 17px system-ui;margin-top:10px;resize:vertical;line-height:1.4
     }
-
-    .actions{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:9px;
-      margin-top:10px;
+    .actions,.templates{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}
+    .btn,.tpl{
+      min-height:58px;border-radius:18px;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.1);color:#fff;font-weight:1000;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;text-decoration:none;cursor:pointer
     }
-
-    .btn{
-      min-height:58px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.1);
-      color:#fff;
-      font-weight:1000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:10px;
-      text-decoration:none;
-    }
-
-    .go{
-      background:linear-gradient(135deg,#f6c453,#00a651);
-      color:#06130d;
-    }
-
-    .gold{
-      background:#f6c453;
-      color:#111;
-    }
-
-    .dark{
-      background:#06130d;
-    }
-
+    .tpl{font-size:14px;line-height:1.2;justify-content:flex-start;text-align:left}
+    .go{background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d}
+    .gold{background:#f6c453;color:#111}
+    .dark{background:#06130d}
+    .blue{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.24);color:#d9f4ff}
     .msg{
-      white-space:pre-wrap;
-      background:#06130d;
-      border:1px solid rgba(246,196,83,.26);
-      border-radius:20px;
-      padding:13px;
-      font-weight:900;
-      line-height:1.42;
-      margin-top:10px;
+      white-space:pre-wrap;background:#06130d;border:1px solid rgba(246,196,83,.26);
+      border-radius:20px;padding:13px;font-weight:900;line-height:1.42;margin-top:10px
     }
-
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .field{background:#06130d;border:1px solid rgba(246,196,83,.24);border-radius:18px;padding:11px}
+    .field small{display:block;color:#fff3cf;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .field b{display:block;margin-top:4px;word-break:break-word}
+    .proof{border-color:rgba(34,197,94,.34);background:rgba(34,197,94,.09)}
     .bar{
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      height:70px;
-      background:#06130d;
-      border-top:1px solid rgba(246,196,83,.22);
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:6px;
-      padding:7px;
+      position:fixed;bottom:0;left:0;right:0;height:72px;background:#06130d;
+      border-top:1px solid rgba(246,196,83,.22);display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:7px;z-index:20
     }
-
-    .bar a{
-      display:grid;
-      place-items:center;
-      text-align:center;
-      border-radius:14px;
-      background:rgba(255,255,255,.07);
-      font-size:11px;
-      color:rgba(248,250,252,.75);
-      text-decoration:none;
-    }
-
-    .bar .on{
-      background:#f6c453;
-      color:#06130d;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:84px;
-      transform:translateX(-50%);
-      background:#06130d;
-      border:1px solid #f6c453;
-      border-radius:18px;
-      padding:12px;
-      display:none;
-    }
+    .bar a{display:grid;place-items:center;text-align:center;border-radius:14px;background:rgba(255,255,255,.07);font-size:11px;color:rgba(248,250,252,.75);text-decoration:none;font-weight:1000}
+    .bar .on{background:#f6c453;color:#06130d}
+    .toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:#06130d;border:1px solid #f6c453;border-radius:18px;padding:12px;display:none;z-index:40}
+    @media(max-width:560px){.actions,.templates,.grid{grid-template-columns:1fr}.tpl{min-height:52px}}
   </style>
 </head>
 
 <body>
   <header class="top">
     <a href="./hub.html">← HUB</a>
-    <b>DIGIY GO RÉSEAU</b>
+    <b>🎙️ ACTION RÉSEAU</b>
     <span>RÉSEAU</span>
   </header>
 
   <main class="wrap">
     <section class="card">
-      <div class="k">📣 COM AU CLIC · vocabulaire métier</div>
-
-      <h1>Dis l’annonce.</h1>
-
+      <div class="k">📣 COM AU CLIC · action métier</div>
+      <h1>Préparer l’annonce.</h1>
       <p class="lead" id="doctrine">
-        Chargement du vocabulaire RÉSEAU…
+        RÉSEAU prépare l’annonce, la fiche, le lien partageable et la durée. Le pro relit. DIGIY valide avant mise en lumière. PAY encaisse seulement le règlement réel.
       </p>
 
       <textarea id="txt">Annonce boutique Astou promotion linge maison visible 7 jours zone Saly prix visibilité 15000 Wave.</textarea>
 
       <div class="actions">
-        <button class="btn go" id="listen">🎙️ Écouter</button>
-        <button class="btn" id="prep">⚡ Préparer</button>
-        <button class="btn gold" id="copy">📋 Copier</button>
-        <a class="btn dark" href="./pay-transition.html">💳 Visibilité vers PAY</a>
+        <button class="btn go" id="listen" type="button">🎙️ Écouter</button>
+        <button class="btn gold" id="prep" type="button">✨ Préparer</button>
+        <button class="btn" id="copy" type="button">📋 Copier message</button>
+        <button class="btn dark" id="pay" type="button">💳 Visibilité vers PAY</button>
+        <a class="btn blue" href="./annonce.html">📢 Déposer</a>
+        <a class="btn blue" href="./fiche.html">🔗 Fiche</a>
       </div>
 
-      <p id="status">
-        Prêt. Rien n’est publié automatiquement.
-      </p>
+      <p id="status">Prêt. Rien n’est publié automatiquement.</p>
     </section>
 
     <section class="card">
-      <h2>📋 Brouillon métier</h2>
+      <div class="k">🧩 Exemples prêts</div>
+      <div class="templates">
+        <button class="tpl" data-tpl="Annonce boutique Astou promotion linge maison visible 7 jours zone Saly prix visibilité 15000 Wave.">🛍️ Promotion boutique</button>
+        <button class="tpl" data-tpl="Annonce chauffeur retour AIBD vers Saly demain 16h places disponibles visibilité 7 jours Wave.">🚕 Retour chauffeur</button>
+        <button class="tpl" data-tpl="Annonce location villa Saly week-end disponible lien fiche à partager visibilité 15 jours règlement 25000 Wave.">🏠 Location disponible</button>
+        <button class="tpl" data-tpl="Mise en classe FIRST pro non validé fiche QR messages prêts mise en lumière 1 mois 150000 Wave.">🌟 FIRST 150 000</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📋 Fiche préparée</h2>
+      <div class="grid">
+        <div class="field"><small>Type</small><b id="fType">—</b></div>
+        <div class="field"><small>Pro / activité</small><b id="fPro">—</b></div>
+        <div class="field"><small>Offre</small><b id="fOffer">—</b></div>
+        <div class="field"><small>Zone</small><b id="fZone">—</b></div>
+        <div class="field"><small>Durée / prix</small><b id="fPrice">—</b></div>
+        <div class="field"><small>Statut</small><b id="fStatus">Brouillon</b></div>
+      </div>
       <div class="msg" id="msg">Aucun brouillon.</div>
+    </section>
+
+    <section class="card proof">
+      <h2>✅ Preuve ACTION RÉSEAU</h2>
+      <div class="msg" id="proof">Aucune preuve encore.</div>
     </section>
   </main>
 
   <nav class="bar">
     <a href="./hub.html">HUB</a>
-    <a class="on" href="./action.html">GO</a>
+    <a class="on" href="./action.html">ACTION</a>
     <a href="./annonce.html">Annonce</a>
     <a href="./fiche.html">Fiche</a>
     <a href="./session.html">Local</a>
@@ -238,121 +159,249 @@
 
   <script>
     (function(){
-      function $(id){
-        return document.getElementById(id);
-      }
+      "use strict";
 
+      function $(id){ return document.getElementById(id); }
       function toast(message){
         var t = $("toast");
         t.textContent = message;
         t.style.display = "block";
-
-        setTimeout(function(){
-          t.style.display = "none";
-        }, 2200);
+        setTimeout(function(){ t.style.display = "none"; }, 2200);
       }
+      function norm(v){ return String(v || "").replace(/\s+/g," ").trim(); }
+      function low(v){ return norm(v).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+      function money(n){ return Math.round(Number(n)||0).toLocaleString("fr-FR") + " FCFA"; }
 
       function V(){
         return (
           window.DIGIY_GO_VOCABS &&
-          window.DIGIY_GO_VOCABS.RESEAU_DIGIY
+          (window.DIGIY_GO_VOCABS.RESEAU_DIGIY || window.DIGIY_GO_VOCABS.RESEAU)
         ) || window.DIGIY_GO_RESEAU_VOCAB || {};
       }
 
-      function match(raw, groups){
-        raw = String(raw || "").toLowerCase();
-
-        var out = [];
-
-        Object.keys(groups || {}).forEach(function(key){
-          (groups[key] || []).forEach(function(word){
-            if(
-              raw.indexOf(String(word).toLowerCase()) > -1 &&
-              out.indexOf(key) < 0
-            ){
-              out.push(key);
-            }
-          });
-        });
-
-        return out;
+      function parseType(text){
+        const s = low(text);
+        if(s.includes("first") || s.includes("mise en classe")) return "Mise en classe FIRST";
+        if(s.includes("retour") && s.includes("chauffeur")) return "Retour chauffeur";
+        if(s.includes("location") || s.includes("villa") || s.includes("chambre")) return "Location";
+        if(s.includes("boutique") || s.includes("promotion") || s.includes("produit")) return "Offre commerce";
+        return "Annonce qualifiée";
       }
 
-      function boot(){
-        var v = V();
+      function parsePro(text){
+        const m = norm(text).match(/\b(?:boutique|chauffeur|pro|restaurant|location|villa|artisan|service)\s+([A-Za-zÀ-ÿ0-9' -]{2,45})(?=,|;|\.|\s+promotion|\s+retour|\s+visible|\s+zone|\s+week|$)/i);
+        if(m) return m[1].trim();
+        const s = low(text);
+        if(s.includes("astou")) return "Astou";
+        if(s.includes("chauffeur")) return "Chauffeur";
+        return "Pro RÉSEAU";
+      }
 
-        $("doctrine").textContent =
-          v.doctrine || "RÉSEAU prépare fiche, annonce et durée. PAY garde seulement le règlement réel.";
+      function parseZone(text){
+        const m = norm(text).match(/\b(?:zone|à|a)\s+([A-Za-zÀ-ÿ' -]{2,35})(?=,|;|\.|\s+prix|\s+visible|\s+règlement|\s+reglement|\s+\d|$)/i);
+        if(m) return m[1].trim();
+        const s=low(text);
+        if(s.includes("saly")) return "Saly";
+        if(s.includes("aibd")) return "AIBD";
+        if(s.includes("dakar")) return "Dakar";
+        return "À préciser";
+      }
 
-        if(v.examples && v.examples[0]){
-          $("txt").value = v.examples[0];
-        }
+      function parseDays(text){
+        const s = low(text);
+        if(s.includes("15 jours") || s.includes("quinzaine")) return 15;
+        if(s.includes("30 jours") || s.includes("1 mois") || s.includes("un mois")) return 30;
+        const m = norm(text).match(/\b(\d{1,2})\s*j(?:ours?)?\b/i);
+        return m ? Number(m[1]) : 7;
+      }
+
+      function parseAmount(text){
+        const s = low(text);
+        if(s.includes("first") || s.includes("mise en classe")) return 150000;
+        const m = norm(text).match(/\b(?:prix|règlement|reglement|visibilité|visibilite|montant)?\s*(\d[\d\s.,]*)\s*(?:fcfa|f\s*cfa|cfa|xof)?\s*(?:wave|cash|orange)?\b/i);
+        return m ? Number(String(m[1]).replace(/[^0-9]/g,"")) : 0;
+      }
+
+      function parseChannel(text){
+        const s = low(text);
+        if(s.includes("wave")) return "Wave";
+        if(s.includes("cash") || s.includes("espèce") || s.includes("espece")) return "Cash";
+        if(s.includes("orange")) return "Orange Money";
+        return "";
+      }
+
+      function build(){
+        const raw = $("txt").value.trim();
+        const amount = parseAmount(raw);
+        const days = parseDays(raw);
+        const type = parseType(raw);
+        const pro = parsePro(raw);
+        const zone = parseZone(raw);
+        const channel = parseChannel(raw);
+
+        return {
+          id: "RESEAU-ACTION-" + Date.now() + "-" + Math.random().toString(36).slice(2,8),
+          source: "ACTION_RESEAU",
+          module: "RESEAU_DIGIY",
+          status: "draft",
+          type: type,
+          pro_name: pro,
+          title: type + " · " + pro,
+          offer: raw,
+          zone: zone,
+          duration_days: days,
+          amount: amount,
+          price_xof: amount,
+          channel: channel,
+          note: raw,
+          raw_text: raw,
+          validation_required: true,
+          created_at: new Date().toISOString()
+        };
+      }
+
+      function save(d){
+        try{ localStorage.setItem("DIGIY_RESEAU_ACTION_LATEST", JSON.stringify(d)); }catch(_){}
+        try{ localStorage.setItem("DIGIY_RESEAU_GO_LATEST", JSON.stringify(d)); }catch(_){}
+        try{
+          localStorage.setItem("DIGIY_RESEAU_OFFER_V1", JSON.stringify({
+            title: d.title,
+            pro_name: d.pro_name,
+            offer: d.offer,
+            zone: d.zone,
+            duration_days: d.duration_days,
+            price_xof: d.price_xof,
+            status: "draft",
+            source: "ACTION_RESEAU",
+            updated_at: new Date().toISOString()
+          }));
+        }catch(_){}
+        try{
+          if(d.amount){
+            localStorage.setItem("DIGIY_RESEAU_PAYMENT_V1", JSON.stringify({
+              plan: d.type === "Mise en classe FIRST" ? "first" : (d.duration_days >= 30 ? "month" : d.duration_days >= 15 ? "quinzaine" : "week"),
+              amount: d.amount,
+              method: d.channel || "Wave",
+              ref: "Préparé depuis ACTION RÉSEAU",
+              note: d.raw_text,
+              source: "ACTION_RESEAU",
+              updated_at: new Date().toISOString()
+            }));
+          }
+        }catch(_){}
+
+        try{
+          const rows = JSON.parse(localStorage.getItem("DIGIY_RESEAU_ACTION_LOG") || "[]");
+          rows.unshift(d);
+          localStorage.setItem("DIGIY_RESEAU_ACTION_LOG", JSON.stringify(rows.slice(0,120)));
+        }catch(_){}
+      }
+
+      function display(d){
+        $("fType").textContent = d.type;
+        $("fPro").textContent = d.pro_name;
+        $("fOffer").textContent = d.title;
+        $("fZone").textContent = d.zone;
+        $("fPrice").textContent = (d.duration_days || 7) + " jours · " + (d.amount ? money(d.amount) : "prix à compléter");
+        $("fStatus").textContent = "Brouillon gardé";
+
+        const message = [
+          "RÉSEAU DIGIY — annonce préparée",
+          "Type : " + d.type,
+          "Pro / activité : " + d.pro_name,
+          "Zone : " + d.zone,
+          "Durée : " + d.duration_days + " jours",
+          "Prix visibilité : " + (d.amount ? money(d.amount) : "à compléter"),
+          "Canal : " + (d.channel || "à préciser"),
+          "",
+          "Texte terrain :",
+          d.raw_text,
+          "",
+          "Message prêt à circuler :",
+          "Offre RÉSEAU DIGIY · " + d.title + " · " + d.zone + ". Contact direct via fiche ou WhatsApp. Publication après validation DIGIY.",
+          "",
+          "Validation humaine obligatoire. Rien n’est publié ni encaissé automatiquement."
+        ].join("\n");
+
+        $("msg").textContent = message;
       }
 
       function prepare(){
-        var v = V();
-        var raw = $("txt").value.trim();
+        const d = build();
+        display(d);
+        save(d);
 
-        var intents = match(raw, v.intents);
-        var fields = match(raw, v.fields);
+        $("proof").textContent = [
+          "PREUVE ACTION RÉSEAU — DIGIYLYFE",
+          "Statut : BROUILLON GARDÉ",
+          "Référence : " + d.id,
+          "Type : " + d.type,
+          "Pro : " + d.pro_name,
+          "Zone : " + d.zone,
+          "Durée : " + d.duration_days + " jours",
+          "Montant : " + (d.amount ? money(d.amount) : "—"),
+          "Validation humaine : oui",
+          "Publication automatique : non"
+        ].join("\n");
 
-        var message = [
-          (v.label || "RÉSEAU") + " — brouillon préparé",
-          "Texte : " + raw,
-          "Intentions : " + (intents.join(", ") || "à vérifier"),
-          "Champs métier : " + (fields.join(", ") || "à compléter"),
-          "",
-          "Doctrine : " + (v.doctrine || ""),
-          "Validation humaine obligatoire. Rien n’est publié ni encaissé automatiquement."
-        ].join("\\n");
-
-        $("msg").textContent = message;
-
-        try{
-          localStorage.setItem("DIGIY_RESEAU_GO_LATEST", JSON.stringify({
-            raw: raw,
-            intents: intents,
-            fields: fields,
-            preparedAt: new Date().toISOString()
-          }));
-        }catch(e){}
-
-        $("status").textContent = "Brouillon RÉSEAU préparé avec vocabulaire métier.";
-        toast("Brouillon RÉSEAU prêt");
+        $("status").textContent = "Brouillon RÉSEAU gardé. Ouvre Annonce, Fiche ou Paiement pour vérifier.";
+        toast("ACTION RÉSEAU prête");
+        return d;
       }
+
+      function openPay(){
+        const d = prepare();
+        const phrase = d.amount
+          ? ("recette RESEAU_DIGIY " + d.amount + " " + (d.channel || "Wave") + " - " + d.title)
+          : ("brouillon RESEAU_DIGIY sans règlement - " + d.title);
+
+        try{ navigator.clipboard && navigator.clipboard.writeText(phrase); }catch(_){}
+        window.location.href = "./pay-transition.html";
+      }
+
+      document.addEventListener("click", function(e){
+        const b = e.target.closest("[data-tpl]");
+        if(!b) return;
+        $("txt").value = b.getAttribute("data-tpl") || "";
+        prepare();
+      });
 
       $("prep").onclick = prepare;
 
       $("copy").onclick = function(){
         prepare();
-
         if(navigator.clipboard){
           navigator.clipboard.writeText($("msg").textContent);
         }
+        toast("Message copié");
       };
+
+      $("pay").onclick = openPay;
 
       $("listen").onclick = function(){
         var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-        if(!SR){
-          toast("Micro non disponible");
-          return;
-        }
-
+        if(!SR){ toast("Micro non disponible"); return; }
         var recognition = new SR();
         recognition.lang = "fr-FR";
-
         recognition.onresult = function(e){
           $("txt").value = e.results[0][0].transcript;
           prepare();
         };
-
         recognition.start();
         toast("Micro ouvert");
       };
 
-      boot();
+      try{
+        var v = V();
+        $("doctrine").textContent =
+          (v.doctrine || "RÉSEAU prépare fiche, annonce et durée. PAY garde seulement le règlement réel.")
+          .replace(/DIGIY GO/g, "ACTION");
+        if(v.examples && v.examples[0]){
+          $("txt").value = v.examples[0];
+        }
+      }catch(_){}
     })();
   </script>
 </body>
 </html>
+
