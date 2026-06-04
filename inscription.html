@@ -93,12 +93,83 @@
       background:rgba(246,196,83,.10);padding:14px;color:rgba(248,250,252,.88);
       font-size:14px;line-height:1.35;font-weight:950;
     }
+
+    .paymentPanel{
+      border-color:rgba(246,196,83,.48);
+      background:
+        radial-gradient(circle at top right,rgba(246,196,83,.18),transparent 34%),
+        linear-gradient(180deg,rgba(246,196,83,.12),rgba(255,255,255,.06));
+    }
+    .waveHero{
+      margin-top:12px;
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#f6c453,#f59e0b);
+      color:#06130d;
+      border:1px solid rgba(246,196,83,.78);
+      box-shadow:0 16px 36px rgba(0,0,0,.28);
+    }
+    .waveHero small{
+      display:block;
+      font-size:13px;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.88;
+      margin-bottom:7px;
+    }
+    .waveHero strong{
+      display:block;
+      font-size:clamp(25px,5.8vw,40px);
+      line-height:1.08;
+      font-weight:1000;
+      letter-spacing:-.04em;
+    }
+    .payGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .payBox{
+      border:1px solid rgba(246,196,83,.30);
+      border-radius:18px;
+      background:rgba(6,19,13,.78);
+      padding:13px;
+    }
+    .payBox span{
+      display:block;
+      color:rgba(248,250,252,.72);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:1000;
+      margin-bottom:6px;
+    }
+    .payBox b{
+      color:#fff3cf;
+      font-size:22px;
+      line-height:1.1;
+    }
+    .noteHelp{
+      margin-top:10px;
+      color:rgba(248,250,252,.78);
+      font-size:13px;
+      line-height:1.35;
+      font-weight:950;
+    }
+    .miniActions{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:9px;
+      margin-top:10px;
+    }
     .proof{
       white-space:pre-wrap;word-break:break-word;background:#06130d;border:1px dashed rgba(246,196,83,.30);
       border-radius:20px;padding:14px;color:#eafff1;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;line-height:1.5;
     }
     .footer{text-align:center;padding:16px;border-radius:24px;background:#020504;border:1px solid rgba(246,196,83,.16);color:rgba(248,250,252,.72);font-size:14px;line-height:1.35}
-    @media(max-width:760px){.nav,.choiceGrid,.two,.btnrow,.plans{grid-template-columns:1fr}.chips{justify-content:flex-start}.choiceCard{min-height:230px}}
+    @media(max-width:760px){.nav,.choiceGrid,.two,.btnrow,.plans,.payGrid,.miniActions{grid-template-columns:1fr}.chips{justify-content:flex-start}.choiceCard{min-height:230px}}
   </style>
 </head>
 
@@ -169,6 +240,47 @@
           <a class="btn main" id="btnFirstPay" href="paiement.html?cat=FIRST">💳 Demander la classe FIRST</a>
         </div>
       </article>
+    </section>
+
+
+    <section class="panel paymentPanel" id="paymentPanel">
+      <div class="badge">💳 Paiement Wave · preuve obligatoire</div>
+      <h3>Paiement <span>RÉSEAU</span></h3>
+      <p class="lead" style="font-size:17px;text-shadow:none;margin-bottom:8px">
+        Le paiement doit être identifiable : formule choisie, montant, nom du responsable et téléphone.
+        Après paiement Wave, l’Abos envoie la preuve sur WhatsApp.
+      </p>
+
+      <div class="waveHero">
+        <small>Nom et numéro de paiement</small>
+        <strong>Wave : JB BEAUVILLE · +221 77 134 28 89</strong>
+      </div>
+
+      <div class="payGrid">
+        <div class="payBox">
+          <span>Formule sélectionnée</span>
+          <b id="selectedPlanPay">R7 · 7 jours</b>
+        </div>
+        <div class="payBox">
+          <span>Montant à payer</span>
+          <b id="payTotal">15 000 FCFA</b>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <label for="paymentNote">Note / preuve paiement</label>
+        <textarea
+          id="paymentNote"
+          placeholder="Ex : Paiement Wave envoyé pour RÉSEAU R7 — 15 000 FCFA — au nom de Mamadou Diop — tél +221 77 000 00 00."></textarea>
+        <div class="noteHelp">
+          Cette note sera ajoutée dans la demande de validation et dans le message WhatsApp admin.
+        </div>
+      </div>
+
+      <div class="miniActions">
+        <button class="btn gold" type="button" id="copyWave">📋 Copier Wave</button>
+        <a class="btn green" href="https://wa.me/221771342889" target="_blank" rel="noopener">💬 WhatsApp paiement</a>
+      </div>
     </section>
 
     <section class="panel">
@@ -290,6 +402,7 @@
       "use strict";
 
       const ADMIN_WA = "221771342889";
+      const WAVE_LABEL = "Wave : JB BEAUVILLE · +221 77 134 28 89";
       const PLANS = {
         R7: {label:"R7 · 7 jours", amount:15000, days:7, kind:"Annonce qualifiée"},
         R15:{label:"R15 · 15 jours", amount:25000, days:15, kind:"Annonce qualifiée"},
@@ -333,6 +446,9 @@
         $("btnAnnonce").href = "annonce.html?cat=" + encodeURIComponent(code);
         $("btnFirstPay").href = "paiement.html?cat=FIRST";
         $("goPaiement").href = "paiement.html?cat=" + encodeURIComponent(code);
+
+        if($("selectedPlanPay")) $("selectedPlanPay").textContent = plan.label;
+        if($("payTotal")) $("payTotal").textContent = fmt(plan.amount);
 
         try{
           localStorage.setItem("DIGIY_RESEAU_ENTRY_V1", JSON.stringify({
@@ -380,6 +496,9 @@
           zone: $("zone").value,
           city: $("city").value.trim(),
           note: $("note").value.trim(),
+          payment_method: "Wave",
+          payment_label: WAVE_LABEL,
+          payment_note: $("paymentNote") ? $("paymentNote").value.trim() : "",
           created_at: new Date().toISOString()
         };
       }
@@ -452,6 +571,11 @@
           "Début : " + today(),
           "Fin prévue : " + endDate(plan.days),
           "",
+          "PAIEMENT WAVE",
+          WAVE_LABEL,
+          "Montant à payer : " + fmt(plan.amount),
+          "Note / preuve : " + (d.payment_note || "à compléter après paiement Wave"),
+          "",
           "NOTE / OFFRE",
           d.note || "à compléter",
           "",
@@ -474,7 +598,7 @@
         btn.addEventListener("click", () => setPlan(btn.getAttribute("data-plan")));
       });
 
-      ["entryType","plan","name","business","metier","phone","zone","city","note"].forEach(id => {
+      ["entryType","plan","name","business","metier","phone","zone","city","note","paymentNote"].forEach(id => {
         const el = $(id);
         if(el) el.addEventListener("input", renderProof);
         if(el) el.addEventListener("change", () => {
@@ -500,6 +624,16 @@
         }
       });
 
+      $("copyWave").addEventListener("click", async function(){
+        try{
+          await navigator.clipboard.writeText(WAVE_LABEL);
+          this.textContent = "✅ Wave copié";
+          setTimeout(() => this.textContent = "📋 Copier Wave", 1500);
+        }catch(_){
+          prompt("Copie le paiement Wave :", WAVE_LABEL);
+        }
+      });
+
       $("waAdmin").addEventListener("click", function(e){
         const text = encodeURIComponent(proofText());
         this.href = "https://wa.me/" + ADMIN_WA + "?text=" + text;
@@ -511,5 +645,12 @@
       renderProof();
     })();
   </script>
+
+  <script
+    src="https://digiy-accueil.digiylyfe.com/assets/js/digiy-welcome-floating.js"
+    data-module="RESEAU"
+    defer>
+  </script>
 </body>
 </html>
+
