@@ -1,5 +1,6 @@
 /* RÉSEAU DIGIY — GO/ACTION vers inscription
    Aucun lien vers /abos/. ACTION et GO ouvrent l’entrée qualifiée.
+   Patch léger : doublon ACTION retiré + audio aligné doctrine DIGIY.
 */
 (function(){
   "use strict";
@@ -19,6 +20,37 @@
 
   function txt(el){
     return String(el && el.textContent || "");
+  }
+
+  function phoneticText(text){
+    return String(text || "")
+      .replace(/\bWave\b/g, "Ouève")
+      .replace(/\bWouève\b/g, "Ouève")
+      .replace(/\bWhatsApp\b/g, "Ouatsap")
+      .replace(/\bDIGIYLYFE\b/g, "diji laïfe")
+      .replace(/\bDIGIY\b/g, "diji i")
+      .replace(/\bQR\b/g, "Q R")
+      .replace(/\bSMS\b/g, "S M S")
+      .replace(/0%/g, "zéro pour cent");
+  }
+
+  function patchSpeechSynthesisUtterance(){
+    if(window.__DIGIY_RESEAU_AUDIO_PATCHED__) return;
+    if(typeof window.SpeechSynthesisUtterance !== "function") return;
+
+    var NativeUtterance = window.SpeechSynthesisUtterance;
+
+    function DigiyPatchedUtterance(text){
+      return new NativeUtterance(phoneticText(text));
+    }
+
+    try{
+      DigiyPatchedUtterance.prototype = NativeUtterance.prototype;
+      Object.setPrototypeOf(DigiyPatchedUtterance, NativeUtterance);
+    }catch(_){ }
+
+    window.SpeechSynthesisUtterance = DigiyPatchedUtterance;
+    window.__DIGIY_RESEAU_AUDIO_PATCHED__ = true;
   }
 
   function cleanLinks(){
@@ -53,6 +85,26 @@
     });
   }
 
+  function removeDuplicateActionTiles(){
+    if(!isHub()) return;
+
+    var seen = false;
+    document.querySelectorAll(".grid a.tile").forEach(function(a){
+      var text = txt(a);
+      var href = String(a.getAttribute("href") || "");
+
+      var isActionTile = /ACTION RÉSEAU|ACTION RESEAU|🎙️ ACTION/i.test(text) && /inscription\.html\?cat=reseau/i.test(href);
+      if(!isActionTile) return;
+
+      if(!seen){
+        seen = true;
+        return;
+      }
+
+      a.remove();
+    });
+  }
+
   function hasHref(container, href){
     return !!container.querySelector('a[href="' + href + '"], a[href="./' + href + '"]');
   }
@@ -82,16 +134,20 @@
   function boot(){
     if(!isHub()) return;
 
+    patchSpeechSynthesisUtterance();
     cleanLinks();
     injectNav();
+    removeDuplicateActionTiles();
   }
 
   ready(function(){
     window.DIGIY_RESEAU_GO_UI = {
-      version: "reseau-go-action-to-inscription-20260603",
+      version: "reseau-go-action-audio-clean-20260605",
       boot: boot,
       cleanLinks: cleanLinks,
-      injectNav: injectNav
+      injectNav: injectNav,
+      removeDuplicateActionTiles: removeDuplicateActionTiles,
+      phoneticText: phoneticText
     };
 
     window.DIGIY_RESEAU_ACTION_UI = window.DIGIY_RESEAU_GO_UI;
