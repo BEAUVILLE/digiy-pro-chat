@@ -889,13 +889,34 @@
 (function(){
   'use strict';
 
-  var audioText = "RÉSEAU DIGIY n’est pas un panneau d’annonces. C’est la voie spéciale First Class de DIGIYLYFE pour installer un professionnel proprement sur l’autoroute digitale. Ici, on ne vient pas déposer du bruit. On vient poser une présence qualifiée. Un professionnel arrive avec son métier, son offre, son contact et sa réalité. DIGIY l’aide à transformer cela en fiche claire, en lien partageable, en QR, en message prêt à circuler, et en annonce datée. La fiche est la maison du pro. Elle contient son nom, son métier, sa zone, ses photos, ses offres, WhatsApp, appel, SMS et contact direct. L’annonce n’est pas la maison. L’annonce est le projecteur. Elle met en lumière la fiche pendant une durée claire : sept jours, quinze jours, trente jours, ou mise en classe First. Le QR DIGIY n’est pas un simple carré technique. Il contient la fiche détaillée du pro et peut circuler partout : WhatsApp, TikTok, YouTube, stories, bios, affiches, boutique, véhicule et site DIGIYLYFE. Le QR fait circuler l’existence professionnelle sans capter le client. DIGIY ne vole pas le client. DIGIY ouvre la route vers le professionnel. Le pro garde son nom, son client, son argent, sa relation et sa dignité. RÉSEAU DIGIY : la fiche rassure, l’annonce attire, le QR circule, le contact transforme. Le terrain garde la main.";
+  var audioParts = [
+    "RÉSEAU DIGIY n’est pas un panneau d’annonces.",
+    "C’est la voie spéciale First Class de DIGIYLYFE... pour installer un professionnel, proprement, sur l’autoroute digitale.",
+    "Ici, on ne vient pas déposer du bruit.",
+    "On vient poser une présence qualifiée.",
+    "Un professionnel arrive avec son métier, son offre, son contact... et sa réalité.",
+    "DIGIY l’aide à transformer cela en fiche claire ; en lien partageable ; en Q R ; en message prêt à circuler ; et en annonce datée.",
+    "La fiche... est la maison du pro.",
+    "Elle contient son nom, son métier, sa zone, ses photos, ses offres, Ouatsap, appel, S M S... et contact direct.",
+    "L’annonce n’est pas la maison.",
+    "L’annonce... est le projecteur.",
+    "Elle met en lumière la fiche pendant une durée claire : sept jours ; quinze jours ; trente jours ; ou mise en classe First.",
+    "Le Q R DIGIY n’est pas un simple carré technique.",
+    "Il contient la fiche détaillée du pro ; et peut circuler partout : Ouatsap, réseaux sociaux, vidéos, stories, bios, affiches, boutique, véhicule... et site DIGIYLYFE.",
+    "Le Q R fait circuler l’existence professionnelle... sans capter le client.",
+    "DIGIY ne vole pas le client.",
+    "DIGIY ouvre la route vers le professionnel.",
+    "Le pro garde son nom, son client, son argent, sa relation... et sa dignité.",
+    "RÉSEAU DIGIY : la fiche rassure ; l’annonce attire ; le Q R circule ; le contact transforme.",
+    "Le terrain... garde la main."
+  ];
 
   function digiySpeakText(text){
     return String(text || "")
       .replace(/0\s*%/g, "zéro pour cent")
       .replace(/\bDIGIYLYFE\b/gi, "diji laïfe")
       .replace(/\bDIGIY\b/gi, "diji i")
+      .replace(/\bBUILD\b/gi, "artisans tout corps de métiers")
       .replace(/\bQR\b/g, "Q R")
       .replace(/\bSMS\b/g, "S M S")
       .replace(/\bWhatsApp\b/gi, "Ouatsap")
@@ -905,12 +926,16 @@
   var fabPlay = document.getElementById('fabPlay');
   var fabStop = document.getElementById('fabStop');
   var fabTip  = document.getElementById('fabTip');
+  var speechRun = 0;
 
   function pickVoice(){
     if(!window.speechSynthesis) return null;
     var voices = speechSynthesis.getVoices();
-    return voices.find(function(v){ return /^fr/i.test(v.lang) && /FR/i.test(v.lang); })
-        || voices.find(function(v){ return /^fr/i.test(v.lang); })
+    return voices.find(function(v){
+          return /^fr/i.test(v.lang || "") && /Thomas|Daniel|Paul|Remi|Rémi|Google|Microsoft|Amelie|Amélie|Marie|Audrey|Hortense/i.test(v.name || "");
+        })
+        || voices.find(function(v){ return /^fr-FR/i.test(v.lang || ""); })
+        || voices.find(function(v){ return /^fr/i.test(v.lang || ""); })
         || null;
   }
 
@@ -928,60 +953,90 @@
   }
 
   function stopAudio(){
+    speechRun++;
     if(!window.speechSynthesis) return;
-    speechSynthesis.cancel();
+    try{ speechSynthesis.cancel(); }catch(e){}
     setFab(false);
+  }
+
+  function speakPart(index, runId){
+    if(!window.speechSynthesis) return;
+    if(runId !== speechRun) return;
+    if(index >= audioParts.length){
+      setFab(false);
+      return;
+    }
+
+    var spoken = digiySpeakText(audioParts[index]);
+    var u = new SpeechSynthesisUtterance(spoken);
+    u.lang   = 'fr-FR';
+    u.rate   = 0.79;
+    u.pitch  = 1.0;
+    u.volume = 1;
+
+    var voice = pickVoice();
+    if(voice) u.voice = voice;
+
+    u.onstart = function(){
+      if(runId !== speechRun) return;
+      setFab(true);
+    };
+
+    u.onend = function(){
+      if(runId !== speechRun) return;
+      setTimeout(function(){
+        speakPart(index + 1, runId);
+      }, 140);
+    };
+
+    u.onerror = function(){
+      if(runId !== speechRun) return;
+      setFab(false);
+    };
+
+    speechSynthesis.speak(u);
   }
 
   function playAudio(){
     if(!window.speechSynthesis) return;
 
-    /* Si en pause → reprendre */
     if(speechSynthesis.paused){
       speechSynthesis.resume();
       setFab(true);
       return;
     }
 
-    /* Si en cours → pause */
     if(speechSynthesis.speaking){
       speechSynthesis.pause();
       setFab(false);
       return;
     }
 
-    /* Nouvelle lecture */
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(digiySpeakText(audioText));
-    u.lang   = 'fr-FR';
-    u.rate   = 0.84;
-    u.pitch  = 1.03;
-    u.volume = 1;
-    var voice = pickVoice();
-    if(voice) u.voice = voice;
-    u.onstart = function(){ setFab(true); };
-    u.onend   = function(){ setFab(false); };
-    u.onerror = function(){ setFab(false); };
-    setTimeout(function(){ speechSynthesis.speak(u); }, 80);
+    speechRun++;
+    try{ speechSynthesis.cancel(); }catch(e){}
+    var runId = speechRun;
+    setTimeout(function(){ speakPart(0, runId); }, 90);
   }
 
   if(fabPlay) fabPlay.addEventListener('click', playAudio);
   if(fabStop) fabStop.addEventListener('click', stopAudio);
 
-  /* Tooltip hover desktop */
   if(fabPlay){
     fabPlay.addEventListener('mouseenter', function(){
       if(fabTip) fabTip.classList.add('show');
     });
     fabPlay.addEventListener('mouseleave', function(){
-      if(fabTip && !speechSynthesis.speaking) fabTip.classList.remove('show');
+      if(fabTip && !(window.speechSynthesis && speechSynthesis.speaking)) fabTip.classList.remove('show');
     });
   }
 
-  if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = pickVoice;
+  if(window.speechSynthesis){
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+  }
   window.addEventListener('pagehide', stopAudio);
 })();
 </script>
+
 
   <script>
     /* ── DIAPORAMA NATIF RÉSEAU DIGIY ── */
@@ -1031,6 +1086,192 @@
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
