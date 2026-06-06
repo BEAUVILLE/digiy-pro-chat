@@ -498,9 +498,9 @@
     /* ── FAB LECTEUR FLOTTANT ── */
     .fab-reader{
       position:fixed;
-      bottom:24px;right:20px;
+      bottom:24px;left:20px;right:auto;
       z-index:999;
-      display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+      display:flex;flex-direction:column;align-items:flex-start;gap:8px;
     }
     .fab-tip{
       background:rgba(6,19,13,.92);
@@ -509,7 +509,7 @@
       padding:8px 14px;
       font-size:11px;font-weight:900;letter-spacing:.08em;
       color:var(--cream);
-      max-width:220px;text-align:right;line-height:1.4;
+      max-width:240px;text-align:left;line-height:1.4;
       opacity:0;pointer-events:none;
       transform:translateY(6px);
       transition:opacity .25s,transform .25s;
@@ -754,10 +754,10 @@
 
   <!-- ── FAB LECTEUR FLOTTANT ── -->
   <div class="fab-reader" id="fabReader">
-    <div class="fab-tip" id="fabTip">🎧 DIGIY parle</div>
+    <div class="fab-tip" id="fabTip">🎧 Lecteur RÉSEAU DIGIY</div>
     <div class="fab-btns">
       <button class="fab-btn fab-stop" id="fabStop" aria-label="Arrêter">⏹</button>
-      <button class="fab-btn fab-play" id="fabPlay" aria-label="Écouter DIGIY">🔊</button>
+      <button class="fab-btn fab-play" id="fabPlay" aria-label="Écouter RÉSEAU DIGIY">🔊</button>
     </div>
   </div>
 
@@ -765,13 +765,17 @@
 (function(){
   'use strict';
 
-  var audioText = "RÉSEAU DIGIY installe la notoriété des professionnels qualifiés sur le territoire digital. Chaque jour, des professionnels qualifiés restent invisibles sur internet. RÉSEAU DIGIY change ça. Docteur. Dentiste. Avocat. Architecte. Entrepreneur. Boutique. Assurance. Restaurant. Immobilier. Chauffeur. Artisan. Commerce local. Une présence digitale simple, humaine, directe. RÉSEAU DIGIY, c'est aussi une vitrine publique et un club privé. Le public voit les offres, clique, partage et contacte directement. Mais publier reste qualifié : les annonces sont réservées aux pros DIGIY validés. On n'installe pas une petite annonce au hasard. On pose une présence noble sur la toile. Sans commission. Sans intermédiaire. Tu paies ton abonnement, tu gardes tout. Pour un pro déjà validé : sept jours, quinze jours ou trente jours de visibilité. Pour un pro non encore validé : la mise en classe FIRST. Cent cinquante mille francs CFA pour un mois. Fiche propre. Lien partageable. QR. Message prêt à circuler. Mise en lumière. La fiche rassure. L'annonce attire. Le contact transforme. Rejoins le réseau. Un téléphone suffit. Le terrain garde le client, le contact et l'argent. De Saly à Sarlat. DIGIYLYFE.";
+  var audioText = "RÉSEAU DIGIY n’est pas un panneau d’annonces. C’est la voie spéciale First Class de DIGIYLYFE pour installer un professionnel proprement sur l’autoroute digitale. Ici, on ne vient pas déposer du bruit. On vient poser une présence qualifiée. Un professionnel arrive avec son métier, son offre, son contact et sa réalité. DIGIY l’aide à transformer cela en fiche claire, en lien partageable, en QR, en message prêt à circuler, et en annonce datée. La fiche est la maison du pro. Elle contient son nom, son métier, sa zone, ses photos, ses offres, WhatsApp, appel, SMS et contact direct. L’annonce n’est pas la maison. L’annonce est le projecteur. Elle met en lumière la fiche pendant une durée claire : sept jours, quinze jours, trente jours, ou mise en classe First. Le QR DIGIY n’est pas un simple carré technique. Il contient la fiche détaillée du pro et peut circuler partout : WhatsApp, TikTok, YouTube, stories, bios, affiches, boutique, véhicule et site DIGIYLYFE. Le QR fait circuler l’existence professionnelle sans capter le client. DIGIY ne vole pas le client. DIGIY ouvre la route vers le professionnel. Le pro garde son nom, son client, son argent, sa relation et sa dignité. RÉSEAU DIGIY : la fiche rassure, l’annonce attire, le QR circule, le contact transforme. Le terrain garde la main.";
 
   function digiySpeakText(text){
     return String(text || "")
-      .replace(/\bWave\b/g, "Ouève")
-      .replace(/\bWhatsApp\b/g, "Ouatsap")
-      .replace(/\bDIGIYLYFE\b/g, "diji laïfe");
+      .replace(/0\s*%/g, "zéro pour cent")
+      .replace(/\bDIGIYLYFE\b/gi, "diji laïfe")
+      .replace(/\bDIGIY\b/gi, "diji i")
+      .replace(/\bQR\b/g, "Q R")
+      .replace(/\bSMS\b/g, "S M S")
+      .replace(/\bWhatsApp\b/gi, "Ouatsap")
+      .replace(/\bWave\b/gi, "Ouève");
   }
 
   var fabPlay = document.getElementById('fabPlay');
@@ -790,10 +794,10 @@
     if(!fabPlay) return;
     fabPlay.classList.toggle('playing', playing);
     fabPlay.textContent = playing ? '⏸' : '🔊';
-    fabPlay.setAttribute('aria-label', playing ? 'Pause' : 'Écouter DIGIY');
+    fabPlay.setAttribute('aria-label', playing ? 'Pause' : 'Écouter RÉSEAU DIGIY');
     if(fabStop) fabStop.classList.toggle('show', playing);
     if(fabTip){
-      fabTip.textContent = playing ? '🎧 DIGIY parle…' : '🎧 Écouter DIGIY';
+      fabTip.textContent = playing ? '🎧 RÉSEAU DIGIY parle…' : '🎧 Écouter RÉSEAU';
       fabTip.classList.toggle('show', playing);
       if(!playing) setTimeout(function(){ fabTip.classList.remove('show'); }, 1800);
     }
@@ -903,6 +907,191 @@
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
