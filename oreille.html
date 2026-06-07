@@ -7,7 +7,46 @@
   <meta name="description" content="Oreille Réseau DIGIY : préparer une offre, une fiche, un message partageable ou une mise en lumière sans publier automatiquement."/>
   <meta name="theme-color" content="#00853f"/>
   <meta name="robots" content="noindex,nofollow"/>
-  <meta name="digiy-build" content="reseau-oreille-suggestions-grandes-20260525"/>
+  <meta name="digiy-build" content="reseau-oreille-guard-soft-20260607"/>
+  <!-- DIGIY GUARD SOFT — RÉSEAU PRO -->
+  <script>
+    (function(){
+      "use strict";
+
+      var KEYS = [
+        "DIGIY_RESEAU_PRO_SESSION",
+        "DIGIY_PRO_SESSION",
+        "DIGIY_PRO_PHONE",
+        "DIGIY_PHONE",
+        "digiy_phone",
+        "digiy_pro_phone",
+        "DIGIY_RESEAU_PROFILE_V1",
+        "DIGIY_RESEAU_OFFER_V1",
+        "DIGIY_RESEAU_PAYMENT_V1"
+      ];
+
+      var HUB = "./hub.html";
+
+      function hasSession(){
+        try{
+          return KEYS.some(function(k){
+            return !!(localStorage.getItem(k) || sessionStorage.getItem(k));
+          });
+        }catch(e){
+          return false;
+        }
+      }
+
+      if(!hasSession()){
+        document.documentElement.style.visibility = "hidden";
+        window.location.replace(HUB + "?gate=pro");
+      }else{
+        document.documentElement.style.visibility = "";
+      }
+    })();
+  </script>
+  <!-- /DIGIY GUARD SOFT -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
@@ -197,3 +236,4 @@
   <script src="./assets/js/oreille-reseau.js?v=reseau-oreille-paves-tel-20260525" defer></script>
 </body>
 </html>
+
