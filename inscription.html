@@ -7,7 +7,7 @@
   <meta name="description" content="RÉSEAU DIGIY : entrée qualifiée R7, R15, R30 ou Mise en classe FIRST. Fiche brouillon, validation DIGIY obligatoire avant publication."/>
   <meta name="theme-color" content="#06130d"/>
   <meta name="robots" content="index,follow"/>
-  <meta name="digiy-build" content="reseau-inscription-cat-r7-r15-r30-first-20260603"/>
+  <meta name="digiy-build" content="reseau-inscription-whatsapp-paiement-riche-20260608"/>
   <link rel="stylesheet" href="./style.css"/>
 
   <style>
@@ -279,7 +279,7 @@
 
       <div class="miniActions">
         <button class="btn gold" type="button" id="copyWave">📋 Copier Wave</button>
-        <a class="btn green" href="https://wa.me/221771342889" target="_blank" rel="noopener">💬 WhatsApp paiement</a>
+        <a class="btn green" id="waPayment" href="#" target="_blank" rel="noopener">💬 WhatsApp paiement</a>
       </div>
     </section>
 
@@ -590,8 +590,49 @@
         ].join("\n");
       }
 
+      function paymentText(){
+        const d = formData();
+        const plan = PLANS[d.cat];
+
+        return [
+          "Bonjour JB, je viens d’effectuer / préparer le paiement Wave pour RÉSEAU DIGIY.",
+          "",
+          "INFOS PRO",
+          "Responsable : " + (d.responsible_name || "à compléter"),
+          "Téléphone : " + (d.phone || "à compléter"),
+          "Zone : " + (d.zone || "à compléter"),
+          "Ville / repère : " + (d.city || "à compléter"),
+          "Activité / fiche : " + (d.business || "à compléter"),
+          "Métier : " + (d.metier || "à compléter"),
+          "",
+          "FORMULE RÉSEAU",
+          "Catégorie : " + d.cat,
+          "Formule : " + plan.label,
+          "Montant : " + fmt(plan.amount),
+          "Paiement Wave : " + WAVE_LABEL,
+          "",
+          "NOTE / PREUVE",
+          d.payment_note || "à compléter après paiement Wave",
+          "",
+          "Après paiement, j’envoie la capture / preuve ici.",
+          "Date de demande : " + new Date().toLocaleString("fr-FR")
+        ].join("\n");
+      }
+
+      function syncWhatsappLinks(){
+        const waPayment = $("waPayment");
+        const waAdmin = $("waAdmin");
+        if(waPayment){
+          waPayment.href = "https://wa.me/" + ADMIN_WA + "?text=" + encodeURIComponent(paymentText());
+        }
+        if(waAdmin){
+          waAdmin.href = "https://wa.me/" + ADMIN_WA + "?text=" + encodeURIComponent(proofText());
+        }
+      }
+
       function renderProof(){
         $("proofBox").textContent = proofText();
+        syncWhatsappLinks();
       }
 
       document.querySelectorAll("[data-plan]").forEach(btn => {
@@ -634,9 +675,14 @@
         }
       });
 
-      $("waAdmin").addEventListener("click", function(e){
-        const text = encodeURIComponent(proofText());
-        this.href = "https://wa.me/" + ADMIN_WA + "?text=" + text;
+      $("waPayment").addEventListener("click", function(){
+        saveDraft();
+        renderProof();
+      });
+
+      $("waAdmin").addEventListener("click", function(){
+        saveDraft();
+        renderProof();
       });
 
       const params = new URLSearchParams(location.search);
@@ -653,4 +699,6 @@
   </script>
 </body>
 </html>
+
+
 
