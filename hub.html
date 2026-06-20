@@ -546,6 +546,35 @@
       transition:opacity .2s;
     }
     .fab-stop.show{opacity:1;pointer-events:auto}
+
+    /* ── SWITCH FR / EN DIGIY ── */
+    .lang-switch{
+      display:inline-flex;
+      gap:6px;
+      padding:4px;
+      border-radius:999px;
+      border:1px solid rgba(246,196,83,.35);
+      background:rgba(255,255,255,.08);
+      align-items:center;
+    }
+    .lang-switch button{
+      min-height:32px;
+      padding:0 10px;
+      border-radius:999px;
+      border:0;
+      cursor:pointer;
+      color:#fff;
+      background:transparent;
+      font-weight:1000;
+      font-size:12px;
+      letter-spacing:.04em;
+    }
+    .lang-switch button.active{
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      box-shadow:0 8px 18px rgba(0,0,0,.16);
+    }
+
   </style>
 </head>
 
@@ -564,6 +593,10 @@
           <span class="chip-mini green">🌍 Public visible</span>
           <span class="chip-mini">🔒 Dépôt qualifié</span>
           <span class="chip-mini">🌟 FIRST 150 000</span>
+          <span class="lang-switch" aria-label="Langue / Language">
+            <button type="button" id="langFr" class="active">FR</button>
+            <button type="button" id="langEn">EN</button>
+          </span>
         </div>
       </header>
 
@@ -888,11 +921,234 @@
     </div>
   </div>
 
+
+<script>
+(function(){
+  "use strict";
+  window.__DIGIY_LANG = "fr";
+
+  const META = {
+    fr: {
+      title: "RÉSEAU DIGIY — HUB public",
+      description: "RÉSEAU DIGIY — HUB public : offres qualifiées, fiches, dépôt pro cadré, contact direct."
+    },
+    en: {
+      title: "RÉSEAU DIGIY — Public HUB",
+      description: "RÉSEAU DIGIY — Public HUB: qualified offers, profiles, framed pro submission, direct contact."
+    }
+  };
+
+  const EN_MAP = {
+  "RÉSEAU DIGIY — HUB public": "RÉSEAU DIGIY — Public HUB",
+  "Public visible · dépôt qualifié · lien partageable · contact direct": "Visible public offer · qualified submission · shareable link · direct contact",
+  "🌍 Public visible": "🌍 Publicly visible",
+  "🔒 Dépôt qualifié": "🔒 Qualified submission",
+  "🌟 FIRST 150 000": "🌟 FIRST 150,000",
+  "🏠 Accueil": "🏠 Home",
+  "📰 Offres": "📰 Offers",
+  "🔗 Fiches": "🔗 Profiles",
+  "🇸🇳 Wolof": "🇸🇳 Wolof",
+  "📢 Déposer": "📢 Submit",
+  "💳 Règlement": "💳 Payment",
+  "🎙️ ACTION": "🎙️ ACTION",
+  "👤 Pro": "👤 Pro",
+  "🧰 Local": "🧰 Local",
+  "Vitrine · Terrain Digital": "Showcase · Digital Field",
+  "17 visuels terrain · QR · contact direct · Wolof terrain · 0% commission": "17 field visuals · QR · direct contact · Wolof field words · 0% commission",
+  "LOC · Chez Baptiste": "LOC · Chez Baptiste",
+  "Photo réelle de la fiche · Saly · réservation directe propriétaire": "Real profile photo · Saly · direct owner booking",
+  "BUILD · Helage plombier": "BUILD · Helage plumber",
+  "Vraie fiche métier · plomberie · dépannage · installation · Saly": "Real trade profile · plumbing · repairs · installation · Saly",
+  "DRIVER · Ambassadeur": "DRIVER · Ambassador",
+  "Chauffeurs visibles · tenue de service · contact direct": "Visible drivers · service attitude · direct contact",
+  "EXPLORE · Sortie pêche": "EXPLORE · Fishing trip",
+  "Petite Côte · expérience locale · intérêt public · mise en rapport": "Petite Côte · local experience · public interest · connection",
+  "EXPLORE · Ambiance plage": "EXPLORE · Beach atmosphere",
+  "Saly · lumière · promenade · lieu utile · contact direct": "Saly · light · walk · useful place · direct contact",
+  "LOC · Galerie logements": "LOC · Housing gallery",
+  "Locations visibles · fiche claire · 0% commission": "Visible rentals · clear profile · 0% commission",
+  "RESA · Réserver simplement": "RESA · Book simply",
+  "Table · moment · demande claire · confirmation par le pro": "Table · moment · clear request · confirmed by the pro",
+  "RESTO · Table et accueil": "RESTO · Table and welcome",
+  "Restaurant visible · réservation simple · client au contact direct": "Visible restaurant · simple booking · client in direct contact",
+  "DRIVER · Baptiste": "DRIVER · Baptiste",
+  "Fiche chauffeur · QR · WhatsApp · client vers le pro": "Driver profile · QR · WhatsApp · client to the pro",
+  "ASTOU Boutique · Vitrine": "ASTOU Boutique · Showcase",
+  "Boutique · produits · WhatsApp · confiance · présence qui circule": "Shop · products · WhatsApp · trust · circulating presence",
+  "ASTOU Boutique · Produits": "ASTOU Boutique · Products",
+  "Le commerce local se montre mieux avec photos, fiche et contact direct": "Local business becomes clearer with photos, a profile, and direct contact",
+  "MARKET · Galerie boutiques": "MARKET · Shop gallery",
+  "Produits locaux · vitrine visible · paiement direct au commerçant": "Local products · visible showcase · direct payment to the merchant",
+  "MON COMMERCE · Terrain visible": "MY BUSINESS · Visible field",
+  "Cantine · kiosque · atelier · boutique · QR et contact direct": "Canteen · kiosk · workshop · shop · QR and direct contact",
+  "FIERTÉ · PUISSANCE · INDÉPENDANCE": "PRIDE · POWER · INDEPENDENCE",
+  "Manifeste · terrain · voix · image · le pro reprend sa place": "Manifesto · field · voice · image · the pro takes back their place",
+  "QR DIGIY · Présence partageable": "DIGIY QR · Shareable presence",
+  "Le QR contient la fiche détaillée et circule sur réseaux, boutique et véhicule": "The QR carries the detailed profile and circulates on networks, shops, and vehicles",
+  "RÉSEAU · Image mémoire": "NETWORK · Memory image",
+  "Une présence propre se lit, s’écoute, se partage et reste visible": "A clean presence can be read, heard, shared, and stay visible",
+  "RÉSEAU · Le pro existe": "NETWORK · The pro exists",
+  "Je suis vivant. J’existe. Mon métier existe. Ma fiche circule.": "I am alive. I exist. My trade exists. My profile circulates.",
+  "Visuels": "Visuals",
+  "Territoires": "Territories",
+  "Commission": "Commission",
+  "Voir la vitrine →": "View the showcase →",
+  "Le bouche-à-oreille devient": "Word of mouth becomes",
+  "cliquable.": "clickable.",
+  "Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients et réseau humain font circuler. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.": "A qualified offer, a clear link, a contact button — then WhatsApp, SMS, family, clients, and the human network make it circulate. The Wolof lexicon helps explain joining, online profiles, QR, announcements, direct contact, and zero commission without losing the field. The slideshow puts the first real photos in front: Chez Baptiste, Helage, Driver, Explore, then the other field doors.",
+  "1 · Voir": "1 · See",
+  "Le public trouve l’offre posée cette semaine.": "The public finds the offer posted this week.",
+  "2 · Cliquer": "2 · Click",
+  "Il ouvre la fiche, appelle, écrit ou partage.": "They open the profile, call, write, or share.",
+  "3 · Contacter": "3 · Contact",
+  "Le lien revient directement vers le pro.": "The link goes directly back to the pro.",
+  "Côté public": "Public side",
+  "Voir les offres": "See the offers",
+  "Promos, retours, produits, chambres, services et disponibilités visibles dans le journal.": "Promotions, return trips, products, rooms, services, and availability visible in the journal.",
+  "Produits locaux": "Local products",
+  "Savons, beauté, boutique, arrivages, textile, petites ventes du terrain.": "Soaps, beauty, shop items, arrivals, textile, small field sales.",
+  "Retours chauffeurs": "Driver return trips",
+  "AIBD, Dakar, Saly, Mbour : opportunités à saisir et à partager.": "AIBD, Dakar, Saly, Mbour: opportunities to take and share.",
+  "Locations": "Rentals",
+  "Chambres, villas, séjours, offres posées avec contact direct.": "Rooms, villas, stays, offers posted with direct contact.",
+  "Services dispo": "Available services",
+  "Artisans, beauté, repas, aide terrain, activité locale disponible.": "Trades, beauty, meals, field help, available local activity.",
+  "Fiche du pro": "Pro profile",
+  "La maison claire du professionnel : offre, contact, lien, partage.": "The professional’s clear home: offer, contact, link, sharing.",
+  "Lexique Wolof": "Wolof lexicon",
+  "Rejoindre le réseau, partager le QR, publier une annonce et garder le contact direct.": "Join the network, share the QR, publish an announcement, and keep direct contact.",
+  "Preuves de finition DIGIY": "DIGIY proof of finish",
+  "Commerce": "Business",
+  "Une boutique visible, propre, directe : produits, univers, WhatsApp, confiance.": "A visible, clean, direct shop: products, identity, WhatsApp, trust.",
+  "Vitrine": "Showcase",
+  "Client direct": "Direct client",
+  "Voir la vitrine": "View the showcase",
+  "Fiche pro": "Pro profile",
+  "Fiche Astou": "Astou profile",
+  "QR, contact, liens utiles, boutique, présence claire. Le pro garde son nom.": "QR, contact, useful links, shop, clear presence. The pro keeps their name.",
+  "Fiche": "Profile",
+  "Lien propre": "Clean link",
+  "Voir la fiche": "View the profile",
+  "Location": "Rental",
+  "Logement, infos utiles, contact direct, réservation simple.": "Housing, useful info, direct contact, simple booking.",
+  "Direct proprio": "Direct owner",
+  "Voir LOC": "View LOC",
+  "Chauffeur": "Driver",
+  "Image, contact, QR, WhatsApp direct. Le client voit, clique et parle au chauffeur.": "Image, contact, QR, direct WhatsApp. The client sees, clicks, and talks to the driver.",
+  "Contact direct": "Direct contact",
+  "Voir DRIVER": "View DRIVER",
+  "Réservation": "Booking",
+  "Le client voit le lieu, comprend l’accueil, puis envoie une demande propre.": "The client sees the place, understands the welcome, then sends a clean request.",
+  "Demande": "Request",
+  "Confirmation pro": "Pro confirmation",
+  "Voir RESA": "View RESA",
+  "Sortie pêche": "Fishing trip",
+  "Une activité locale devient une fiche claire : sortie, Petite Côte, contact.": "A local activity becomes a clear profile: trip, Petite Côte, contact.",
+  "Activité": "Activity",
+  "Petite Côte": "Petite Côte",
+  "À partager": "To share",
+  "Voir EXPLORE": "View EXPLORE",
+  "RÉSEAU DIGIY ne laisse pas deviner : une annonce peut mener vers une vraie fiche finie, une vitrine claire, une demande client ou un contact direct.": "RÉSEAU DIGIY does not leave people guessing: an announcement can lead to a real finished profile, a clear showcase, a client request, or direct contact.",
+  "La promesse :": "The promise:",
+  "COM AU CLIC": "COMMUNICATION BY CLICK",
+  "RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible.": "RÉSEAU DIGIY turns word of mouth into a clean, clickable, visible link.",
+  "Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler.": "It is not a post that disappears: it is an offer placed for a clear duration, ready to circulate.",
+  "Côté pro": "Pro side",
+  "ACTION RÉSEAU": "NETWORK ACTION",
+  "Entrée propre : choisir R7, R15, R30 ou FIRST avant annonce, règlement et validation.": "Clean entry: choose R7, R15, R30, or FIRST before announcement, payment, and validation.",
+  "Wolof RÉSEAU": "NETWORK Wolof",
+  "Quelques phrases utiles pour expliquer la fiche, le QR, l’annonce et le contact direct.": "A few useful phrases to explain the profile, QR, announcement, and direct contact.",
+  "Visibilité → PAY": "Visibility → PAY",
+  "Règlement réel vers PAY. RÉSEAU garde la fiche, PAY encaisse.": "Real payment goes to PAY. NETWORK keeps the profile, PAY collects.",
+  "Je dépose": "I submit",
+  "Promo, retour AIBD, produit maison, chambre, service, activité. DIGIY prépare, le pro modifie.": "Promotion, AIBD return trip, homemade product, room, service, activity. DIGIY prepares, the pro edits.",
+  "Je m’inscris": "I register",
+  "Nom, métier, téléphone, zone. Déjà validé ou classe FIRST : la publication reste cadrée.": "Name, trade, phone, area. Already validated or FIRST class: publication stays framed.",
+  "Je règle": "I pay",
+  "7 jours · 15 jours · 30 jours. Prix clair, preuve WhatsApp, activation par DIGIY.": "7 days · 15 days · 30 days. Clear price, WhatsApp proof, activated by DIGIY.",
+  "Commencer par l’inscription qualifiée : fiche brouillon, catégorie et feu vert DIGIY.": "Start with qualified registration: draft profile, category, and DIGIY green light.",
+  "Ma fiche": "My profile",
+  "La fiche reste la maison du pro. L’annonce de la semaine est le projecteur.": "The profile remains the pro’s home. The weekly announcement is the spotlight.",
+  "Petit coffre terrain : données locales, contrôle, reprise propre si besoin.": "Small field vault: local data, control, clean recovery if needed.",
+  "Visibilité noble :": "Noble visibility:",
+  "club privé": "private club",
+  "Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage.": "No commission, no open bar. A qualified announcement, a duration, a clickable link, a profile, a share.",
+  "Pro validé": "Validated pro",
+  "FCFA · 7 jours visibles": "FCFA · 7 visible days",
+  "FCFA · 15 jours visibles": "FCFA · 15 visible days",
+  "FCFA · 30 jours visibles": "FCFA · 30 visible days",
+  "Mise en classe FIRST · 150 000 FCFA · 1 mois": "FIRST class placement · 150,000 FCFA · 1 month",
+  "pour les pros non encore validés : fiche propre, QR, lien partageable, messages prêts et mise en lumière.": "for pros not yet validated: clean profile, QR, shareable link, ready messages, and visibility.",
+  "DIGIYLYFE — HUB public. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. Le terrain garde sa fiche, son client, son argent et sa relation.": "DIGIYLYFE — Public HUB. Qualified publication: no noise, only validated pros. Wolof lexicon available to explain the network in the field. The field keeps its profile, its client, its money, and its relationship.",
+  "🎧 Lecteur RÉSEAU DIGIY": "🎧 RÉSEAU DIGIY reader"
+};
+
+  const nodes = [];
+  function collectTextNodes(){
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        const p = node.parentElement;
+        if(!p) return NodeFilter.FILTER_REJECT;
+        const tag = p.tagName;
+        if(tag === "SCRIPT" || tag === "STYLE") return NodeFilter.FILTER_REJECT;
+        if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let n;
+    while((n = walker.nextNode())) nodes.push({node:n, fr:n.nodeValue});
+  }
+
+  function translateTextValue(raw, lang){
+    if(lang === "fr") return raw;
+    const trimmed = raw.trim();
+    const val = EN_MAP[trimmed];
+    if(!val) return raw;
+    const leading = raw.match(/^\s*/)[0] || "";
+    const trailing = raw.match(/\s*$/)[0] || "";
+    return leading + val + trailing;
+  }
+
+  function setActive(lang){
+    document.getElementById("langFr")?.classList.toggle("active", lang === "fr");
+    document.getElementById("langEn")?.classList.toggle("active", lang === "en");
+  }
+
+  function applyLang(lang){
+    lang = (lang === "en") ? "en" : "fr";
+    window.__DIGIY_LANG = lang;
+    document.documentElement.lang = lang;
+    setActive(lang);
+
+    nodes.forEach(item => {
+      item.node.nodeValue = translateTextValue(item.fr, lang);
+    });
+
+    const meta = META[lang] || META.fr;
+    document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if(desc) desc.setAttribute("content", meta.description);
+
+    try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  }
+
+  function init(){
+    collectTextNodes();
+    document.getElementById("langFr")?.addEventListener("click", () => applyLang("fr"));
+    document.getElementById("langEn")?.addEventListener("click", () => applyLang("en"));
+    applyLang("fr");
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+
   <script>
 (function(){
   'use strict';
 
-  var audioParts = [
+  var audioPartsFr = [
     "RÉSEAU DIGIY n’est pas un panneau d’annonces.",
     "C’est la voie spéciale First Class de DIGIYLYFE... pour installer un professionnel, proprement, sur l’autoroute digitale.",
     "Le lexique Wolof aide à expliquer le réseau simplement : rejoindre, fiche en ligne, Q R, annonce, contact direct et zéro commission.",
@@ -915,6 +1171,33 @@
     "Le terrain... garde la main."
   ];
 
+  var audioPartsEn = [
+    "RÉSEAU DIGIY is not just an announcement board.",
+    "It is the special First Class lane of DIGIYLYFE... to install a professional, cleanly, on the digital road.",
+    "The Wolof lexicon helps explain the network simply: joining, online profile, Q R, announcement, direct contact, and zero commission.",
+    "Here, we do not post noise.",
+    "We install a qualified presence.",
+    "A professional arrives with their trade, their offer, their contact, and their reality.",
+    "DIGIY helps turn that into a clear profile, a shareable link, a Q R, a message ready to circulate, and a dated announcement.",
+    "The profile is the professional’s home.",
+    "It contains their name, trade, area, photos, offers, WhatsApp, call, S M S, and direct contact.",
+    "The announcement is not the home.",
+    "The announcement is the spotlight.",
+    "It puts the profile in front of people for a clear duration: seven days, fifteen days, thirty days, or First Class placement.",
+    "The DIGIY Q R is not just a technical square.",
+    "It carries the detailed professional profile and can circulate everywhere: WhatsApp, social networks, videos, stories, bios, posters, shops, vehicles, and the DIGIYLYFE website.",
+    "The Q R circulates professional existence without capturing the client.",
+    "DIGIY does not steal the client.",
+    "DIGIY opens the road to the professional.",
+    "The professional keeps their name, their client, their money, their relationship, and their dignity.",
+    "RÉSEAU DIGIY: the profile reassures; the announcement attracts; the Q R circulates; direct contact converts.",
+    "The field keeps control."
+  ];
+
+  function getAudioParts(){
+    return (window.__DIGIY_LANG === "en") ? audioPartsEn : audioPartsFr;
+  }
+
   function digiySpeakText(text){
     return String(text || "")
       .replace(/0\s*%/g, "zéro pour cent")
@@ -935,6 +1218,12 @@
   function pickVoice(){
     if(!window.speechSynthesis) return null;
     var voices = speechSynthesis.getVoices();
+    var isEn = window.__DIGIY_LANG === "en";
+    if(isEn){
+      return voices.find(function(v){ return /^en/i.test(v.lang || "") && /Daniel|Google|Microsoft|Samantha|Alex|Mark|David|George/i.test(v.name || ""); })
+        || voices.find(function(v){ return /^en/i.test(v.lang || ""); })
+        || null;
+    }
     return voices.find(function(v){
           return /^fr/i.test(v.lang || "") && /Thomas|Daniel|Paul|Remi|Rémi|Google|Microsoft|Amelie|Amélie|Marie|Audrey|Hortense/i.test(v.name || "");
         })
@@ -947,10 +1236,10 @@
     if(!fabPlay) return;
     fabPlay.classList.toggle('playing', playing);
     fabPlay.textContent = playing ? '⏸' : '🔊';
-    fabPlay.setAttribute('aria-label', playing ? 'Pause' : 'Écouter RÉSEAU DIGIY');
+    fabPlay.setAttribute('aria-label', playing ? 'Pause' : ((window.__DIGIY_LANG === 'en') ? 'Listen to RÉSEAU DIGIY' : 'Écouter RÉSEAU DIGIY'));
     if(fabStop) fabStop.classList.toggle('show', playing);
     if(fabTip){
-      fabTip.textContent = playing ? '🎧 RÉSEAU DIGIY parle…' : '🎧 Écouter RÉSEAU';
+      fabTip.textContent = playing ? ((window.__DIGIY_LANG === 'en') ? '🎧 RÉSEAU DIGIY is speaking…' : '🎧 RÉSEAU DIGIY parle…') : ((window.__DIGIY_LANG === 'en') ? '🎧 Listen to RÉSEAU' : '🎧 Écouter RÉSEAU');
       fabTip.classList.toggle('show', playing);
       if(!playing) setTimeout(function(){ fabTip.classList.remove('show'); }, 1800);
     }
@@ -966,14 +1255,15 @@
   function speakPart(index, runId){
     if(!window.speechSynthesis) return;
     if(runId !== speechRun) return;
-    if(index >= audioParts.length){
+    var parts = getAudioParts();
+    if(index >= parts.length){
       setFab(false);
       return;
     }
 
-    var spoken = digiySpeakText(audioParts[index]);
+    var spoken = digiySpeakText(parts[index]);
     var u = new SpeechSynthesisUtterance(spoken);
-    u.lang   = 'fr-FR';
+    u.lang   = (window.__DIGIY_LANG === 'en') ? 'en-US' : 'fr-FR';
     u.rate   = 0.79;
     u.pitch  = 1.0;
     u.volume = 1;
@@ -1090,6 +1380,1490 @@
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
