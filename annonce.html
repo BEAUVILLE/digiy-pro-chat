@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — Annonce qualifiée</title>
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <title>RÉSEAU DIGIY — Annonce pro France · Sénégal</title>
+  <meta name="description" content="RÉSEAU DIGIY — Annonce qualifiée pour pros de France et du Sénégal : pays clair, devise claire, fiche existante, lien partageable, contact direct." />
   <meta name="theme-color" content="#00853f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,30 +45,33 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>CLUB PRIVÉ · pros validés · implantation noble · lien partageable</p>
+            <p>CLUB PRIVÉ · pros France & Sénégal · fiche validée · lien partageable</p>
           </div>
         </a>
         <div class="chips">
           <span class="chip-mini green">✅ Pros validés</span>
+          <span class="chip-mini">🇸🇳 Sénégal</span>
+          <span class="chip-mini">🇫🇷 France</span>
           <span class="chip-mini">🔒 Club privé</span>
-          <span class="chip-mini">🌟 FIRST 150 000</span>
         </div>
       </header>
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
         <a class="" href="hub.html">🏠 Hub</a>
-        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="inscription.html?cat=reseau">👤 Inscription</a>
         <a class="gold" href="annonce.html">📢 Annonce</a>
         <a class="" href="paiement.html">💳 Règlement</a>
         <a class="" href="journal.html">📰 Journal</a>
+        <a class="" href="journal.html?pays=france">🇫🇷 France</a>
+        <a class="" href="journal.html?pays=senegal">🇸🇳 Sénégal</a>
         <a class="" href="fiche.html">🔗 Fiche</a>
         <a class="" href="assistant.html">🧠 Assistant</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
       
 <section class="hero">
-  <div class="kicker">Étape 2 · Annonce qualifiée</div>
-  <h2>Une annonce noble, <span>visible plusieurs jours.</span></h2>
-  <p class="lead">La publication est réservée aux pros DIGIY validés. Le pro clique, DIGIY prépare, puis le texte reste modifiable pour l’heure, le lieu, le prix, l’événement et le ton.</p>
+  <div class="kicker">Étape 2 · Annonce qualifiée France · Sénégal</div>
+  <h2>Une annonce locale, <span>visible sur le bon territoire.</span></h2>
+  <p class="lead">La publication est réservée aux pros DIGIY validés, qu’ils soient au Sénégal ou en France. Le pays, la ville, la devise et le contact doivent être clairs avant validation : le client comprend où se trouve le pro et le contacte directement.</p>
 </section>
 <section class="panel">
   <h3>Préparer <span>l’annonce qualifiée</span></h3>
@@ -77,6 +80,14 @@
     <input type="hidden" id="offerStatus" value="pending_validation">
     <input type="hidden" id="offerValidated" value="false">
     <input type="hidden" id="offerPublished" value="false">
+    <div class="two">
+      <div class="field"><label for="paysPro">Pays du professionnel</label><select id="paysPro"><option value="senegal">🇸🇳 Sénégal</option><option value="france">🇫🇷 France</option><option value="diaspora">🌍 Diaspora / International</option></select></div>
+      <div class="field"><label for="devisePro">Devise de l’offre</label><select id="devisePro"><option value="FCFA">FCFA</option><option value="EUR">EUR</option><option value="A_CONFIRMER">À confirmer</option></select></div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="villeLibre">Ville / zone précise</label><input id="villeLibre" placeholder="Saly, Mbour, Dakar, AIBD, Sarlat, Arcachon, Bordeaux, Paris..."></div>
+      <div class="field"><label for="indicatifPro">Indicatif contact</label><select id="indicatifPro"><option value="+221">+221 · Sénégal</option><option value="+33">+33 · France</option><option value="autre">Autre / à confirmer</option></select></div>
+    </div>
     <div class="two">
       <div class="field"><label for="title">Titre de l’annonce</label><input id="title" placeholder="Ex : 2 nuits payées, la 3e offerte"></div>
       <div class="field"><label for="type">Type</label><select id="type"></select></div>
@@ -92,11 +103,13 @@
         <button type="button" class="choice" data-chip-target="title" data-value="2 nuits payées, la 3e offerte">🏡 Promo chambre</button>
         <button type="button" class="choice" data-chip-target="title" data-value="Savons maison et beurre de karité disponibles">🧼 Produit maison</button>
         <button type="button" class="choice" data-chip-target="title" data-value="Créneau disponible cette semaine">🛠️ Service dispo</button>
+        <button type="button" class="choice" data-chip-target="title" data-value="Prestation disponible cette semaine en France">🇫🇷 Service France</button>
+        <button type="button" class="choice" data-chip-target="title" data-value="Offre locale France · contact direct">🤝 Pro France</button>
       </div>
     </div>
     <div class="two">
-      <div class="field"><label for="priceText">Prix / remise</label><input id="priceText" placeholder="Ex : 3e nuit gratuite, pack 5 000 FCFA, tarif à confirmer"></div>
-      <div class="field"><label for="plan">Durée visibilité</label><select id="plan"><option value="week">7 jours · 15 000 FCFA</option><option value="quinzaine">15 jours · 25 000 FCFA</option><option value="month">30 jours · 45 000 FCFA</option></select></div>
+      <div class="field"><label for="priceText">Prix / remise</label><input id="priceText" placeholder="Ex : 3e nuit gratuite, pack 5 000 FCFA, prestation 45 EUR, tarif à confirmer"></div>
+      <div class="field"><label for="plan">Durée visibilité</label><select id="plan"><option value="week">7 jours · 15 000 FCFA</option><option value="quinzaine">15 jours · 25 000 FCFA</option><option value="month">30 jours · 45 000 FCFA</option><option value="first">FIRST · fiche + QR + mise en lumière</option></select></div>
     </div>
     <div class="two">
       <div class="field"><label for="startDate">Début</label><input id="startDate" type="date"></div>
@@ -108,16 +121,28 @@
     <div class="field">
       <label>Rappel Club privé</label>
       <div class="noticeMini" style="padding:14px;border-radius:18px;border:1px solid rgba(246,196,83,.32);background:rgba(246,196,83,.10);font-weight:900;line-height:1.35">
-        Pour publier ici, il faut être pro DIGIY validé. Si le pro n’est pas encore validé, l’entrée passe par la <strong>Mise en classe FIRST · 150 000 FCFA · 1 mois</strong> : fiche propre, QR, lien partageable, messages prêts et mise en lumière.<br><br>
-        <strong>Important :</strong> préparer une annonce ne la publie pas. Elle part en attente de validation DIGIY ; elle apparaît seulement après contrôle du dossier et du règlement.
+        Pour publier ici, il faut être pro DIGIY validé, au Sénégal ou en France. Le pays, la ville, la devise, l’indicatif et le contact doivent être cohérents avant apparition publique.<br><br>
+        Si le pro n’est pas encore validé, l’entrée passe par la <strong>Mise en classe FIRST</strong> : fiche propre, QR, lien partageable, messages prêts et mise en lumière. Les tarifs Sénégal restent en FCFA ; les tarifs France doivent être cadrés en EUR avant publication.<br><br>
+        <strong>Important :</strong> préparer une annonce ne la publie pas. Elle part en attente de validation DIGIY ; elle apparaît seulement après contrôle du dossier, du territoire et du règlement.
       </div>
     </div>
     <div class="btnrow">
       <button class="btn main" type="submit">📩 Préparer pour validation DIGIY</button>
-      <a class="btn green" href="paiement.html">💳 Aller au règlement</a>
+      <a class="btn green" id="paymentLink" href="paiement.html">💳 Aller au règlement</a>
+      <a class="btn" id="fichePreviewLink" href="fiche.html?status=pending">🔒 Voir brouillon fiche</a>
       <button class="btn" type="button" data-copy="offer" data-label="annonce">📋 Copier annonce</button>
     </div>
   </form>
+</section>
+<section class="panel" id="territoryDoctrine">
+  <h3>Territoire clair : <span>France ou Sénégal</span></h3>
+  <p class="small"><strong>Une annonce DIGIY ne mélange pas les terrains.</strong> Un pro de France doit afficher France, ville, devise EUR et indicatif +33. Un pro du Sénégal doit afficher Sénégal, zone, FCFA et indicatif +221. La fiche voyage, le QR circule, mais le client revient directement au professionnel.</p>
+  <div class="btnrow">
+    <a class="btn green" href="inscription.html?cat=reseau&pays=france">🇫🇷 Inscrire un pro France</a>
+    <a class="btn main" href="inscription.html?cat=reseau&pays=senegal">🇸🇳 Inscrire un pro Sénégal</a>
+    <a class="btn" href="journal.html?pays=france">🇫🇷 Voir offres France</a>
+    <a class="btn" href="journal.html?pays=senegal">🇸🇳 Voir offres Sénégal</a>
+  </div>
 </section>
 <section class="panel">
   <h3>Message prêt <span>à partager</span></h3>
@@ -125,20 +150,96 @@
   <div class="btnrow">
     <button class="btn main" type="button" data-copy="offer" data-label="message offre">📋 Copier le message</button>
     <a class="btn green" data-wa-offer target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a class="btn" href="fiche.html?status=pending">🔒 Voir brouillon fiche</a>
+    <a class="btn" id="fichePreviewLinkBottom" href="fiche.html?status=pending">🔒 Voir brouillon fiche</a>
   </div>
 </section>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
+  function initTerritoryFields(){
+    const q = new URLSearchParams(location.search);
+    const paysEl = document.getElementById('paysPro');
+    const deviseEl = document.getElementById('devisePro');
+    const indicatifEl = document.getElementById('indicatifPro');
+    const villeEl = document.getElementById('villeLibre');
+    const planEl = document.getElementById('plan');
+    const paymentLink = document.getElementById('paymentLink');
+    const ficheTop = document.getElementById('fichePreviewLink');
+    const ficheBottom = document.getElementById('fichePreviewLinkBottom');
+
+    function normalizePays(v){
+      v = String(v || '').toLowerCase();
+      if(v.includes('fr')) return 'france';
+      if(v.includes('sen') || v.includes('sn')) return 'senegal';
+      if(v.includes('dias')) return 'diaspora';
+      return 'senegal';
+    }
+
+    function setPlanLabels(pays){
+      if(!planEl) return;
+      const isFrance = pays === 'france';
+      const labels = isFrance ? {
+        week:'7 jours · tarif France à confirmer',
+        quinzaine:'15 jours · tarif France à confirmer',
+        month:'30 jours · tarif France à confirmer',
+        first:'FIRST France · fiche + QR + mise en lumière'
+      } : {
+        week:'7 jours · 15 000 FCFA',
+        quinzaine:'15 jours · 25 000 FCFA',
+        month:'30 jours · 45 000 FCFA',
+        first:'FIRST Sénégal · 150 000 FCFA · 1 mois'
+      };
+      Array.from(planEl.options).forEach(opt => { if(labels[opt.value]) opt.textContent = labels[opt.value]; });
+    }
+
+    function syncTerritory(){
+      const pays = normalizePays(paysEl && paysEl.value);
+      const devise = pays === 'france' ? 'EUR' : (pays === 'senegal' ? 'FCFA' : 'A_CONFIRMER');
+      const indicatif = pays === 'france' ? '+33' : (pays === 'senegal' ? '+221' : 'autre');
+
+      if(deviseEl) deviseEl.value = devise;
+      if(indicatifEl) indicatifEl.value = indicatif;
+      setPlanLabels(pays);
+
+      const qs = '?pays=' + encodeURIComponent(pays);
+      if(paymentLink) paymentLink.href = 'paiement.html' + qs;
+      if(ficheTop) ficheTop.href = 'fiche.html?status=pending&pays=' + encodeURIComponent(pays);
+      if(ficheBottom) ficheBottom.href = 'fiche.html?status=pending&pays=' + encodeURIComponent(pays);
+
+      try{
+        localStorage.setItem('digiy_reseau_territory_v1', JSON.stringify({
+          pays:pays,
+          devise:devise,
+          indicatif:indicatif,
+          ville:(villeEl && villeEl.value) || '',
+          source:'annonce.html',
+          saved_at:new Date().toISOString()
+        }));
+      }catch(_){}
+    }
+
+    const askedPays = normalizePays(q.get('pays') || q.get('country') || '');
+    if(paysEl) paysEl.value = askedPays;
+    syncTerritory();
+
+    [paysEl, villeEl].forEach(el => { if(el) el.addEventListener('change', syncTerritory); if(el) el.addEventListener('input', syncTerritory); });
+  }
+
+  initTerritoryFields();
+
   const form = document.getElementById('offerForm');
   if(form){
     form.addEventListener('submit',()=>{
       try{
+        const pays = (document.getElementById('paysPro') || {}).value || 'senegal';
         const state = {
           status:'pending_validation',
           is_validated:false,
           is_published:false,
           source:'annonce.html',
+          pays:pays,
+          devise:(document.getElementById('devisePro') || {}).value || '',
+          indicatif:(document.getElementById('indicatifPro') || {}).value || '',
+          ville:(document.getElementById('villeLibre') || {}).value || '',
           saved_at:new Date().toISOString()
         };
         localStorage.setItem('digiy_reseau_offer_validation_state', JSON.stringify(state));
@@ -149,11 +250,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, avec publication qualifiée.</footer>
+      <footer class="footer">DIGIYLYFE — Pros France et Sénégal : le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : pays clair, offre datée, fiche existante, lien partageable, publication qualifiée.</footer>
     </div>
   </div>
   <script src="./assets/js/reseau-core.js"></script>
   
 </body>
 </html>
+
+
 
