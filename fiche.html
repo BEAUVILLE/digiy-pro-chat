@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — Fiche</title>
-  <meta name="description" content="RÉSEAU DIGIY — Fiche publique validée par DIGIY : visible seulement après contrôle, règlement et feu vert de publication." />
+  <title>RÉSEAU DIGIY — Fiche pro France · Sénégal</title>
+  <meta name="description" content="RÉSEAU DIGIY — Fiche publique validée : pros de France, pros du Sénégal, pays, zone, devise, contact direct et feu vert DIGIY avant publication." />
   <meta name="theme-color" content="#00853f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,38 +19,42 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>CLUB PRIVÉ · fiche validée · apparition après feu vert DIGIY</p>
+            <p>CLUB PRIVÉ · pros France & Sénégal · fiche validée · contact direct</p>
           </div>
         </a>
         <div class="chips">
           <span class="chip-mini green">✅ Validation DIGIY</span>
-          <span class="chip-mini">🔒 Pas d’apparition automatique</span>
+          <span class="chip-mini">🇸🇳 Pros Sénégal</span>
+          <span class="chip-mini">🇫🇷 Pros France</span>
+          <span class="chip-mini">💱 FCFA / EUR</span>
           <span class="chip-mini">📅 Visible après feu vert</span>
         </div>
       </header>
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
         <a class="" href="hub.html">🏠 Hub</a>
-        <a class="" href="inscription.html">👤 Inscription</a>
+        <a class="" href="inscription.html?cat=reseau">👤 Inscription</a>
         <a class="" href="annonce.html">📢 Annonce</a>
         <a class="" href="paiement.html">💳 Règlement</a>
         <a class="" href="journal.html">📰 Journal</a>
+        <a class="" href="journal.html?pays=senegal">🇸🇳 Sénégal</a>
+        <a class="" href="journal.html?pays=france">🇫🇷 France</a>
         <a class="gold" href="fiche.html">🔗 Fiche</a>
         <a class="" href="assistant.html">🧠 Assistant</a>
         <a class="" href="session.html">🧰 Local</a>
       </nav>
       
 <section class="hero">
-  <div class="kicker">Fiche pro validée</div>
-  <h2>La fiche est la maison. <span>DIGIY donne le feu vert.</span></h2>
-  <p class="lead">Cette page publique ne doit montrer une fiche que si le professionnel, le règlement et l’annonce ont été validés par DIGIY. Avant validation, la fiche reste en attente.</p>
+  <div class="kicker">Fiche pro validée · France · Sénégal</div>
+  <h2>La fiche est la maison du pro. <span>France ou Sénégal, DIGIY donne le feu vert.</span></h2>
+  <p class="lead">Cette page publique peut accueillir un professionnel du Sénégal ou de France. Chaque fiche doit afficher clairement le pays, la zone, la devise, l’indicatif, le contact direct et la validation DIGIY avant publication.</p>
 </section>
 <section class="panel" id="validationGate" style="display:none;border-color:rgba(246,196,83,.42);background:rgba(246,196,83,.10)">
   <h3>🔒 Fiche en attente <span>de validation DIGIY</span></h3>
   <p class="small">Cette fiche existe peut-être en brouillon, mais elle n’est pas encore publique. DIGIY doit vérifier le pro, le paiement, le téléphone, la qualité de l’offre et la durée de visibilité avant apparition.</p>
   <div class="btnrow">
-    <a class="btn main" href="inscription.html">👤 Retour inscription</a>
-    <a class="btn green" href="paiement.html">💳 Règlement Wave</a>
-    <a class="btn" href="journal.html">📰 Voir les offres validées</a>
+    <a class="btn main" id="gateInscription" href="inscription.html?cat=reseau">👤 Retour inscription</a>
+    <a class="btn green" id="gatePaiement" href="paiement.html">💳 Règlement</a>
+    <a class="btn" id="gateJournal" href="journal.html">📰 Voir les offres validées</a>
   </div>
 </section>
 
@@ -58,8 +62,9 @@
   <div>
     <div class="kicker" id="ficheStatus">Annonce en préparation</div>
     <h3 id="ficheTitle">Offre de la semaine</h3>
-    <p><strong id="ficheBusiness">Pro DIGIY</strong> · <span id="ficheMetier">Activité locale</span> · <span id="ficheZone">Sénégal</span></p>
-    <p id="ficheDetails">Annonce préparée par RÉSEAU DIGIY.</p>
+    <p><strong id="ficheBusiness">Pro DIGIY</strong> · <span id="ficheMetier">Activité locale</span> · <span id="ficheZone">France / Sénégal</span></p>
+    <p class="small"><strong id="ficheCountryBadge">🌍 Pays à confirmer</strong> · Devise : <strong id="ficheCurrency">FCFA / EUR</strong> · Indicatif : <strong id="ficheIndicatif">+221 / +33</strong></p>
+    <p id="ficheDetails">Annonce préparée par RÉSEAU DIGIY. La fiche précise le territoire du pro pour éviter le mélange entre France, Sénégal et diaspora.</p>
     <div class="price-card"><span>Prix / remise</span><b id="fichePrice">À confirmer</b><span id="ficheDates">Durée à confirmer</span></div>
     <p class="small">Téléphone direct : <strong id="fichePhone">Téléphone à poser</strong></p>
     <div class="btnrow">
@@ -71,6 +76,18 @@
   </div>
   <img id="fichePhoto" class="photo" hidden alt="Visuel de l’annonce">
 </section>
+
+<section class="panel" id="ficheTerritoryDoctrine">
+  <h3>Territoire clair : <span>pas de mélange</span></h3>
+  <p class="small">Une fiche RÉSEAU DIGIY doit dire où se trouve le professionnel : Sénégal, France ou diaspora. Le client comprend la zone, la devise, l’indicatif et le canal direct avant de contacter. DIGIY organise la visibilité, mais le pro garde son nom, son client, son argent et sa relation.</p>
+  <div class="btnrow">
+    <a class="btn green" href="journal.html?pays=senegal">🇸🇳 Voir les pros Sénégal</a>
+    <a class="btn blue" href="journal.html?pays=france">🇫🇷 Voir les pros France</a>
+    <a class="btn main" href="inscription.html?cat=reseau&pays=france">🇫🇷 Inscrire un pro France</a>
+    <a class="btn main" href="inscription.html?cat=reseau&pays=senegal">🇸🇳 Inscrire un pro Sénégal</a>
+  </div>
+</section>
+
 <section class="panel">
   <h3>Partager <span>cette fiche</span></h3>
   <p class="small">Lien actuel : <span data-offer-link></span></p>
@@ -83,6 +100,80 @@
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   RESEAU.initFichePage();
+  applyFicheTerritoryContext();
+  setTimeout(applyFicheTerritoryContext, 180);
+  setTimeout(applyFicheTerritoryContext, 650);
+
+  function getFicheTerritory(){
+    const q = new URLSearchParams(location.search);
+    const raw = String(q.get('pays') || q.get('country') || q.get('territoire') || q.get('territory') || '').toLowerCase();
+    const zoneRaw = String(q.get('zone') || q.get('ville') || q.get('city') || '').trim();
+
+    if(raw.includes('fr') || raw.includes('france')){
+      return {
+        key:'france',
+        label:'🇫🇷 Pro France',
+        zone: zoneRaw || 'France',
+        currency: String(q.get('devise') || q.get('currency') || 'EUR').toUpperCase(),
+        indicatif:'+33',
+        inscription:'inscription.html?cat=reseau&pays=france',
+        journal:'journal.html?pays=france'
+      };
+    }
+
+    if(raw.includes('sen') || raw.includes('sn') || raw.includes('sénégal') || raw.includes('senegal')){
+      return {
+        key:'senegal',
+        label:'🇸🇳 Pro Sénégal',
+        zone: zoneRaw || 'Sénégal',
+        currency: String(q.get('devise') || q.get('currency') || 'FCFA').toUpperCase(),
+        indicatif:'+221',
+        inscription:'inscription.html?cat=reseau&pays=senegal',
+        journal:'journal.html?pays=senegal'
+      };
+    }
+
+    return {
+      key:'mixed',
+      label:'🌍 France · Sénégal · Diaspora',
+      zone: zoneRaw || 'France / Sénégal',
+      currency: String(q.get('devise') || q.get('currency') || 'FCFA / EUR').toUpperCase(),
+      indicatif:'+221 / +33',
+      inscription:'inscription.html?cat=reseau',
+      journal:'journal.html'
+    };
+  }
+
+  function applyFicheTerritoryContext(){
+    const ctx = getFicheTerritory();
+    const setTextIfDefault = (id, value, defaults=[]) => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      const current = (el.textContent || '').trim();
+      if(!current || defaults.includes(current)) el.textContent = value;
+    };
+
+    const country = document.getElementById('ficheCountryBadge');
+    if(country) country.textContent = ctx.label;
+
+    const currency = document.getElementById('ficheCurrency');
+    if(currency) currency.textContent = ctx.currency;
+
+    const indicatif = document.getElementById('ficheIndicatif');
+    if(indicatif) indicatif.textContent = ctx.indicatif;
+
+    setTextIfDefault('ficheZone', ctx.zone, ['Sénégal','France / Sénégal','RÉSEAU DIGIY']);
+
+    const gateInscription = document.getElementById('gateInscription');
+    if(gateInscription) gateInscription.href = ctx.inscription;
+
+    const gateJournal = document.getElementById('gateJournal');
+    if(gateJournal) gateJournal.href = ctx.journal;
+
+    const gatePaiement = document.getElementById('gatePaiement');
+    if(gatePaiement && ctx.key === 'france') gatePaiement.textContent = '💳 Règlement EUR';
+    if(gatePaiement && ctx.key === 'senegal') gatePaiement.textContent = '💳 Règlement FCFA / Wave';
+  }
 
   function isApprovedFiche(){
     const q = new URLSearchParams(location.search);
@@ -117,7 +208,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     setText('ficheBusiness','Publication en contrôle');
     setText('ficheMetier','Validation requise');
     setText('ficheZone','RÉSEAU DIGIY');
-    setText('ficheDetails','La fiche est préparée, mais elle n’apparaît pas encore au public. Elle sera visible seulement après contrôle DIGIY et règlement validé.');
+    setText('ficheCountryBadge','🌍 Pays masqué avant validation');
+    setText('ficheCurrency','À confirmer');
+    setText('ficheIndicatif','À confirmer');
+    setText('ficheDetails','La fiche est préparée, mais elle n’apparaît pas encore au public. Elle sera visible seulement après contrôle DIGIY, pays/zone vérifiés et règlement validé.');
     setText('fichePrice','En attente');
     setText('ficheDates','Publication bloquée avant feu vert');
     setText('fichePhone','Masqué avant validation');
@@ -143,11 +237,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+      <footer class="footer">DIGIYLYFE — Pros France · Pros Sénégal. Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement ni commission plateforme.</footer>
     </div>
   </div>
   <script src="./assets/js/reseau-core.js"></script>
   
 </body>
 </html>
+
 
