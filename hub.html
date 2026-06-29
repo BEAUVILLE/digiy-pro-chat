@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>RÉSEAU DIGIY — HUB public</title>
-  <meta name="description" content="RÉSEAU DIGIY — HUB public : offres qualifiées, fiches, dépôt pro cadré, contact direct." />
+  <title>RÉSEAU DIGIY — Pros France · Pros Sénégal</title>
+  <meta name="description" content="RÉSEAU DIGIY — Pros France · Pros Sénégal : fiches professionnelles, annonces qualifiées, QR, contact direct, diaspora et 0% commission." />
   <meta name="theme-color" content="#06130d" />
   <meta name="robots" content="index,follow" />
-  <meta name="digiy-build" content="reseau-hub-action-to-inscription-lexique-wolof-20260607" />
+  <meta name="digiy-build" content="reseau-hub-pros-france-senegal-diaspora-20260629" />
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
     :root{
@@ -575,6 +575,160 @@
       box-shadow:0 8px 18px rgba(0,0,0,.16);
     }
 
+
+    /* ── AXE INTERNATIONAL FRANCE · SÉNÉGAL ── */
+    .intlBand{
+      padding:18px;
+      border-radius:26px;
+      border:1px solid rgba(246,196,83,.38);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(246,196,83,.18),transparent 36%),
+        radial-gradient(circle at 92% 8%,rgba(0,166,81,.20),transparent 34%),
+        linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.055));
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .intlHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .intlKicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:34px;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid rgba(246,196,83,.34);
+      background:rgba(246,196,83,.10);
+      color:var(--cream);
+      font-size:11px;
+      font-weight:1000;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .intlBand h3{
+      margin-top:9px;
+      max-width:820px;
+      font-size:clamp(30px,7vw,54px);
+      line-height:.92;
+      letter-spacing:-.06em;
+      font-weight:1000;
+      color:#fff;
+    }
+    .intlBand h3 span{color:var(--gold)}
+    .intlBand p{
+      margin-top:10px;
+      max-width:860px;
+      color:var(--muted);
+      font-size:clamp(16px,4vw,20px);
+      line-height:1.32;
+      font-weight:950;
+    }
+    .intlSeal{
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(0,166,81,.38);
+      background:rgba(0,166,81,.14);
+      color:#dfffe9;
+      font-size:12px;
+      font-weight:1000;
+      white-space:nowrap;
+    }
+    .intlGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:11px;
+      margin-top:14px;
+    }
+    .intlCard{
+      min-height:190px;
+      padding:16px;
+      border-radius:22px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.06));
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .intlCard.gold{border-color:rgba(246,196,83,.46);background:linear-gradient(180deg,rgba(246,196,83,.18),rgba(255,255,255,.06))}
+    .intlCard.green{border-color:rgba(0,166,81,.46);background:linear-gradient(180deg,rgba(0,166,81,.18),rgba(255,255,255,.06))}
+    .intlIcon{font-size:34px;line-height:1}
+    .intlCard strong{
+      display:block;
+      font-size:clamp(22px,5.5vw,31px);
+      line-height:.96;
+      letter-spacing:-.045em;
+      color:#fff;
+      font-weight:1000;
+    }
+    .intlCard span{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.24;
+      font-weight:950;
+    }
+    .intlTags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+    }
+    .intlTags em{
+      font-style:normal;
+      min-height:29px;
+      display:inline-flex;
+      align-items:center;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      color:rgba(248,250,252,.88);
+      font-size:11px;
+      font-weight:1000;
+      line-height:1;
+    }
+    .intlRoutes{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:9px;
+      margin-top:14px;
+    }
+    .intlRoutes a{
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(246,196,83,.28);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      font-weight:1000;
+      line-height:1.08;
+    }
+    .intlRoutes a.main{
+      background:linear-gradient(135deg,var(--gold),#00a651);
+      color:#06130d;
+      border-color:rgba(246,196,83,.62);
+    }
+    @media(max-width:820px){
+      .intlGrid,.intlRoutes{grid-template-columns:1fr}
+      .intlSeal{width:100%}
+    }
+
   </style>
 </head>
 
@@ -586,12 +740,13 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>Public visible · dépôt qualifié · lien partageable · contact direct</p>
+            <p>Pros France · Pros Sénégal · diaspora · fiches · QR · contact direct</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🌍 Public visible</span>
-          <span class="chip-mini">🔒 Dépôt qualifié</span>
+          <span class="chip-mini green">🇸🇳 Pros Sénégal</span>
+          <span class="chip-mini">🇫🇷 Pros France</span>
+          <span class="chip-mini">🌍 Diaspora</span>
           <span class="chip-mini">🌟 FIRST 150 000</span>
           <span class="lang-switch" aria-label="Langue / Language">
             <button type="button" id="langFr" class="active">FR</button>
@@ -602,6 +757,8 @@
 
       <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
         <a class="gold" href="hub.html">🏠 Accueil</a>
+        <a href="#pros-france">🇫🇷 Pros France</a>
+        <a href="#pros-senegal">🇸🇳 Pros Sénégal</a>
         <a href="journal.html">📰 Offres</a>
         <a href="fiche.html">🔗 Fiches</a>
         <a href="https://reseau-digiy.digiylyfe.com/lexique-reseau.html?v=lexique-reseau-v2-mobile-20260607">🇸🇳 Wolof</a>
@@ -620,7 +777,7 @@
         <div class="diapo-head">
           <span class="diapo-kicker">Vitrine · Terrain Digital</span>
           <span class="diapo-titre">RÉSEAU DIGIY</span>
-          <span class="diapo-sub">17 visuels terrain · QR · contact direct · Wolof terrain · 0% commission</span>
+          <span class="diapo-sub">Pros France · Pros Sénégal · diaspora · QR · contact direct · 0% commission</span>
         </div>
 
         <!-- Carousel -->
@@ -793,7 +950,7 @@
         <!-- Stats inline -->
         <div class="diapo-stats">
           <div class="diapo-stat"><b>17</b><span>Visuels</span></div>
-          <div class="diapo-stat"><b>2</b><span>Territoires</span></div>
+          <div class="diapo-stat"><b>2</b><span>Terrains</span></div>
           <div class="diapo-stat"><b>0%</b><span>Commission</span></div>
           <a class="diapo-cta" href="affiche.html">Voir la vitrine →</a>
         </div>
@@ -801,9 +958,86 @@
       </div><!-- /diapo-shell -->
 
 
+      <section class="intlBand" id="axe-international" aria-label="Pros France Sénégal Diaspora">
+        <div class="intlHead">
+          <div>
+            <div class="intlKicker">🌍 RÉSEAU DIGIY · Pros France · Pros Sénégal</div>
+            <h3>Un même réseau pour les pros <span>des deux terrains.</span></h3>
+            <p>DIGIY n’accueille pas seulement les offres du Sénégal : il ouvre aussi la porte aux professionnels basés en France. Artisan, commerçant, chauffeur, restaurateur, service local, beauté, logement ou activité : chaque pro peut avoir sa fiche claire, son QR, son lien partageable, son annonce qualifiée et son contact direct.</p>
+          </div>
+          <div class="intlSeal">Pros France + Pros Sénégal · 0% commission</div>
+        </div>
+
+        <div class="intlGrid">
+          <article class="intlCard gold" id="pros-france">
+            <div>
+              <div class="intlIcon">🇫🇷</div>
+              <strong>Pros France</strong>
+              <span>Sarlat, Arcachon, Bordeaux, Paris et autres villes : artisans, commerces, restauration, beauté, services, chauffeurs, logements et indépendants peuvent entrer dans DIGIY avec une fiche propre, un QR et un contact direct.</span>
+            </div>
+            <div class="intlTags"><em>EUR</em><em>+33</em><em>Sarlat</em><em>Arcachon</em><em>Bordeaux</em><em>Paris</em></div>
+          </article>
+
+          <article class="intlCard green" id="pros-senegal">
+            <div>
+              <div class="intlIcon">🇸🇳</div>
+              <strong>Pros Sénégal</strong>
+              <span>Saly, Mbour, Dakar, AIBD, Petite Côte : chauffeurs, logements, commerces, artisans, services, restaurants et activités restent visibles avec WhatsApp, SMS, QR, fiche claire et paiement direct au pro.</span>
+            </div>
+            <div class="intlTags"><em>FCFA</em><em>+221</em><em>Saly</em><em>Dakar</em><em>AIBD</em><em>Petite Côte</em></div>
+          </article>
+
+          <article class="intlCard">
+            <div>
+              <div class="intlIcon">🤝</div>
+              <strong>Diaspora & pont de confiance</strong>
+              <span>La famille, les clients, les voyageurs et les partenaires peuvent consulter depuis la France, recommander au Sénégal, préparer un retour pays ou contacter un pro local sans perdre le lien humain.</span>
+            </div>
+            <div class="intlTags"><em>QR</em><em>WhatsApp</em><em>SMS</em><em>0%</em><em>Direct</em></div>
+          </article>
+        </div>
+
+        <div class="intlGrid" style="margin-top:11px;">
+          <article class="intlCard">
+            <div>
+              <div class="intlIcon">🧭</div>
+              <strong>Chaque fiche porte son territoire</strong>
+              <span>Pour rester propre, chaque dépôt doit identifier le pays, la ville, la devise et l’indicatif : France ou Sénégal, EUR ou FCFA, +33 ou +221. Le client sait immédiatement où se trouve le professionnel.</span>
+            </div>
+            <div class="intlTags"><em>Pays</em><em>Ville</em><em>Devise</em><em>WhatsApp</em></div>
+          </article>
+
+          <article class="intlCard gold">
+            <div>
+              <div class="intlIcon">📝</div>
+              <strong>Inscription pro France</strong>
+              <span>Entrée dédiée pour les professionnels basés en France : activité, ville, téléphone, devise EUR, lien WhatsApp, photos, message de présentation et validation DIGIY avant publication.</span>
+            </div>
+            <div class="intlTags"><em>France</em><em>EUR</em><em>Validation</em><em>Fiche</em></div>
+          </article>
+
+          <article class="intlCard green">
+            <div>
+              <div class="intlIcon">📝</div>
+              <strong>Inscription pro Sénégal</strong>
+              <span>Entrée dédiée pour les professionnels du Sénégal : activité, zone, téléphone, FCFA, WhatsApp, fiche terrain, QR, annonce et contact direct sans commission.</span>
+            </div>
+            <div class="intlTags"><em>Sénégal</em><em>FCFA</em><em>Terrain</em><em>QR</em></div>
+          </article>
+        </div>
+
+        <div class="intlRoutes" aria-label="Routes pros France Sénégal DIGIY">
+          <a class="main" href="inscription.html?cat=reseau&amp;pays=france">🇫🇷 Inscrire un pro France</a>
+          <a class="main" href="inscription.html?cat=reseau&amp;pays=senegal">🇸🇳 Inscrire un pro Sénégal</a>
+          <a href="journal.html?pays=france">🇫🇷 Voir les offres France</a>
+          <a href="journal.html?pays=senegal">🇸🇳 Voir les offres Sénégal</a>
+        </div>
+      </section>
+
+
       <section class="publicBand" aria-label="Comment ça marche">
         <h3>Le bouche-à-oreille devient <span>cliquable.</span></h3>
-        <p>Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients et réseau humain font circuler. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.</p>
+        <p>Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients, diaspora et réseau humain font circuler entre les pros de France et les pros du Sénégal. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.</p>
         <div class="miniSteps">
           <div class="miniStep"><b>1 · Voir</b>Le public trouve l’offre posée cette semaine.</div>
           <div class="miniStep"><b>2 · Cliquer</b>Il ouvre la fiche, appelle, écrit ou partage.</div>
@@ -814,6 +1048,8 @@
       <div class="sectionLabel">Côté public</div>
       <section class="grid">
         <a class="tile gold" href="journal.html"><span class="icon">📰</span><strong>Voir les offres</strong><p>Promos, retours, produits, chambres, services et disponibilités visibles dans le journal.</p></a>
+        <a class="tile green" href="#pros-france"><span class="icon">🇫🇷</span><strong>Pros France</strong><p>Artisans, commerces, services, beauté, restauration, logements et indépendants avec fiche, QR et contact direct.</p></a>
+        <a class="tile green" href="#pros-senegal"><span class="icon">🇸🇳</span><strong>Pros Sénégal</strong><p>Chauffeurs, logements, boutiques, artisans, services et activités visibles sur le terrain avec 0% commission.</p></a>
         <a class="tile green" href="journal.html#produits"><span class="icon">🧼</span><strong>Produits locaux</strong><p>Savons, beauté, boutique, arrivages, textile, petites ventes du terrain.</p></a>
         <a class="tile" href="journal.html#chauffeurs"><span class="icon">🚕</span><strong>Retours chauffeurs</strong><p>AIBD, Dakar, Saly, Mbour : opportunités à saisir et à partager.</p></a>
         <a class="tile green" href="journal.html#locations"><span class="icon">🏠</span><strong>Locations</strong><p>Chambres, villas, séjours, offres posées avec contact direct.</p></a>
@@ -879,11 +1115,13 @@
 
       <section class="panel">
         <h3>La promesse : <span>COM AU CLIC</span></h3>
-        <p><strong>RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible.</strong> Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler.</p>
+        <p><strong>RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible entre France et Sénégal.</strong> Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler dans la famille, la diaspora, le quartier, la ville et le retour au pays.</p>
       </section>
 
       <div class="sectionLabel">Côté pro</div>
       <section class="grid">
+        <a class="tile gold" href="inscription.html?cat=reseau&amp;pays=france"><span class="icon">🇫🇷</span><strong>Inscrire pro France</strong><p>Pays France, ville, activité, téléphone +33, devise EUR, fiche claire, QR et validation DIGIY.</p></a>
+        <a class="tile green" href="inscription.html?cat=reseau&amp;pays=senegal"><span class="icon">🇸🇳</span><strong>Inscrire pro Sénégal</strong><p>Pays Sénégal, zone, activité, téléphone +221, devise FCFA, fiche terrain, QR et contact direct.</p></a>
         <a class="tile green" href="inscription.html?cat=reseau"><span class="icon">🎙️</span><strong>ACTION RÉSEAU</strong><p>Entrée propre : choisir R7, R15, R30 ou FIRST avant annonce, règlement et validation.</p></a>
         <a class="tile gold" href="https://reseau-digiy.digiylyfe.com/lexique-reseau.html?v=lexique-reseau-v2-mobile-20260607"><span class="icon">🇸🇳</span><strong>Wolof RÉSEAU</strong><p>Quelques phrases utiles pour expliquer la fiche, le QR, l’annonce et le contact direct.</p></a>
         <a class="tile" href="pay-transition.html"><span class="icon">💳</span><strong>Visibilité → PAY</strong><p>Règlement réel vers PAY. RÉSEAU garde la fiche, PAY encaisse.</p></a>
@@ -897,7 +1135,7 @@
 
       <section class="panel">
         <h3>Visibilité noble : <span>club privé</span></h3>
-        <p>Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage.</p>
+        <p>Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage. Pour France comme Sénégal : pays, ville, devise, indicatif et contact direct doivent rester visibles.</p>
         <div class="three">
           <div class="price-card"><span>Pro validé</span><b>15 000</b><span>FCFA · 7 jours visibles</span></div>
           <div class="price-card"><span>Pro validé</span><b>25 000</b><span>FCFA · 15 jours visibles</span></div>
@@ -907,7 +1145,7 @@
       </section>
 
       <footer class="footer">
-        DIGIYLYFE — HUB public. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. Le terrain garde sa fiche, son client, son argent et sa relation.
+        DIGIYLYFE — HUB public international France · Sénégal. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. La diaspora peut partager, le terrain garde sa fiche, son client, son argent et sa relation.
       </footer>
     </div>
   </div>
@@ -929,18 +1167,18 @@
 
   const META = {
     fr: {
-      title: "RÉSEAU DIGIY — HUB public",
-      description: "RÉSEAU DIGIY — HUB public : offres qualifiées, fiches, dépôt pro cadré, contact direct."
+      title: "RÉSEAU DIGIY — Pros France · Pros Sénégal",
+      description: "RÉSEAU DIGIY — Pros France et Pros Sénégal : fiches, QR, annonces qualifiées, contact direct, 0% commission."
     },
     en: {
-      title: "RÉSEAU DIGIY — Public HUB",
-      description: "RÉSEAU DIGIY — Public HUB: qualified offers, profiles, framed pro submission, direct contact."
+      title: "RÉSEAU DIGIY — France Pros · Senegal Pros",
+      description: "RÉSEAU DIGIY — France Pros and Senegal Pros: profiles, QR, qualified offers, direct contact, 0% commission."
     }
   };
 
   const EN_MAP = {
   "RÉSEAU DIGIY — HUB public": "RÉSEAU DIGIY — Public HUB",
-  "Public visible · dépôt qualifié · lien partageable · contact direct": "Visible public offer · qualified submission · shareable link · direct contact",
+  "France · Sénégal · diaspora · offres qualifiées · contact direct": "Visible public offer · qualified submission · shareable link · direct contact",
   "🌍 Public visible": "🌍 Publicly visible",
   "🔒 Dépôt qualifié": "🔒 Qualified submission",
   "🌟 FIRST 150 000": "🌟 FIRST 150,000",
@@ -954,7 +1192,7 @@
   "👤 Pro": "👤 Pro",
   "🧰 Local": "🧰 Local",
   "Vitrine · Terrain Digital": "Showcase · Digital Field",
-  "17 visuels terrain · QR · contact direct · Wolof terrain · 0% commission": "17 field visuals · QR · direct contact · Wolof field words · 0% commission",
+  "Pros France · Pros Sénégal · diaspora · QR · contact direct · 0% commission": "17 field visuals · QR · direct contact · Wolof field words · 0% commission",
   "LOC · Chez Baptiste": "LOC · Chez Baptiste",
   "Photo réelle de la fiche · Saly · réservation directe propriétaire": "Real profile photo · Saly · direct owner booking",
   "BUILD · Helage plombier": "BUILD · Helage plumber",
@@ -995,7 +1233,7 @@
   "Voir la vitrine →": "View the showcase →",
   "Le bouche-à-oreille devient": "Word of mouth becomes",
   "cliquable.": "clickable.",
-  "Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients et réseau humain font circuler. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.": "A qualified offer, a clear link, a contact button — then WhatsApp, SMS, family, clients, and the human network make it circulate. The Wolof lexicon helps explain joining, online profiles, QR, announcements, direct contact, and zero commission without losing the field. The slideshow puts the first real photos in front: Chez Baptiste, Helage, Driver, Explore, then the other field doors.",
+  "Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients, diaspora et réseau humain font circuler entre les pros de France et les pros du Sénégal. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.": "A qualified offer, a clear link, a contact button — then WhatsApp, SMS, family, clients, and the human network make it circulate. The Wolof lexicon helps explain joining, online profiles, QR, announcements, direct contact, and zero commission without losing the field. The slideshow puts the first real photos in front: Chez Baptiste, Helage, Driver, Explore, then the other field doors.",
   "1 · Voir": "1 · See",
   "Le public trouve l’offre posée cette semaine.": "The public finds the offer posted this week.",
   "2 · Cliquer": "2 · Click",
@@ -1072,15 +1310,81 @@
   "Petit coffre terrain : données locales, contrôle, reprise propre si besoin.": "Small field vault: local data, control, clean recovery if needed.",
   "Visibilité noble :": "Noble visibility:",
   "club privé": "private club",
-  "Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage.": "No commission, no open bar. A qualified announcement, a duration, a clickable link, a profile, a share.",
+  "Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage. Pour France comme Sénégal : pays, ville, devise, indicatif et contact direct doivent rester visibles.": "No commission, no open bar. A qualified announcement, a duration, a clickable link, a profile, a share.",
   "Pro validé": "Validated pro",
   "FCFA · 7 jours visibles": "FCFA · 7 visible days",
   "FCFA · 15 jours visibles": "FCFA · 15 visible days",
   "FCFA · 30 jours visibles": "FCFA · 30 visible days",
   "Mise en classe FIRST · 150 000 FCFA · 1 mois": "FIRST class placement · 150,000 FCFA · 1 month",
   "pour les pros non encore validés : fiche propre, QR, lien partageable, messages prêts et mise en lumière.": "for pros not yet validated: clean profile, QR, shareable link, ready messages, and visibility.",
-  "DIGIYLYFE — HUB public. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. Le terrain garde sa fiche, son client, son argent et sa relation.": "DIGIYLYFE — Public HUB. Qualified publication: no noise, only validated pros. Wolof lexicon available to explain the network in the field. The field keeps its profile, its client, its money, and its relationship.",
-  "🎧 Lecteur RÉSEAU DIGIY": "🎧 RÉSEAU DIGIY reader"
+  "DIGIYLYFE — HUB public international France · Sénégal. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. La diaspora peut partager, le terrain garde sa fiche, son client, son argent et sa relation.": "DIGIYLYFE — Public HUB. Qualified publication: no noise, only validated pros. Wolof lexicon available to explain the network in the field. The field keeps its profile, its client, its money, and its relationship.",
+  "🎧 Lecteur RÉSEAU DIGIY": "🎧 RÉSEAU DIGIY reader",
+  "France · Sénégal · diaspora · offres qualifiées · contact direct": "France · Senegal · diaspora · qualified offers · direct contact",
+  "🇸🇳 Sénégal": "🇸🇳 Senegal",
+  "🇫🇷 France": "🇫🇷 France",
+  "🌍 Diaspora": "🌍 Diaspora",
+  "🌍 International": "🌍 International",
+  "Pros France · Pros Sénégal · diaspora · QR · contact direct · 0% commission": "France · Senegal · diaspora · QR · direct contact · 0% commission",
+  "Terrains": "Fields",
+  "🌍 Axe international · France · Sénégal": "🌍 International axis · France · Senegal",
+  "Une même fiche peut voyager": "One profile can travel",
+  "entre deux terrains.": "between two fields.",
+  "DIGIY RÉSEAU devient le pont propre entre le Sénégal, la France et la diaspora : une offre locale peut être lue à Saly, partagée à Dakar, envoyée depuis Paris, réservée depuis Bordeaux ou transmise à la famille avant le retour au pays.": "DIGIY NETWORK becomes the clean bridge between Senegal, France, and the diaspora: a local offer can be read in Saly, shared in Dakar, sent from Paris, booked from Bordeaux, or passed to family before the return home.",
+  "0% commission · contact direct · paiement direct au pro": "0% commission · direct contact · direct payment to the pro",
+  "Sénégal terrain": "Senegal field",
+  "Saly, Mbour, Dakar, AIBD, Petite Côte : offres, chauffeurs, logements, commerces, artisans, services et activités visibles avec WhatsApp, SMS, QR et fiche claire.": "Saly, Mbour, Dakar, AIBD, Petite Côte: offers, drivers, housing, shops, trades, services, and activities visible with WhatsApp, SMS, QR, and a clear profile.",
+  "France diaspora": "France diaspora",
+  "Sarlat, Arcachon, Bordeaux, Paris et autres villes : la famille, les clients, les partenaires ou les voyageurs peuvent consulter, partager et préparer une demande avant d’arriver.": "Sarlat, Arcachon, Bordeaux, Paris, and other cities: family, clients, partners, or travelers can view, share, and prepare a request before arriving.",
+  "Pont de confiance": "Trust bridge",
+  "Le réseau ne capture pas le client : il organise la visibilité, protège le lien du pro, facilite la recommandation et laisse l’argent revenir directement au professionnel.": "The network does not capture the client: it organizes visibility, protects the pro’s link, makes recommendations easier, and lets the money return directly to the professional.",
+  "🚕 Retours AIBD / France": "🚕 AIBD / France return trips",
+  "🏠 Séjours Sénégal": "🏠 Senegal stays",
+  "🛍️ Produits locaux": "🛍️ Local products",
+  "📢 Déposer une annonce": "📢 Submit an announcement",
+  "Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients, diaspora et réseau humain font circuler entre les pros de France et les pros du Sénégal. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.": "A qualified offer, a clear link, a contact button — then WhatsApp, SMS, family, clients, diaspora, and the human network circulate it between France and Senegal. The Wolof lexicon helps explain joining, online profile, QR, announcement, direct contact, and zero commission without losing the field. The slideshow puts the first real photos in front: Chez Baptiste, Helage, Driver, Explore, then the other field doors.",
+  "France · Sénégal": "France · Senegal",
+  "Un pont lisible pour la diaspora, les retours pays, les voyageurs, les familles et les pros du terrain.": "A readable bridge for the diaspora, return trips, travelers, families, and field professionals.",
+  "RÉSEAU DIGIY transforme le bouche-à-oreille en lien propre, cliquable et visible entre France et Sénégal.": "RÉSEAU DIGIY turns word of mouth into a clean, clickable, visible link between France and Senegal.",
+  "Ce n’est pas un post qui disparaît : c’est une offre posée dans la durée, prête à circuler dans la famille, la diaspora, le quartier, la ville et le retour au pays.": "It is not a post that disappears: it is an offer placed for a clear duration, ready to circulate through family, diaspora, neighborhood, city, and return home.",
+  "DIGIYLYFE — HUB public international France · Sénégal. Publication qualifiée : pas de bruit, seulement des pros validés. Lexique Wolof disponible pour expliquer le réseau sur le terrain. La diaspora peut partager, le terrain garde sa fiche, son client, son argent et sa relation.": "DIGIYLYFE — France · Senegal international public HUB. Qualified publication: no noise, only validated pros. Wolof lexicon available to explain the network on the field. The diaspora can share, the field keeps its profile, client, money, and relationship.",
+  "RÉSEAU DIGIY — Pros France · Pros Sénégal": "RÉSEAU DIGIY — France Pros · Senegal Pros",
+  "Pros France · Pros Sénégal · diaspora · fiches · QR · contact direct": "France pros · Senegal pros · diaspora · profiles · QR · direct contact",
+  "🇸🇳 Pros Sénégal": "🇸🇳 Senegal pros",
+  "🇫🇷 Pros France": "🇫🇷 France pros",
+  "🇫🇷 Pros France": "🇫🇷 France pros",
+  "🇸🇳 Pros Sénégal": "🇸🇳 Senegal pros",
+  "Pros France · Pros Sénégal · diaspora · QR · contact direct · 0% commission": "France pros · Senegal pros · diaspora · QR · direct contact · 0% commission",
+  "🌍 RÉSEAU DIGIY · Pros France · Pros Sénégal": "🌍 RÉSEAU DIGIY · France Pros · Senegal Pros",
+  "Un même réseau pour les pros": "One network for pros",
+  "des deux terrains.": "from both fields.",
+  "DIGIY n’accueille pas seulement les offres du Sénégal : il ouvre aussi la porte aux professionnels basés en France. Artisan, commerçant, chauffeur, restaurateur, service local, beauté, logement ou activité : chaque pro peut avoir sa fiche claire, son QR, son lien partageable, son annonce qualifiée et son contact direct.": "DIGIY does not only welcome offers from Senegal: it also opens the door to professionals based in France. Trades, shops, drivers, restaurants, local services, beauty, housing or activities: every pro can have a clear profile, QR, shareable link, qualified announcement and direct contact.",
+  "Pros France + Pros Sénégal · 0% commission": "France pros + Senegal pros · 0% commission",
+  "Pros France": "France pros",
+  "Sarlat, Arcachon, Bordeaux, Paris et autres villes : artisans, commerces, restauration, beauté, services, chauffeurs, logements et indépendants peuvent entrer dans DIGIY avec une fiche propre, un QR et un contact direct.": "Sarlat, Arcachon, Bordeaux, Paris and other cities: trades, shops, restaurants, beauty, services, drivers, housing and independents can enter DIGIY with a clean profile, QR and direct contact.",
+  "Pros Sénégal": "Senegal pros",
+  "Saly, Mbour, Dakar, AIBD, Petite Côte : chauffeurs, logements, commerces, artisans, services, restaurants et activités restent visibles avec WhatsApp, SMS, QR, fiche claire et paiement direct au pro.": "Saly, Mbour, Dakar, AIBD, Petite Côte: drivers, housing, shops, trades, services, restaurants and activities stay visible with WhatsApp, SMS, QR, clear profile and direct payment to the pro.",
+  "Diaspora & pont de confiance": "Diaspora & trust bridge",
+  "La famille, les clients, les voyageurs et les partenaires peuvent consulter depuis la France, recommander au Sénégal, préparer un retour pays ou contacter un pro local sans perdre le lien humain.": "Family, clients, travelers and partners can view from France, recommend in Senegal, prepare a return trip or contact a local pro without losing the human link.",
+  "Chaque fiche porte son territoire": "Each profile carries its territory",
+  "Pour rester propre, chaque dépôt doit identifier le pays, la ville, la devise et l’indicatif : France ou Sénégal, EUR ou FCFA, +33 ou +221. Le client sait immédiatement où se trouve le professionnel.": "To stay clean, each submission must identify the country, city, currency and phone code: France or Senegal, EUR or FCFA, +33 or +221. The client immediately knows where the professional is located.",
+  "Inscription pro France": "France pro registration",
+  "Entrée dédiée pour les professionnels basés en France : activité, ville, téléphone, devise EUR, lien WhatsApp, photos, message de présentation et validation DIGIY avant publication.": "Dedicated entry for professionals based in France: activity, city, phone, EUR currency, WhatsApp link, photos, presentation message and DIGIY validation before publication.",
+  "Inscription pro Sénégal": "Senegal pro registration",
+  "Entrée dédiée pour les professionnels du Sénégal : activité, zone, téléphone, FCFA, WhatsApp, fiche terrain, QR, annonce et contact direct sans commission.": "Dedicated entry for professionals in Senegal: activity, area, phone, FCFA, WhatsApp, field profile, QR, announcement and direct contact without commission.",
+  "🇫🇷 Inscrire un pro France": "🇫🇷 Register a France pro",
+  "🇸🇳 Inscrire un pro Sénégal": "🇸🇳 Register a Senegal pro",
+  "🇫🇷 Voir les offres France": "🇫🇷 View France offers",
+  "🇸🇳 Voir les offres Sénégal": "🇸🇳 View Senegal offers",
+  "Une offre qualifiée, un lien clair, un bouton de contact, puis WhatsApp, SMS, famille, clients, diaspora et réseau humain font circuler entre les pros de France et les pros du Sénégal. Le lexique Wolof aide à expliquer rejoindre, fiche en ligne, QR, annonce, contact direct et zéro commission sans perdre le terrain. Le diaporama remet les vraies premières photos devant : Chez Baptiste, Helage, Driver, Explore, puis les autres portes terrain.": "A qualified offer, a clear link, a contact button — then WhatsApp, SMS, family, clients, diaspora and the human network make it circulate between France pros and Senegal pros. The Wolof lexicon helps explain joining, online profiles, QR, announcements, direct contact and zero commission without losing the field. The slideshow puts the first real photos in front: Chez Baptiste, Helage, Driver, Explore, then the other field doors.",
+  "Artisans, commerces, services, beauté, restauration, logements et indépendants avec fiche, QR et contact direct.": "Trades, shops, services, beauty, restaurants, housing and independents with profile, QR and direct contact.",
+  "Chauffeurs, logements, boutiques, artisans, services et activités visibles sur le terrain avec 0% commission.": "Drivers, housing, shops, trades, services and activities visible in the field with 0% commission.",
+  "Inscrire pro France": "Register France pro",
+  "Pays France, ville, activité, téléphone +33, devise EUR, fiche claire, QR et validation DIGIY.": "France country, city, activity, +33 phone, EUR currency, clear profile, QR and DIGIY validation.",
+  "Inscrire pro Sénégal": "Register Senegal pro",
+  "Pays Sénégal, zone, activité, téléphone +221, devise FCFA, fiche terrain, QR et contact direct.": "Senegal country, area, activity, +221 phone, FCFA currency, field profile, QR and direct contact.",
+  "Pas de commission, pas d’open bar. Une annonce qualifiée, une durée, un lien cliquable, une fiche, un partage. Pour France comme Sénégal : pays, ville, devise, indicatif et contact direct doivent rester visibles.": "No commission, no open bar. A qualified announcement, a duration, a clickable link, a profile, a share. For France and Senegal alike: country, city, currency, phone code and direct contact must remain visible.",
+  "DIGIYLYFE — HUB public France · Sénégal. Publication qualifiée : pas de bruit, seulement des pros validés. Chaque pro garde son pays, sa ville, sa fiche, son client, son argent et sa relation.": "DIGIYLYFE — France · Senegal public HUB. Qualified publication: no noise, only validated pros. Each pro keeps their country, city, profile, client, money and relationship.",
+
 };
 
   const nodes = [];
@@ -1149,7 +1453,9 @@
   'use strict';
 
   var audioPartsFr = [
-    "RÉSEAU DIGIY n’est pas un panneau d’annonces.",
+    "RÉSEAU DIGIY accueille aussi les professionnels de France, pas seulement les professionnels du Sénégal. Chaque pro garde son pays, sa ville, son client et son contact direct.",
+    "Une offre peut naître à Saly, être partagée à Dakar, consultée à Paris, puis revenir directement vers le professionnel.",
+    "RÉSEAU DIGIY accueille les professionnels de France et du Sénégal dans un même réseau propre.",
     "C’est la voie spéciale First Class de DIGIYLYFE... pour installer un professionnel, proprement, sur l’autoroute digitale.",
     "Le lexique Wolof aide à expliquer le réseau simplement : rejoindre, fiche en ligne, Q R, annonce, contact direct et zéro commission.",
     "Ici, on ne vient pas déposer du bruit.",
@@ -1380,6 +1686,2973 @@
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
