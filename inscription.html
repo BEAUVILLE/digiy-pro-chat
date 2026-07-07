@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <title>RÉSEAU DIGIY — Inscription qualifiée France · Sénégal</title>
-  <meta name="description" content="RÉSEAU DIGIY : inscription qualifiée France · Sénégal avec grille pays, paiement Wave Sénégal ou Sendwave France vers Wave Sénégal, validation DIGIY obligatoire avant publication."/>
+  <title>RÉSEAU DIGIY — Demande qualifiée · activation payante · France · Sénégal</title>
+  <meta name="description" content="RÉSEAU DIGIY : demande qualifiée sans engagement, activation ou publication payante après validation DIGIY, grille pays France · Sénégal, paiement Wave Sénégal ou Sendwave France vers Wave Sénégal, 0% commission."/>
   <meta name="theme-color" content="#06130d"/>
   <meta name="robots" content="index,follow"/>
-  <meta name="digiy-build" content="reseau-inscription-france-senegal-grille-pays-sendwave-20260629"/>
+  <meta name="digiy-build" content="reseau-demande-sans-engagement-activation-payante-sendwave-20260707"/>
   <link rel="stylesheet" href="./style.css"/>
 
   <style>
@@ -74,6 +74,82 @@
     .plan.on{border-color:rgba(246,196,83,.80);background:rgba(246,196,83,.18)}
     .plan b{font-size:24px;color:#fff3cf;line-height:1}
     .plan small{font-size:12px;color:rgba(248,250,252,.78);font-weight:950}
+
+    .reseauDoctrine{
+      border-radius:28px;
+      border:2px solid rgba(246,196,83,.38);
+      background:
+        radial-gradient(circle at top right,rgba(246,196,83,.18),transparent 38%),
+        radial-gradient(circle at bottom left,rgba(0,166,81,.16),transparent 42%),
+        linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.055));
+      box-shadow:0 18px 50px rgba(0,0,0,.20);
+      padding:18px;
+      display:grid;
+      gap:12px;
+    }
+    .reseauDoctrineTag{
+      display:inline-flex;
+      align-items:center;
+      width:max-content;
+      max-width:100%;
+      min-height:36px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid rgba(246,196,83,.46);
+      background:rgba(246,196,83,.12);
+      color:#fff3cf;
+      font-size:12px;
+      font-weight:1000;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .reseauDoctrine h3{
+      margin:0;
+      color:#fff;
+      font-size:clamp(30px,7vw,54px);
+      line-height:.92;
+      letter-spacing:-.06em;
+      font-weight:1000;
+    }
+    .reseauDoctrine h3 span{color:#f6c453}
+    .reseauDoctrine p{
+      margin:0;
+      color:rgba(248,250,252,.86);
+      font-size:15px;
+      line-height:1.45;
+      font-weight:950;
+      max-width:880px;
+    }
+    .reseauDoctrineGrid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:9px;
+    }
+    .reseauDoctrineGrid span{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      padding:12px;
+      color:#fff;
+      font-size:13px;
+      line-height:1.35;
+      font-weight:1000;
+    }
+    .reseauDoctrineGrid span:first-child{
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;
+      border-color:rgba(246,196,83,.62);
+    }
+    .reseauDoctrineQuote{
+      border-left:4px solid #f6c453;
+      border-radius:17px;
+      background:rgba(246,196,83,.10);
+      padding:12px 14px;
+      color:#fff3cf!important;
+      font-weight:1000!important;
+    }
+
+
 
     .countryBox{
       border-radius:28px;
@@ -216,7 +292,7 @@
       border-radius:20px;padding:14px;color:#eafff1;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;line-height:1.5;
     }
     .footer{text-align:center;padding:16px;border-radius:24px;background:#020504;border:1px solid rgba(246,196,83,.16);color:rgba(248,250,252,.72);font-size:14px;line-height:1.35}
-    @media(max-width:760px){.nav,.choiceGrid,.two,.btnrow,.plans,.payGrid,.miniActions{grid-template-columns:1fr}.chips{justify-content:flex-start}.choiceCard{min-height:230px}}
+    @media(max-width:760px){.nav,.choiceGrid,.two,.btnrow,.plans,.payGrid,.miniActions,.reseauDoctrineGrid{grid-template-columns:1fr}.chips{justify-content:flex-start}.choiceCard{min-height:230px}}
   </style>
 </head>
 
@@ -227,7 +303,7 @@
         <div class="logo">R</div>
         <div>
           <h1>RÉSEAU DIGIY</h1>
-          <p>CLUB PRIVÉ · pros validés · fiche propre · annonce qualifiée</p>
+          <p>CLUB PRIVÉ · demande qualifiée · activation validée · annonce cadrée</p>
         </div>
       </a>
       <div class="chips">
@@ -240,7 +316,7 @@
 
     <nav class="nav" aria-label="Navigation RÉSEAU DIGIY">
       <a href="hub.html">🏠 Hub</a>
-      <a class="gold" href="inscription.html?cat=reseau">👤 Inscription</a>
+      <a class="gold" href="demande.html?cat=reseau">👤 Demande</a>
       <a href="annonce.html">📢 Annonce</a>
       <a href="paiement.html">💳 Règlement</a>
       <a href="journal.html">📰 Journal</a>
@@ -251,14 +327,34 @@
 
     <section class="hero">
       <div class="badge">🔒 Club privé · visible au public</div>
-      <div class="k">Étape 1 · Entrée qualifiée</div>
+      <div class="k">Étape 1 · Demande qualifiée</div>
       <h2>On ne dépose pas dans le bruit. <span>On entre propre.</span></h2>
       <p class="lead">
         RÉSEAU DIGIY reste visible par tous, mais la publication est réservée aux pros DIGIY validés.
-        Le public voit, clique, partage et contacte. Le dépôt reste cadré avec une grille Sénégal et une grille France.
+        La demande initiale est sans engagement : le paiement concerne seulement une activation RÉSEAU, une annonce qualifiée,
+        une mise en classe FIRST ou une visibilité validée. Le public voit, clique, partage et contacte. Le dépôt reste cadré avec une grille Sénégal et une grille France.
       </p>
     </section>
 
+    <section class="reseauDoctrine" aria-label="Doctrine commerciale RÉSEAU DIGIY">
+      <span class="reseauDoctrineTag">Demande RÉSEAU sans engagement · Activation / publication payante · 0% commission</span>
+      <h3>Le public voit. <span>DIGIY qualifie avant publication.</span></h3>
+      <p>
+        RÉSEAU DIGIY n’est pas un dépôt ouvert dans le bruit. La demande initiale permet de préparer une fiche,
+        une annonce qualifiée ou une mise en classe FIRST sans engagement. Le paiement concerne seulement
+        l’activation RÉSEAU choisie, le ticket d’annonce, la mise en valeur, la visibilité ou FIRST après validation.
+        DIGIY ne prend aucune commission sur les affaires, les clients ou les paiements du pro.
+      </p>
+      <div class="reseauDoctrineGrid">
+        <span>✅ Demande initiale sans engagement</span>
+        <span>🔒 Validation DIGIY obligatoire</span>
+        <span>📢 Publication / visibilité payante</span>
+        <span>🤝 0% commission sur l’affaire</span>
+      </div>
+      <p class="reseauDoctrineQuote">
+        RÉSEAU DIGIY organise la visibilité qualifiée. Le professionnel garde son client, son argent et sa relation.
+      </p>
+    </section>
 
     <section class="countryBox" aria-label="Choix du pays et grille tarifaire">
       <div class="badge">🌍 Grille pays · pas un taux de change</div>
@@ -273,7 +369,7 @@
         </button>
       </div>
       <div class="tarifDoctrine">
-        Les tarifs France et Sénégal ne sont pas une conversion monétaire. Ce sont deux grilles commerciales adaptées au pays, au pouvoir d’achat, au marché local et au mode de règlement.
+        Les tarifs France et Sénégal ne sont pas une conversion monétaire. Ce sont deux grilles commerciales adaptées au pays, au pouvoir d’achat, au marché local et au mode de règlement. La demande est sans engagement ; l’activation devient payante après choix validé.
       </div>
     </section>
 
@@ -284,13 +380,13 @@
           <div class="tag">Déjà DIGIY</div>
         </div>
         <h3>Je suis déjà pro DIGIY</h3>
-        <p>Ma fiche existe déjà. Je peux poser une annonce qualifiée comme projecteur temporaire sur mon activité.</p>
+        <p>Ma fiche existe déjà. Je peux préparer une annonce qualifiée comme projecteur temporaire sur mon activité. La publication se fait après ticket payé et validation DIGIY.</p>
         <div class="plans" aria-label="Tarifs annonce">
           <button class="plan" type="button" data-plan="R7"><b data-price-plan="R7">15 000 FCFA</b><small data-small-plan="R7">R7 · 7 jours · Sénégal</small></button>
           <button class="plan" type="button" data-plan="R15"><b data-price-plan="R15">25 000 FCFA</b><small data-small-plan="R15">R15 · 15 jours · Sénégal</small></button>
           <button class="plan" type="button" data-plan="R30"><b data-price-plan="R30">45 000 FCFA</b><small data-small-plan="R30">R30 · 30 jours · Sénégal</small></button>
         </div>
-        <a class="btn main" id="btnAnnonce" href="annonce.html?cat=R7">📢 Poser mon annonce</a>
+        <a class="btn main" id="btnAnnonce" href="annonce.html?cat=R7">📢 Préparer mon annonce</a>
       </article>
 
       <article class="choiceCard gold">
@@ -303,7 +399,7 @@
         <p>Qualification, fiche ou vitrine propre, QR, lien partageable, messages prêts à circuler et visibilité mise en avant.</p>
         <div class="btnrow">
           <button class="btn gold" type="button" data-plan="FIRST">🌟 Choisir FIRST</button>
-          <a class="btn main" id="btnFirstPay" href="paiement.html?cat=FIRST">💳 Demander la classe FIRST</a>
+          <a class="btn main" id="btnFirstPay" href="paiement.html?cat=FIRST">💳 Préparer FIRST</a>
         </div>
       </article>
     </section>
@@ -311,9 +407,9 @@
 
     <section class="panel paymentPanel" id="paymentPanel">
       <div class="badge">💳 Wave Sénégal · Sendwave France · preuve obligatoire</div>
-      <h3>Paiement <span>RÉSEAU</span></h3>
+      <h3>Activation <span>RÉSEAU</span></h3>
       <p class="lead" style="font-size:17px;text-shadow:none;margin-bottom:8px">
-        Le paiement doit être identifiable : formule choisie, pays, montant, nom du responsable et téléphone.
+        Le paiement concerne l’activation choisie après demande sans engagement : formule, pays, montant, nom du responsable et téléphone.
         Sénégal règle par Wave direct. France règle par Sendwave vers le Wave Sénégal officiel.
       </p>
 
@@ -348,16 +444,16 @@
       </div>
 
       <div class="miniActions">
-        <button class="btn gold" type="button" id="copyWave">📋 Copier Wave</button>
+        <button class="btn gold" type="button" id="copyWave">📋 Copier paiement</button>
         <a class="btn green" id="waPayment" href="#" target="_blank" rel="noopener">💬 WhatsApp paiement</a>
       </div>
     </section>
 
     <section class="panel">
-      <h3>Ma fiche pro <span>RÉSEAU</span></h3>
+      <h3>Ma demande pro <span>RÉSEAU</span></h3>
       <p class="lead" style="font-size:17px;text-shadow:none;margin-bottom:14px">
         Remplis cette base si tu es déjà connu par DIGIY ou si tu demandes une mise en classe FIRST.
-        La fiche reste invisible au public tant que DIGIY n’a pas validé.
+        La demande est sans engagement. La fiche reste invisible au public tant que DIGIY n’a pas validé.
       </p>
 
       <form id="profileForm" class="form">
@@ -370,9 +466,9 @@
             </select>
           </div>
           <div>
-            <label for="entryType">Mon entrée</label>
+            <label for="entryType">Ma demande</label>
             <select id="entryType">
-              <option value="digiy-pro">Je suis déjà pro DIGIY / validé</option>
+              <option value="digiy-pro">Je suis déjà pro DIGIY / demande validée</option>
               <option value="first-class">Je demande la Mise en classe FIRST</option>
             </select>
           </div>
@@ -456,7 +552,7 @@
         <input type="hidden" id="isPublished" value="false">
 
         <div class="btnrow">
-          <button class="btn main" type="submit">📩 Préparer demande validation DIGIY</button>
+          <button class="btn main" type="submit">📩 Préparer demande RÉSEAU</button>
           <a class="btn green" id="goPaiement" href="paiement.html?cat=R7">💳 Aller au règlement</a>
           <a class="btn warn" id="goAction" href="action.html">🎙️ Préparer avec ACTION</a>
           <a class="btn" href="fiche.html?status=pending">🔒 Voir brouillon fiche</a>
@@ -464,8 +560,8 @@
 
         <div class="notice">
           <strong>Feu vert DIGIY obligatoire.</strong><br>
-          Après dépôt, la fiche reste en brouillon : elle n’apparaît pas au public.
-          DIGIY vérifie identité, téléphone, offre, pays, paiement et qualité avant publication.
+          Après demande, la fiche reste en brouillon : elle n’apparaît pas au public.
+          DIGIY vérifie identité, téléphone, offre, pays, activation/paiement et qualité avant publication.
         </div>
       </form>
     </section>
@@ -481,7 +577,7 @@
 
     <footer class="footer">
       DIGIYLYFE — Club privé visible au public : le terrain peut voir, cliquer, partager et contacter.
-      La publication reste qualifiée pour protéger la fiche, le client, l’argent et la relation.
+      Demande sans engagement, activation qualifiée, 0% commission : la publication reste validée pour protéger la fiche, le client, l’argent et la relation.
     </footer>
   </main>
 
@@ -638,8 +734,8 @@
             currency: amount.currency,
             display_amount: amount.display,
             days: plan.days,
-            source: "inscription.html",
-            pricing_note: "Grille pays adaptée au pouvoir d’achat, pas conversion au taux de change.",
+            source: "demande-reseau.html",
+            pricing_note: "Demande sans engagement. Activation payante selon choix validé. Grille pays adaptée au pouvoir d’achat, pas conversion au taux de change.",
             updated_at: new Date().toISOString()
           }));
 
@@ -651,10 +747,10 @@
             currency: amount.currency,
             display_amount: amount.display,
             method: amount.method,
-            ref: "Préparé depuis inscription RÉSEAU",
+            ref: "Préparé depuis demande RÉSEAU",
             note: plan.label + " · " + amount.display + " · " + amount.method,
             payment_route: amount.route,
-            source: "inscription.html",
+            source: "demande-reseau.html",
             updated_at: new Date().toISOString()
           }));
         }catch(_){}
@@ -671,7 +767,7 @@
 
         return {
           module: "RESEAU_DIGIY",
-          source: "inscription.html",
+          source: "demande-reseau.html",
           status: "pending_validation",
           is_validated: false,
           is_published: false,
@@ -694,7 +790,8 @@
           payment_method: amount.method,
           payment_label: amount.route,
           payment_note: $("paymentNote") ? $("paymentNote").value.trim() : "",
-          pricing_note: "Tarif pays : pas une conversion au taux de change.",
+          doctrine: "Demande RÉSEAU sans engagement · activation/publication payante après validation DIGIY · 0% commission.",
+          pricing_note: "Demande sans engagement. Activation payante selon choix validé. Tarif pays : pas une conversion au taux de change.",
           created_at: new Date().toISOString()
         };
       }
@@ -716,7 +813,7 @@
             status: d.status,
             is_validated: false,
             is_published: false,
-            source: "inscription.html",
+            source: "demande-reseau.html",
             updated_at: new Date().toISOString()
           }));
 
@@ -732,7 +829,7 @@
             price_currency: d.currency,
             price_display: d.amount_display,
             status: "draft",
-            source: "inscription.html",
+            source: "demande-reseau.html",
             updated_at: new Date().toISOString()
           }));
 
@@ -741,7 +838,7 @@
             status: "pending_validation",
             is_validated: false,
             is_published: false,
-            source: "inscription.html",
+            source: "demande-reseau.html",
             saved_at: new Date().toISOString()
           }));
         }catch(_){}
@@ -757,10 +854,11 @@
           "🔐 DEMANDE DE VALIDATION DIGIY — RÉSEAU",
           "",
           "STATUT : EN ATTENTE — invisible au public",
+          "Doctrine : demande sans engagement · activation/publication payante après validation · 0% commission.",
           "",
           "PAYS / GRILLE",
           "Pays : " + COUNTRY[d.country].flag + " " + d.country_label,
-          "Doctrine prix : grille pays adaptée au pouvoir d’achat, pas conversion au taux de change.",
+          "Doctrine prix : demande sans engagement, activation payante selon choix validé, grille pays adaptée au pouvoir d’achat, pas conversion au taux de change.",
           "",
           "PRO / FICHE",
           "Responsable : " + (d.responsible_name || "à compléter"),
@@ -788,7 +886,7 @@
           "",
           "ACTION DIGIY",
           "1. Vérifier identité + téléphone + offre.",
-          "2. Vérifier preuve de paiement.",
+          "2. Vérifier preuve de paiement si activation choisie.",
           "3. Valider dans ADMIN / Supabase.",
           "4. Publier seulement si is_validated=true et is_published=true.",
           "",
@@ -802,11 +900,11 @@
         const plan = PLANS[d.cat];
 
         return [
-          "Bonjour JB, je viens d’effectuer / préparer le paiement pour RÉSEAU DIGIY.",
+          "Bonjour JB, je viens préparer une demande / activation RÉSEAU DIGIY.",
           "",
           "PAYS / GRILLE",
           "Pays : " + COUNTRY[d.country].flag + " " + d.country_label,
-          "Tarif : grille pays, pas conversion au taux de change.",
+          "Doctrine : demande sans engagement avant activation. Tarif : grille pays, pas conversion au taux de change. 0% commission DIGIY.",
           "",
           "INFOS PRO",
           "Responsable : " + (d.responsible_name || "à compléter"),
@@ -826,7 +924,7 @@
           "NOTE / PREUVE",
           d.payment_note || "à compléter après paiement",
           "",
-          "Après paiement, j’envoie la capture / preuve ici.",
+          "Si j’active cette formule, j’envoie la capture / preuve ici. La publication reste soumise à validation DIGIY.",
           "Date de demande : " + new Date().toLocaleString("fr-FR")
         ].join("\n");
       }
@@ -892,7 +990,7 @@
         try{
           await navigator.clipboard.writeText(text);
           this.textContent = "✅ Paiement copié";
-          setTimeout(() => this.textContent = "📋 Copier Wave", 1500);
+          setTimeout(() => this.textContent = "📋 Copier paiement", 1500);
         }catch(_){
           prompt("Copie le paiement :", text);
         }
@@ -926,6 +1024,12 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
