@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Poser une question ou proposer une parole — RÉSEAU DIGIY</title>
+  <meta name="description" content="Préparez une question, une expérience ou une parole du terrain. DIGIY vérifie et demande votre accord avant toute publication sur DIGIYLYFE.net.">
+  <meta name="robots" content="index,follow,max-snippet:-1">
+  <meta name="theme-color" content="#06130d">
+  <meta name="digiy-build" content="reseau-question-publique-whatsapp-20260728-v1">
+  <link rel="canonical" href="https://reseau-digiy.digiylyfe.com/question.html">
+  <style>
+    :root{--bg:#06130d;--panel:#0a271b;--ink:#f8fafc;--soft:rgba(248,250,252,.76);--gold:#f6c453;--green:#00a651;--line:rgba(255,255,255,.14);--danger:#fb7185;--shadow:0 22px 60px rgba(0,0,0,.30)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(760px 380px at 8% -8%,rgba(246,196,83,.20),transparent 62%),radial-gradient(680px 360px at 98% 5%,rgba(0,166,81,.22),transparent 60%),linear-gradient(180deg,#0a3b27,var(--bg) 46%,#020504);font-weight:800}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .page{width:min(850px,100%);margin:auto;padding:12px 12px 90px;display:grid;gap:14px}
+    .top{position:sticky;top:8px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;padding:11px 13px;border:1px solid rgba(246,196,83,.36);border-radius:22px;background:rgba(6,19,13,.90);backdrop-filter:blur(16px);box-shadow:0 14px 36px rgba(0,0,0,.24)}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:1000}.mark{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--green));color:#06130d;font-size:23px}.brand small{display:block;margin-top:2px;color:var(--soft);font-size:10px;letter-spacing:.05em;text-transform:uppercase}
+    .topNav{display:flex;gap:7px;flex-wrap:wrap}.topNav a{min-height:42px;display:flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-size:12px;font-weight:1000}
+    .hero{padding:clamp(20px,5vw,34px);border:1px solid rgba(246,196,83,.43);border-radius:30px;background:radial-gradient(520px 220px at 90% 0,rgba(246,196,83,.16),transparent 65%),linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.045));box-shadow:var(--shadow)}
+    .kicker{display:inline-flex;padding:7px 10px;border-radius:999px;border:1px solid rgba(246,196,83,.42);background:rgba(246,196,83,.10);color:#fff3cf;font-size:10px;font-weight:1000;letter-spacing:.11em;text-transform:uppercase}
+    h1{margin:12px 0 0;font-size:clamp(42px,11vw,76px);line-height:.86;letter-spacing:-.07em;font-weight:1000}h1 span{color:var(--gold)}
+    .lead{margin:15px 0 0;max-width:730px;color:rgba(248,250,252,.86);font-size:clamp(16px,3.6vw,21px);line-height:1.38;font-weight:880}
+    .rule{margin-top:15px;padding:12px 13px;border-radius:18px;border:1px dashed rgba(0,166,81,.48);background:rgba(0,166,81,.09);color:#dfffea;font-size:13px;line-height:1.42;font-weight:900}
+    .modeBox,.formCard,.previewCard{padding:17px;border-radius:25px;border:1px solid var(--line);background:rgba(255,255,255,.065);box-shadow:0 14px 34px rgba(0,0,0,.18)}
+    .sectionTitle{margin:0;font-size:24px;line-height:1;font-weight:1000;letter-spacing:-.035em}.sectionSub{margin:7px 0 0;color:var(--soft);font-size:13px;line-height:1.4;font-weight:850}
+    .modeGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:13px}.modeBtn{min-height:78px;padding:12px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:#fff;text-align:left;font-weight:1000}.modeBtn strong{display:block;font-size:17px}.modeBtn small{display:block;margin-top:5px;color:var(--soft);font-size:11.5px;line-height:1.3}.modeBtn.active{background:linear-gradient(135deg,rgba(246,196,83,.25),rgba(0,166,81,.22));border-color:rgba(246,196,83,.62);box-shadow:0 10px 26px rgba(0,0,0,.22)}
+    form{display:grid;gap:13px;margin-top:13px}.field{display:grid;gap:6px}.field label{font-size:13px;color:#fff3cf;font-weight:1000}.field small{color:var(--soft);font-size:11px;line-height:1.3}.control{width:100%;min-height:50px;padding:11px 13px;border-radius:16px;border:1px solid rgba(255,255,255,.15);background:#06130d;color:#fff;font-weight:850;outline:none}.control:focus{border-color:rgba(246,196,83,.65);box-shadow:0 0 0 3px rgba(246,196,83,.10)}textarea.control{min-height:170px;resize:vertical;line-height:1.45}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .consent{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;padding:12px;border-radius:17px;border:1px solid rgba(246,196,83,.27);background:rgba(246,196,83,.07);font-size:12px;line-height:1.4;color:rgba(248,250,252,.84)}.consent input{width:21px;height:21px;accent-color:var(--green)}
+    .actions{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:8px}.btn{min-height:52px;padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font-weight:1000;display:flex;align-items:center;justify-content:center;text-align:center}.btn.main{background:linear-gradient(135deg,var(--gold),var(--green));color:#06130d;border-color:rgba(246,196,83,.66)}.btn.danger{border-color:rgba(251,113,133,.38);background:rgba(251,113,133,.10);color:#ffe4e6}
+    .status{min-height:22px;margin-top:10px;color:#fff3cf;font-size:12px;font-weight:1000}.preview{width:100%;min-height:220px;margin-top:12px;padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.14);background:#031009;color:rgba(248,250,252,.90);white-space:pre-wrap;line-height:1.5;font-size:13px;font-weight:800}
+    .privacy{padding:13px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.17);color:var(--soft);font-size:12px;line-height:1.45;text-align:center}.privacy strong{color:#fff3cf}
+    @media(max-width:650px){.top{position:relative;top:auto}.topNav{width:100%;display:grid;grid-template-columns:1fr 1fr}.modeGrid,.two,.actions{grid-template-columns:1fr}.hero{padding:20px}.formCard,.modeBox,.previewCard{padding:14px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <a class="brand" href="./index.html"><span class="mark">👂</span><span>RÉSEAU DIGIY<small>Question publique · parole du terrain</small></span></a>
+      <nav class="topNav" aria-label="Navigation">
+        <a href="./index.html">← Retour RÉSEAU</a>
+        <a href="https://digiylyfe.net/" target="_blank" rel="noopener noreferrer">🎧 Lire / écouter</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="kicker">PUBLIC · AUCUNE PUBLICATION AUTOMATIQUE</span>
+      <h1>Une question ou une parole. <span>DIGIY prépare la suite.</span></h1>
+      <p class="lead">Écris ce que tu veux transmettre. La page prépare un message clair pour WhatsApp. DIGIY vérifie, reformule seulement avec ton accord et demande ta validation avant toute publication sur DIGIYLYFE.net.</p>
+      <div class="rule"><strong>Règle :</strong> rien n’est enregistré sur cette page et rien n’est publié automatiquement. WhatsApp s’ouvre avec ton message préparé ; choisis ensuite le contact DIGIY.</div>
+    </section>
+
+    <section class="modeBox" aria-labelledby="modeTitle">
+      <h2 class="sectionTitle" id="modeTitle">1 · Choisis ton intention</h2>
+      <p class="sectionSub">Le choix adapte le titre et le message envoyé à DIGIY.</p>
+      <div class="modeGrid" role="group" aria-label="Type de proposition">
+        <button class="modeBtn active" type="button" data-mode="question"><strong>👂 Poser une question</strong><small>Un besoin, une difficulté ou une interrogation du terrain.</small></button>
+        <button class="modeBtn" type="button" data-mode="parole"><strong>🎙️ Proposer une parole</strong><small>Un raisonnement, un témoignage ou une expérience à transmettre.</small></button>
+      </div>
+    </section>
+
+    <section class="formCard" aria-labelledby="formTitle">
+      <h2 class="sectionTitle" id="formTitle">2 · Prépare le message</h2>
+      <p class="sectionSub">Les champs marqués d’un astérisque sont nécessaires.</p>
+      <form id="questionForm" novalidate>
+        <div class="field">
+          <label for="content" id="contentLabel">Ta question *</label>
+          <textarea class="control" id="content" required maxlength="2500" placeholder="Exemple : Comment un petit commerce peut-il présenter ses produits sans fatiguer ses contacts WhatsApp ?"></textarea>
+          <small>Écris avec tes mots. DIGIY ne doit pas déformer ta pensée.</small>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="category">Catégorie *</label>
+            <select class="control" id="category" required>
+              <option value="">Choisir</option>
+              <option>Métier</option>
+              <option>Terrain</option>
+              <option>Économie</option>
+              <option>Transmission</option>
+              <option>Commerce</option>
+              <option>Mobilité</option>
+              <option>Logement</option>
+              <option>Emploi</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="zone">Zone ou territoire</label>
+            <input class="control" id="zone" maxlength="100" placeholder="Saly, Mbour, Dakar, Sarlat…">
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="name">Nom ou pseudonyme</label>
+            <input class="control" id="name" maxlength="100" placeholder="Nom, prénom ou pseudo">
+          </div>
+          <div class="field">
+            <label for="contact">Téléphone facultatif</label>
+            <input class="control" id="contact" inputmode="tel" maxlength="40" placeholder="Pour que DIGIY puisse répondre">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="credit">Comment citer l’auteur ?</label>
+          <select class="control" id="credit">
+            <option value="À confirmer avant publication">À confirmer avant publication</option>
+            <option value="Nom ou pseudonyme autorisé">Nom ou pseudonyme autorisé</option>
+            <option value="Publication anonyme demandée">Publication anonyme demandée</option>
+          </select>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>Je comprends que ce message est une proposition. DIGIY doit me demander mon accord final avant de publier ou de citer mon nom.</span>
+        </label>
+
+        <div class="actions">
+          <button class="btn main" type="submit">📲 Préparer dans WhatsApp</button>
+          <button class="btn" type="button" id="copyBtn">📋 Copier</button>
+          <button class="btn danger" type="reset" id="resetBtn">↺ Effacer</button>
+        </div>
+        <div class="status" id="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="previewCard" aria-labelledby="previewTitle">
+      <h2 class="sectionTitle" id="previewTitle">3 · Aperçu du message</h2>
+      <p class="sectionSub">Le texte se met à jour pendant que tu écris.</p>
+      <div class="preview" id="preview"></div>
+    </section>
+
+    <div class="privacy"><strong>Protection :</strong> aucune base de données, aucun compte et aucun envoi caché. Le message reste dans ton navigateur jusqu’au clic sur WhatsApp ou Copier.</div>
+  </main>
+
+  <script>
+    (function(){
+      "use strict";
+      const form = document.getElementById("questionForm");
+      const content = document.getElementById("content");
+      const category = document.getElementById("category");
+      const zone = document.getElementById("zone");
+      const name = document.getElementById("name");
+      const contact = document.getElementById("contact");
+      const credit = document.getElementById("credit");
+      const consent = document.getElementById("consent");
+      const preview = document.getElementById("preview");
+      const status = document.getElementById("status");
+      const copyBtn = document.getElementById("copyBtn");
+      const modeButtons = Array.from(document.querySelectorAll("[data-mode]"));
+      const contentLabel = document.getElementById("contentLabel");
+      let mode = "question";
+
+      function setMode(next){
+        mode = next === "parole" ? "parole" : "question";
+        modeButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.mode === mode));
+        if(mode === "parole"){
+          contentLabel.textContent = "Ta parole ou ton raisonnement *";
+          content.placeholder = "Exemple : Sur le terrain, j’ai compris qu’un client peut venir d’une plateforme, mais que la relation doit rester au professionnel…";
+          document.title = "Proposer une parole — RÉSEAU DIGIY";
+        }else{
+          contentLabel.textContent = "Ta question *";
+          content.placeholder = "Exemple : Comment un petit commerce peut-il présenter ses produits sans fatiguer ses contacts WhatsApp ?";
+          document.title = "Poser une question — RÉSEAU DIGIY";
+        }
+        updatePreview();
+        try{
+          const url = new URL(location.href);
+          url.searchParams.set("type", mode);
+          history.replaceState({}, "", url.pathname + url.search + url.hash);
+        }catch(_){ }
+      }
+
+      function clean(value){ return String(value || "").trim(); }
+
+      function buildMessage(){
+        const label = mode === "parole" ? "PROPOSITION DE PAROLE DU TERRAIN" : "QUESTION DU TERRAIN";
+        const lines = [
+          "📣 RÉSEAU DIGIY — " + label,
+          "",
+          clean(content.value) || "[Texte à compléter]",
+          "",
+          "Catégorie : " + (clean(category.value) || "À préciser"),
+          "Zone : " + (clean(zone.value) || "Non précisée"),
+          "Auteur : " + (clean(name.value) || "Non précisé"),
+          "Contact : " + (clean(contact.value) || "Non communiqué"),
+          "Crédit souhaité : " + clean(credit.value),
+          "",
+          "Je demande à DIGIY de vérifier et de me faire valider la version finale avant toute publication ou citation.",
+          "",
+          "Page d’origine : https://reseau-digiy.digiylyfe.com/question.html?type=" + mode
+        ];
+        return lines.join("\n");
+      }
+
+      function updatePreview(){ preview.textContent = buildMessage(); }
+
+      function validate(){
+        if(!clean(content.value)){
+          status.textContent = mode === "parole" ? "⚠️ Écris ta parole ou ton raisonnement." : "⚠️ Écris ta question.";
+          content.focus();
+          return false;
+        }
+        if(!clean(category.value)){
+          status.textContent = "⚠️ Choisis une catégorie.";
+          category.focus();
+          return false;
+        }
+        if(!consent.checked){
+          status.textContent = "⚠️ Confirme la règle de validation avant publication.";
+          consent.focus();
+          return false;
+        }
+        return true;
+      }
+
+      modeButtons.forEach(btn => btn.addEventListener("click", () => setMode(btn.dataset.mode)));
+      [content,category,zone,name,contact,credit,consent].forEach(el => el.addEventListener("input", updatePreview));
+      category.addEventListener("change", updatePreview);
+      credit.addEventListener("change", updatePreview);
+
+      form.addEventListener("submit", function(event){
+        event.preventDefault();
+        if(!validate()) return;
+        const message = buildMessage();
+        status.textContent = "✅ Message prêt. WhatsApp va s’ouvrir : choisis le contact DIGIY.";
+        window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+      });
+
+      copyBtn.addEventListener("click", async function(){
+        if(!validate()) return;
+        try{
+          await navigator.clipboard.writeText(buildMessage());
+          status.textContent = "✅ Message copié. Tu peux le coller dans la conversation DIGIY.";
+        }catch(_){
+          status.textContent = "Copie impossible automatiquement. Sélectionne le texte dans l’aperçu.";
+        }
+      });
+
+      form.addEventListener("reset", function(){
+        setTimeout(function(){
+          status.textContent = "Formulaire effacé.";
+          updatePreview();
+        },0);
+      });
+
+      const initial = new URLSearchParams(location.search).get("type");
+      setMode(initial === "parole" ? "parole" : "question");
+    })();
+  </script>
+</body>
+</html>
