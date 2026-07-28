@@ -1,27 +1,539 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-  <title>RÉSEAU DIGIY — Com au clic</title>
+  <title>RÉSEAU DIGIY — La connaissance utile du terrain</title>
+  <meta name="description" content="RÉSEAU DIGIY organise les questions, conseils, expériences et opportunités du terrain en France et au Sénégal, puis oriente vers les professionnels et services utiles. Contact direct, QR, WhatsApp et 0% commission.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#06130d">
+  <meta name="color-scheme" content="dark">
+  <meta name="digiy-build" content="reseau-index-journal-terrain-20260728-v1">
 
-  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
-  <meta http-equiv="refresh" content="1; url=hub.html" />
+  <link rel="canonical" href="https://reseau-digiy.digiylyfe.com/">
 
-  <link rel="stylesheet" href="./style.css" />
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="RÉSEAU DIGIY">
+  <meta property="og:title" content="RÉSEAU DIGIY — La connaissance utile du terrain">
+  <meta property="og:description" content="Une question du terrain. Une réponse utile. Une personne réelle à contacter.">
+  <meta property="og:url" content="https://reseau-digiy.digiylyfe.com/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RÉSEAU DIGIY — La connaissance utile du terrain">
+  <meta name="twitter:description" content="Questions, conseils, expériences et professionnels du terrain, sans commission DIGIY.">
+
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#06130d}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:#f8fafc;
+      background:
+        radial-gradient(circle at 12% -8%,rgba(246,196,83,.22),transparent 34%),
+        radial-gradient(circle at 92% 8%,rgba(0,166,81,.20),transparent 32%),
+        linear-gradient(180deg,#06130d 0%,#020504 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      font-weight:800;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid #f6c453;outline-offset:3px}
+
+    .app{width:min(1080px,100%);margin:auto;padding:12px 12px 88px}
+    .stack{display:grid;gap:14px}
+
+    .top{
+      position:sticky;top:8px;z-index:30;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      padding:12px 14px;
+      border:1px solid rgba(246,196,83,.36);
+      border-radius:24px;
+      background:rgba(6,19,13,.88);
+      backdrop-filter:blur(16px);
+      box-shadow:0 18px 50px rgba(0,0,0,.26);
+    }
+    .brand{display:flex;align-items:center;gap:11px;min-width:0}
+    .logo{
+      width:52px;height:52px;min-width:52px;border-radius:18px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#f6c453,#00a651);
+      color:#06130d;font-size:27px;font-weight:1000;
+      box-shadow:0 12px 28px rgba(0,0,0,.24);
+    }
+    .brand h1{margin:0;font-size:clamp(24px,6vw,40px);line-height:.92;letter-spacing:-.055em;font-weight:1000}
+    .brand p{margin:5px 0 0;color:rgba(248,250,252,.72);font-size:12px;line-height:1.15;font-weight:900}
+    .topActions{display:flex;gap:8px;flex-wrap:wrap}
+
+    .pill,.btn,.nav a,.filterBtn{
+      min-height:44px;
+      display:inline-flex;align-items:center;justify-content:center;text-align:center;
+      padding:10px 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      line-height:1.05;
+      font-weight:1000;
+    }
+    .pill{min-height:36px;padding:8px 10px;color:#fff3cf;font-size:11px}
+    .gold{background:linear-gradient(135deg,#f6c453,#00a651)!important;color:#06130d!important;border-color:rgba(246,196,83,.66)!important}
+    .green{background:rgba(0,166,81,.18)!important;border-color:rgba(0,166,81,.42)!important}
+
+    .nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+
+    .hero{
+      min-height:520px;
+      padding:clamp(20px,5vw,42px);
+      border:1px solid rgba(246,196,83,.42);
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 86% 8%,rgba(246,196,83,.18),transparent 26%),
+        radial-gradient(circle at 10% 92%,rgba(0,166,81,.20),transparent 30%),
+        linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.04));
+      box-shadow:0 24px 70px rgba(0,0,0,.28);
+      display:flex;flex-direction:column;justify-content:center;
+      overflow:hidden;position:relative;
+    }
+    .hero:after{
+      content:"R";position:absolute;right:-24px;bottom:-76px;
+      font-size:clamp(230px,42vw,440px);line-height:1;font-weight:1000;
+      color:rgba(246,196,83,.045);pointer-events:none;
+    }
+    .kicker{
+      width:max-content;max-width:100%;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(246,196,83,.42);
+      background:rgba(246,196,83,.11);
+      color:#fff3cf;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:1000;
+    }
+    .hero h2{
+      margin:16px 0 0;max-width:900px;
+      font-size:clamp(46px,10vw,88px);line-height:.86;letter-spacing:-.075em;font-weight:1000;
+      position:relative;z-index:1;
+    }
+    .hero h2 span{color:#f6c453}
+    .lead{
+      margin:17px 0 0;max-width:820px;
+      color:rgba(248,250,252,.88);
+      font-size:clamp(18px,4vw,25px);line-height:1.28;font-weight:900;
+      position:relative;z-index:1;
+    }
+    .heroActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px;position:relative;z-index:1}
+    .heroActions .btn{min-height:52px;padding:13px 17px;font-size:15px}
+    .trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1}
+
+    .principle{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:14px;
+      padding:20px;border-radius:28px;
+      border:1px solid rgba(246,196,83,.34);
+      background:linear-gradient(135deg,rgba(246,196,83,.13),rgba(0,166,81,.10));
+      box-shadow:0 18px 48px rgba(0,0,0,.18);
+    }
+    .principle h3,.sectionHead h3{margin:0;font-size:clamp(30px,7vw,54px);line-height:.94;letter-spacing:-.055em;font-weight:1000}
+    .principle h3 span,.sectionHead h3 span{color:#f6c453}
+    .principle p,.sectionHead p{margin:11px 0 0;color:rgba(248,250,252,.78);font-size:16px;line-height:1.42;font-weight:850}
+    .quote{
+      min-height:100%;padding:18px;border-radius:22px;
+      border-left:4px solid #f6c453;
+      background:rgba(6,19,13,.62);
+      color:#fff3cf;font-size:clamp(18px,4vw,25px);line-height:1.26;font-weight:1000;
+      display:flex;align-items:center;
+    }
+
+    .section{display:grid;gap:12px}
+    .sectionHead{padding:4px 4px 0}
+
+    .filters{
+      display:grid;grid-template-columns:1fr auto;gap:10px;
+      padding:14px;border-radius:22px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.065);
+    }
+    .search{
+      width:100%;min-height:48px;padding:0 15px;border-radius:16px;
+      border:1px solid rgba(246,196,83,.28);background:#06130d;color:#fff;font-weight:900;
+    }
+    .filterRow{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+    .filterBtn{min-height:40px;padding:9px 11px;cursor:pointer}
+    .filterBtn.on{background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d;border-color:rgba(246,196,83,.66)}
+
+    .knowledgeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{
+      min-height:270px;padding:17px;border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.055));
+      box-shadow:0 16px 42px rgba(0,0,0,.17);
+      display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+    }
+    .card.goldCard{border-color:rgba(246,196,83,.46);background:linear-gradient(180deg,rgba(246,196,83,.18),rgba(255,255,255,.055))}
+    .card.greenCard{border-color:rgba(0,166,81,.44);background:linear-gradient(180deg,rgba(0,166,81,.17),rgba(255,255,255,.055))}
+    .cardTop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);font-size:29px}
+    .badge{padding:7px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff3cf;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:1000}
+    .card h4{margin:0;font-size:clamp(22px,5vw,31px);line-height:.98;letter-spacing:-.045em;font-weight:1000}
+    .card p{margin:8px 0 0;color:rgba(248,250,252,.78);font-size:15px;line-height:1.34;font-weight:850}
+    .meta{display:flex;gap:6px;flex-wrap:wrap}
+    .meta span{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(248,250,252,.82);font-size:11px;font-weight:950}
+    .cardActions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .cardActions a,.cardActions button{min-height:43px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:9px}
+    .cardActions .main{background:linear-gradient(135deg,#f6c453,#00a651);color:#06130d;border-color:rgba(246,196,83,.64)}
+
+    .routes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+    .route{
+      min-height:190px;padding:17px;border-radius:23px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.055));
+      display:flex;flex-direction:column;justify-content:space-between;gap:12px;
+    }
+    .route strong{font-size:clamp(21px,5vw,29px);line-height:.98;letter-spacing:-.04em;font-weight:1000}
+    .route p{margin:0;color:rgba(248,250,252,.74);font-size:14px;line-height:1.32;font-weight:850}
+    .route span{font-size:31px}
+
+    .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .step{padding:16px;border-radius:21px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:rgba(248,250,252,.78);font-size:14px;line-height:1.34;font-weight:850}
+    .step b{display:block;margin-bottom:7px;color:#fff3cf;font-size:22px;line-height:1;font-weight:1000}
+
+    .cta{
+      padding:24px;border-radius:30px;border:1px solid rgba(246,196,83,.44);
+      background:
+        radial-gradient(circle at 88% 10%,rgba(246,196,83,.18),transparent 28%),
+        linear-gradient(135deg,rgba(0,166,81,.19),rgba(246,196,83,.12));
+      text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.24);
+    }
+    .cta h3{margin:0;font-size:clamp(34px,8vw,62px);line-height:.9;letter-spacing:-.065em;font-weight:1000}
+    .cta h3 span{color:#f6c453}
+    .cta p{max-width:760px;margin:13px auto 0;color:rgba(248,250,252,.82);font-size:17px;line-height:1.36;font-weight:850}
+    .cta .heroActions{justify-content:center}
+
+    .footer{
+      padding:20px;border-radius:24px 24px 0 0;border:1px solid rgba(246,196,83,.16);
+      background:#020504;color:rgba(248,250,252,.68);font-size:13px;line-height:1.5;text-align:center;font-weight:850;
+    }
+    .footer strong{color:#fff3cf}
+
+    .empty{display:none;padding:18px;border-radius:22px;border:1px dashed rgba(246,196,83,.36);background:rgba(246,196,83,.08);color:#fff3cf;text-align:center;font-weight:1000}
+
+    @media(max-width:900px){
+      .knowledgeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .principle{grid-template-columns:1fr}
+    }
+    @media(max-width:720px){
+      .app{padding:9px 9px 86px}
+      .top{position:relative;top:auto}
+      .topActions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+      .nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero{min-height:560px;padding:20px}
+      .hero h2{font-size:clamp(43px,14vw,68px)}
+      .filters{grid-template-columns:1fr}
+      .filterRow{justify-content:flex-start}
+      .knowledgeGrid,.routes,.how{grid-template-columns:1fr}
+      .card{min-height:235px}
+    }
+    @media(max-width:390px){
+      .brand h1{font-size:26px}
+      .brand p{font-size:11px}
+      .hero h2{font-size:42px}
+      .heroActions{display:grid}
+      .heroActions .btn{width:100%}
+      .cardActions{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
 </head>
 <body>
   <main class="app">
-    <section class="shell">
-      <div class="hero">
-        <div class="kicker">RÉSEAU DIGIY · COM AU CLIC</div>
-        <h2>On ouvre <span>le journal terrain</span></h2>
-        <p class="lead">Redirection vers le hub. Module ouvert : inscription simple, annonce, règlement à la durée.</p>
-        <div class="btnrow" style="justify-content:center"><a class="btn main" href="hub.html">Entrer maintenant</a></div>
-      </div>
-    </section>
+    <div class="stack">
+
+      <header class="top">
+        <a class="brand" href="./index.html" aria-label="Accueil RÉSEAU DIGIY">
+          <div class="logo" aria-hidden="true">R</div>
+          <div>
+            <h1>RÉSEAU DIGIY</h1>
+            <p>France · Sénégal · savoir du terrain · contact direct</p>
+          </div>
+        </a>
+        <div class="topActions">
+          <a class="btn" href="./hub.html">🧭 Voir le hub</a>
+          <a class="btn gold" href="./inscription.html">👤 Rejoindre</a>
+        </div>
+      </header>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="gold" href="./index.html">🏠 Accueil</a>
+        <a href="./journal.html">📰 Journal</a>
+        <a href="./annonce.html">📢 Annonce</a>
+        <a href="./fiche.html">🔗 Fiches</a>
+        <a href="./oreille.html">👂 Poser une question</a>
+        <a href="./action.html">🎙️ ACTION</a>
+        <a href="./lexique-reseau.html">🗣️ Lexique</a>
+        <a href="./paiement.html">💳 Offres</a>
+      </nav>
+
+      <section class="hero">
+        <div class="kicker">Journal vivant · connaissance locale · orientation humaine</div>
+        <h2>Une question du terrain. <span>Une réponse utile.</span></h2>
+        <p class="lead">
+          RÉSEAU DIGIY rassemble les conseils, expériences, besoins et opportunités qui servent réellement la vie locale. Le savoir attire, DIGIY organise, puis le visiteur contacte directement la bonne personne.
+        </p>
+        <div class="heroActions">
+          <a class="btn gold" href="./journal.html">📰 Ouvrir le journal terrain</a>
+          <a class="btn green" href="./oreille.html">👂 Proposer une question</a>
+          <a class="btn" href="./fiche.html">🤝 Trouver un professionnel</a>
+        </div>
+        <div class="trust">
+          <span class="pill">🇸🇳 Sénégal</span>
+          <span class="pill">🇫🇷 France</span>
+          <span class="pill">📲 WhatsApp direct</span>
+          <span class="pill">🤝 0% commission</span>
+          <span class="pill">🔒 Publication validée</span>
+        </div>
+      </section>
+
+      <section class="principle" aria-label="Principe RÉSEAU DIGIY">
+        <div>
+          <h3>Pas un réseau de bruit. <span>Un réseau d’utilité.</span></h3>
+          <p>
+            La lecture reste publique. Les questions et propositions passent par DIGIY avant publication. Aucun compte obligatoire, aucun fil infini, aucune vidéo lourde hébergée ici : seulement des connaissances claires, partageables et reliées à des humains réels.
+          </p>
+        </div>
+        <div class="quote">« La curiosité livrée à l’algorithme disperse. La curiosité attachée au terrain construit. »</div>
+      </section>
+
+      <section class="section" id="connaissances">
+        <div class="sectionHead">
+          <h3>Connaissances <span>du terrain</span></h3>
+          <p>Premières portes éditoriales. Elles pourront être remplacées progressivement par de vraies questions, réponses et expériences locales dans le journal.</p>
+        </div>
+
+        <div class="filters" aria-label="Filtrer les connaissances">
+          <input class="search" id="searchInput" type="search" placeholder="Rechercher : commerce, Saly, chauffeur, emploi…" aria-label="Rechercher dans les connaissances">
+          <div class="filterRow" aria-label="Catégories">
+            <button class="filterBtn on" type="button" data-filter="all">Tout</button>
+            <button class="filterBtn" type="button" data-filter="question">Questions</button>
+            <button class="filterBtn" type="button" data-filter="conseil">Conseils</button>
+            <button class="filterBtn" type="button" data-filter="experience">Expériences</button>
+            <button class="filterBtn" type="button" data-filter="opportunite">Opportunités</button>
+          </div>
+        </div>
+
+        <div class="knowledgeGrid" id="knowledgeGrid">
+          <article class="card goldCard" data-type="question" data-search="question choisir professionnel artisan fiable saly petite côte construction">
+            <div>
+              <div class="cardTop"><div class="icon">❓</div><span class="badge">Question terrain</span></div>
+              <h4>Comment choisir un professionnel fiable à Saly ?</h4>
+              <p>Préparer le besoin, vérifier la zone d’intervention, demander un diagnostic clair et garder le contact direct avec le professionnel.</p>
+            </div>
+            <div>
+              <div class="meta"><span>Saly</span><span>Services</span><span>Petite Côte</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./journal.html">Lire dans le journal</a>
+                <button type="button" data-share="Comment choisir un professionnel fiable à Saly ?">Partager</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card greenCard" data-type="conseil" data-search="conseil whatsapp commerce produit clients boutique marché market">
+            <div>
+              <div class="cardTop"><div class="icon">💡</div><span class="badge">Conseil commerce</span></div>
+              <h4>Présenter ses produits sans fatiguer ses contacts</h4>
+              <p>Une photo propre, un prix clair, une zone, un bouton WhatsApp et une fiche stable valent mieux que vingt messages envoyés dans tous les groupes.</p>
+            </div>
+            <div>
+              <div class="meta"><span>Commerce</span><span>WhatsApp</span><span>QR</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./fiche.html">Voir les fiches</a>
+                <button type="button" data-share="Présenter ses produits sans fatiguer ses contacts">Partager</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-type="experience" data-search="experience chauffeur driver client plateforme qr fidélisation relation directe">
+            <div>
+              <div class="cardTop"><div class="icon">🚗</div><span class="badge">Expérience métier</span></div>
+              <h4>Le premier client peut venir d’une plateforme</h4>
+              <p>La plateforme peut apporter le premier contact. La fiche et le QR DIGIY préparent le prochain, sans enlever la relation au chauffeur.</p>
+            </div>
+            <div>
+              <div class="meta"><span>DRIVER</span><span>Relation directe</span><span>0%</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./hub.html">Découvrir le réseau</a>
+                <button type="button" data-share="Le premier client peut venir d’une plateforme. La relation doit rester au professionnel.">Partager</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-type="opportunite" data-search="opportunité emploi jobs petite côte recrutement serveur artisan chauffeur commerce">
+            <div>
+              <div class="cardTop"><div class="icon">📣</div><span class="badge">Opportunité locale</span></div>
+              <h4>Un besoin local doit être compris avant d’être diffusé</h4>
+              <p>Zone, métier, disponibilité, contact et conditions essentielles : une annonce qualifiée attire moins de bruit et davantage de réponses utiles.</p>
+            </div>
+            <div>
+              <div class="meta"><span>Emploi</span><span>Services</span><span>Qualification</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./annonce.html">Préparer une annonce</a>
+                <button type="button" data-share="Un besoin local doit être compris avant d’être diffusé">Partager</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card greenCard" data-type="conseil" data-search="conseil restaurant réservation resa table client whatsapp direct">
+            <div>
+              <div class="cardTop"><div class="icon">🍽️</div><span class="badge">Conseil restauration</span></div>
+              <h4>Une réservation claire protège le client et le restaurant</h4>
+              <p>Date, heure, nombre de personnes et confirmation directe : le numérique prépare la demande, le professionnel garde la décision.</p>
+            </div>
+            <div>
+              <div class="meta"><span>RESA</span><span>Restaurant</span><span>Direct</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./journal.html">Lire les conseils</a>
+                <button type="button" data-share="Une réservation claire protège le client et le restaurant">Partager</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card goldCard" data-type="question" data-search="question diaspora france sénégal sarlat saly professionnel contact confiance">
+            <div>
+              <div class="cardTop"><div class="icon">🌍</div><span class="badge">Pont France Sénégal</span></div>
+              <h4>Comment recommander un professionnel à distance ?</h4>
+              <p>Une fiche claire avec territoire, téléphone, activité, photos et QR permet à la diaspora de recommander sans perdre le lien humain.</p>
+            </div>
+            <div>
+              <div class="meta"><span>France</span><span>Sénégal</span><span>Diaspora</span></div>
+              <div class="cardActions" style="margin-top:10px">
+                <a class="main" href="./fiche.html">Voir les fiches</a>
+                <button type="button" data-share="Comment recommander un professionnel à distance ?">Partager</button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="empty" id="emptyState">Aucune connaissance ne correspond à cette recherche.</div>
+      </section>
+
+      <section class="section">
+        <div class="sectionHead">
+          <h3>Chaque porte a <span>une mission</span></h3>
+          <p>Les fichiers déjà présents dans le dépôt sont maintenant reliés à une fonction compréhensible.</p>
+        </div>
+        <div class="routes">
+          <a class="route" href="./journal.html"><span>📰</span><strong>Journal terrain</strong><p>Lire les questions, conseils, expériences et opportunités validées.</p></a>
+          <a class="route" href="./oreille.html"><span>👂</span><strong>Oreille DIGIY</strong><p>Proposer une question, un besoin ou une observation venant du terrain.</p></a>
+          <a class="route" href="./annonce.html"><span>📢</span><strong>Annonce qualifiée</strong><p>Préparer une information claire avant sa diffusion dans le réseau.</p></a>
+          <a class="route" href="./fiche.html"><span>🔗</span><strong>Fiches humaines</strong><p>Passer du savoir à la personne, puis au contact direct.</p></a>
+          <a class="route" href="./action.html"><span>🎙️</span><strong>ACTION</strong><p>Transformer une intention en prochaine étape concrète et cadrée.</p></a>
+          <a class="route" href="./lexique-reseau.html"><span>🗣️</span><strong>Lexique réseau</strong><p>Expliquer les mots du numérique dans une langue simple et locale.</p></a>
+          <a class="route" href="./inscription.html"><span>👤</span><strong>Demande pro</strong><p>Rejoindre le réseau ou préparer une activation après validation DIGIY.</p></a>
+          <a class="route" href="./paiement.html"><span>💳</span><strong>Offres réseau</strong><p>Consulter les activations et règlements sans commission sur l’affaire.</p></a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionHead">
+          <h3>Le circuit <span>sans Supabase</span></h3>
+          <p>La connaissance circule avec une architecture simple, statique et contrôlée.</p>
+        </div>
+        <div class="how">
+          <div class="step"><b>1 · Proposer</b>La personne envoie sa question ou son expérience par WhatsApp ou via Oreille DIGIY.</div>
+          <div class="step"><b>2 · Valider</b>DIGIY vérifie, reformule et rattache le contenu à une zone, un métier ou une fiche.</div>
+          <div class="step"><b>3 · Orienter</b>La publication est posée sur GitHub Pages et conduit vers le bon humain ou service.</div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h3>Le savoir attire. <span>DIGIY oriente.</span></h3>
+        <p>Pas de compte obligatoire, pas de publication sauvage et pas de coût Supabase pour cette première version. Le journal reste léger, partageable et administré par DIGIY.</p>
+        <div class="heroActions">
+          <a class="btn gold" href="./oreille.html">👂 Envoyer une question</a>
+          <a class="btn green" href="./inscription.html">👤 Rejoindre RÉSEAU DIGIY</a>
+          <a class="btn" href="./hub.html">🧭 Entrer dans le hub</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <strong>RÉSEAU DIGIY</strong> — Une question du terrain, une réponse utile, une personne réelle à contacter.<br>
+        France · Sénégal · QR · WhatsApp · contact direct · 0% commission DIGIY sur l’affaire du professionnel.
+      </footer>
+
+    </div>
   </main>
+
+  <script>
+    (function(){
+      "use strict";
+
+      const searchInput = document.getElementById("searchInput");
+      const cards = Array.from(document.querySelectorAll("[data-type]"));
+      const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+      const emptyState = document.getElementById("emptyState");
+      let activeFilter = "all";
+
+      function normalize(value){
+        return String(value || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .trim();
+      }
+
+      function applyFilters(){
+        const query = normalize(searchInput ? searchInput.value : "");
+        let visible = 0;
+
+        cards.forEach(card => {
+          const typeOk = activeFilter === "all" || card.dataset.type === activeFilter;
+          const haystack = normalize(card.dataset.search + " " + card.textContent);
+          const queryOk = !query || haystack.includes(query);
+          const show = typeOk && queryOk;
+          card.hidden = !show;
+          if(show) visible += 1;
+        });
+
+        if(emptyState) emptyState.style.display = visible ? "none" : "block";
+      }
+
+      filterButtons.forEach(button => {
+        button.addEventListener("click", function(){
+          activeFilter = this.dataset.filter || "all";
+          filterButtons.forEach(btn => btn.classList.toggle("on", btn === this));
+          applyFilters();
+        });
+      });
+
+      if(searchInput) searchInput.addEventListener("input", applyFilters);
+
+      document.querySelectorAll("[data-share]").forEach(button => {
+        button.addEventListener("click", async function(){
+          const title = this.dataset.share || "RÉSEAU DIGIY";
+          const url = location.href.split("#")[0] + "#connaissances";
+          const text = title + " — RÉSEAU DIGIY";
+
+          try{
+            if(navigator.share){
+              await navigator.share({title:"RÉSEAU DIGIY",text,url});
+              return;
+            }
+            await navigator.clipboard.writeText(text + "\n" + url);
+            const old = this.textContent;
+            this.textContent = "✅ Lien copié";
+            setTimeout(() => { this.textContent = old; }, 1600);
+          }catch(_){
+            window.open("https://wa.me/?text=" + encodeURIComponent(text + "\n" + url), "_blank", "noopener");
+          }
+        });
+      });
+
+      applyFilters();
+    })();
+  </script>
+
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
