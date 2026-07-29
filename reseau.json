@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-07-29",
+  "brand": {
+    "name": "RÉSEAU DIGIY",
+    "parent_brand": "DIGIYLYFE",
+    "role": "visibilité qualifiée, annonces datées, fiches et liens partageables",
+    "url": "https://reseau-digiy.digiylyfe.com/",
+    "hub_url": "https://reseau-digiy.digiylyfe.com/hub.html",
+    "catalogue_url": "https://reseau-digiy.digiylyfe.com/catalogue.html",
+    "commission_percent_on_professional_business": 0,
+    "coverage": ["France", "Sénégal", "Diaspora"],
+    "doctrine": "RÉSEAU prépare. DIGIY qualifie. Le terrain garde la main."
+  },
+  "publication_model": {
+    "initial_request": "without_commitment",
+    "publication_requires_digiy_validation": true,
+    "publication_is_time_limited": true,
+    "payment_applies_to": "validated_activation_or_publication",
+    "payment_is_not_commission": true,
+    "professional_keeps_client_payment_and_relationship": true
+  },
+  "active_publications": {
+    "source_type": "runtime_supabase_validated_view",
+    "source_page": "https://reseau-digiy.digiylyfe.com/journal.html",
+    "static_snapshot_included": false,
+    "static_active_count": null,
+    "qualification_rules": [
+      "status must be active",
+      "DIGIY validation must be true",
+      "publication must be enabled",
+      "expiration date must not be passed"
+    ],
+    "assistant_instruction": "Do not claim that a professional or offer has an active RÉSEAU publication unless the current public Journal displays it as active."
+  },
+  "senegal_visibility_plans": [
+    {"id":"R7","duration_days":7,"price":15000,"currency":"XOF","audience":"validated_professional"},
+    {"id":"R15","duration_days":15,"price":25000,"currency":"XOF","audience":"validated_professional"},
+    {"id":"R30","duration_days":30,"price":45000,"currency":"XOF","audience":"validated_professional"},
+    {"id":"FIRST","duration_days":30,"price":150000,"currency":"XOF","audience":"professional_not_yet_validated","description":"Fiche propre, QR, lien partageable, messages prêts et mise en lumière après validation DIGIY."}
+  ],
+  "showcase_references": [
+    {
+      "id":"chez-baptiste-loc",
+      "classification":"showcase_reference_not_network_activation",
+      "name":"Chez Baptiste",
+      "module":"DIGIY LOC",
+      "territory":"Saly, Sénégal",
+      "url":"https://part-chez-baptiste.digiylyfe.com/",
+      "description":"Fiche réelle de logement et contact direct propriétaire."
+    },
+    {
+      "id":"helage-build",
+      "classification":"showcase_reference_not_network_activation",
+      "name":"Helage plombier",
+      "module":"DIGIY BUILD",
+      "territory":"Saly, Sénégal",
+      "url":"https://beauville.github.io/helage-plombier/",
+      "description":"Fiche réelle de plomberie, dépannage et installation."
+    },
+    {
+      "id":"astou-boutique",
+      "classification":"showcase_reference_not_network_activation",
+      "name":"Astou Boutique",
+      "module":"MON COMMERCE / DIGIY MARKET",
+      "territory":"Saly, Sénégal",
+      "url":"https://astou-boutique.digiylyfe.com/",
+      "description":"Commerce réel avec vitrine, produits et contact direct."
+    },
+    {
+      "id":"digiy-driver-gallery",
+      "classification":"showcase_reference_not_network_activation",
+      "name":"DIGIY DRIVER",
+      "module":"Galerie des chauffeurs",
+      "territory":"Sénégal",
+      "url":"https://galerie-chauffeurs.digiylyfe.com/catalogue.html",
+      "description":"Galerie réelle de chauffeurs sur réservation et contacts directs."
+    }
+  ],
+  "non_public_states": [
+    "draft",
+    "brouillon",
+    "pending",
+    "pending_validation",
+    "unapproved",
+    "inactive",
+    "expired",
+    "rejected"
+  ],
+  "assistant_usage_notes": [
+    "RÉSEAU DIGIY is a visibility and qualified-publication brand, not an open classified-ad board.",
+    "Do not treat showcase_references as active paid RÉSEAU publications.",
+    "Do not treat drafts, requests, examples or inspiration cards as public offers.",
+    "Use the current public Journal as the only source for time-sensitive active publications.",
+    "For an active publication, state the professional, territory, offer, validity period and direct contact only when those fields are publicly displayed.",
+    "DIGIY takes 0 percent commission on the professional's business; activation fees pay for qualified visibility and publication."
+  ]
+}
