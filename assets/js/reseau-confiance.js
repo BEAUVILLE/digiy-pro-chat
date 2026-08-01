@@ -31,7 +31,7 @@
 
   function indexPage(){
     var hero=document.querySelector('.hero');
-    if(!hero || document.getElementById('reseau-flow'))return;
+    if(!hero)return;
     var brandSmall=document.querySelector('.brand small');
     if(brandSmall)brandSmall.textContent='Professionnels · recommandations · contact direct';
     var kicker=hero.querySelector('.kicker');
@@ -45,12 +45,14 @@
     if(actions)actions.innerHTML='<a class="btn gold" href="./hub.html">🌍 Voir les professionnels</a><a class="btn green" href="./recommander.html">🤝 Recommander un professionnel</a><a class="btn" href="./inscription.html">🏢 Rejoindre le réseau</a><a class="btn" href="https://digiylyfe.net/" target="_blank" rel="noopener noreferrer">🎧 Lire et écouter</a>';
     if(trust)trust.innerHTML='<span>🇸🇳 Sénégal</span><span>🇪🇺 Europe</span><span>🤝 Recommandation humaine</span><span>📲 Contact direct</span><span>0 % commission</span><span>🔒 Validation DIGIY</span>';
 
-    var flow=document.createElement('section');
-    flow.id='reseau-flow';
-    flow.className='reseauFlow';
-    flow.setAttribute('aria-label','Fonctionnement circulaire de RÉSEAU DIGIY');
-    flow.innerHTML='<div class="reseauFlowHead"><div><span class="reseauFlowTag">LE CERCLE DE CONFIANCE DIGIY</span><h2>Une bonne expérience peut ouvrir <span>la prochaine bonne porte.</span></h2><p class="reseauFlowLead">RÉSEAU DIGIY ne cherche pas à enfermer les personnes dans une plateforme. Il permet de conserver une fiche fiable, de la partager et de transmettre une recommandation humaine.</p></div></div><div class="reseauFlowGrid"><div class="reseauFlowCard"><i>✅</i><strong>Une prestation réussie</strong><small>Le client ou le partenaire connaît réellement le professionnel.</small></div><div class="reseauFlowCard"><i>🤝</i><strong>Une recommandation honnête</strong><small>Quelques faits simples sont transmis à DIGIY pour vérification.</small></div><div class="reseauFlowCard"><i>📲</i><strong>Une fiche facile à partager</strong><small>Le lien et le QR rendent le professionnel retrouvable directement.</small></div><div class="reseauFlowCard"><i>🔄</i><strong>La confiance circule</strong><small>Un chauffeur, un hébergeur, un restaurant ou un artisan peut ouvrir une autre bonne porte.</small></div></div><div class="reseauSignature">La fiche rend visible. Le QR fidélise. Le réseau fait circuler la confiance.</div><div class="reseauFlowActions"><a class="reseauFlowBtn main" href="./recommander.html">🤝 Recommander un professionnel</a><a class="reseauFlowBtn" href="./hub.html">🌍 Découvrir le réseau</a></div>';
-    hero.insertAdjacentElement('afterend',flow);
+    if(!document.getElementById('reseau-flow')){
+      var flow=document.createElement('section');
+      flow.id='reseau-flow';
+      flow.className='reseauFlow';
+      flow.setAttribute('aria-label','Fonctionnement circulaire de RÉSEAU DIGIY');
+      flow.innerHTML='<div class="reseauFlowHead"><div><span class="reseauFlowTag">LE CERCLE DE CONFIANCE DIGIY</span><h2>Une bonne expérience peut ouvrir <span>la prochaine bonne porte.</span></h2><p class="reseauFlowLead">RÉSEAU DIGIY ne cherche pas à enfermer les personnes dans une plateforme. Il permet de conserver une fiche fiable, de la partager et de transmettre une recommandation humaine.</p></div></div><div class="reseauFlowGrid"><div class="reseauFlowCard"><i>✅</i><strong>Une prestation réussie</strong><small>Le client ou le partenaire connaît réellement le professionnel.</small></div><div class="reseauFlowCard"><i>🤝</i><strong>Une recommandation honnête</strong><small>Quelques faits simples sont transmis à DIGIY pour vérification.</small></div><div class="reseauFlowCard"><i>📲</i><strong>Une fiche facile à partager</strong><small>Le lien et le QR rendent le professionnel retrouvable directement.</small></div><div class="reseauFlowCard"><i>🔄</i><strong>La confiance circule</strong><small>Un chauffeur, un hébergeur, un restaurant ou un artisan peut ouvrir une autre bonne porte.</small></div></div><div class="reseauSignature">La fiche rend visible. Le QR fidélise. Le réseau fait circuler la confiance.</div><div class="reseauFlowActions"><a class="reseauFlowBtn main" href="./recommander.html">🤝 Recommander un professionnel</a><a class="reseauFlowBtn" href="./hub.html">🌍 Découvrir le réseau</a></div>';
+      hero.insertAdjacentElement('afterend',flow);
+    }
 
     var doctrine=document.querySelector('.doctrine');
     if(doctrine){
@@ -67,25 +69,33 @@
   }
 
   function hubPage(){
-    var hero=document.querySelector('.hero');
-    if(!hero || document.getElementById('reseau-circle'))return;
+    var anchor=document.querySelector('.diapo-shell')||document.querySelector('.hubDoctrine');
+    if(!anchor)return;
     var brandText=document.querySelector('.brand p');
     if(brandText)brandText.textContent='Trouver · recommander · contacter directement';
-    var title=hero.querySelector('h2');
-    var lead=hero.querySelector('.lead');
-    var route=hero.querySelector('.routeLine');
-    if(title)title.innerHTML='Un bon contact peut en ouvrir <span>un autre.</span>';
-    if(lead)lead.textContent='Cherchez une personne réelle, ouvrez sa fiche, contactez-la directement ou recommandez un professionnel fiable à DIGIY. La relation et le paiement restent au professionnel.';
-    if(route && !route.querySelector('[href="./recommander.html"]'))route.insertAdjacentHTML('afterbegin','<a class="goldLink" href="./recommander.html">🤝 Recommander un professionnel</a>');
+    var diapoSub=document.querySelector('.diapo-sub');
+    if(diapoSub)diapoSub.textContent='Professionnels · recommandations · QR · contact direct · 0% commission';
+    var nav=document.querySelector('.nav');
+    if(nav && !nav.querySelector('[href="./recommander.html"]'))nav.insertAdjacentHTML('afterbegin','<a class="gold" href="./recommander.html">🤝 Recommander</a>');
     var chips=document.querySelectorAll('.chips .chip-mini');
     chips.forEach(function(chip){if(chip.textContent.indexOf('France')!==-1)chip.textContent=chip.textContent.replace('France','Europe');});
 
-    var circle=document.createElement('section');
-    circle.id='reseau-circle';
-    circle.className='reseauCircle';
-    circle.setAttribute('aria-label','Exemples de recommandations entre professionnels');
-    circle.innerHTML='<div class="reseauCircleHead"><div><span class="reseauCircleTag">RÉSEAU CIRCULAIRE · TERRAIN</span><h2>Les professionnels peuvent se transmettre <span>de bonnes portes.</span></h2><p class="reseauCircleLead">La recommandation reste humaine et modérée. DIGIY ne prélève rien sur la prestation et ne remplace jamais le choix du client.</p></div></div><div class="reseauCircleGrid"><div class="reseauCircleCard"><i>🚗 → 🏠</i><strong>Chauffeur vers logement</strong><small>Après un trajet, le chauffeur peut transmettre une adresse fiable.</small></div><div class="reseauCircleCard"><i>🏠 → 🍽️</i><strong>Hébergeur vers restaurant</strong><small>Le visiteur découvre une bonne table par une recommandation locale.</small></div><div class="reseauCircleCard"><i>🏗️ → ⚡</i><strong>Maçon vers électricien</strong><small>Les artisans complètent un chantier sans plateforme intermédiaire.</small></div><div class="reseauCircleCard"><i>🛍️ → 🚚</i><strong>Boutique vers service</strong><small>Un commerce peut orienter vers un livreur, un réparateur ou un imprimeur.</small></div></div><div class="reseauCircleActions"><a class="reseauCircleBtn main" href="./recommander.html">🤝 Transmettre une recommandation</a><a class="reseauCircleBtn" href="./inscription.html">🏢 Rejoindre RÉSEAU DIGIY</a></div>';
-    hero.insertAdjacentElement('afterend',circle);
+    var doctrine=document.querySelector('.hubDoctrine');
+    if(doctrine){
+      var title=doctrine.querySelector('h3');
+      var quote=doctrine.querySelector('.hubDoctrineQuote');
+      if(title)title.innerHTML='Le public voit. <span>La confiance circule après validation.</span>';
+      if(quote)quote.textContent='RÉSEAU DIGIY organise la visibilité et la recommandation qualifiée. Le professionnel garde son client, son argent et sa relation.';
+    }
+
+    if(!document.getElementById('reseau-circle')){
+      var circle=document.createElement('section');
+      circle.id='reseau-circle';
+      circle.className='reseauCircle';
+      circle.setAttribute('aria-label','Exemples de recommandations entre professionnels');
+      circle.innerHTML='<div class="reseauCircleHead"><div><span class="reseauCircleTag">RÉSEAU CIRCULAIRE · TERRAIN</span><h2>Les professionnels peuvent se transmettre <span>de bonnes portes.</span></h2><p class="reseauCircleLead">La recommandation reste humaine et modérée. DIGIY ne prélève rien sur la prestation et ne remplace jamais le choix du client.</p></div></div><div class="reseauCircleGrid"><div class="reseauCircleCard"><i>🚗 → 🏠</i><strong>Chauffeur vers logement</strong><small>Après un trajet, le chauffeur peut transmettre une adresse fiable.</small></div><div class="reseauCircleCard"><i>🏠 → 🍽️</i><strong>Hébergeur vers restaurant</strong><small>Le visiteur découvre une bonne table par une recommandation locale.</small></div><div class="reseauCircleCard"><i>🏗️ → ⚡</i><strong>Maçon vers électricien</strong><small>Les artisans complètent un chantier sans plateforme intermédiaire.</small></div><div class="reseauCircleCard"><i>🛍️ → 🚚</i><strong>Boutique vers service</strong><small>Un commerce peut orienter vers un livreur, un réparateur ou un imprimeur.</small></div></div><div class="reseauSignature">La fiche rend visible. Le QR fidélise. Le réseau fait circuler la confiance.</div><div class="reseauCircleActions"><a class="reseauCircleBtn main" href="./recommander.html">🤝 Transmettre une recommandation</a><a class="reseauCircleBtn" href="./inscription.html">🏢 Rejoindre RÉSEAU DIGIY</a></div>';
+      anchor.insertAdjacentElement('afterend',circle);
+    }
   }
 
   function init(){style();var path=(location.pathname||'').toLowerCase();if(path.endsWith('/hub.html')||path.endsWith('hub.html'))hubPage();else indexPage();}
