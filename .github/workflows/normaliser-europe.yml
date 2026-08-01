@@ -1,0 +1,54 @@
+name: Normaliser Europe dans RÉSEAU
+
+on:
+  push:
+    paths:
+      - '.github/workflows/normaliser-europe.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  normaliser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remplacer les mentions publiques de France par Europe
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          extensions = {'.html', '.js', '.json', '.xml', '.md', '.txt'}
+          replacements = [
+              ('🇫🇷', '🇪🇺'),
+              ('France', 'Europe'),
+              ('Francia', 'Europa'),
+              ('Frankreich', 'Europa'),
+              ('Frankrijk', 'Europa'),
+              ('فرنسا', 'أوروبا'),
+          ]
+
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in extensions:
+                  continue
+              if '.git' in path.parts or path.as_posix() == '.github/workflows/normaliser-europe.yml':
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              updated = text
+              for old, new in replacements:
+                  updated = updated.replace(old, new)
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+          PY
+          rm -f .github/workflows/normaliser-europe.yml
+      - name: Publier le nettoyage
+        run: |
+          git config user.name "DIGIYLYFE Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Afficher Europe partout dans RÉSEAU"
+          git push
