@@ -9,7 +9,7 @@
     "hub_url": "https://reseau-digiy.digiylyfe.com/hub.html",
     "catalogue_url": "https://reseau-digiy.digiylyfe.com/catalogue.html",
     "commission_percent_on_professional_business": 0,
-    "coverage": ["France", "Sénégal", "Diaspora"],
+    "coverage": ["Europe", "Sénégal", "Diaspora"],
     "doctrine": "RÉSEAU prépare. DIGIY qualifie. Le terrain garde la main."
   },
   "publication_model": {
