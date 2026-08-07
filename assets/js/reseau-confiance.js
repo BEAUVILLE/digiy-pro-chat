@@ -17,6 +17,15 @@ if(a){
 var v=a.querySelector('[data-reseau-vitrine]');
 if(!v){v=document.createElement('a');v.href='./journal.html';v.className=a.classList.contains('rActions')?'rBtn':'btn gold';v.setAttribute('data-reseau-vitrine','1');a.insertBefore(v,a.firstChild)}
 v.textContent='📰 '+t[4];
+if(a.classList.contains('rActions')){
+v.className='rBtn';
+v.style.background='linear-gradient(135deg,#f6c453,#d9a72f)';
+v.style.color='#06130d';
+v.style.borderColor='rgba(246,196,83,.78)';
+v.style.boxShadow='0 10px 26px rgba(246,196,83,.18)';
+var r=a.querySelector('a[href*="recommander.html"]');
+if(r){r.style.background='rgba(0,166,81,.22)';r.style.color='#dcffe9';r.style.borderColor='rgba(0,166,81,.58)';r.style.boxShadow='0 10px 24px rgba(0,166,81,.12)'}
+}
 if(!a.querySelector('[data-reseau-abonne]')){var x=document.createElement('a');x.href='./acces-pro.html';x.className=a.classList.contains('rActions')?'rBtn':'btn';x.setAttribute('data-reseau-abonne','1');x.textContent='🔐 '+t[0];a.appendChild(x)}
 }
 var dock=document.querySelector('.dock');
