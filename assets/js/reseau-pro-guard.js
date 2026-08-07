@@ -42,7 +42,7 @@
   function requireAccess(){
     var s=read();
     if(valid(s)){
-      document.documentElement.style.visibility='';
+      document.documentElement.style.visibility='visible';
       return s;
     }
     clear();
