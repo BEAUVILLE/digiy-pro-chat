@@ -1,78 +1,18 @@
-/* RÉSEAU DIGIY — surface d’entrée + chargeur multilingue complet */
+/* RÉSEAU DIGIY — post-rendu : vitrine + accès PRO */
 (function(){
-  'use strict';
-  if(window.__DIGIY_RESEAU_COMPLETE_LOADER__)return;
-  window.__DIGIY_RESEAU_COMPLETE_LOADER__=true;
-
-  var SHOWCASE=[
-    {icon:'🏡',name:'Chez Baptiste',meta:'DIGIY LOC · Saly',desc:'Logement réel et contact direct propriétaire.',url:'https://part-chez-baptiste.digiylyfe.com/'},
-    {icon:'🔧',name:'Helage plombier',meta:'DIGIY BUILD · Saly',desc:'Plomberie, dépannage et installation.',url:'https://beauville.github.io/helage-plombier/'},
-    {icon:'🛍️',name:'Astou Boutique',meta:'MON COMMERCE / MARKET · Saly',desc:'Commerce réel, produits et contact direct.',url:'https://astou-boutique.digiylyfe.com/'},
-    {icon:'🚕',name:'Galerie chauffeurs',meta:'DIGIY DRIVER · Sénégal',desc:'Chauffeurs visibles, réservation et contact direct.',url:'https://galerie-chauffeurs.digiylyfe.com/catalogue.html'}
-  ];
-
-  function addStyle(){
-    if(document.getElementById('reseau-entry-vitrine-style'))return;
-    var style=document.createElement('style');
-    style.id='reseau-entry-vitrine-style';
-    style.textContent='\
-      .reseauEntryShowcase{margin-top:14px;padding:18px;border-radius:26px;border:1px solid rgba(246,196,83,.34);background:linear-gradient(135deg,rgba(246,196,83,.10),rgba(0,166,81,.08));box-shadow:0 16px 40px rgba(0,0,0,.18)}\
-      .reseauEntryHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap}.reseauEntryHead h2{margin:0;font-size:clamp(28px,6vw,44px);line-height:.95;letter-spacing:-.05em;font-weight:1000}.reseauEntryHead h2 span{color:#f6c453}.reseauEntryHead p{margin:7px 0 0;max-width:720px;color:rgba(248,250,252,.76);font-size:13px;line-height:1.4;font-weight:850}\
-      .reseauEntryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}.reseauEntryCard{min-height:150px;padding:14px;border-radius:20px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.065);display:flex;flex-direction:column;gap:7px;color:inherit;text-decoration:none}.reseauEntryCard i{font-style:normal;font-size:28px}.reseauEntryCard strong{font-size:18px;line-height:1.02;font-weight:1000}.reseauEntryCard span{color:#dfffe9;font-size:11px;font-weight:1000}.reseauEntryCard small{color:rgba(248,250,252,.76);font-size:11px;line-height:1.35;font-weight:820}.reseauEntryCard b{margin-top:auto;color:#fff3cf;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:1000}.reseauEntryNote{margin-top:11px;color:rgba(248,250,252,.62);font-size:10.5px;line-height:1.4;font-weight:800}\
-      @media(max-width:760px){.reseauEntryGrid{grid-template-columns:1fr 1fr}}@media(max-width:430px){.reseauEntryGrid{grid-template-columns:1fr}}';
-    document.head.appendChild(style);
-  }
-
-  function addSubscriberDoors(){
-    var heroActions=document.querySelector('.heroActions');
-    if(heroActions && !heroActions.querySelector('[data-reseau-abonne]')){
-      var a=document.createElement('a');
-      a.className='btn';
-      a.href='./acces-pro.html';
-      a.setAttribute('data-reseau-abonne','1');
-      a.textContent='🔐 Je suis déjà abonné';
-      heroActions.appendChild(a);
-    }
-
-    var proGrid=document.querySelector('[data-panel="pro"] .doorGrid');
-    if(proGrid && !proGrid.querySelector('[data-reseau-acces-pro]')){
-      var door=document.createElement('a');
-      door.className='door';
-      door.href='./acces-pro.html';
-      door.setAttribute('data-reseau-acces-pro','1');
-      door.innerHTML='<span class="doorIcon">🔐</span><span><strong>Accès PRO abonnés</strong><small>Vérifier mon accès RÉSEAU et ouvrir mon espace professionnel.</small></span>';
-      proGrid.insertBefore(door,proGrid.firstChild);
-    }
-  }
-
-  function addShowcase(){
-    if(document.getElementById('reseau-vitrine-depart'))return;
-    var hero=document.querySelector('.hero');
-    if(!hero || !hero.parentNode)return;
-    addStyle();
-    var section=document.createElement('section');
-    section.className='reseauEntryShowcase';
-    section.id='reseau-vitrine-depart';
-    section.setAttribute('aria-label','Vitrine de départ des professionnels DIGIY');
-    section.innerHTML='<div class="reseauEntryHead"><div><h2>Des pros déjà <span>visibles dès l’entrée.</span></h2><p>La vitrine ne démarre jamais vide : voici des références réelles de l’écosystème DIGIY. Les publications RÉSEAU actives restent validées par DIGIY avant mise en lumière.</p></div><a class="btn green" href="./hub.html">Voir toute la vitrine →</a></div><div class="reseauEntryGrid">'+SHOWCASE.map(function(p){return '<a class="reseauEntryCard" href="'+p.url+'" target="_blank" rel="noopener noreferrer"><i>'+p.icon+'</i><strong>'+p.name+'</strong><span>'+p.meta+'</span><small>'+p.desc+'</small><b>Voir →</b></a>';}).join('')+'</div><div class="reseauEntryNote">Références de vitrine DIGIY : elles ne sont pas présentées ici comme des activations RÉSEAU payantes en cours.</div>';
-    hero.insertAdjacentElement('afterend',section);
-  }
-
-  function loadLanguages(){
-    if(document.getElementById('reseau-langues-complet'))return;
-    var s=document.createElement('script');
-    s.id='reseau-langues-complet';
-    s.src='./assets/js/reseau-langues.js?v=20260801-v3-traduction-complete';
-    s.async=false;
-    (document.head||document.documentElement).appendChild(s);
-  }
-
-  function boot(){
-    addSubscriberDoors();
-    addShowcase();
-    loadLanguages();
-  }
-
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
-  else boot();
+'use strict';
+if(window.__DIGIY_RESEAU_POST_RENDER__)return;
+window.__DIGIY_RESEAU_POST_RENDER__=true;
+var P=[
+['🏡','Chez Baptiste','DIGIY LOC · Saly','https://part-chez-baptiste.digiylyfe.com/'],
+['🔧','Helage plombier','DIGIY BUILD · Saly','https://beauville.github.io/helage-plombier/'],
+['🛍️','Astou Boutique','MON COMMERCE / MARKET · Saly','https://astou-boutique.digiylyfe.com/'],
+['🚕','Galerie chauffeurs','DIGIY DRIVER · Sénégal','https://galerie-chauffeurs.digiylyfe.com/catalogue.html']
+];
+var L={fr:['Je suis déjà abonné','Accès PRO abonnés','Des pros déjà visibles dès l’entrée.','La vitrine ne démarre jamais vide.'],en:['I am already subscribed','PRO subscriber access','Professionals visible from the start.','The showcase never starts empty.'],es:['Ya estoy abonado','Acceso PRO abonados','Profesionales visibles desde el inicio.','La vitrina nunca empieza vacía.'],de:['Ich bin bereits Abonnent','PRO-Zugang für Abonnenten','Profis direkt sichtbar.','Die Vitrine startet nie leer.'],it:['Sono già abbonato','Accesso PRO abbonati','Professionisti visibili dall’inizio.','La vetrina non parte mai vuota.'],nl:['Ik ben al abonnee','PRO-toegang abonnees','Professionals meteen zichtbaar.','De etalage begint nooit leeg.'],ar:['أنا مشترك بالفعل','دخول المحترفين المشتركين','محترفون ظاهرون منذ البداية.','لا تبدأ الواجهة فارغة.']};
+function txt(){try{var q=new URLSearchParams(location.search).get('lang'),s=localStorage.getItem('digiy_reseau_lang'),x=String(q||s||'fr').slice(0,2).toLowerCase();return L[x]||L.fr}catch(_){return L.fr}}
+function inject(){var t=txt(),a=document.querySelector('.rHero .rActions')||document.querySelector('.heroActions');if(a&&!a.querySelector('[data-reseau-abonne]')){var x=document.createElement('a');x.href='./acces-pro.html';x.className=a.classList.contains('rActions')?'rBtn':'btn';x.setAttribute('data-reseau-abonne','1');x.textContent='🔐 '+t[0];a.appendChild(x)}var d=document.querySelector('.rDoors');if(d&&!d.querySelector('[data-reseau-acces-pro]')){var z=document.createElement('a');z.href='./acces-pro.html';z.className='rDoor';z.setAttribute('data-reseau-acces-pro','1');z.innerHTML='<i>🔐</i><strong>'+t[1]+'</strong><p>'+t[0]+'</p><b>PRO →</b>';d.insertBefore(z,d.firstChild)}var g=document.querySelector('[data-panel="pro"] .doorGrid');if(g&&!g.querySelector('[data-reseau-acces-pro]')){var y=document.createElement('a');y.href='./acces-pro.html';y.className='door';y.setAttribute('data-reseau-acces-pro','1');y.innerHTML='<span class="doorIcon">🔐</span><span><strong>'+t[1]+'</strong><small>'+t[0]+'</small></span>';g.insertBefore(y,g.firstChild)}if(document.getElementById('reseau-vitrine-depart'))return;var h=document.querySelector('.rHero');if(h&&h.parentNode){var s=document.createElement('section');s.id='reseau-vitrine-depart';s.className='rPanel';s.innerHTML='<span class="rTag">RÉSEAU DIGIY</span><h2>'+t[2]+'</h2><p class="rLead">'+t[3]+'</p><div class="rGrid">'+P.map(function(p){return '<a class="rCard" href="'+p[3]+'" target="_blank" rel="noopener noreferrer"><i>'+p[0]+'</i><strong>'+p[1]+'</strong><p>'+p[2]+'</p><b>Voir →</b></a>'}).join('')+'</div>';h.insertAdjacentElement('afterend',s)}}
+var busy=false;function schedule(){if(busy)return;busy=true;setTimeout(function(){busy=false;inject()},0)}
+function boot(){if(!document.getElementById('reseau-langues-complet')){var s=document.createElement('script');s.id='reseau-langues-complet';s.src='./assets/js/reseau-langues.js?v=20260801-v3-traduction-complete';s.async=false;s.onload=schedule;(document.head||document.documentElement).appendChild(s)}schedule();try{new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true})}catch(_){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
