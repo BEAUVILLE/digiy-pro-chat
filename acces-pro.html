@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
   <meta name="theme-color" content="#06130d">
-  <meta name="digiy-build" content="reseau-acces-pro-abonnes-v1-20260807">
+  <meta name="digiy-build" content="reseau-acces-pro-abonnes-v2-20260807">
   <title>Accès PRO abonnés · RÉSEAU DIGIY</title>
   <style>
     :root{--bg:#06130d;--panel:#0b261a;--text:#f8fafc;--soft:rgba(248,250,252,.72);--gold:#f6c453;--green:#00a651;--line:rgba(255,255,255,.14);--bad:#fecaca}
@@ -42,7 +42,7 @@
       <a class="btn" href="./clients.html">👥 Mes clients</a>
     </div>
   </section>
-  <div class="note"><strong>Important :</strong> RÉSEAU reste un module mixte. La vitrine publique est visible à tous ; l’accès abonné vérifie le droit professionnel. Le répertoire clients reste local à l’appareil dans cette version.</div>
+  <div class="note"><strong>Frontière claire :</strong> la vitrine et les publications déjà validées sont publiques. L’espace PRO, les brouillons et le répertoire clients nécessitent un accès RÉSEAU actif.</div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./assets/js/digiy-abos-access.js"></script>
@@ -55,59 +55,29 @@
   const doors=document.getElementById("allowedDoors");
   const button=document.getElementById("checkBtn");
 
-  function show(text,kind){
-    status.textContent=text;
-    status.className="status "+(kind||"");
+  function show(text,kind){status.textContent=text;status.className="status "+(kind||"")}
+  function clearSession(){
+    try{localStorage.removeItem("DIGIY_RESEAU_PRO_SESSION");localStorage.removeItem("DIGIY_RESEAU_PRO_PHONE")}catch(_){}
+    try{sessionStorage.removeItem("DIGIY_RESEAU_PRO_SESSION");sessionStorage.removeItem("DIGIY_RESEAU_PRO_PHONE")}catch(_){}
+    doors.hidden=true;
   }
-
   function saveSession(result){
-    const payload={
-      module:"RESEAU_DIGIY",
-      phone:result.phone||"",
-      access_ok:true,
-      verified_at:new Date().toISOString(),
-      expires_at:result.expires_at||null,
-      plan:result.plan||null,
-      fiche_title:result.fiche_title||null
-    };
-    try{
-      localStorage.setItem("DIGIY_RESEAU_PRO_SESSION",JSON.stringify(payload));
-      localStorage.setItem("DIGIY_RESEAU_PRO_PHONE",payload.phone);
-    }catch(_){}
+    const payload={module:"RESEAU_DIGIY",phone:result.phone||"",access_ok:true,verified_at:new Date().toISOString(),expires_at:result.expires_at||null,plan:result.plan||null,fiche_title:result.fiche_title||null};
+    try{localStorage.setItem("DIGIY_RESEAU_PRO_SESSION",JSON.stringify(payload));localStorage.setItem("DIGIY_RESEAU_PRO_PHONE",payload.phone)}catch(_){}
   }
-
   async function verify(value){
     const bridge=window.DIGIY_ABOS_ACCESS;
-    if(!bridge){
-      show("Le contrôle ABOS n’est pas disponible sur cette page.","bad");
-      return;
-    }
-    button.disabled=true;
-    show("Vérification de l’accès RÉSEAU…","wait");
-    doors.hidden=true;
+    if(!bridge){clearSession();show("Le contrôle ABOS n’est pas disponible sur cette page.","bad");return}
+    button.disabled=true;show("Vérification de l’accès RÉSEAU…","wait");clearSession();
     const result=await bridge.checkAccess({module:"RESEAU_DIGIY",phone:value,useCache:false});
     button.disabled=false;
-    if(result && result.ok && result.has_access){
-      saveSession(result);
-      show("✅ Accès RÉSEAU actif. Ton espace professionnel est ouvert.","ok");
-      doors.hidden=false;
-      return;
-    }
-    const reason=result && result.error ? " ("+result.error+")" : "";
-    show("🔒 Aucun accès RÉSEAU actif trouvé pour ce téléphone"+reason+". Tu peux passer par l’inscription ou le règlement.","bad");
+    if(result&&result.ok&&result.has_access){saveSession(result);show("✅ Accès RÉSEAU actif. Ton espace professionnel est ouvert.","ok");doors.hidden=false;return}
+    clearSession();
+    const reason=result&&result.error?" ("+result.error+")":"";
+    show("🔒 Aucun accès RÉSEAU actif trouvé pour ce téléphone"+reason+". L’espace PRO reste fermé.","bad");
   }
-
-  try{
-    const guessed=window.DIGIY_ABOS_ACCESS && window.DIGIY_ABOS_ACCESS.guessPhone ? window.DIGIY_ABOS_ACCESS.guessPhone() : "";
-    if(guessed) phone.value=guessed;
-  }catch(_){}
-
-  form.addEventListener("submit",function(e){
-    e.preventDefault();
-    const value=phone.value.trim();
-    if(!value){show("Saisis ton téléphone professionnel.","bad");return}
-    verify(value);
-  });
+  try{const guessed=window.DIGIY_ABOS_ACCESS&&window.DIGIY_ABOS_ACCESS.guessPhone?window.DIGIY_ABOS_ACCESS.guessPhone():"";if(guessed)phone.value=guessed}catch(_){}
+  form.addEventListener("submit",function(e){e.preventDefault();const value=phone.value.trim();if(!value){clearSession();show("Saisis ton téléphone professionnel.","bad");return}verify(value)});
 })();
 </script>
 </body>
