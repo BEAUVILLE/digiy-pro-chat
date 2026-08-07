@@ -7,40 +7,28 @@
 
   <title>RÉSEAU DIGIY — Local</title>
 
-  <meta name="description" content="RÉSEAU DIGIY — Com au clic : fiche existante, offre partageable, lien clair, paiement à la semaine, quinzaine ou mois." />
+  <meta name="description" content="RÉSEAU DIGIY — coffre local : travail préparé sur l’appareil, répertoire clients, fiche, annonce et règlement." />
   <meta name="theme-color" content="#00853f" />
-  <meta name="digiy-build" content="reseau-session-clients-v1-20260807" />
+  <meta name="digiy-build" content="reseau-session-local-open-v2-20260807" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 
-  <!-- DIGIY GUARD SOFT — RÉSEAU PRO -->
+  <!-- RÉSEAU est un module mixte : le coffre local reste accessible sans inscription. -->
   <script>
     (function(){
-      var KEYS = [
-        "DIGIY_RESEAU_PRO_SESSION","DIGIY_PRO_SESSION","DIGIY_PRO_PHONE",
-        "DIGIY_PHONE","digiy_phone","digiy_pro_phone",
-        "DIGIY_RESEAU_PROFILE_V1","DIGIY_RESEAU_OFFER_V1","DIGIY_RESEAU_PAYMENT_V1"
-      ];
-      var HUB = "./hub.html";
-      function hasSession(){
-        try{
-          return KEYS.some(function(k){
-            return !!(localStorage.getItem(k)||sessionStorage.getItem(k));
-          });
-        }catch(e){ return false; }
-      }
-      if(!hasSession()){
-        document.documentElement.style.visibility = "hidden";
-        window.location.replace(HUB + "?gate=pro");
-      } else {
-        document.documentElement.style.visibility = "";
-      }
+      try{
+        var key = "DIGIY_RESEAU_LOCAL_OWNER_V1";
+        if(!localStorage.getItem(key)){
+          var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ("local_" + Date.now().toString(36) + Math.random().toString(36).slice(2,8));
+          localStorage.setItem(key, id);
+        }
+      }catch(e){}
+      document.documentElement.style.visibility = "";
     })();
   </script>
-  <!-- /DIGIY GUARD SOFT -->
 </head>
 <body>
   <div class="app">
@@ -54,8 +42,8 @@
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Accès ouvert</span>
-          <span class="chip-mini">💳 Pas d’abonnement</span>
+          <span class="chip-mini green">🟢 Local ouvert</span>
+          <span class="chip-mini">📱 Sur cet appareil</span>
           <span class="chip-mini">📅 7j · 15j · 30j</span>
         </div>
       </header>
@@ -74,15 +62,15 @@
 <section class="hero">
   <div class="kicker">Coffre local</div>
   <h2>Local robuste d’abord. <span>Supabase ensuite.</span></h2>
-  <p class="lead">Cette version garde l’inscription, l’annonce et le règlement dans le téléphone pour tester vite. ACTION et l’Oreille préparent les brouillons, le pro relit, DIGIY valide avant toute mise en lumière.</p>
+  <p class="lead">Le coffre local s’ouvre directement sur cet appareil : aucune inscription n’est nécessaire pour retrouver le travail local et le répertoire clients. La publication publique reste, elle, contrôlée par DIGIY.</p>
 </section>
 <section class="panel">
   <h3>État local <span>RÉSEAU DIGIY</span></h3>
   <div class="field"><textarea id="localState" style="min-height:300px"></textarea></div>
   <div class="btnrow">
-    <a class="btn main" href="action.html">🎙️ Ouvrir ACTION Réseau</a>
+    <a class="btn main" href="clients.html">👥 Mes clients</a>
+    <a class="btn" href="action.html">🎙️ Ouvrir ACTION Réseau</a>
     <a class="btn" href="oreille.html">🎧 Ouvrir Oreille Réseau</a>
-    <a class="btn" href="clients.html">👥 Mes clients</a>
     <button id="clearDraft" class="btn warn" type="button">🧹 Vider annonce/règlement</button>
     <button id="clearAll" class="btn warn" type="button">🧨 Tout nettoyer local</button>
     <a class="btn" href="hub.html">🏠 Retour hub</a>
@@ -90,7 +78,7 @@
 </section>
 <section class="panel danger-zone">
   <h3>Note atelier <span>sans jargon client</span></h3>
-  <p>Ce module est ouvert côté usage, mais l’activation publique réelle doit rester contrôlée par DIGIY après règlement. Le front prépare et garde la trace ; l’admin valide la mise en avant. ACTION et l’Oreille restent séparées : elles préparent et rangent, elles ne publient pas automatiquement.</p>
+  <p>Le coffre local et le répertoire clients restent sur l’appareil. L’activation publique réelle reste contrôlée par DIGIY après validation. ACTION et l’Oreille préparent et rangent ; elles ne publient pas automatiquement.</p>
 </section>
 <script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initSessionPage());</script>
 
