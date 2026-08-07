@@ -5,30 +5,19 @@
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
-  <title>RÉSEAU DIGIY — Local</title>
+  <title>RÉSEAU DIGIY — Espace PRO</title>
 
-  <meta name="description" content="RÉSEAU DIGIY — coffre local : travail préparé sur l’appareil, répertoire clients, fiche, annonce et règlement." />
+  <meta name="description" content="RÉSEAU DIGIY — espace professionnel privé : répertoire clients, préparation fiche, annonce et règlement." />
   <meta name="theme-color" content="#00853f" />
-  <meta name="digiy-build" content="reseau-session-local-open-v2-20260807" />
+  <meta name="digiy-build" content="reseau-session-pro-locked-v3-20260807" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 
-  <!-- RÉSEAU est un module mixte : le coffre local reste accessible sans inscription. -->
-  <script>
-    (function(){
-      try{
-        var key = "DIGIY_RESEAU_LOCAL_OWNER_V1";
-        if(!localStorage.getItem(key)){
-          var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ("local_" + Date.now().toString(36) + Math.random().toString(36).slice(2,8));
-          localStorage.setItem(key, id);
-        }
-      }catch(e){}
-      document.documentElement.style.visibility = "";
-    })();
-  </script>
+  <style>html{visibility:hidden}</style>
+  <script src="./assets/js/reseau-pro-guard.js?v=20260807-v1"></script>
 </head>
 <body>
   <div class="app">
@@ -38,12 +27,12 @@
           <div class="logo">R</div>
           <div>
             <h1>RÉSEAU DIGIY</h1>
-            <p>COM AU CLIC · fiche pro · lien partageable · paiement à la durée</p>
+            <p>ESPACE PRO · fiche · annonce · clients · contact direct</p>
           </div>
         </a>
         <div class="chips">
-          <span class="chip-mini green">🟢 Local ouvert</span>
-          <span class="chip-mini">📱 Sur cet appareil</span>
+          <span class="chip-mini green">🔐 Accès PRO actif</span>
+          <span class="chip-mini">📱 Session 8 h</span>
           <span class="chip-mini">📅 7j · 15j · 30j</span>
         </div>
       </header>
@@ -52,37 +41,38 @@
         <a class="" href="inscription.html">👤 Inscription</a>
         <a class="" href="annonce.html">📢 Annonce</a>
         <a class="" href="paiement.html">💳 Règlement</a>
-        <a class="" href="journal.html">📰 Journal</a>
-        <a class="" href="fiche.html">🔗 Fiche</a>
+        <a class="" href="journal.html">📰 Journal public</a>
+        <a class="" href="fiche.html">🔗 Fiche publique</a>
         <a class="" href="action.html">🎙️ ACTION</a>
-        <a class="gold" href="session.html">🧰 Local</a>
+        <a class="gold" href="session.html">🔐 Espace PRO</a>
         <a class="" href="clients.html">👥 Mes clients</a>
       </nav>
       
 <section class="hero">
-  <div class="kicker">Coffre local</div>
-  <h2>Local robuste d’abord. <span>Supabase ensuite.</span></h2>
-  <p class="lead">Le coffre local s’ouvre directement sur cet appareil : aucune inscription n’est nécessaire pour retrouver le travail local et le répertoire clients. La publication publique reste, elle, contrôlée par DIGIY.</p>
+  <div class="kicker">Espace professionnel privé</div>
+  <h2>Le public voit la vitrine. <span>Le pro garde son atelier.</span></h2>
+  <p class="lead">Cet espace est réservé à un abonnement RÉSEAU DIGIY actif. La session locale dure 8 heures après validation ABOS. Le répertoire clients et les brouillons restent privés sur cet appareil.</p>
 </section>
 <section class="panel">
   <h3>État local <span>RÉSEAU DIGIY</span></h3>
   <div class="field"><textarea id="localState" style="min-height:300px"></textarea></div>
   <div class="btnrow">
     <a class="btn main" href="clients.html">👥 Mes clients</a>
+    <a class="btn" href="annonce.html">📢 Préparer une annonce</a>
     <a class="btn" href="action.html">🎙️ Ouvrir ACTION Réseau</a>
     <a class="btn" href="oreille.html">🎧 Ouvrir Oreille Réseau</a>
     <button id="clearDraft" class="btn warn" type="button">🧹 Vider annonce/règlement</button>
     <button id="clearAll" class="btn warn" type="button">🧨 Tout nettoyer local</button>
-    <a class="btn" href="hub.html">🏠 Retour hub</a>
+    <a class="btn" href="hub.html">🏠 Retour hub public</a>
   </div>
 </section>
 <section class="panel danger-zone">
-  <h3>Note atelier <span>sans jargon client</span></h3>
-  <p>Le coffre local et le répertoire clients restent sur l’appareil. L’activation publique réelle reste contrôlée par DIGIY après validation. ACTION et l’Oreille préparent et rangent ; elles ne publient pas automatiquement.</p>
+  <h3>Frontière <span>PUBLIC / PRO</span></h3>
+  <p>Le Journal et les fiches déjà validées sont publics pour donner de la visibilité. Le répertoire clients, l’espace local et la préparation des annonces sont réservés au professionnel abonné.</p>
 </section>
 <script>document.addEventListener('DOMContentLoaded',()=>RESEAU.initSessionPage());</script>
 
-      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY active la COM AU CLIC : offre datée, fiche existante, lien partageable, sans prison d’abonnement.</footer>
+      <footer class="footer">DIGIYLYFE — Le terrain garde sa fiche, son client, son argent et sa relation. RÉSEAU DIGIY donne la visibilité publique sans ouvrir l’atelier privé.</footer>
     </div>
   </div>
   <script src="./assets/js/reseau-core.js"></script>
