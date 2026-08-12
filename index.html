@@ -8,7 +8,7 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#06130d">
   <meta name="color-scheme" content="dark">
-  <meta name="digiy-build" content="reseau-index-cartouche-module-20260728-v1">
+  <meta name="digiy-build" content="reseau-index-adherent-28000-20260812-v1">
   <link rel="canonical" href="https://reseau-digiy.digiylyfe.com/">
 
   <meta property="og:type" content="website">
@@ -84,6 +84,11 @@
     .btn.green{background:rgba(0,166,81,.17);border-color:rgba(0,166,81,.44);color:#dcffe9}
     .trust{position:relative;z-index:1;display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
     .trust span{padding:7px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.065);color:rgba(248,250,252,.84);font-size:10.5px;font-weight:950}
+    .memberBox{position:relative;z-index:1;margin-top:16px;padding:15px;border-radius:21px;border:1px solid rgba(246,196,83,.42);background:linear-gradient(135deg,rgba(246,196,83,.13),rgba(0,166,81,.10));display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .memberBox strong{display:block;color:#fff3cf;font-size:18px;font-weight:1000}
+    .memberBox span{display:block;margin-top:5px;color:var(--soft);font-size:12px;line-height:1.45;font-weight:850}
+    .memberBox .price{font-size:26px;color:var(--gold);font-weight:1000;white-space:nowrap}
+
 
     .doctrine{
       margin-top:14px;padding:17px;border-radius:25px;border:1px solid rgba(246,196,83,.30);background:linear-gradient(135deg,rgba(246,196,83,.11),rgba(0,166,81,.09));
@@ -171,6 +176,16 @@
       <div class="trust" aria-label="Repères RÉSEAU DIGIY">
         <span>🇸🇳 Sénégal</span><span>🇪🇺 Europe</span><span>📲 Contact direct</span><span>🤝 0% commission</span><span>🔒 Validation humaine</span>
       </div>
+      <div class="memberBox" aria-label="Adhésion RÉSEAU DIGIY">
+        <div>
+          <strong>🤝 ADHÉRENT RÉSEAU DIGIY</strong>
+          <span>Carte de visite digitale · 1 photo · QR · présence dans le réseau · WhatsApp · SMS · appel direct · 8 langues · 0 % commission.</span>
+        </div>
+        <div>
+          <div class="price">28 000 FCFA / mois</div>
+          <a class="btn gold" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener noreferrer">💳 Tarifs adhérents</a>
+        </div>
+      </div>
     </section>
 
     <section class="doctrine" aria-label="Doctrine du module RÉSEAU">
@@ -189,7 +204,7 @@
         <i>🎧</i><strong>Lire et écouter</strong><small>Raisonnements et expériences publiés sur DIGIYLYFE.net.</small><b>Ouvrir les paroles du terrain →</b>
       </button>
       <button class="quickDoor" type="button" data-open-sheet data-target-tab="pro">
-        <i>🏢</i><strong>Atelier professionnel</strong><small>Préparer une fiche, une annonce, une offre ou une activation.</small><b>Ouvrir les outils PRO →</b>
+        <i>🤝</i><strong>Adhérent RÉSEAU</strong><small>Présence simple, carte digitale, QR et contact direct.</small><b>Voir l’adhésion →</b>
       </button>
     </section>
 
@@ -217,7 +232,7 @@
       <div class="tabs" role="tablist" aria-label="Familles de portes RÉSEAU">
         <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="public">🌍 Découvrir</button>
         <button class="tab" type="button" role="tab" aria-selected="false" data-tab="lecture">🎧 Lire / écouter</button>
-        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pro">🏢 Atelier PRO</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pro">🤝 Adhérent</button>
       </div>
 
       <div class="panel active" data-panel="public" role="tabpanel">
@@ -245,18 +260,16 @@
       </div>
 
       <div class="panel" data-panel="pro" role="tabpanel">
-        <p class="panelIntro">Ces portes servent au professionnel et à DIGIY pour préparer, valider et activer. Oreille PRO reste ici, jamais dans le parcours public.</p>
+        <p class="panelIntro">L’adhérent RÉSEAU paie une seule adhésion de 28 000 FCFA par mois. Il n’achète aucun logiciel : DIGIY prépare et organise la visibilité.</p>
         <div class="doorGrid">
-          <a class="door" href="./hub.html?gate=pro"><span class="doorIcon">🏢</span><span><strong>Mon RÉSEAU DIGIY</strong><small>Ouvrir l’atelier et gérer sa présence.</small></span></a>
-          <a class="door" href="./oreille.html"><span class="doorIcon">🎙️</span><span><strong>Oreille PRO</strong><small>Préparer une fiche, une offre ou une annonce.</small></span></a>
-          <a class="door" href="./inscription.html"><span class="doorIcon">👤</span><span><strong>Inscription RÉSEAU</strong><small>Demander une activation après validation DIGIY.</small></span></a>
-          <a class="door" href="./paiement.html"><span class="doorIcon">💳</span><span><strong>Offres et règlement</strong><small>Consulter R7, R15, R30 ou FIRST.</small></span></a>
-          <a class="door" href="./session.html"><span class="doorIcon">🧰</span><span><strong>Session locale</strong><small>Retrouver le travail préparé sur l’appareil.</small></span></a>
-          <a class="door" href="./pay-transition.html"><span class="doorIcon">🔄</span><span><strong>Transition paiement</strong><small>Continuer un parcours de règlement déjà engagé.</small></span></a>
+          <a class="door" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener noreferrer"><span class="doorIcon">💳</span><span><strong>Adhésion RÉSEAU · 28 000 FCFA/mois</strong><small>Carte digitale · 1 photo · QR · présence · contact direct · 8 langues · 0 % commission.</small></span></a>
+          <a class="door" href="./annonce.html"><span class="doorIcon">📢</span><span><strong>Transmettre une annonce</strong><small>DIGIY reçoit, contrôle et organise la publication.</small></span></a>
+          <a class="door" href="./question.html?type=parole"><span class="doorIcon">🎙️</span><span><strong>Proposer une parole</strong><small>Partager une expérience ou un raisonnement du terrain pour validation.</small></span></a>
+          <a class="door" href="./action.html"><span class="doorIcon">⚡</span><span><strong>ACTION RÉSEAU</strong><small>Transformer une intention en prochaine étape.</small></span></a>
         </div>
       </div>
 
-      <div class="sheetRule"><strong>Doctrine :</strong> l’index reste court. Chaque fonction détaillée vit dans son fichier secondaire. Le public découvre, DIGIYLYFE.net fait lire et écouter, et l’atelier PRO prépare avant validation.</div>
+      <div class="sheetRule"><strong>Doctrine :</strong> le public découvre, DIGIYLYFE.net fait lire et écouter, ACTION RÉSEAU reste une porte d’action, et l’adhérent bénéficie d’une présence simple à 28 000 FCFA/mois. Les moteurs restent chez DIGIY.</div>
     </div>
   </section>
 
@@ -318,4 +331,5 @@
 <script src="./assets/js/reseau-confiance.js?v=20260801-v3-traduction-complete" defer></script>
 </body>
 </html>
+
 
