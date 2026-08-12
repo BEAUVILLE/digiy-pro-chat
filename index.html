@@ -8,7 +8,7 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#06130d">
   <meta name="color-scheme" content="dark">
-  <meta name="digiy-build" content="reseau-index-adherent-28000-sans-aller-retour-20260812-v2">
+  <meta name="digiy-build" content="reseau-index-adherent-28000-final-sans-rewrite-20260812-v3">
   <link rel="canonical" href="https://reseau-digiy.digiylyfe.com/">
 
   <meta property="og:type" content="website">
@@ -55,7 +55,7 @@
 
     .page{width:min(1060px,100%);margin:auto;padding:12px 12px 102px}
     .topbar{
-      position:sticky;top:8px;z-index:30;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:11px;align-items:center;
+      position:sticky;top:8px;z-index:30;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:11px;align-items:center;
       padding:10px 12px;border:1px solid rgba(246,196,83,.35);border-radius:23px;background:rgba(6,19,13,.90);
       backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 14px 38px rgba(0,0,0,.22)
     }
@@ -64,6 +64,11 @@
     .brand strong{display:block;font-size:clamp(21px,5vw,34px);line-height:.9;letter-spacing:-.045em;font-weight:1000}
     .brand small{display:block;margin-top:5px;color:var(--soft);font-size:10px;line-height:1.15;font-weight:950;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .menuTop{min-height:48px;padding:0 15px;border-radius:999px;border:1px solid rgba(246,196,83,.48);background:linear-gradient(135deg,rgba(246,196,83,.19),rgba(0,166,81,.14));font-size:13px;font-weight:1000;cursor:pointer}
+    .safeLangs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:430px;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04)}
+    .safeLangs::-webkit-scrollbar{display:none}
+    .safeLangs button{flex:0 0 auto;min-width:38px;min-height:34px;border:0;border-radius:999px;background:transparent;color:var(--ink);font-size:10px;font-weight:1000;cursor:pointer}
+    .safeLangs button.active{background:linear-gradient(135deg,var(--gold),var(--green));color:#06130d}
+
 
     .hero{
       position:relative;overflow:hidden;margin-top:14px;min-height:430px;padding:clamp(22px,5vw,44px);border-radius:32px;border:1px solid rgba(246,196,83,.42);
@@ -139,7 +144,7 @@
     .sheetRule strong{color:#fff3cf}
 
     @media(max-width:760px){
-      .page{padding:9px 9px 98px}.topbar{top:5px;grid-template-columns:auto minmax(0,1fr) 45px}.mark{width:46px;height:46px}.menuTop{width:45px;padding:0;font-size:0}.menuTop::before{content:"☰";font-size:20px}.brand small{font-size:9px}
+      .page{padding:9px 9px 98px}.topbar{top:5px;grid-template-columns:auto minmax(0,1fr) 45px}.safeLangs{grid-column:1/-1;max-width:100%;width:100%}.mark{width:46px;height:46px}.menuTop{width:45px;padding:0;font-size:0}.menuTop::before{content:"☰";font-size:20px}.brand small{font-size:9px}
       .hero{min-height:440px;padding:21px 17px;border-radius:27px}.heroActions{display:grid}.heroActions .btn{width:100%}
       .doctrine{grid-template-columns:1fr}.quickDoors{grid-template-columns:1fr}.quickDoor{min-height:105px}
       .doorGrid{grid-template-columns:1fr 1fr}.tabs{grid-template-columns:1fr}.tab{min-height:44px}
@@ -161,13 +166,23 @@
         <span><strong>RÉSEAU DIGIY</strong><small>Professionnels · paroles · contact direct</small></span>
       </a>
       <span aria-hidden="true"></span>
+      <nav class="safeLangs" aria-label="Langues RÉSEAU DIGIY">
+        <button type="button" data-safe-lang="fr" class="active">FR</button>
+        <button type="button" data-safe-lang="en">EN</button>
+        <button type="button" data-safe-lang="es">ES</button>
+        <button type="button" data-safe-lang="pt">PT</button>
+        <button type="button" data-safe-lang="de">DE</button>
+        <button type="button" data-safe-lang="it">IT</button>
+        <button type="button" data-safe-lang="nl">NL</button>
+        <button type="button" data-safe-lang="ar">AR</button>
+      </nav>
       <button class="menuTop" type="button" data-open-sheet aria-controls="reseauSheet" aria-expanded="false">☰ Ouvrir les portes</button>
     </header>
 
     <section class="hero" aria-label="Présentation RÉSEAU DIGIY">
-      <span class="kicker">Module public + atelier professionnel</span>
-      <h1>Le savoir attire. <span>Le professionnel agit.</span></h1>
-      <p class="lead">DIGIYLYFE.net accueille les raisonnements à lire ou écouter. RÉSEAU DIGIY présente les personnes, leurs fiches, leurs offres et leurs contacts directs.</p>
+      <span class="kicker" id="txKicker">Module public + présence adhérent</span>
+      <h1 id="txHeroTitle">Le savoir attire. <span>Le professionnel agit.</span></h1>
+      <p class="lead" id="txHeroLead">DIGIYLYFE.net accueille les raisonnements à lire ou écouter. RÉSEAU DIGIY présente les personnes, leurs fiches, leurs offres et leurs contacts directs.</p>
       <div class="heroActions">
         <a class="btn gold" href="./journal.html">📰 Voir la vitrine RÉSEAU</a>
         <button class="btn green" type="button" data-open-sheet>🧭 Ouvrir la cartouche RÉSEAU</button>
@@ -179,33 +194,33 @@
       </div>
       <div class="memberBox" aria-label="Adhésion RÉSEAU DIGIY">
         <div>
-          <strong>🤝 ADHÉRENT RÉSEAU DIGIY</strong>
-          <span>Carte de visite digitale · 1 photo · QR · présence dans le réseau · WhatsApp · SMS · appel direct · 8 langues · 0 % commission.</span>
+          <strong id="txMemberTitle">🤝 ADHÉRENT RÉSEAU DIGIY</strong>
+          <span id="txMemberText">Carte de visite digitale · 1 photo · QR · présence dans le réseau · WhatsApp · SMS · appel direct · 8 langues · 0 % commission.</span>
         </div>
         <div>
-          <div class="price">28 000 FCFA / mois</div>
-          <a class="btn gold" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener noreferrer">💳 Tarifs adhérents</a>
+          <div class="price" id="txPrice">28 000 FCFA / mois</div>
+          <a class="btn gold" id="txTarifs" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener noreferrer">💳 Tarifs adhérents</a>
         </div>
       </div>
     </section>
 
     <section class="doctrine" aria-label="Doctrine du module RÉSEAU">
       <div>
-        <h2>Une porte courte. <span>Des fichiers bien rangés.</span></h2>
+        <h2 id="txDoctrineTitle">Une porte courte. <span>Des fichiers bien rangés.</span></h2>
         <p>L’index explique seulement la mission du module. La cartouche distribue immédiatement vers les pages publiques, les lectures de DIGIYLYFE.net et l’atelier professionnel.</p>
       </div>
-      <div class="quote">« Les plateformes diffusent. DIGIY conserve, organise et relie la parole à l’humain qui peut agir. »</div>
+      <div class="quote" id="txQuote">« Les plateformes diffusent. DIGIY conserve, organise et relie la parole à l’humain qui peut agir. »</div>
     </section>
 
     <section class="quickDoors" aria-label="Trois chemins RÉSEAU DIGIY">
       <button class="quickDoor" type="button" data-open-sheet data-target-tab="public">
-        <i>🌍</i><strong>Découvrir le réseau</strong><small>Professionnels, fiches, annonces, questions et lexique.</small><b>Ouvrir la cartouche publique →</b>
+        <i>🌍</i><strong id="txDoor1">Découvrir le réseau</strong><small id="txDoor1s">Professionnels, fiches, annonces, questions et lexique.</small><b id="txDoor1b">Ouvrir la cartouche publique →</b>
       </button>
       <button class="quickDoor" type="button" data-open-sheet data-target-tab="lecture">
-        <i>🎧</i><strong>Lire et écouter</strong><small>Raisonnements et expériences publiés sur DIGIYLYFE.net.</small><b>Ouvrir les paroles du terrain →</b>
+        <i>🎧</i><strong id="txDoor2">Lire et écouter</strong><small id="txDoor2s">Raisonnements et expériences publiés sur DIGIYLYFE.net.</small><b id="txDoor2b">Ouvrir les paroles du terrain →</b>
       </button>
       <button class="quickDoor" type="button" data-open-sheet data-target-tab="pro">
-        <i>🤝</i><strong>Adhérent RÉSEAU</strong><small>Présence simple, carte digitale, QR et contact direct.</small><b>Voir l’adhésion →</b>
+        <i>🤝</i><strong id="txDoor3">Adhérent RÉSEAU</strong><small id="txDoor3s">Présence simple, carte digitale, QR et contact direct.</small><b id="txDoor3b">Voir l’adhésion →</b>
       </button>
     </section>
 
@@ -329,7 +344,37 @@
       }catch(_){ }
     })();
   </script>
-<script src="./assets/js/reseau-langues.js?v=20260812-reseau-28000-no-pro-reinject-v1" defer></script>
+
+<script>
+(function(){
+  "use strict";
+  const T={
+    fr:{k:"Module public + présence adhérent",h:'Le savoir attire. <span>Le professionnel agit.</span>',lead:"DIGIYLYFE.net accueille les raisonnements à lire ou écouter. RÉSEAU DIGIY présente les personnes, leurs fiches, leurs offres et leurs contacts directs.",mt:"🤝 ADHÉRENT RÉSEAU DIGIY",mm:"Carte de visite digitale · 1 photo · QR · présence dans le réseau · WhatsApp · SMS · appel direct · 8 langues · 0 % commission.",p:"28 000 FCFA / mois",tar:"💳 Tarifs adhérents",d1:"Découvrir le réseau",d1s:"Professionnels, fiches, annonces, questions et lexique.",d1b:"Ouvrir la cartouche publique →",d2:"Lire et écouter",d2s:"Raisonnements et expériences publiés sur DIGIYLYFE.net.",d2b:"Ouvrir les paroles du terrain →",d3:"Adhérent RÉSEAU",d3s:"Présence simple, carte digitale, QR et contact direct.",d3b:"Voir l’adhésion →"},
+    en:{k:"Public module + member presence",h:'Knowledge attracts. <span>The professional acts.</span>',lead:"DIGIYLYFE.net hosts field insights to read or listen to. RÉSEAU DIGIY presents people, profiles, offers and direct contacts.",mt:"🤝 RÉSEAU DIGIY MEMBER",mm:"Digital business card · 1 photo · QR · network presence · WhatsApp · SMS · direct call · 8 languages · 0% commission.",p:"28,000 FCFA / month",tar:"💳 Member pricing",d1:"Explore the network",d1s:"Professionals, profiles, announcements, questions and glossary.",d1b:"Open public doors →",d2:"Read and listen",d2s:"Field insights and experiences published on DIGIYLYFE.net.",d2b:"Open field voices →",d3:"RÉSEAU member",d3s:"Simple presence, digital card, QR and direct contact.",d3b:"View membership →"},
+    es:{k:"Módulo público + presencia de miembro",h:'El conocimiento atrae. <span>El profesional actúa.</span>',lead:"DIGIYLYFE.net reúne razonamientos para leer o escuchar. RÉSEAU DIGIY presenta personas, fichas, ofertas y contactos directos.",mt:"🤝 MIEMBRO RÉSEAU DIGIY",mm:"Tarjeta digital · 1 foto · QR · presencia en la red · WhatsApp · SMS · llamada directa · 8 idiomas · 0 % comisión.",p:"28.000 FCFA / mes",tar:"💳 Tarifas de miembros",d1:"Descubrir la red",d1s:"Profesionales, fichas, anuncios, preguntas y léxico.",d1b:"Abrir las puertas públicas →",d2:"Leer y escuchar",d2s:"Razonamientos y experiencias publicados en DIGIYLYFE.net.",d2b:"Abrir las voces del terreno →",d3:"Miembro RÉSEAU",d3s:"Presencia simple, tarjeta digital, QR y contacto directo.",d3b:"Ver la adhesión →"},
+    pt:{k:"Módulo público + presença de membro",h:'O conhecimento atrai. <span>O profissional age.</span>',lead:"DIGIYLYFE.net reúne reflexões para ler ou ouvir. RÉSEAU DIGIY apresenta pessoas, fichas, ofertas e contactos diretos.",mt:"🤝 MEMBRO RÉSEAU DIGIY",mm:"Cartão digital · 1 foto · QR · presença na rede · WhatsApp · SMS · chamada direta · 8 idiomas · 0% comissão.",p:"28 000 FCFA / mês",tar:"💳 Preços para membros",d1:"Descobrir a rede",d1s:"Profissionais, fichas, anúncios, perguntas e léxico.",d1b:"Abrir as portas públicas →",d2:"Ler e ouvir",d2s:"Reflexões e experiências publicadas em DIGIYLYFE.net.",d2b:"Abrir as vozes do terreno →",d3:"Membro RÉSEAU",d3s:"Presença simples, cartão digital, QR e contacto direto.",d3b:"Ver adesão →"},
+    de:{k:"Öffentliches Modul + Mitgliederpräsenz",h:'Wissen zieht an. <span>Der Profi handelt.</span>',lead:"DIGIYLYFE.net bietet Gedanken zum Lesen oder Anhören. RÉSEAU DIGIY zeigt Menschen, Profile, Angebote und direkte Kontakte.",mt:"🤝 RÉSEAU DIGIY MITGLIED",mm:"Digitale Visitenkarte · 1 Foto · QR · Netzwerkpräsenz · WhatsApp · SMS · Direktanruf · 8 Sprachen · 0 % Provision.",p:"28.000 FCFA / Monat",tar:"💳 Mitgliederpreise",d1:"Netzwerk entdecken",d1s:"Profis, Profile, Anzeigen, Fragen und Glossar.",d1b:"Öffentliche Türen öffnen →",d2:"Lesen und anhören",d2s:"Gedanken und Erfahrungen auf DIGIYLYFE.net.",d2b:"Stimmen aus dem Feld öffnen →",d3:"RÉSEAU Mitglied",d3s:"Einfache Präsenz, digitale Karte, QR und direkter Kontakt.",d3b:"Mitgliedschaft ansehen →"},
+    it:{k:"Modulo pubblico + presenza aderente",h:'Il sapere attrae. <span>Il professionista agisce.</span>',lead:"DIGIYLYFE.net raccoglie riflessioni da leggere o ascoltare. RÉSEAU DIGIY presenta persone, schede, offerte e contatti diretti.",mt:"🤝 ADERENTE RÉSEAU DIGIY",mm:"Biglietto digitale · 1 foto · QR · presenza nella rete · WhatsApp · SMS · chiamata diretta · 8 lingue · 0% commissione.",p:"28.000 FCFA / mese",tar:"💳 Tariffe aderenti",d1:"Scoprire la rete",d1s:"Professionisti, schede, annunci, domande e lessico.",d1b:"Aprire le porte pubbliche →",d2:"Leggere e ascoltare",d2s:"Riflessioni ed esperienze pubblicate su DIGIYLYFE.net.",d2b:"Aprire le voci del territorio →",d3:"Aderente RÉSEAU",d3s:"Presenza semplice, biglietto digitale, QR e contatto diretto.",d3b:"Vedere l’adesione →"},
+    nl:{k:"Publieke module + ledenzichtbaarheid",h:'Kennis trekt aan. <span>De professional handelt.</span>',lead:"DIGIYLYFE.net bundelt inzichten om te lezen of te beluisteren. RÉSEAU DIGIY toont mensen, profielen, aanbiedingen en directe contacten.",mt:"🤝 RÉSEAU DIGIY LID",mm:"Digitaal visitekaartje · 1 foto · QR · zichtbaarheid in het netwerk · WhatsApp · SMS · direct bellen · 8 talen · 0% commissie.",p:"28.000 FCFA / maand",tar:"💳 Ledentarieven",d1:"Ontdek het netwerk",d1s:"Professionals, profielen, aankondigingen, vragen en woordenlijst.",d1b:"Open publieke deuren →",d2:"Lezen en luisteren",d2s:"Inzichten en ervaringen gepubliceerd op DIGIYLYFE.net.",d2b:"Open stemmen uit het veld →",d3:"RÉSEAU lid",d3s:"Eenvoudige aanwezigheid, digitaal kaartje, QR en direct contact.",d3b:"Bekijk lidmaatschap →"},
+    ar:{k:"وحدة عامة + حضور العضو",h:'المعرفة تجذب. <span>والمحترف يتحرك.</span>',lead:"يستضيف DIGIYLYFE.net أفكار الميدان للقراءة أو الاستماع. ويعرض RÉSEAU DIGIY الأشخاص والبطاقات والعروض ووسائل الاتصال المباشر.",mt:"🤝 عضو RÉSEAU DIGIY",mm:"بطاقة أعمال رقمية · صورة واحدة · QR · حضور في الشبكة · واتساب · SMS · اتصال مباشر · 8 لغات · عمولة 0٪.",p:"28 000 فرنك إفريقي / شهر",tar:"💳 أسعار الأعضاء",d1:"اكتشاف الشبكة",d1s:"محترفون وبطاقات وإعلانات وأسئلة ومصطلحات.",d1b:"فتح الأبواب العامة ←",d2:"القراءة والاستماع",d2s:"أفكار وتجارب منشورة على DIGIYLYFE.net.",d2b:"فتح أصوات الميدان ←",d3:"عضو RÉSEAU",d3s:"حضور بسيط وبطاقة رقمية وQR واتصال مباشر.",d3b:"عرض العضوية ←"}
+  };
+  const ids={txKicker:"k",txHeroTitle:"h",txHeroLead:"lead",txMemberTitle:"mt",txMemberText:"mm",txPrice:"p",txTarifs:"tar",txDoor1:"d1",txDoor1s:"d1s",txDoor1b:"d1b",txDoor2:"d2",txDoor2s:"d2s",txDoor2b:"d2b",txDoor3:"d3",txDoor3s:"d3s",txDoor3b:"d3b"};
+  function apply(lang){
+    const t=T[lang]||T.fr;
+    document.documentElement.lang=lang;
+    document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+    Object.entries(ids).forEach(([id,key])=>{const el=document.getElementById(id);if(!el)return;if(key==="h")el.innerHTML=t[key];else el.textContent=t[key];});
+    document.querySelectorAll("[data-safe-lang]").forEach(b=>b.classList.toggle("active",b.dataset.safeLang===lang));
+    try{localStorage.setItem("digiy_reseau_lang_safe",lang);}catch(_){}
+  }
+  document.querySelectorAll("[data-safe-lang]").forEach(b=>b.addEventListener("click",()=>apply(b.dataset.safeLang)));
+  let lang="fr";
+  try{lang=(new URLSearchParams(location.search).get("lang")||localStorage.getItem("digiy_reseau_lang_safe")||"fr").slice(0,2).toLowerCase();}catch(_){}
+  if(!T[lang])lang="fr";
+  apply(lang);
+})();
+</script>
+
 </body>
 </html>
 
