@@ -1,0 +1,55 @@
+name: Patch universal return PRO once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-universal-return-pro-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add universal DIGIYLYFE return
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          files = [
+              'paiement.html',
+              'acces-pro.html',
+              'session.html',
+              'clients.html',
+              'oreille.html',
+          ]
+
+          block = '''<div data-digiy-return-home="1" style="width:min(980px,100%);margin:12px auto 0;padding:0 14px;box-sizing:border-box"><a href="https://digiylyfe.com/" aria-label="Retour DIGIYLYFE.COM" style="width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;padding:11px 18px;border:2px solid #d8ad46;border-radius:999px;background:#073f32;color:#fff;text-decoration:none;font:950 15px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.02em;box-shadow:0 8px 20px rgba(0,0,0,.22);box-sizing:border-box">← RETOUR DIGIYLYFE.COM</a></div>'''
+
+          for name in files:
+              p = Path(name)
+              text = p.read_text(encoding='utf-8')
+              if 'data-digiy-return-home="1"' in text:
+                  print(name, 'already patched')
+                  continue
+              new, count = re.subn(r'(<body(?:\s[^>]*)?>)', r'\1\n' + block, text, count=1, flags=re.I)
+              if count != 1:
+                  raise SystemExit(f'Could not patch {name}')
+              p.write_text(new, encoding='utf-8')
+              print(name, 'patched')
+          PY
+      - name: Commit patch and remove temporary workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/patch-universal-return-pro-once.yml
+          git add paiement.html acces-pro.html session.html clients.html oreille.html
+          git commit -m "UI: add DIGIYLYFE.COM return across RÉSEAU PRO"
+          git push
